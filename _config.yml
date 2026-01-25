@@ -36,7 +36,7 @@ header_pages:
   - research.md
 
 # Build settings
-theme: minima
+theme: jekyll-theme-hacker
 plugins:
   - jekyll-feed
 
