@@ -1,0 +1,11 @@
+<header>
+  <nav>
+    <a href="/about">About</a> |
+    <a href="/research">Research</a> |
+    {% if page.lang == "en" %}
+      <a href="/about.de">Deutsch</a>
+    {% else %}
+      <a href="/about">English</a>
+    {% endif %}
+  </nav>
+</header>
