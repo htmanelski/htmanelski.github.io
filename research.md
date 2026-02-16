@@ -3,7 +3,9 @@ layout: single
 title: "Research"
 permalink: /research/
 ---
-Why are processes shape the surfaces of rocky planets, and how have those processes changed over time? 
+Why are the processes that shape the surface geochemistry of rocky planets, and how have those processes changed over time? That is the overarching question I work to address throughout my research. 
+
+I leverage my data science/machine learning background and experience with spectroscopic data sets to study the surface chemistry of rocky planets. To date, I have focused on in-situ LIBS and XRF deployed on Martian/Lunar landers, but I am interested in remote sensing datasets for Mercury and Venus (I'm very excited for infrared spectroscopy with BepiColombo and EnVision)!
 
 Here is a list of all of my papers and abstracts. Feel free to check out my [Google Scholar](https://scholar.google.com/citations?user=ViJzfagAAAAJ&hl=en&oi=ao) if you want the most up to date list. If you cannot access any of these articles through your institution please send me an email, I would be happy to share them with you.
 
