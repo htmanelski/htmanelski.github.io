@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Über mich
+title: 
 permalink: /about.de/
 lang: de
 ---
