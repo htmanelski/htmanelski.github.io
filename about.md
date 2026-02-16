@@ -1,11 +1,9 @@
 ---
 layout: single
-title: 
+title: About Me
 permalink: /about/
 lang: en
 ---
-
-# About Me
 
 ![Profile Picture](/assets/images/your-photo.JPG){: width="200" style="float: right; margin-left: 10px;"}
 

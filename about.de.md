@@ -1,11 +1,9 @@
 ---
 layout: single
-title: 
+title: Über Mich
 permalink: /about.de/
 lang: de
 ---
-
-# Über mich
 
 ![Profilbild](/assets/images/your-photo.JPG){: width="200" style="float: right; margin-left: 10px;"}
 
