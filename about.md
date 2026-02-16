@@ -7,7 +7,7 @@ lang: en
 
 # About Me
 
-![Profile Picture](/assets/images/your-photo.jpg){: width="200" style="float: right; margin-left: 10px;"}
+![Profile Picture](/assets/images/your-photo.JPG){: width="200" style="float: right; margin-left: 10px;"}
 
 I am a PhD student at **Purdue University**, studying planetary science. I am interested in using geochemical data collected from the surfaces of rocky planets to better understand their formation and development. My current research focuses on the geochemistry of the Moon and Mars using in-situ **Laser Induced Breakdown Spectroscopy (LIBS)** and **X-ray Fluorescence (XRF)**.
 
