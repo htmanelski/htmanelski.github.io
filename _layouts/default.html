@@ -14,9 +14,9 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
+      <header class="masthead clearfix">
         <!-- Add your navigation bar here -->
-        <nav>
+        <nav class="site-nav">
           <ul>
             {% for item in site.data.navigation %}
               <li><a href="{{ item.link }}">{{ item.name }}</a></li>
@@ -61,3 +61,4 @@
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
   </body>
 </html>
+

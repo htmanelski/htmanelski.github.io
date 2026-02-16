@@ -1,11 +1,11 @@
-/* Navigation bar styles */
-header nav {
+/* Navigation bar styles for jekyll-theme-minimal */
+.masthead .site-nav {
+  float: none;
   margin-bottom: 1rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #eee;
+  clear: both;
 }
 
-header nav ul {
+.masthead .site-nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -13,13 +13,16 @@ header nav ul {
   gap: 1rem;
 }
 
-header nav ul li a {
+.masthead .site-nav ul li {
+  margin: 0;
+}
+
+.masthead .site-nav ul li a {
   text-decoration: none;
-  color: #333;
+  color: #4183c4;
   font-weight: 500;
 }
 
-header nav ul li a:hover {
-  color: #666;
+.masthead .site-nav ul li a:hover {
   text-decoration: underline;
 }
