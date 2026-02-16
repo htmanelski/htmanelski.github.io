@@ -1,0 +1,25 @@
+/* Navigation bar styles */
+header nav {
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+header nav ul li a:hover {
+  color: #666;
+  text-decoration: underline;
+}
