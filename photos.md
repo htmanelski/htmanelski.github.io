@@ -10,7 +10,6 @@ permalink: /photos/
 
 
 <div style="padding: 0 15px;">
-	# Travel and Photography
 	I like to travel and take photos with my ancient DSLR camera. Here are some of my favorites:
   <div class="photo-gallery" style="text-align: center; margin-bottom: 2rem;">
     {% for photo in site.data.photos %}
