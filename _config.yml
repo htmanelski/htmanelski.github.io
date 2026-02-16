@@ -36,7 +36,7 @@ header_pages:
   - research.md
 
 # Build settings
-theme: jekyll-theme-hacker
+theme: jekyll-theme-midnight
 
 # Exclude from processing.
 # The following items will not be processed, by default.
