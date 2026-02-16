@@ -1,6 +1,5 @@
-- name: Home
-  link: /
-- name: About
-  link: /about/
-- name: Research
-  link: /research/
+main:
+  - title: "About"
+    url: /
+  - title: "Research"
+    url: /research/

@@ -36,7 +36,10 @@ header_pages:
   - research.md
 
 # Build settings
-theme: jekyll-theme-cayman
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+
+plugins:
+  - jekyll-include-cache
 
 # Exclude from processing.
 # The following items will not be processed, by default.
