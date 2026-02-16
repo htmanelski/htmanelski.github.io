@@ -3,7 +3,7 @@ layout: single
 title: "Research"
 permalink: /research/
 ---
-
+Why are processes shape the surfaces of rocky planets, and how have those processes changed over time? 
 
 Here is a list of all of my papers and abstracts. Feel free to check out my [Google Scholar](https://scholar.google.com/citations?user=ViJzfagAAAAJ&hl=en&oi=ao) if you want the most up to date list. If you cannot access any of these articles through your institution please send me an email, I would be happy to share them with you.
 
