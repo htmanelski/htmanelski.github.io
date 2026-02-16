@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: single
 title: Über mich
 permalink: /about.de/
 lang: de
