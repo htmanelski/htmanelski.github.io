@@ -7,7 +7,7 @@ lang: de
 
 # Über mich
 
-![Profilbild](/assets/images/your-photo.jpg){: width="200" style="float: right; margin-left: 10px;"}
+![Profilbild](/assets/images/your-photo.JPG){: width="200" style="float: right; margin-left: 10px;"}
 
 Ich bin Doktorand an der **Purdue University** und studiere Planetenwissenschaften. Mein Interesse gilt der Nutzung geochemischer Daten, die von der Oberfläche felsiger Planeten gesammelt werden, um deren Entstehung und Entwicklung besser zu verstehen. Meine aktuelle Forschung konzentriert sich auf die Geochemie des Mondes und des Mars unter Verwendung von **Laser-Induzierter Plasmaspektroskopie (LIBS)** und **Röntgenfluoreszenz (XRF)**.
 
