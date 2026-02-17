@@ -11,7 +11,7 @@ I am a PhD student at **Purdue University**, studying planetary science. I am in
 
 I am a member of the **Perseverance Mars rover science team** since 2022 and specialize in the processing and interpretation of spectral data used to quantify the abundance of chemical elements. My technical expertise includes programming (**Python, C++**), machine learning (**Random Forest, Elastic Net, Gradient Boosting**), and laboratory skills (**lasers, mechano-optics, spectrometers**). Previously, I worked with **VNIR spectral data** from the ChemCam instrument on the **Curiosity Mars rover**. I graduated with a **BSc in Applied Mathematics** from Columbia University in 2022.
 
-[Download my resume](/assets/Henry_Manelski_Resume.pdf).
+[Download my resume](/assets/Henry_Manelski_Resume_EN.pdf).
 
 ---
 [Zur deutschen Version wechseln](/about.de)
