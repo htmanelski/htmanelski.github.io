@@ -3,5 +3,7 @@ main:
     url: /
   - title: "Research"
     url: /research/
+  - title: "Media"
+    url: /media/
   - title: "Photos"
     url: /photos/
