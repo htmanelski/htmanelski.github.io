@@ -68,7 +68,7 @@ permalink: /media/
 
   <ul style="list-style: none; padding: 0;">
 
-    <li style="margin-bottom: 0.5rem;"><a href="https://www.linkedin.com/in/yourprofile" target="\\\_blank">LinkedIn Profile</a></li>
+    <li style="margin-bottom: 0.5rem;"><a href="https://www.linkedin.com/in/henry-manelski-a1a8b7125/" target="\\\_blank">LinkedIn Profile</a></li>
 
     <!-- Add more links here -->
 
