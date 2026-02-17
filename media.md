@@ -1,78 +1,38 @@
 ---
-
 layout: default
-
 title: Media
-
 permalink: /media/
-
 ---
 
-
-
-\# Media Appearances and Links
-
-
-
-\## Blog Posts
-
 <div style="padding: 0 15px;">
 
-&nbsp; <ul style="list-style: none; padding: 0;">
+# Media
 
-&nbsp;   {% for post in site.data.external\_posts %}
+## Blog Posts
+<ul>
+  <li><a href="https://science.nasa.gov/blog/searching-for-ancient-rocks-in-the-forlandet-flats/" target="_blank">Searching for Ancient Rocks in the ‘Forlandet’ Flats</a> (Perseverance Rover Mission Update, June 2025)</li>
 
-&nbsp;   <li style="margin-bottom: 1rem;">
+  <li><a href="https://science.nasa.gov/blog/smooshing-for-science-a-flat-out-success/" target="_blank">Smooshing for Science: A Flat-Out Success</a> (Perseverance Rover Mission Update, February 2025)</li>
+  
+  <li><a href="https://science.nasa.gov/blog/persevering-through-the-storm/" target="_blank">Persevering Through the Storm</a> (Perseverance Rover Mission Update, September 2024)</li>
 
-&nbsp;     <a href="{{ post.link }}" target="\_blank" style="font-weight: bold;">{{ post.title }}</a>
+  <li><a href="https://science.nasa.gov/blog/farewell-to-our-flying-friend-and-closing-in-on-the-crater-rim/" target="_blank">Farewell to Our Flying Friend and Closing in on the Crater Rim</a> (Perseverance Rover Mission Update, February 2024)</li>
 
-&nbsp;     <div style="font-size: 0.9rem; color: #666;">{{ post.source }} • {{ post.date }}</div>
 
-&nbsp;   </li>
 
-&nbsp;   {% endfor %}
+</ul>
 
-&nbsp; </ul>
-
+## YouTube Interviews
+<div style="margin: 2rem 0;">
+  <div style="text-align: center;">
+    <iframe width="560" height="315" src="https://youtu.be/PQUEXBy2J2Q?si=qzwSoJXtXY4_x8WL" frameborder="0" allowfullscreen></iframe>
+    <p>Interview with 'Bad Boy of Science' (2025)</p>
+  </div>
 </div>
 
-
-
-\## YouTube Interviews
-
-<div style="padding: 0 15px;">
-
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
-
-    {% for video in site.data.videos %}
-
-    <div style="max-width: 400px; margin-bottom: 1rem;">
-
-      <iframe width="400" height="225" src="{{ video.embed }}" frameborder="0" allowfullscreen style="border-radius: 4px;"></iframe>
-
-      <p style="margin: 0.5rem 0 0 0;">{{ video.caption }}</p>
-
-    </div>
-
-    {% endfor %}
-
-  </div>
+## Professional Links
+<ul>
+  <li><a href="https://www.linkedin.com/in/henry-manelski-a1a8b7125/" target="_blank">LinkedIn Profile</a></li>
+</ul>
 
 </div>
-
-
-
-\## Professional Links
-
-<div style="padding: 0 15px;">
-
-  <ul style="list-style: none; padding: 0;">
-
-    <li style="margin-bottom: 0.5rem;"><a href="https://www.linkedin.com/in/henry-manelski-a1a8b7125/" target="\\\_blank">LinkedIn Profile</a></li>
-
-    <!-- Add more links here -->
-
-  </ul>
-
-</div>
-
