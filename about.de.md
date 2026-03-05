@@ -11,6 +11,8 @@ Ich bin Doktorand an der **Purdue University** und studiere Planetenwissenschaft
 
 Seit 2022 bin ich Mitglied des **Wissenschaftsteams des Perseverance Mars Rovers** und spezialisiert auf die Verarbeitung und Interpretation von Spektraldaten, die zur Quantifizierung der Häufigkeit chemischer Elemente verwendet werden. Meine technischen Fähigkeiten umfassen Programmierung (**Python, C++**), maschinelles Lernen (**Random Forest, Elastic Net, Gradient Boosting**) und Laborfähigkeiten (**Laser, mechano-optische Systeme, Spektrometer**). Zuvor arbeitete ich mit **VNIR-Spektraldaten** des ChemCam-Instruments auf dem **Curiosity Mars Rover**. Ich habe 2022 meinen **BSc in Angewandter Mathematik** an der Columbia University abgeschlossen.
 
+Ich werde meinen Doktortitel im Frühjahr 2026 abschließen und ziehe nach Deutschland, wo ich eine Karriere im Bereich der planetaren Spektroskopie an deutschen Universitäten und Forschungseinrichtungen anstrebe. Falls Sie an einer Zusammenarbeit interessiert sind, können Sie sich gerne bei mir melden! Meine E-Mail-Adresse ist hmanelsk@purdue.edu.
+
 [Meinen Lebenslauf herunterladen](/assets/Henry_Manelski_Resume.pdf).
 
 ---
