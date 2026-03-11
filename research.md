@@ -42,55 +42,69 @@ Here is a list of all of my papers and abstracts. Feel free to check out my [Goo
 
 ## Conference Abstracts and Non-Peer-Reviewed Publications
 
-1. **H. T. Manelski\***, R. C. Wiens, A. Broz, J. A. Hurowitz, M. Tice, S. Clegg, E. Dehouck, S. Connell, O. Forni, S. J. VanBommel, S. Schröder, T. S.J. Gabriel, C. Bedford, R. K. Martinez, A. Cousin (2025):
+1. **H. T. Manelski\***, C. Bedford, DJ Lee, R. C. Wiens, J. Gillis, H. Vannier, A. Klidaras, B. L. Jolliff, A. Ollila, S. Clegg, W. Rapin, A. A. Fraeman (2026):
+   Chemical Mapping of a Lunar Meteorite with LIBS: Outlook for In-Situ Science.
+   *57th Lunar and Planetary Science Conference, The Woodlands, Texas, 2026.*
+
+2. **M. C. Rudin\***, **H. T. Manelski**, J. R. Johnson, C. C. Bedford, V. Payré, S. Schröder, E Clavé, A. Vaughan, A. Udry, M. Deahn, O. Gasnault, A. Yingst, A. Cousin, 
+   R. C. Wiens (2026):
+   Potential First Iron Meteorite Detections at Jezero Crater, Mars. 
+   *57th Lunar and Planetary Science Conference, The Woodlands, Texas, 2026.*
+
+3. **D.J. Lee\***, **H. T. Manelski**, C. C. Bedford, R. C. Wiens, B. L. Jolliff, A. Ollila, S. Clegg, W. Rapin, A. Fraeman (2026):
+   Potential First Iron Meteorite Detections at Jezero Crater, Mars. 
+   *57th Lunar and Planetary Science Conference, The Woodlands, Texas, 2026.*
+
+
+4. **H. T. Manelski\***, R. C. Wiens, A. Broz, J. A. Hurowitz, M. Tice, S. Clegg, E. Dehouck, S. Connell, O. Forni, S. J. VanBommel, S. Schröder, T. S.J. Gabriel, C. Bedford, R. K. Martinez, A. Cousin (2025):
    Ore-Grade Nickel Hosted in Fine-Grained Sedimentary Rocks, Jezero Crater, Mars.
    *Europlanet Science Conference, Helsinki, Finland, 2025.* EPSC-DPS2025-431.
 
-2. **L Mandon\***, O Forni, N Mangold, RC Wiens, **HT Manelski**, ZU Wolf, E Dehouck, P Beck, O Beyssac, JR Johnson, E Clavé, CC Bedford, S Schröder, C Royer, S Connell, A Udry, JI Simon, A Cousin (2025):
+5. **L Mandon\***, O Forni, N Mangold, RC Wiens, **HT Manelski**, ZU Wolf, E Dehouck, P Beck, O Beyssac, JR Johnson, E Clavé, CC Bedford, S Schröder, C Royer, S Connell, A Udry, JI Simon, A Cousin (2025):
    Diagenetically altered fine sediments at Neretva Vallis, Mars.
    *56th Lunar and Planetary Science Conference, The Woodlands, Texas, 2025.* LPI Contribution No. 3090.
 
-3. **E Dehouck\***, L Mandon, J Johnson, **H Manelski**, U Wolf, O Forni, P Beck, A Zastrow, S Connell, A Cousin, O Gasnault, RC Wiens (2025):
+6. **E Dehouck\***, L Mandon, J Johnson, **H Manelski**, U Wolf, O Forni, P Beck, A Zastrow, S Connell, A Cousin, O Gasnault, RC Wiens (2025):
    Iron-Rich, Akaganéite-and Jarosite-Bearing Rocks on the Flank of Neretva Vallis, Jezero Crater.
    *56th Lunar and Planetary Science Conference, The Woodlands, Texas, 2025.* LPI Contribution No. 3090.
 
-4. **AP Broz\***, H Kalucha, KC Benison, BH Horgan, A Klidaras, **H Manelski**, L Mandon, S Connell, CC Bedford, M Rice, JR Johnson, A Jones, A Li, M Tice, J Hurowitz, A Allwood, D Flannery, A Murphy, K Uckert, A Vaughan, N Schmitz, F Poulet, K Lapo, M Gabbert, EC Cardarelli, B Garczynski, B Wogsland, D Buckner, E Dehouck, C Royer, K Williford, A Williams, L Kah, K Stack Morgan, K Farley, RC Wiens, A Cousin, K Hand, J Maki, JF Bell (2025):
+7. **AP Broz\***, H Kalucha, KC Benison, BH Horgan, A Klidaras, **H Manelski**, L Mandon, S Connell, CC Bedford, M Rice, JR Johnson, A Jones, A Li, M Tice, J Hurowitz, A Allwood, D Flannery, A Murphy, K Uckert, A Vaughan, N Schmitz, F Poulet, K Lapo, M Gabbert, EC Cardarelli, B Garczynski, B Wogsland, D Buckner, E Dehouck, C Royer, K Williford, A Williams, L Kah, K Stack Morgan, K Farley, RC Wiens, A Cousin, K Hand, J Maki, JF Bell (2025):
    Green Reduction Spots in Red Beds of the Bright Angel Formation, Jezero Crater, Mars and Implications for Biosignature Preservation Potential.
    *56th Lunar and Planetary Science Conference, The Woodlands, Texas, 2025.* LPI Contribution No. 3090.
 
-5. **HT Manelski\***, RC Wiens, S Schröder, PB Hansen, B Bousquet, ND Martin, AE Nelson, S Clegg, RK Martinez, AM Ollila, A Cousin (2024):
+8. **HT Manelski\***, RC Wiens, S Schröder, PB Hansen, B Bousquet, ND Martin, AE Nelson, S Clegg, RK Martinez, AM Ollila, A Cousin (2024):
    SuperCam LIBS Plasma Dynamics: Implications for Quantification of Elemental Abundances.
    *55th Lunar and Planetary Science Conference, The Woodlands, Texas, 2024.* LPI Contribution No. 3007.
 
-6. **Jeffrey Roy Johnson\***, Candice Bedford, Erwin Dehouck, Stephanie Connell, Susanne Schröder, **Henry Manelski**, Olivier Forni, Pierre Beck, Clément Royer, Lucia Mandon, Roger C Wiens, Olivier Beyssac, Cathy Quantin-Nataf (2024):
+9. **Jeffrey Roy Johnson\***, Candice Bedford, Erwin Dehouck, Stephanie Connell, Susanne Schröder, **Henry Manelski**, Olivier Forni, Pierre Beck, Clément Royer, Lucia Mandon, Roger C Wiens, Olivier Beyssac, Cathy Quantin-Nataf (2024):
    Mars2020 SuperCam Observations of the Mount Washburn Boulders in Neretva Vallis, Jezero Crater, Mars.
    *American Geophysical Union Fall Meeting, Washington, D.C., 2024.* Issue 1486.
 
-7. **MC Deahn\***, B Horgan, F Calef III, J Schroeder, KM Stack, NR Williams, S Alwmark, CC Bedford, M Bramble, L Crumpler, D Flannery, B Garczynski, S Gwizd, L Ives, A Klidaras, C Lesh, **H Manelski**, C Miller, M Nachon, C Quantin-Nataf, N Randazzo, E Ravanis, P Russell, T Del Sesto, J Simon, JRC Voigt (2024):
+10. **MC Deahn\***, B Horgan, F Calef III, J Schroeder, KM Stack, NR Williams, S Alwmark, CC Bedford, M Bramble, L Crumpler, D Flannery, B Garczynski, S Gwizd, L Ives, A Klidaras, C Lesh, **H Manelski**, C Miller, M Nachon, C Quantin-Nataf, N Randazzo, E Ravanis, P Russell, T Del Sesto, J Simon, JRC Voigt (2024):
    An Orbital Photogeologic Map of the Jezero Crater Rim: Diverse Targets for Mars 2020 Future Exploration.
    *55th Lunar and Planetary Science Conference, The Woodlands, Texas, 2024.* LPI Contribution No. 3007.
 
-8. **ND Martin\***, **HT Manelski**, RC Wiens, S Clegg, PB Hansen, Susanne Schröder, B Chide (2024):
+11. **ND Martin\***, **HT Manelski**, RC Wiens, S Clegg, PB Hansen, Susanne Schröder, B Chide (2024):
    LIBS peak broadening in soils on mars.
    *55th Lunar and Planetary Science Conference, The Woodlands, Texas, 2024.* LPI Contribution No. 3007.
 
-9. **W Rapin\***, S Maurice, AM Ollila, RC Wiens, Bruno Dubois, Tony Nelson, L Bonhomme, Yann Parot, S Clegg, Ray Newell, L Ott, B Chide, V Payré, C Bedford, S Connell, **HT Manelski**, Susanne Schröder, Maximilian Buder, Charles Yana, P Bousquet (2024):
+12. **W Rapin\***, S Maurice, AM Ollila, RC Wiens, Bruno Dubois, Tony Nelson, L Bonhomme, Yann Parot, S Clegg, Ray Newell, L Ott, B Chide, V Payré, C Bedford, S Connell, **HT Manelski**, Susanne Schröder, Maximilian Buder, Charles Yana, P Bousquet (2024):
    µLIBS: Developing a Lightweight Elemental Micro-Mapper for In Situ Exploration.
    *55th Lunar and Planetary Science Conference, The Woodlands, Texas, 2024.* LPI Contribution No. 3007.
 
-10. **HT Manelski\***, RY Sheppard, AA Fraeman, RC Wiens, JR Johnson, EB Rampe, J Frydenvang, NL Lanza, Olivier Gasnault (2023):
+13. **HT Manelski\***, RY Sheppard, AA Fraeman, RC Wiens, JR Johnson, EB Rampe, J Frydenvang, NL Lanza, Olivier Gasnault (2023):
     Variability in Mt. Sharp Group Bedrock as Seen By ChemCam Passive and Active Spectra.
     *54th Lunar and Planetary Science Conference, The Woodlands, Texas, 2023.* LPI Contribution No. 2806.
 
-11. **O Mikulskytė\***, J Kingsnorth, **H Manelski**, L Pikulić, J Rothenbuchner (2023):
+14. **O Mikulskytė\***, J Kingsnorth, **H Manelski**, L Pikulić, J Rothenbuchner (2023):
     Science Objectives of the Tumbleweed Mission—Swarm-Based, Wind-Driven Rover Mars Exploration.
     *54th Lunar and Planetary Science Conference, The Woodlands, Texas, 2023.* LPI Contribution No. 2806.
 
-12. **MM Sori\***, KL Laferriere, KS Burkman, J Herring, A Klidaras, **HT Manelski**, RA McGlasson, SM Menten, IF Pamerleau, SL Pérez-Cortés (2023):
+15. **MM Sori\***, KL Laferriere, KS Burkman, J Herring, A Klidaras, **HT Manelski**, RA McGlasson, SM Menten, IF Pamerleau, SL Pérez-Cortés (2023):
     Hollows as a Source for Mercury's Polar Organics.
     *54th Lunar and Planetary Science Conference, The Woodlands, Texas, 2023.* LPI Contribution No. 2806.
 
-13. **HT Manelski\***, RY Sheppard, AA Fraeman, JR Johnson, R Wiens, N Lanza, J Frydenvang, Olivier Gasnault (2022):
+16. **HT Manelski\***, RY Sheppard, AA Fraeman, JR Johnson, R Wiens, N Lanza, J Frydenvang, Olivier Gasnault (2022):
     Classification of chemcam passive spectral targets in gale crater.
     *53th Lunar and Planetary Science Conference, The Woodlands, Texas, 2022.* LPI Contribution No. 53.
 
