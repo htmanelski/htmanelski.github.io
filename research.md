@@ -34,10 +34,9 @@ Here is a list of all of my papers and abstracts. Feel free to check out my [Goo
 
 ---
 
-## Submitted Publications (Under Review)
+## Submitted Publications (Accepted)
 
-1. **H. T. Manelski\***, R. C. Wiens, A. Broz, J. A. Hurowitz, M. Tice, S. Clegg, E. Dehouck, S. A. Connell, O. Forni, S. J. VanBommel, S. Schröder, T. S.J. Gabriel, C. Bedford, R. K. Martinez, A. Cousin, M. L. Cable:
-   Ore-Grade Nickel Co-located with Redox-Organic Interactions in Neretva Vallis Mudstones, Mars.
+1. **H. T. Manelski\***, R. C. Wiens, A. Broz, J. A. Hurowitz, M. Tice, S. Clegg, E. Dehouck, S. A. Connell, O. Forni, S. J. VanBommel, S. Schröder, T. S.J. Gabriel, C. Bedford, R. K. Martinez, A. Cousin, M. L. Cable: Ore-Grade Nickel Co-located with Redox-Organic Interactions in Neretva Vallis Mudstones, Mars. Accepted for publication at *Nature Communications*.
 
 ---
 
