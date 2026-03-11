@@ -7,7 +7,7 @@ lang: en
 
 ![Profile Picture](/assets/images/your-photo.JPG){: width="200" style="float: right; margin-left: 10px;"}
 
-Check out my latest LPSC Abstract! -> [Here](https://www.hou.usra.edu/meetings/lpsc2026/pdf/1189.pdf)
+**Clicked on my QR code at LPSC 2026? Check out my abstract [Here](https://www.hou.usra.edu/meetings/lpsc2026/pdf/1189.pdf)!**
 
 I am a PhD student at **Purdue University**, studying planetary science. I am interested in using geochemical data collected from the surfaces of rocky planets to better understand their formation and development. My current research focuses on the geochemistry of the Moon and Mars using in-situ **Laser Induced Breakdown Spectroscopy (LIBS)** and **X-ray Fluorescence (XRF)**.
 
