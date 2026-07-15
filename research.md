@@ -7,7 +7,7 @@ permalink: /research/
 
 I leverage my **data science/machine learning background** and experience with **spectroscopic data** sets to study the surface chemistry of rocky planets. To date, I have focused on in-situ LIBS and XRF deployed on **Martian/Lunar** landers and rovers, but I am excited to work with new remote sensing datasets in my postdoc, namely MERTIS **thermal infrared spectra** from **Mercury**. 
 
-Below is a list of all of my papers and abstracts. Feel free to check out my [Google Scholar](https://scholar.google.com/citations?user=ViJzfagAAAAJ&hl=en&oi=ao) if you want the most up to date list. If you cannot access any of these articles through your institution please send me an email (hmanelsk@purdue.edu), I would be happy to share them with you!
+Below is a list of all of my papers and abstracts. Feel free to check out my [Google Scholar](https://scholar.google.com/citations?user=ViJzfagAAAAJ&hl=en&oi=ao) if you want the most up to date list. If you cannot access any of these articles through your institution please send me an email (h.manelski@tum.de), I would be happy to share them with you!
 
 # Publications
 ## Monograph
