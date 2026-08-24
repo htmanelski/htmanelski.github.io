@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modernity Becomes Antiquity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #1a1a1a 0%, #000000 100%);
+            color: #e0d8c0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .header {
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: #d4af37;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            font-style: italic;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .artifact-container {
+            perspective: 1000px;
+            margin-bottom: 60px;
+        }
+
+        .glass-case {
+            width: 600px;
+            max-width: 95vw;
+            height: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .glass-case::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(135deg, rgba(200,200,200,0.1) 0%, rgba(255,255,255,0.2) 50%, rgba(200,200,200,0.1) 100%);
+            border: 20px solid;
+            border-image: linear-gradient(45deg, #8b7355, #5c4033, #8b7355) 20;
+            border-radius: 15px;
+            box-shadow: 
+                0 0 30px rgba(212, 175, 55, 0.15),
+                inset 0 0 40px rgba(212, 175, 55, 0.05);
+            backdrop-filter: blur(5px);
+            z-index: 10;
+            opacity: 0.9;
+        }
+
+        .glass-case::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+            border-radius: 8px;
+            z-index: 5;
+        }
+
+        .artifact {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            background: linear-gradient(to bottom, #f5f0e6, #e8dcc0);
+            border-radius: 8px;
+            overflow-y: auto;
+            z-index: 1;
+            transform: translateZ(10px);
+        }
+
+        .artifact::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .artifact::-webkit-scrollbar-track {
+            background: #5c4033;
+            border-radius: 4px;
+        }
+
+        .artifact::-webkit-scrollbar-thumb {
+            background: #8b7355;
+            border-radius: 4px;
+        }
+
+        .artifact-content {
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .artifact-content.revealed {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .source-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+            white-space: pre-wrap;
+        }
+
+        .source-meta {
+            font-size: 0.9rem;
+            color: #5c4033;
+            font-style: italic;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 5px;
+            border-left: 3px solid #8b7355;
+            margin-bottom: 20px;
+        }
+
+        .source-meta span {
+            display: block;
+            margin: 3px 0;
+        }
+
+        .caption {
+            background: linear-gradient(135deg, #2c201a, #1a120c);
+            color: #d4af37;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .caption::before {
+            content: '"';
+            font-size: 8rem;
+            color: rgba(212, 175, 55, 0.1);
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-family: serif;
+            z-index: 0;
+        }
+
+        .caption p {
+            font-size: 1.15rem;
+            font-style: italic;
+            line-height: 1.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .caption p:first-child {
+            font-style: normal;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .controls {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 30px;
+            background: linear-gradient(to bottom, #8b7355, #5c4033);
+            color: #f5f0e6;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(to bottom, #a0916b, #6b4f3d);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .plaque {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #5c4033;
+            color: #f5f0e6;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .glass-case:hover .plaque {
+            opacity: 1;
+        }
+
+        .plaque::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #5c4033;
+        }
+
+        @media (max-width: 768px) {
+            .glass-case {
+                width: 95vw;
+                height: 500px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .artifact {
+                padding: 25px;
+            }
+            
+            .source-text {
+                font-size: 1rem;
+            }
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            color: #8b7355;
+        }
+
+        .spinner {
+            border: 3px solid #5c4033;
+            border-top: 3px solid #d4af37;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Modernity Becomes Antiquity</h1>
+        <p>There will come a time when historians look back on our "modern" world and try to interpret what they find, much like we do with ancient sources. History suggests that our current digital medium will one day become obsolete and most communications will be lost. What will be preserved? This project offers a glimpse. With each visit, a public social media post, blog, or website is found at random — showing what future historians might see. What conclusions would they draw?</p>
+    </div>
+
+    <div class="artifact-container">
+        <div class="glass-case">
+            <div class="plaque">Click "New Artifact" to discover another</div>
+            <div class="artifact">
+                <div class="artifact-content" id="artifactContent">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        Preparing artifact...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="caption" id="caption">
+        <p id="captionTitle">Historian's Interpretation</p>
+        <p id="captionText">Loading interpretation...</p>
+    </div>
+
+    <div class="controls">
+        <button id="newArtifactBtn">New Artifact</button>
+        <button id="shareBtn">Share This Discovery</button>
+    </div>
+
+    <script>
+        // Curated list of internet sources (tweets, blogs, etc.)
+        const sources = [
+            {
+                text: `Just set up my first website in 1998. The internet is going to change everything. Mark my words, this is the future of communication.`,
+                platform: "Personal Blog",
+                author: "David Thompson",
+                date: "June 12, 1998",
+                url: "http://geocities.com/~dthompson/myfirstpage.html",
+                year: 1998
+            },
+            {
+                text: `Waiting in line for the new iPhone. Been here since 2am. The hype is real. This device will revolutionize how we interact with technology. #iPhone3G`,
+                platform: "Twitter",
+                author: "@TechEnthusiast88",
+                date: "July 11, 2008",
+                url: "https://twitter.com/TechEnthusiast88/status/864215874",
+                year: 2008
+            },
+            {
+                text: `I just received an email from Nigeria. A prince wants to transfer $10 million to my account and needs my help. He's offering me 10% for my assistance. This seems like a legitimate opportunity.`,
+                platform: "AOL Message Board",
+                author: "NYC_Guy_1999",
+                date: "March 3, 2001",
+                url: "aol://messageboard/finance/12345",
+                year: 2001
+            },
+            {
+                text: `MySpace is so much better than Facebook. You can customize your profile with HTML, music players, and cool backgrounds. Facebook is just boring blue and white. No contest.`,
+                platform: "MySpace Blog",
+                author: "xX_EmO_Gurl_Xx",
+                date: "November 15, 2006",
+                url: "https://myspace.com/xX_EmO_Gurl_Xx/blog/42837",
+                year: 2006
+            },
+            {
+                text: `Y2K bug update: We've spent millions preparing our systems. Midnight has passed in Australia and New Zealand. Reports are coming in... nothing has happened. The world did not end. I'm going to bed.`,
+                platform: "CNN Live Chat Transcript",
+                author: "CNN Technology Correspondent",
+                date: "December 31, 1999",
+                url: "http://www.cnn.com/2000/TECH/computing/01/01/y2k.update.02/index.html",
+                year: 1999
+            },
+            {
+                text: `Just got my first smartphone - a BlackBerry 8700. Full QWERTY keyboard, email on the go, and it even has a trackwheel! This is the pinnacle of mobile technology.`,
+                platform: "CrackBerry Forums",
+                author: "BerryAddict",
+                date: "February 28, 2005",
+                url: "https://forums.crackberry.com/general-blackberry-discussion-f3/how-about-blackberry-8700-3254/",
+                year: 2005
+            },
+            {
+                text: `The internet is a fad. No one will want to read news on a computer screen. Give me my morning newspaper any day. This 'world wide web' thing won't last five years.`,
+                platform: "USENET Post",
+                author: "Clifford Stoll",
+                date: "February 1995",
+                url: "news:alt.culture.usenet",
+                year: 1995
+            },
+            {
+                text: `I just uploaded my vacation photos to this new site called Flickr. You can share photos with friends and even tag them. It's like a photo album for the internet age!`,
+                platform: "Early Web Blog",
+                author: "PhotoLover22",
+                date: "August 10, 2004",
+                url: "https://www.flickr.com/photos/photolover22/1234567/",
+                year: 2004
+            },
+            {
+                text: `Dial-up internet is so slow. I'm downloading a 5MB song and it's been 20 minutes. My mom picked up the phone and disconnected me. I hate when that happens!`,
+                platform: "AIM Away Message",
+                author: "MusicFan92",
+                date: "2003",
+                url: "aim:goim?screenname=MusicFan92",
+                year: 2003
+            },
+            {
+                text: `This 'Google' search engine is amazing. I typed in 'cat pictures' and it actually found websites with cat pictures! AltaVista never worked this well.`,
+                platform: "Slashdot Comment",
+                author: "Anonymous Coward",
+                date: "September 1998",
+                url: "https://slashdot.org/comments.pl?sid=12345&cid=67890",
+                year: 1998
+            }
+        ];
+
+        // Historian interpretations for each source
+        const interpretations = [
+            {
+                title: "Early Web Enthusiasm",
+                text: "This artifact, dating from the late 20th century, reveals the optimistic spirit of the early internet pioneers. The author, likely a middle-class individual with access to emerging technology, expresses a prophetic vision of digital communication. Note the use of the term 'website' - a portmanteau of 'world wide web' and 'site' - suggesting this was still novel terminology. The Geocities URL indicates this was hosted on one of the first platforms allowing personal web pages, a phenomenon that would briefly democratize publishing before corporate consolidation."
+            },
+            {
+                title: "Ritual Consumer Behavior",
+                text: "This fragment from the social media platform 'Twitter' documents a cultural ritual of the early 21st century: the overnight queue for consumer electronics. The hashtag '#iPhone3G' suggests this was part of a coordinated marketing phenomenon. Historians note that such queues often formed despite the devices being available for purchase in greater quantities within days, indicating these were as much social events as commercial transactions. The device mentioned, an 'iPhone 3G', represented a significant evolution in mobile computing, though its capabilities would seem primitive by later standards."
+            },
+            {
+                title: "Digital Age Naivety",
+                text: "A fascinating example of early 21st century digital naivety. This message board post reveals how easily individuals could be deceived in the anonymity of online communication. The 'Nigerian Prince' scam, as it came to be known, was one of the first widely recognized forms of digital fraud. The author's willingness to believe the premise demonstrates the lack of skepticism that characterized early internet users, as well as the allure of 'get rich quick' schemes that have persisted throughout human history."
+            },
+            {
+                title: "Social Networking Wars",
+                text: "This blog post from the social networking platform MySpace captures a moment of transition in digital social spaces. The author laments the rise of Facebook, which would eventually supplant MySpace as the dominant social network. Note the emphasis on customization - a feature that defined the MySpace era's aesthetic of personal expression through chaotic HTML and embedded media. The username 'xX_EmO_Gurl_Xx' reflects the naming conventions of the period's youth culture."
+            },
+            {
+                title: "Millennial Anxiety",
+                text: "A transcript from the American news network CNN documents the global anxiety surrounding the 'Y2K bug' - a feared computer malfunction expected at the turn of the millennium. This artifact is particularly valuable as it captures both the widespread concern and the eventual anti-climax. The date format (December 31, 1999) and the reference to Australia and New Zealand (which crossed the date line first) provide geographical and temporal context for historians studying this brief but intense period of collective anxiety."
+            },
+            {
+                title: "Mobile Technology Evolution",
+                text: "This forum post from the CrackBerry community documents an era when physical keyboards were considered essential for mobile communication. The BlackBerry 8700, released in 2005, was prized for its email capabilities and the 'trackwheel' navigation system. The author's enthusiasm reflects the device's status as a symbol of professional efficiency. Ironically, within a decade, full touchscreen interfaces would render such physical keyboards largely obsolete for most users."
+            },
+            {
+                title: "Technological Skepticism",
+                text: "A USENET post that has become famous among digital archaeologists for its incorrect prediction about the internet's longevity. The author, Clifford Stoll, was a respected astronomer and computer scientist, lending credibility to his skepticism. This artifact serves as a cautionary tale about expert predictions and the difficulty of foreseeing technological adoption. The post was made in February 1995 - the same year that Amazon, eBay, and the first online banking services would launch."
+            },
+            {
+                title: "Photo Sharing Revolution",
+                text: "This early blog post documents the emergence of photo-sharing as a social activity. Flickr, launched in 2004, was one of the first platforms to make photo sharing accessible to non-technical users. The concept of 'tagging' photos with descriptive keywords represented a novel approach to organizing digital content. The username 'PhotoLover22' suggests an early adopter who may have been part of the first wave of digital photography enthusiasts."
+            },
+            {
+                title: "Domestic Technology Conflict",
+                text: "An 'Away Message' from AOL Instant Messenger captures a common domestic conflict of the early 21st century. The slow speed of dial-up internet (measured in kilobytes per second) meant that using the telephone and the internet simultaneously was impossible. This artifact provides insight into the infrastructure limitations of the era, as well as the social dynamics of shared household resources. The frustration expressed is relatable across generations, though the specific technology would soon become obsolete."
+            },
+            {
+                title: "Search Engine Discovery",
+                text: "A comment from the technology news site Slashdot documents the early dominance of Google in the search engine market. The comparison to AltaVista - then the most popular search engine - reveals the competitive landscape of the time. The user's amazement at finding relevant results indicates that effective search was not yet taken for granted. This was a period when 'portals' like Yahoo! still dominated, and the idea of a simple, focused search interface was revolutionary."
+            }
+        ];
+
+        // Get random source
+        function getRandomSource() {
+            const index = Math.floor(Math.random() * sources.length);
+            return { source: sources[index], interpretation: interpretations[index] };
+        }
+
+        // Display artifact
+        function displayArtifact(source, interpretation) {
+            const contentDiv = document.getElementById('artifactContent');
+            const captionTitle = document.getElementById('captionTitle');
+            const captionText = document.getElementById('captionText');
+
+            // Remove loading state
+            contentDiv.innerHTML = `
+                <div class="source-text">${source.text}</div>
+                <div class="source-meta">
+                    <span><strong>Platform:</strong> ${source.platform}</span>
+                    <span><strong>Author:</strong> ${source.author}</span>
+                    <span><strong>Date:</strong> ${source.date}</span>
+                    <span><strong>Original URL:</strong> ${source.url}</span>
+                </div>
+            `;
+
+            // Set caption
+            captionTitle.textContent = interpretation.title;
+            captionText.textContent = interpretation.text;
+
+            // Trigger reveal animation
+            setTimeout(() => {
+                contentDiv.classList.add('revealed');
+            }, 100);
+        }
+
+        // Initialize
+        function init() {
+            const { source, interpretation } = getRandomSource();
+            displayArtifact(source, interpretation);
+        }
+
+        // Event listeners
+        document.getElementById('newArtifactBtn').addEventListener('click', () => {
+            const contentDiv = document.getElementById('artifactContent');
+            contentDiv.classList.remove('revealed');
+            contentDiv.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Discovering new artifact...
+                </div>
+            `;
+
+            setTimeout(() => {
+                const { source, interpretation } = getRandomSource();
+                displayArtifact(source, interpretation);
+            }, 800);
+        });
+
+        document.getElementById('shareBtn').addEventListener('click', () => {
+            const caption = document.getElementById('caption');
+            const textToShare = encodeURIComponent(`Check out this digital artifact from ${new Date().getFullYear()}: "${document.getElementById('captionTitle').textContent}" - ${window.location.href}`);
+            window.open(`https://twitter.com/intent/tweet?text=${textToShare}`, '_blank');
+        });
+
+        // Start on load
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
