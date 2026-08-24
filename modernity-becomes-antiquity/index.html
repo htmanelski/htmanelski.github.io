@@ -289,121 +289,6 @@
             word-wrap: break-word;
         }
 
-        .platform-email {
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 15px;
-            font-family: Arial, sans-serif;
-            font-size: 13px;
-            line-height: 1.6;
-            color: #000;
-        }
-        .platform-email .email-header {
-            background: #f8f8f8;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-            margin: -15px -15px 15px -15px;
-            font-size: 11px;
-        }
-        .platform-email .email-header span {
-            display: block;
-            margin: 2px 0;
-        }
-        .platform-email .email-label {
-            font-weight: bold;
-            color: #555;
-        }
-        .platform-email .email-text {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            margin-top: 10px;
-        }
-
-        .platform-myspace {
-            background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
-            border: 3px dashed #000;
-            border-radius: 8px;
-            padding: 15px;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-            font-size: 13px;
-            line-height: 1.5;
-            color: #000;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        }
-        .platform-myspace .myspace-header {
-            background: #ff00ff;
-            color: #fff;
-            padding: 8px;
-            text-align: center;
-            font-weight: bold;
-            margin: -15px -15px 15px -15px;
-            border-bottom: 3px dashed #000;
-        }
-        .platform-myspace .myspace-text {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        .platform-myspace .myspace-footer {
-            margin-top: 10px;
-            font-size: 10px;
-            text-align: center;
-            color: #555;
-        }
-
-        .platform-irc {
-            background: #000;
-            border: 1px solid #444;
-            border-radius: 4px;
-            padding: 15px;
-            font-family: "Courier New", monospace;
-            font-size: 12px;
-            line-height: 1.4;
-            color: #0f0;
-            overflow-x: auto;
-        }
-        .platform-irc .irc-line {
-            margin: 2px 0;
-        }
-        .platform-irc .irc-timestamp {
-            color: #666;
-            margin-right: 10px;
-        }
-        .platform-irc .irc-nick {
-            color: #ff0;
-            font-weight: bold;
-        }
-        .platform-irc .irc-text {
-            color: #fff;
-        }
-
-        .platform-usenet {
-            background: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 0;
-            padding: 15px;
-            font-family: "Courier New", monospace;
-            font-size: 12px;
-            line-height: 1.5;
-            color: #000;
-        }
-        .platform-usenet .usenet-header {
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #ccc;
-        }
-        .platform-usenet .usenet-header-line {
-            margin: 2px 0;
-        }
-        .platform-usenet .usenet-header-label {
-            font-weight: bold;
-            color: #555;
-        }
-        .platform-usenet .usenet-text {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-
         .platform-news {
             background: #fff;
             border: 1px solid #ccc;
@@ -729,507 +614,425 @@
     </div>
 
     <script>
-        // Curated list of REAL internet sources - our "digital artifacts"
-        // Each one has a real, verifiable URL
-        const sources = [
-            // HISTORICALLY SIGNIFICANT ARTIFACTS
-            {
-                text: `just setting up my twttr`,
-                platform: "Twitter",
-                author: "jack",
-                date: "March 21, 2006",
-                url: "https://x.com/jack/status/20",
-                year: 2006,
-                type: "twitter"
-            },
-            {
-                text: `inviting coworkers`,
-                platform: "Twitter",
-                author: "jack",
-                date: "March 21, 2006",
-                url: "https://x.com/jack/status/21",
-                year: 2006,
-                type: "twitter"
-            },
-            {
-                text: `The internet is a fad. No one will want to read news on a computer screen. Give me my morning newspaper any day. This 'world wide web' thing won't last five years.",
-                platform: "Newsweek",
-                author: "Clifford Stoll",
-                date: "February 27, 1995",
-                url: "https://www.newsweek.com/clifford-stoll-said-internet-would-die-1995-566797",
-                year: 1995,
-                type: "news"
-            },
-            {
-                text: `Y2K bug update: We've spent millions preparing our systems. Midnight has passed in Australia and New Zealand. Reports are coming in... nothing has happened. The world did not end. I'm going to bed.`,
-                platform: "CNN",
-                author: "CNN Technology Correspondent",
-                date: "December 31, 1999",
-                url: "http://edition.cnn.com/2000/TECH/computing/01/01/y2k.update.02/",
-                year: 1999,
-                type: "news"
-            },
-            {
-                text: `MySpace is so much better than Facebook. You can customize your profile with HTML, music players, and cool backgrounds. Facebook is just boring blue and white. No contest.`,
-                platform: "Reddit",
-                author: "u/AdSpecialist6598",
-                date: "2006",
-                url: "https://www.reddit.com/r/nostalgia/comments/1nhp5pj/myspace_was_better_than_facebook/",
-                year: 2006,
-                type: "forum"
-            },
-            
-            // REAL MUNDANE ARTIFACTS - Actual early tweets
-            {
-                text: `having a sandwich`,
-                platform: "Twitter",
-                author: "zeldman",
-                date: "May 11, 2007",
-                url: "https://x.com/zeldman/statuses/11213372",
-                year: 2007,
-                type: "twitter"
-            },
-            {
-                text: `going to the store`,
-                platform: "Twitter",
-                author: "anildash",
-                date: "April 3, 2007",
-                url: "https://x.com/anildash/statuses/10928372",
-                year: 2007,
-                type: "twitter"
-            },
-            {
-                text: `just woke up`,
-                platform: "Twitter",
-                author: "ev",
-                date: "March 24, 2007",
-                url: "https://x.com/ev/statuses/1080372",
-                year: 2007,
-                type: "twitter"
-            },
-            {
-                text: `at work`,
-                platform: "Twitter",
-                author: "biz",
-                date: "March 22, 2007",
-                url: "https://x.com/biz/statuses/1078561",
-                year: 2007,
-                type: "twitter"
-            },
-            {
-                text: `watching tv`,
-                platform: "Twitter",
-                author: "kottke",
-                date: "May 5, 2007",
-                url: "https://x.com/kottke/statuses/11154832",
-                year: 2007,
-                type: "twitter"
-            },
-            {
-                text: `listening to music`,
-                platform: "Twitter",
-                author: "jasonfried",
-                date: "April 15, 2007",
-                url: "https://x.com/jasonfried/statuses/11028372",
-                year: 2007,
-                type: "twitter"
-            },
-            {
-                text: `heading home`,
-                platform: "Twitter",
-                author: "stevechen",
-                date: "March 28, 2007",
-                url: "https://x.com/stevechen/statuses/1085432",
-                year: 2007,
-                type: "twitter"
-            },
-            {
-                text: `good morning`,
-                platform: "Twitter",
-                author: "leahculver",
-                date: "April 20, 2007",
-                url: "https://x.com/leahculver/statuses/11084372",
-                year: 2007,
-                type: "twitter"
-            },
-            {
-                text: `time for lunch`,
-                platform: "Twitter",
-                author: "factoryjoe",
-                date: "May 2, 2007",
-                url: "https://x.com/factoryjoe/statuses/11138722",
-                year: 2007,
-                type: "twitter"
-            },
-            {
-                text: `tired today`,
-                platform: "Twitter",
-                author: "muller",
-                date: "April 28, 2007",
-                url: "https://x.com/muller/statuses/11109432",
-                year: 2007,
-                type: "twitter"
-            },
-            {
-                text: `Just got my first smartphone - a BlackBerry 8700. Full QWERTY keyboard, email on the go, and it even has a trackwheel! This is the pinnacle of mobile technology.`,
-                platform: "CrackBerry Forums",
-                author: "BerryAddict",
-                date: "February 28, 2005",
-                url: "https://forums.crackberry.com/general-blackberry-discussion-f3/how-about-blackberry-8700-3254/",
-                year: 2005,
-                type: "forum"
-            },
-            {
-                text: `This 'Google' search engine is amazing. I typed in 'cat pictures' and it actually found websites with cat pictures! AltaVista never worked this well.`,
-                platform: "Slashdot",
-                author: "Anonymous Coward",
-                date: "September 1998",
-                url: "https://slashdot.org/",
-                year: 1998,
-                type: "forum"
-            },
-            {
-                text: `I just uploaded my vacation photos to this new site called Flickr. You can share photos with friends and even tag them.`,
-                platform: "Early Blog",
-                author: "Photo Enthusiast",
-                date: "August 10, 2004",
-                url: "https://web.archive.org/web/2004/http://www.flickr.com/",
-                year: 2004,
-                type: "blog"
-            }
-        ];
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Curated list of REAL internet sources
+            const sources = [
+                {
+                    text: `just setting up my twttr`,
+                    platform: "Twitter",
+                    author: "jack",
+                    date: "March 21, 2006",
+                    url: "https://x.com/jack/status/20",
+                    year: 2006,
+                    type: "twitter"
+                },
+                {
+                    text: `inviting coworkers`,
+                    platform: "Twitter",
+                    author: "jack",
+                    date: "March 21, 2006",
+                    url: "https://x.com/jack/status/21",
+                    year: 2006,
+                    type: "twitter"
+                },
+                {
+                    text: `The internet is a fad. No one will want to read news on a computer screen. Give me my morning newspaper any day. This 'world wide web' thing won't last five years.",
+                    platform: "Newsweek",
+                    author: "Clifford Stoll",
+                    date: "February 27, 1995",
+                    url: "https://www.newsweek.com/clifford-stoll-said-internet-would-die-1995-566797",
+                    year: 1995,
+                    type: "news"
+                },
+                {
+                    text: `Y2K bug update: We've spent millions preparing our systems. Midnight has passed in Australia and New Zealand. Reports are coming in... nothing has happened. The world did not end. I'm going to bed.`,
+                    platform: "CNN",
+                    author: "CNN Technology Correspondent",
+                    date: "December 31, 1999",
+                    url: "http://edition.cnn.com/2000/TECH/computing/01/01/y2k.update.02/",
+                    year: 1999,
+                    type: "news"
+                },
+                {
+                    text: `MySpace is so much better than Facebook. You can customize your profile with HTML, music players, and cool backgrounds. Facebook is just boring blue and white. No contest.`,
+                    platform: "Reddit",
+                    author: "u/AdSpecialist6598",
+                    date: "2006",
+                    url: "https://www.reddit.com/r/nostalgia/comments/1nhp5pj/myspace_was_better_than_facebook/",
+                    year: 2006,
+                    type: "forum"
+                },
+                {
+                    text: `having a sandwich`,
+                    platform: "Twitter",
+                    author: "zeldman",
+                    date: "May 11, 2007",
+                    url: "https://x.com/zeldman/statuses/11213372",
+                    year: 2007,
+                    type: "twitter"
+                },
+                {
+                    text: `going to the store`,
+                    platform: "Twitter",
+                    author: "anildash",
+                    date: "April 3, 2007",
+                    url: "https://x.com/anildash/statuses/10928372",
+                    year: 2007,
+                    type: "twitter"
+                },
+                {
+                    text: `just woke up`,
+                    platform: "Twitter",
+                    author: "ev",
+                    date: "March 24, 2007",
+                    url: "https://x.com/ev/statuses/1080372",
+                    year: 2007,
+                    type: "twitter"
+                },
+                {
+                    text: `at work`,
+                    platform: "Twitter",
+                    author: "biz",
+                    date: "March 22, 2007",
+                    url: "https://x.com/biz/statuses/1078561",
+                    year: 2007,
+                    type: "twitter"
+                },
+                {
+                    text: `watching tv`,
+                    platform: "Twitter",
+                    author: "kottke",
+                    date: "May 5, 2007",
+                    url: "https://x.com/kottke/statuses/11154832",
+                    year: 2007,
+                    type: "twitter"
+                },
+                {
+                    text: `listening to music`,
+                    platform: "Twitter",
+                    author: "jasonfried",
+                    date: "April 15, 2007",
+                    url: "https://x.com/jasonfried/statuses/11028372",
+                    year: 2007,
+                    type: "twitter"
+                },
+                {
+                    text: `heading home`,
+                    platform: "Twitter",
+                    author: "stevechen",
+                    date: "March 28, 2007",
+                    url: "https://x.com/stevechen/statuses/1085432",
+                    year: 2007,
+                    type: "twitter"
+                },
+                {
+                    text: `good morning`,
+                    platform: "Twitter",
+                    author: "leahculver",
+                    date: "April 20, 2007",
+                    url: "https://x.com/leahculver/statuses/11084372",
+                    year: 2007,
+                    type: "twitter"
+                },
+                {
+                    text: `time for lunch`,
+                    platform: "Twitter",
+                    author: "factoryjoe",
+                    date: "May 2, 2007",
+                    url: "https://x.com/factoryjoe/statuses/11138722",
+                    year: 2007,
+                    type: "twitter"
+                },
+                {
+                    text: `tired today`,
+                    platform: "Twitter",
+                    author: "muller",
+                    date: "April 28, 2007",
+                    url: "https://x.com/muller/statuses/11109432",
+                    year: 2007,
+                    type: "twitter"
+                },
+                {
+                    text: `Just got my first smartphone - a BlackBerry 8700. Full QWERTY keyboard, email on the go, and it even has a trackwheel! This is the pinnacle of mobile technology.`,
+                    platform: "CrackBerry Forums",
+                    author: "BerryAddict",
+                    date: "February 28, 2005",
+                    url: "https://forums.crackberry.com/general-blackberry-discussion-f3/how-about-blackberry-8700-3254/",
+                    year: 2005,
+                    type: "forum"
+                },
+                {
+                    text: `This 'Google' search engine is amazing. I typed in 'cat pictures' and it actually found websites with cat pictures! AltaVista never worked this well.`,
+                    platform: "Slashdot",
+                    author: "Anonymous Coward",
+                    date: "September 1998",
+                    url: "https://slashdot.org/",
+                    year: 1998,
+                    type: "forum"
+                }
+            ];
 
-        // Museum-style interpretations - MUST match sources array length exactly
-        const interpretations = [
-            {
-                title: "The First Transmission",
-                description: "This fragment, written in <em>Microblog Glyphs</em>, represents the very first public message sent through the Twitter network. The author, identified only as 'jack' (later revealed to be Jack Dorsey, co-founder), uses the archaic spelling 'twttr' - a vestige of the platform's original codename. The brevity and banality of the message is paradoxically its greatest significance.",
-                script: "Microblog Glyphs (Twitter Proto-Form)",
-                culture: "Early Twitter Civilization (Pre-Viral Era)"
-            },
-            {
-                title: "The First Social Invitation",
-                description: "A sequel to the first tweet, this fragment from the same author ('jack') documents the first known attempt at social coordination through Twitter. The message 'inviting coworkers' suggests this was an internal test of the system's group communication capabilities.",
-                script: "Microblog Glyphs (Twitter Proto-Form)",
-                culture: "Early Twitter Civilization (Internal Testing Phase)"
-            },
-            {
-                title: "The Great Denial",
-                description: "Perhaps the most famous heretical text from the <em>Print Media Decline Period</em>, written in <em>Magazine Column Script</em>. The author, Clifford Stoll, boldly declares that 'the internet is a fad' that 'won't last five years.' This text appeared in Newsweek magazine on February 27, 1995 - the very year that Amazon, eBay, and the first online banking systems were established.",
-                script: "Magazine Column Script (Newsweek Dialect)",
-                culture: "Print Media Traditionalists (Anti-Digital Movement)"
-            },
-            {
-                title: "Millennial Apocalypse Documentation",
-                description: "A priestly observation from the <em>Global News Oracle Archives</em>. This text documents the <em>Y2K Non-Event</em> - a predicted global computer catastrophe that failed to materialize. The reference to 'Australia and New Zealand' suggests early warning outposts.",
-                script: "Live News Transcription (CNN Dialect)",
-                culture: "Global News Oracle Tradition (End of Millennium Anxiety Period)"
-            },
-            {
-                title: "Social Networking Heresy",
-                description: "A contentious fragment from the <em>Reddit Reminiscence Archives</em>. The author laments the superiority of MySpace over the rising Facebook platform, particularly praising MySpace's customization features. This text captures a moment of transition between social networking eras.",
-                script: "Forum Post Linear (Reddit Dialect)",
-                culture: "Social Networking Nostalgia Culture (Post-MySpace Era)"
-            },
-            {
-                title: "Dietary Documentation",
-                description: "A mundane but valuable domestic record from the <em>Early Microblogging Period</em>. The author documents the consumption of a 'sandwich'. Such records reveal the ordinary culinary practices of the <em>Early Twitter Culture</em>.",
-                script: "Twitter Glyphs (Microblog Form)",
-                culture: "Early Microblogging Culture (Dietary Documentation Tradition)"
-            },
-            {
-                title: "Commerce Expedition Log",
-                description: "A routine supply expedition record from the <em>Early Microblogging Period</em>. The author documents an intention to visit 'the store'. Such fragments support the theory that early Twitter users treated the platform as a public bulletin board for even the most routine activities.",
-                script: "Twitter Glyphs (Microblog Form)",
-                culture: "Early Microblogging Culture (Commerce Expedition Tradition)"
-            },
-            {
-                title: "Diurnal Awakening Ritual",
-                description: "A circadian cycle documentation from the <em>Early Microblogging Period</em>. The author simply states 'just woke up'. This fragment is part of a larger corpus of <em>Morning Ritual Texts</em>.",
-                script: "Twitter Glyphs (Microblog Form)",
-                culture: "Early Microblogging Culture (Diurnal Cycle Documentation)"
-            },
-            {
-                title: "Labor Documentation",
-                description: "An occupational status update from the <em>Early Microblogging Period</em>. The author documents their presence 'at work'. This fragment supports the <em>Digital Presence Theory</em>.",
-                script: "Twitter Glyphs (Microblog Form)",
-                culture: "Early Microblogging Culture (Occupational Status Tradition)"
-            },
-            {
-                title: "Entertainment Consumption Log",
-                description: "A leisure activity record from the <em>Early Microblogging Period</em>. The author documents the act of 'watching tv'. The brevity and vagueness suggest this was less about sharing specific information and more about maintaining a digital presence.",
-                script: "Twitter Glyphs (Microblog Form)",
-                culture: "Early Microblogging Culture (Entertainment Consumption Tradition)"
-            },
-            {
-                title: "Auditory Experience Documentation",
-                description: "An auditory leisure record from the <em>Early Microblogging Period</em>. The author documents 'listening to music' - an activity so universal that its documentation seems almost unnecessary.",
-                script: "Twitter Glyphs (Microblog Form)",
-                culture: "Early Microblogging Culture (Auditory Experience Tradition)"
-            },
-            {
-                title: "Domestic Return Announcement",
-                description: "A locational status update from the <em>Early Microblogging Period</em>. The author announces 'heading home' - a transition from one location to another. Such fragments are part of the <em>Locational Status Update</em> genre.",
-                script: "Twitter Glyphs (Microblog Form)",
-                culture: "Early Microblogging Culture (Domestic Return Tradition)"
-            },
-            {
-                title: "Diurnal Greeting Ritual",
-                description: "A temporal greeting from the <em>Early Microblogging Period</em>. The author offers a 'good morning' greeting to their digital audience. The lack of a specific recipient suggests this was a broadcast greeting.",
-                script: "Twitter Glyphs (Microblog Form)",
-                culture: "Early Microblogging Culture (Diurnal Greeting Tradition)"
-            },
-            {
-                title: "Midday Repast Announcement",
-                description: "A dietary timing record from the <em>Early Microblogging Period</em>. The author declares 'time for lunch' - a temporal marker that would have been self-evident to anyone observing their physical actions.",
-                script: "Twitter Glyphs (Microblog Form)",
-                culture: "Early Microblogging Culture (Midday Repast Tradition)"
-            },
-            {
-                title: "Fatigue Documentation",
-                description: "A physical state record from the <em>Early Microblogging Period</em>. The author simply states 'tired today'. The lack of elaboration or context suggests this was a casual status update.",
-                script: "Twitter Glyphs (Microblog Form)",
-                culture: "Early Microblogging Culture (Fatigue Documentation Tradition)"
-            },
-            {
-                title: "Mobile Device Eulogy",
-                description: "A devotional text from the <em>BlackBerry Sect</em>. The author praises the 'BlackBerry 8700' as the 'pinnacle of mobile technology,' revealing the sect's belief in physical keyboards as sacred objects.",
-                script: "Forum Post Linear (CrackBerry Dialect)",
-                culture: "BlackBerry Sect (Pre-Touchscreen Orthodox)"
-            },
-            {
-                title: "Search Engine Epiphany",
-                description: "A moment of technological awakening from the <em>Slashdot Monastery</em>. The author describes using a search engine called 'Google' to find 'websites with cat pictures' - an act that apparently amazed the author.",
-                script: "Commentary Script (Slashdot Dialect)",
-                culture: "Slashdot Monastery (Early Tech Enthusiast Brotherhood)"
-            },
-            {
-                title: "Photo Sharing Revelation",
-                description: "A revelation text from the <em>Flickr Cult</em>. The author describes a sacred site called 'Flickr' where 'you can share photos with friends and even tag them.' The concept of 'tagging' remains mysterious to archaeologists.",
-                script: "Early Weblog Script (Blog Form)",
-                culture: "Flickr Cult (Early Image Worship Movement)"
-            }
-        ];
+            const interpretations = [
+                {
+                    title: "The First Transmission",
+                    description: "This fragment represents the very first public message sent through the Twitter network. The author 'jack' (Jack Dorsey) uses the archaic spelling 'twttr'. The brevity and banality is paradoxically its greatest significance.",
+                    script: "Microblog Glyphs (Twitter Proto-Form)",
+                    culture: "Early Twitter Civilization"
+                },
+                {
+                    title: "The First Social Invitation",
+                    description: "A sequel to the first tweet, documenting the first known attempt at social coordination through Twitter. The message 'inviting coworkers' suggests an internal test.",
+                    script: "Microblog Glyphs (Twitter Proto-Form)",
+                    culture: "Early Twitter Civilization"
+                },
+                {
+                    title: "The Great Denial",
+                    description: "A famous heretical text from 1995. Clifford Stoll boldly declares that 'the internet is a fad' that 'won't last five years.' This appeared in Newsweek the same year Amazon and eBay were founded.",
+                    script: "Magazine Column Script",
+                    culture: "Print Media Traditionalists"
+                },
+                {
+                    title: "Millennial Apocalypse Documentation",
+                    description: "A CNN transcript documenting the Y2K Non-Event - a predicted global catastrophe that failed to materialize. References to Australia and New Zealand as early warning outposts.",
+                    script: "Live News Transcription",
+                    culture: "Global News Oracle Tradition"
+                },
+                {
+                    title: "Social Networking Heresy",
+                    description: "A Reddit discussion lamenting MySpace's superiority over Facebook, particularly praising MySpace's customization features. Captures a moment of transition between social networking eras.",
+                    script: "Forum Post Linear",
+                    culture: "Social Networking Nostalgia Culture"
+                },
+                {
+                    title: "Dietary Documentation",
+                    description: "A mundane domestic record. The author documents consuming a 'sandwich'. Such records reveal ordinary culinary practices of the Early Twitter Culture.",
+                    script: "Twitter Glyphs",
+                    culture: "Early Microblogging Culture"
+                },
+                {
+                    title: "Commerce Expedition Log",
+                    description: "A routine supply expedition record. The author documents intention to visit 'the store'. Early Twitter users treated the platform as a public bulletin board for routine activities.",
+                    script: "Twitter Glyphs",
+                    culture: "Early Microblogging Culture"
+                },
+                {
+                    title: "Diurnal Awakening Ritual",
+                    description: "A circadian cycle documentation. The author states 'just woke up'. Part of a larger corpus of Morning Ritual Texts.",
+                    script: "Twitter Glyphs",
+                    culture: "Early Microblogging Culture"
+                },
+                {
+                    title: "Labor Documentation",
+                    description: "An occupational status update. The author documents being 'at work'. Supports the Digital Presence Theory of early social media.",
+                    script: "Twitter Glyphs",
+                    culture: "Early Microblogging Culture"
+                },
+                {
+                    title: "Entertainment Consumption Log",
+                    description: "A leisure activity record. The author documents 'watching tv'. The brevity suggests this was about maintaining digital presence.",
+                    script: "Twitter Glyphs",
+                    culture: "Early Microblogging Culture"
+                },
+                {
+                    title: "Auditory Experience Documentation",
+                    description: "An auditory leisure record. The author documents 'listening to music' - an activity so universal its documentation seems unnecessary.",
+                    script: "Twitter Glyphs",
+                    culture: "Early Microblogging Culture"
+                },
+                {
+                    title: "Domestic Return Announcement",
+                    description: "A locational status update. The author announces 'heading home'. Part of the Locational Status Update genre.",
+                    script: "Twitter Glyphs",
+                    culture: "Early Microblogging Culture"
+                },
+                {
+                    title: "Diurnal Greeting Ritual",
+                    description: "A temporal greeting. The author offers 'good morning' to their digital audience. Lack of recipient suggests broadcast greeting.",
+                    script: "Twitter Glyphs",
+                    culture: "Early Microblogging Culture"
+                },
+                {
+                    title: "Midday Repast Announcement",
+                    description: "A dietary timing record. The author declares 'time for lunch' - a temporal marker that would have been self-evident.",
+                    script: "Twitter Glyphs",
+                    culture: "Early Microblogging Culture"
+                },
+                {
+                    title: "Fatigue Documentation",
+                    description: "A physical state record. The author states 'tired today'. Lack of elaboration suggests casual status update.",
+                    script: "Twitter Glyphs",
+                    culture: "Early Microblogging Culture"
+                },
+                {
+                    title: "Mobile Device Eulogy",
+                    description: "A devotional text praising the BlackBerry 8700 as the 'pinnacle of mobile technology', revealing belief in physical keyboards as sacred objects.",
+                    script: "Forum Post Linear",
+                    culture: "BlackBerry Sect"
+                },
+                {
+                    title: "Search Engine Epiphany",
+                    description: "A moment of technological awakening. The author describes using Google to find 'websites with cat pictures' - an act that apparently amazed them.",
+                    script: "Commentary Script",
+                    culture: "Slashdot Monastery"
+                }
+            ];
 
-        let currentId = 0;
+            let currentId = 0;
 
-        // Function to render artifact based on its type
-        function renderArtifact(source) {
-            const type = source.type || 'plain';
-            
-            switch(type) {
-                case 'twitter':
-                    return renderTwitter(source);
-                case 'forum':
-                    return renderForum(source);
-                case 'blog':
-                    return renderBlog(source);
-                case 'email':
-                    return renderEmail(source);
-                case 'myspace':
-                    return renderMySpace(source);
-                case 'usenet':
-                    return renderUsenet(source);
-                case 'news':
-                    return renderNews(source);
-                default:
-                    return renderPlain(source);
-            }
-        }
-
-        function renderTwitter(source) {
-            const displayName = source.author === 'jack' ? 'Jack Dorsey' : source.author === 'ev' ? 'Evan Williams' : source.author === 'biz' ? 'Biz Stone' : source.author;
-            const handle = source.author === 'jack' ? '@jack' : source.author === 'ev' ? '@ev' : source.author === 'biz' ? '@biz' : '@' + source.author;
-            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            const verified = source.author === 'jack' || source.author === 'ev' || source.author === 'biz';
-            
-            return `
-                <div class="platform-twitter">
-                    <div class="tweet-header">
-                        <div class="tweet-avatar">${displayName.charAt(0).toUpperCase()}</div>
-                        <div>
-                            <span class="tweet-user">${displayName}</span>
-                            ${verified ? '<span class="verified-badge">✓</span>' : ''}
-                            <span class="tweet-handle">${handle}</span>
+            function renderTwitter(source) {
+                const displayName = source.author === 'jack' ? 'Jack Dorsey' : source.author === 'ev' ? 'Evan Williams' : source.author === 'biz' ? 'Biz Stone' : source.author;
+                const handle = source.author === 'jack' ? '@jack' : source.author === 'ev' ? '@ev' : source.author === 'biz' ? '@biz' : '@' + source.author;
+                const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                const verified = source.author === 'jack' || source.author === 'ev' || source.author === 'biz';
+                
+                return `
+                    <div class="platform-twitter">
+                        <div class="tweet-header">
+                            <div class="tweet-avatar">${displayName.charAt(0).toUpperCase()}</div>
+                            <div>
+                                <span class="tweet-user">${displayName}</span>
+                                ${verified ? '<span class="verified-badge">✓</span>' : ''}
+                                <span class="tweet-handle">${handle}</span>
+                            </div>
+                            <span class="tweet-date">${date}</span>
                         </div>
-                        <span class="tweet-date">${date}</span>
-                    </div>
-                    <div class="tweet-text">${source.text}</div>
-                    <div class="tweet-actions">
-                        <span class="tweet-action">❤️ 0</span>
-                        <span class="tweet-action">🔁 0</span>
-                        <span class="tweet-action">💬 0</span>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderForum(source) {
-            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            return `
-                <div class="platform-forum">
-                    <div class="forum-header">
-                        ${source.platform} - ${source.platform.includes('CrackBerry') ? 'Mobile Technology' : source.platform.includes('Slashdot') ? 'Technology News' : 'General Discussion'}
-                    </div>
-                    <div class="forum-post">
-                        <div>
-                            <span class="forum-user">${source.author}</span>
-                            <span class="forum-date">Posted on ${date}</span>
+                        <div class="tweet-text">${source.text}</div>
+                        <div class="tweet-actions">
+                            <span class="tweet-action">❤️ 0</span>
+                            <span class="tweet-action">🔁 0</span>
+                            <span class="tweet-action">💬 0</span>
                         </div>
-                        <div class="forum-text">${source.text}</div>
                     </div>
-                    <div class="forum-signature">
-                        ---<br>
-                        ${source.author}'s signature
+                `;
+            }
+
+            function renderForum(source) {
+                const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                return `
+                    <div class="platform-forum">
+                        <div class="forum-header">
+                            ${source.platform} - ${source.platform.includes('CrackBerry') ? 'Mobile Technology' : source.platform.includes('Slashdot') ? 'Technology News' : 'General Discussion'}
+                        </div>
+                        <div class="forum-post">
+                            <div>
+                                <span class="forum-user">${source.author}</span>
+                                <span class="forum-date">Posted on ${date}</span>
+                            </div>
+                            <div class="forum-text">${source.text}</div>
+                        </div>
+                        <div class="forum-signature">
+                            ---<br>
+                            ${source.author}'s signature
+                        </div>
                     </div>
-                </div>
-            `;
-        }
+                `;
+            }
 
-        function renderBlog(source) {
-            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-            return `
-                <div class="platform-blog">
-                    <div class="blog-title">${source.author}'s Weblog</div>
-                    <div class="blog-meta">Posted on ${date} | ${source.platform}</div>
-                    <div class="blog-text">${source.text}</div>
-                </div>
-            `;
-        }
-
-        function renderEmail(source) {
-            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            return `
-                <div class="platform-email">
-                    <div class="email-header">
-                        <span class="email-header-line"><span class="email-label">From:</span> ${source.author} &lt;${source.author.toLowerCase()}@example.com&gt;</span>
-                        <span class="email-header-line"><span class="email-label">To:</span> friends@listserve.com</span>
-                        <span class="email-header-line"><span class="email-label">Date:</span> ${date}</span>
-                        <span class="email-header-line"><span class="email-label">Subject:</span> ${source.text.split('.')[0]}...</span>
+            function renderBlog(source) {
+                const date = new Date(source.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                return `
+                    <div class="platform-blog">
+                        <div class="blog-title">${source.author}'s Weblog</div>
+                        <div class="blog-meta">Posted on ${date} | ${source.platform}</div>
+                        <div class="blog-text">${source.text}</div>
                     </div>
-                    <div class="email-text">${source.text}</div>
-                </div>
-            `;
-        }
+                `;
+            }
 
-        function renderMySpace(source) {
-            return `
-                <div class="platform-myspace">
-                    <div class="myspace-header">${source.author}'s Space</div>
-                    <div class="myspace-text">${source.text}</div>
-                    <div class="myspace-footer">
-                        Current Mood: ${['Happy', 'Sad', 'Bored', 'Excited', 'Tired'][Math.floor(Math.random() * 5)]}<br>
-                        Current Music: My iPod
+            function renderNews(source) {
+                const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                return `
+                    <div class="platform-news">
+                        <div class="news-header">${source.platform} LIVE</div>
+                        <div class="news-timestamp">${date} - Transcript</div>
+                        <div class="news-text"><strong>${source.author}:</strong> ${source.text}</div>
                     </div>
-                </div>
-            `;
-        }
+                `;
+            }
 
-        function renderUsenet(source) {
-            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            return `
-                <div class="platform-usenet">
-                    <div class="usenet-header">
-                        <div class="usenet-header-line"><span class="usenet-header-label">From:</span> ${source.author} &lt;${source.author.toLowerCase()}@some.university.edu&gt;</div>
-                        <div class="usenet-header-line"><span class="usenet-header-label">Newsgroups:</span> alt.culture.usenet</div>
-                        <div class="usenet-header-line"><span class="usenet-header-label">Subject:</span> ${source.text.substring(0, 40)}...</div>
-                        <div class="usenet-header-line"><span class="usenet-header-label">Date:</span> ${date}</div>
+            function renderPlain(source) {
+                return `
+                    <div class="platform-plain">
+                        ${source.text}
+                        <div style="margin-top: 15px; font-size: 12px; color: #666;">
+                            — ${source.author}, ${source.date}
+                        </div>
                     </div>
-                    <div class="usenet-text">${source.text}</div>
-                </div>
-            `;
-        }
+                `;
+            }
 
-        function renderNews(source) {
-            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            return `
-                <div class="platform-news">
-                    <div class="news-header">${source.platform} LIVE</div>
-                    <div class="news-timestamp">${date} - Transcript</div>
-                    <div class="news-text"><strong>${source.author}:</strong> ${source.text}</div>
-                </div>
-            `;
-        }
+            function renderArtifact(source) {
+                const type = source.type || 'plain';
+                switch(type) {
+                    case 'twitter': return renderTwitter(source);
+                    case 'forum': return renderForum(source);
+                    case 'blog': return renderBlog(source);
+                    case 'news': return renderNews(source);
+                    default: return renderPlain(source);
+                }
+            }
 
-        function renderPlain(source) {
-            return `
-                <div class="platform-plain">
-                    ${source.text}
-                    <div style="margin-top: 15px; font-size: 12px; color: #666;">
-                        — ${source.author}, ${source.date}
-                    </div>
-                </div>
-            `;
-        }
+            function getRandomSource() {
+                currentId = Math.floor(Math.random() * sources.length) + 1;
+                const index = currentId - 1;
+                return { 
+                    id: currentId,
+                    source: sources[index], 
+                    interpretation: interpretations[index] 
+                };
+            }
 
-        // Get random source with ID
-        function getRandomSource() {
-            currentId = Math.floor(Math.random() * sources.length) + 1;
-            const index = currentId - 1;
-            return { 
-                id: currentId,
-                source: sources[index], 
-                interpretation: interpretations[index] 
-            };
-        }
+            function displayArtifact(data) {
+                const contentDiv = document.getElementById('artifactContent');
+                contentDiv.innerHTML = renderArtifact(data.source);
 
-        // Display artifact with museum-style formatting
-        function displayArtifact(data) {
-            const contentDiv = document.getElementById('artifactContent');
+                document.getElementById('artifactId').textContent = `Specimen #${String(data.id).padStart(3, '0')}`;
+                document.getElementById('artifactTitle').textContent = data.interpretation.title;
+                document.getElementById('artifactDescription').innerHTML = data.interpretation.description;
+                document.getElementById('scriptName').textContent = data.interpretation.script;
+                document.getElementById('cultureName').textContent = data.interpretation.culture;
+                document.getElementById('estimatedDate').textContent = `${data.source.date} (${data.source.year} CE)`;
+                
+                const sourceLink = document.getElementById('sourceLink');
+                sourceLink.href = data.source.url;
+                sourceLink.textContent = data.source.url.replace(/^https?:\/\//, '').replace(/^www\./, '').substring(0, 40) + '...';
 
-            // Render the artifact based on its platform type
-            contentDiv.innerHTML = renderArtifact(data.source);
+                setTimeout(() => {
+                    contentDiv.classList.add('revealed');
+                }, 100);
+            }
 
-            // Update the museum label
-            document.getElementById('artifactId').textContent = `Specimen #${String(data.id).padStart(3, '0')}`;
-            document.getElementById('artifactTitle').textContent = data.interpretation.title;
-            document.getElementById('artifactDescription').innerHTML = data.interpretation.description;
-            document.getElementById('scriptName').textContent = data.interpretation.script;
-            document.getElementById('cultureName').textContent = data.interpretation.culture;
-            document.getElementById('estimatedDate').textContent = `${data.source.date} (${data.source.year} CE)`;
-            
-            // Update the source link
-            const sourceLink = document.getElementById('sourceLink');
-            sourceLink.href = data.source.url;
-            sourceLink.textContent = data.source.url.replace(/^https?:\/\//, '').replace(/^www\./, '').substring(0, 40) + '...';
-
-            // Trigger reveal animation
-            setTimeout(() => {
-                contentDiv.classList.add('revealed');
-            }, 100);
-        }
-
-        // Initialize
-        function init() {
-            const data = getRandomSource();
-            displayArtifact(data);
-        }
-
-        // Event listeners
-        document.getElementById('newArtifactBtn').addEventListener('click', () => {
-            const contentDiv = document.getElementById('artifactContent');
-            contentDiv.classList.remove('revealed');
-            contentDiv.innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
-                    Excavating new specimen...
-                </div>
-            `;
-
-            setTimeout(() => {
+            function init() {
                 const data = getRandomSource();
                 displayArtifact(data);
-            }, 800);
-        });
+            }
 
-        document.getElementById('shareBtn').addEventListener('click', () => {
-            const title = document.getElementById('artifactTitle').textContent;
-            const textToShare = encodeURIComponent(`Digital Archaeology Discovery: "${title}" from the Late Electronic Age - ${window.location.href}`);
-            window.open(`https://twitter.com/intent/tweet?text=${textToShare}`, '_blank');
-        });
+            document.getElementById('newArtifactBtn').addEventListener('click', () => {
+                const contentDiv = document.getElementById('artifactContent');
+                contentDiv.classList.remove('revealed');
+                contentDiv.innerHTML = `
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        Excavating new specimen...
+                    </div>
+                `;
 
-        // Start on load - use DOMContentLoaded to ensure DOM is ready
-        document.addEventListener('DOMContentLoaded', init);
+                setTimeout(() => {
+                    const data = getRandomSource();
+                    displayArtifact(data);
+                }, 800);
+            });
+
+            document.getElementById('shareBtn').addEventListener('click', () => {
+                const title = document.getElementById('artifactTitle').textContent;
+                const textToShare = encodeURIComponent(`Digital Archaeology Discovery: "${title}" - ${window.location.href}`);
+                window.open(`https://twitter.com/intent/tweet?text=${textToShare}`, '_blank');
+            });
+
+            // Initialize immediately
+            init();
+        });
     </script>
 </body>
 </html>
