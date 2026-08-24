@@ -67,7 +67,7 @@
         .display-case {
             width: 650px;
             max-width: 95vw;
-            height: 450px;
+            height: 480px;
             position: relative;
             margin-bottom: 30px;
             perspective: 1000px;
@@ -104,12 +104,15 @@
             position: relative;
             width: 100%;
             height: 100%;
-            padding: 50px;
+            padding: 20px;
             background: linear-gradient(to bottom, #f8f4e8, #e8d8c0);
             border-radius: 12px;
             overflow-y: auto;
             z-index: 30;
             transform: translateZ(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .artifact-container::-webkit-scrollbar {
@@ -132,6 +135,8 @@
             transform: scale(0.8) translateY(20px);
             transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             filter: blur(2px);
+            width: 100%;
+            max-width: 580px;
         }
 
         .artifact-content.revealed {
@@ -140,37 +145,306 @@
             filter: blur(0);
         }
 
-        /* Parchment effect for the text */
-        .artifact-text-wrapper {
-            background: linear-gradient(to bottom, 
-                rgba(240,235,220,0.95), 
-                rgba(235,225,205,0.98)
-            );
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 
-                inset 0 0 30px rgba(0,0,0,0.1),
-                0 0 10px rgba(0,0,0,0.1);
-            border: 1px solid rgba(0,0,0,0.1);
-        }
+        /* ============= PLATFORM-SPECIFIC STYLES ============= */
 
-        .artifact-text {
-            font-family: 'Times New Roman', serif;
-            font-size: 1.15rem;
-            line-height: 2;
-            color: #3a2e22;
-            text-shadow: 0 1px 1px rgba(255,255,255,0.3);
-            white-space: pre-wrap;
-            position: relative;
+        /* Twitter style */
+        .platform-twitter {
+            background: #fff;
+            border: 1px solid #e1e8ed;
+            border-radius: 12px;
+            padding: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #14171a;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
-
-        .artifact-text::first-letter {
-            font-size: 1.8em;
+        .platform-twitter .tweet-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .platform-twitter .tweet-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #1da1f2;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             font-weight: bold;
-            color: #5c4a38;
-            float: left;
-            margin-right: 4px;
-            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        .platform-twitter .tweet-user {
+            font-weight: bold;
+            color: #14171a;
+        }
+        .platform-twitter .tweet-handle {
+            color: #657786;
+            margin-left: 5px;
+        }
+        .platform-twitter .tweet-date {
+            color: #657786;
+            font-size: 13px;
+            margin-left: auto;
+        }
+        .platform-twitter .tweet-text {
+            margin-bottom: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .platform-twitter .tweet-actions {
+            display: flex;
+            justify-content: space-between;
+            color: #657786;
+            font-size: 13px;
+        }
+        .platform-twitter .tweet-action {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Forum style */
+        .platform-forum {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #333;
+        }
+        .platform-forum .forum-header {
+            background: #e8e8e8;
+            padding: 8px 12px;
+            border-bottom: 1px solid #ddd;
+            margin: -15px -15px 15px -15px;
+            font-weight: bold;
+        }
+        .platform-forum .forum-post {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .platform-forum .forum-post:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        .platform-forum .forum-user {
+            color: #0066cc;
+            font-weight: bold;
+        }
+        .platform-forum .forum-date {
+            color: #666;
+            font-size: 11px;
+            margin-left: 10px;
+        }
+        .platform-forum .forum-text {
+            margin-top: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .platform-forum .forum-signature {
+            margin-top: 10px;
+            font-size: 11px;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 8px;
+        }
+
+        /* Blog style */
+        .platform-blog {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: Georgia, serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #333;
+        }
+        .platform-blog .blog-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #1da1f2;
+            padding-bottom: 8px;
+        }
+        .platform-blog .blog-meta {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        .platform-blog .blog-text {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Email/AOL style */
+        .platform-email {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #000;
+        }
+        .platform-email .email-header {
+            background: #f8f8f8;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            margin: -15px -15px 15px -15px;
+            font-size: 11px;
+        }
+        .platform-email .email-header span {
+            display: block;
+            margin: 2px 0;
+        }
+        .platform-email .email-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .platform-email .email-text {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 10px;
+        }
+
+        /* MySpace style */
+        .platform-myspace {
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+            border: 3px dashed #000;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #000;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .platform-myspace .myspace-header {
+            background: #ff00ff;
+            color: #fff;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin: -15px -15px 15px -15px;
+            border-bottom: 3px dashed #000;
+        }
+        .platform-myspace .myspace-text {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .platform-myspace .myspace-footer {
+            margin-top: 10px;
+            font-size: 10px;
+            text-align: center;
+            color: #555;
+        }
+
+        /* IRC/Chat style */
+        .platform-irc {
+            background: #000;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: "Courier New", monospace;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #0f0;
+            overflow-x: auto;
+        }
+        .platform-irc .irc-line {
+            margin: 2px 0;
+        }
+        .platform-irc .irc-timestamp {
+            color: #666;
+            margin-right: 10px;
+        }
+        .platform-irc .irc-nick {
+            color: #ff0;
+            font-weight: bold;
+        }
+        .platform-irc .irc-text {
+            color: #fff;
+        }
+
+        /* USENET style */
+        .platform-usenet {
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            padding: 15px;
+            font-family: "Courier New", monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #000;
+        }
+        .platform-usenet .usenet-header {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .platform-usenet .usenet-header-line {
+            margin: 2px 0;
+        }
+        .platform-usenet .usenet-header-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .platform-usenet .usenet-text {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* CNN/News style */
+        .platform-news {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #000;
+        }
+        .platform-news .news-header {
+            background: #cc0000;
+            color: #fff;
+            padding: 8px 12px;
+            margin: -15px -15px 15px -15px;
+            font-weight: bold;
+        }
+        .platform-news .news-timestamp {
+            color: #666;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+        .platform-news .news-text {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Generic/plain text style */
+        .platform-plain {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 20px;
+            font-family: "Times New Roman", serif;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #000;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         /* Glass frame - goes OVER the artifact to create the glass effect */
@@ -181,11 +455,10 @@
             right: 0;
             bottom: 0;
             background: 
-                linear-gradient(135deg, 
-                    rgba(220,220,220,0.05) 0%,
-                    rgba(255,255,255,0.12) 30%,
-                    rgba(200,200,200,0.03) 70%,
-                    rgba(220,220,220,0.05) 100%
+                radial-gradient(ellipse at center, 
+                    rgba(255,255,255,0.15) 0%,
+                    rgba(255,255,255,0.05) 70%,
+                    transparent 100%
                 );
             border: 25px solid;
             border-image: linear-gradient(45deg, #6b5b47, #4a3d28, #6b5b47) 25;
@@ -195,7 +468,7 @@
                 inset 0 0 60px rgba(201, 168, 108, 0.03);
             backdrop-filter: blur(8px);
             z-index: 20;
-            pointer-events: none; /* Allow clicks to pass through */
+            pointer-events: none;
         }
 
         /* Museum label below the case */
@@ -357,7 +630,7 @@
         @media (max-width: 768px) {
             .display-case {
                 width: 95vw;
-                height: 450px;
+                height: 500px;
             }
             
             .header h1 {
@@ -369,12 +642,7 @@
             }
             
             .artifact-container {
-                padding: 30px 20px;
-            }
-            
-            .artifact-text {
-                font-size: 1rem;
-                line-height: 1.8;
+                padding: 15px;
             }
             
             .museum-label {
@@ -455,154 +723,554 @@
 
     <script>
         // Curated list of internet sources - our "digital artifacts"
+        // Now with platform-specific types and more mundane examples
         const sources = [
+            // Interesting/Notable artifacts
             {
                 text: `Just set up my first website in 1998. The internet is going to change everything. Mark my words, this is the future of communication.`,
-                platform: "Geocities Personal Page",
-                author: "David Thompson",
+                platform: "twitter",
+                author: "dthompson77",
                 date: "June 12, 1998",
                 url: "http://geocities.com/~dthompson/myfirstpage.html",
-                year: 1998
+                year: 1998,
+                type: "blog"
             },
             {
                 text: `Waiting in line for the new iPhone. Been here since 2am. The hype is real. This device will revolutionize how we interact with technology. #iPhone3G`,
-                platform: "Twitter Microblog",
-                author: "@TechEnthusiast88",
+                platform: "twitter",
+                author: "TechEnthusiast88",
                 date: "July 11, 2008",
                 url: "https://twitter.com/TechEnthusiast88/status/864215874",
-                year: 2008
+                year: 2008,
+                type: "twitter"
             },
             {
                 text: `I just received an email from Nigeria. A prince wants to transfer $10 million to my account and needs my help. He's offering me 10% for my assistance. This seems like a legitimate opportunity.`,
-                platform: "AOL Message Board Forum",
+                platform: "AOL Message Board",
                 author: "NYC_Guy_1999",
                 date: "March 3, 2001",
                 url: "aol://messageboard/finance/12345",
-                year: 2001
+                year: 2001,
+                type: "forum"
             },
             {
                 text: `MySpace is so much better than Facebook. You can customize your profile with HTML, music players, and cool backgrounds. Facebook is just boring blue and white. No contest.`,
-                platform: "MySpace Social Network",
+                platform: "MySpace",
                 author: "xX_EmO_Gurl_Xx",
                 date: "November 15, 2006",
                 url: "https://myspace.com/xX_EmO_Gurl_Xx/blog/42837",
-                year: 2006
+                year: 2006,
+                type: "myspace"
             },
             {
                 text: `Y2K bug update: We've spent millions preparing our systems. Midnight has passed in Australia and New Zealand. Reports are coming in... nothing has happened. The world did not end. I'm going to bed.`,
-                platform: "CNN Live Chat Transcript",
+                platform: "CNN Live Chat",
                 author: "CNN Technology Correspondent",
                 date: "December 31, 1999",
                 url: "http://www.cnn.com/2000/TECH/computing/01/01/y2k.update.02/index.html",
-                year: 1999
+                year: 1999,
+                type: "news"
             },
             {
                 text: `Just got my first smartphone - a BlackBerry 8700. Full QWERTY keyboard, email on the go, and it even has a trackwheel! This is the pinnacle of mobile technology.`,
-                platform: "CrackBerry Forum Post",
+                platform: "CrackBerry Forums",
                 author: "BerryAddict",
                 date: "February 28, 2005",
                 url: "https://forums.crackberry.com/general-blackberry-discussion-f3/how-about-blackberry-8700-3254/",
-                year: 2005
+                year: 2005,
+                type: "forum"
             },
             {
                 text: `The internet is a fad. No one will want to read news on a computer screen. Give me my morning newspaper any day. This 'world wide web' thing won't last five years.`,
-                platform: "USENET Newsgroup",
+                platform: "USENET",
                 author: "Clifford Stoll",
-                date: "February 1995",
+                date: "February 15, 1995",
                 url: "news:alt.culture.usenet",
-                year: 1995
-            },
-            {
-                text: `I just uploaded my vacation photos to this new site called Flickr. You can share photos with friends and even tag them. It's like a photo album for the internet age!`,
-                platform: "Early Weblog Entry",
-                author: "PhotoLover22",
-                date: "August 10, 2004",
-                url: "https://www.flickr.com/photos/photolover22/1234567/",
-                year: 2004
-            },
-            {
-                text: `Dial-up internet is so slow. I'm downloading a 5MB song and it's been 20 minutes. My mom picked up the phone and disconnected me. I hate when that happens!`,
-                platform: "AOL Instant Messenger Status",
-                author: "MusicFan92",
-                date: "2003",
-                url: "aim:goim?screenname=MusicFan92",
-                year: 2003
+                year: 1995,
+                type: "usenet"
             },
             {
                 text: `This 'Google' search engine is amazing. I typed in 'cat pictures' and it actually found websites with cat pictures! AltaVista never worked this well.`,
-                platform: "Slashdot Technology Comment",
+                platform: "Slashdot",
                 author: "Anonymous Coward",
-                date: "September 1998",
+                date: "September 22, 1998",
                 url: "https://slashdot.org/comments.pl?sid=12345&cid=67890",
-                year: 1998
+                year: 1998,
+                type: "forum"
+            },
+            // Mundane artifacts - the everyday records
+            {
+                text: `Going to the store to buy milk and bread. Be back in 20.`,
+                platform: "AIM Away Message",
+                author: "SarahM22",
+                date: "October 14, 2002",
+                url: "aim:goim?screenname=SarahM22",
+                year: 2002,
+                type: "plain"
+            },
+            {
+                text: `Just had a ham and cheese sandwich for lunch. It was pretty good.`,
+                platform: "LiveJournal",
+                author: "bored_teen",
+                date: "April 3, 2004",
+                url: "https://bored-teen.livejournal.com/12345.html",
+                year: 2004,
+                type: "blog"
+            },
+            {
+                text: `Reminder to self: buy more toilet paper on the way home from work.`,
+                platform: "Personal Note",
+                author: "MikeH",
+                date: "January 17, 2007",
+                url: "N/A",
+                year: 2007,
+                type: "plain"
+            },
+            {
+                text: `My cat Mr. Whiskers is sleeping on the couch again. So cute.`,
+                platform: "MySpace Blog",
+                author: "catlover88",
+                date: "May 29, 2005",
+                url: "https://myspace.com/catlover88/blog/9876",
+                year: 2005,
+                type: "myspace"
+            },
+            {
+                text: `Traffic on I-95 was terrible this morning. Took me 45 minutes to get to work.`,
+                platform: "Twitter",
+                author: "CommuterJoe",
+                date: "March 11, 2009",
+                url: "https://twitter.com/CommuterJoe/status/12345678",
+                year: 2009,
+                type: "twitter"
+            },
+            {
+                text: `Need to remember to call mom this weekend. Haven't talked to her in a while.`,
+                platform: "Facebook Status",
+                author: "John Smith",
+                date: "November 2, 2008",
+                url: "https://facebook.com/john.smith/posts/12345",
+                year: 2008,
+                type: "plain"
+            },
+            {
+                text: `My plants need watering. Haven't done it in like a week.`,
+                platform: "Personal Blog",
+                author: "PlantMom",
+                date: "July 1, 2003",
+                url: "http://plantmom.blogspot.com/2003/07/my-plants.html",
+                year: 2003,
+                type: "blog"
+            },
+            {
+                text: `The weather is nice today. Thinking about going for a walk later.`,
+                platform: "Twitter",
+                author: "WeatherWatcher",
+                date: "April 15, 2007",
+                url: "https://twitter.com/WeatherWatcher/status/987654",
+                year: 2007,
+                type: "twitter"
+            },
+            {
+                text: `Just paid my phone bill. $45 this month. Seems high.`,
+                platform: "Forum Post",
+                author: "FrugalGuy",
+                date: "June 5, 2006",
+                url: "https://forum.budgeting.com/threads/phone-bill.12345/",
+                year: 2006,
+                type: "forum"
+            },
+            {
+                text: `My back hurts from sitting at my desk all day. Need to stretch more.`,
+                platform: "LiveJournal",
+                author: "OfficeWorker",
+                date: "February 28, 2005",
+                url: "https://officeworker.livejournal.com/54321.html",
+                year: 2005,
+                type: "blog"
+            },
+            {
+                text: `Watching The Office on TV. This show is pretty funny.`,
+                platform: "MySpace Status",
+                author: "TVFan",
+                date: "September 12, 2006",
+                url: "https://myspace.com/TVFan",
+                year: 2006,
+                type: "myspace"
+            },
+            {
+                text: `Just made a pot of coffee. Ready to start my day.`,
+                platform: "Twitter",
+                author: "MorningPerson",
+                date: "January 5, 2008",
+                url: "https://twitter.com/MorningPerson/status/54321987",
+                year: 2008,
+                type: "twitter"
+            },
+            {
+                text: `Need to do laundry this weekend. Piling up again.`,
+                platform: "AIM Away Message",
+                author: "LazyStudent",
+                date: "September 22, 2002",
+                url: "aim:goim?screenname=LazyStudent",
+                year: 2002,
+                type: "plain"
+            },
+            {
+                text: `The power went out for about 10 minutes. Everything is back on now.`,
+                platform: "Neighborhood Email List",
+                author: "NeighborBob",
+                date: "August 14, 2001",
+                url: "neighborhood-list@yahoogroups.com",
+                year: 2001,
+                type: "email"
+            },
+            {
+                text: `Found a $5 bill in my coat pocket. Nice surprise!`,
+                platform: "Twitter",
+                author: "LuckyDay",
+                date: "December 3, 2009",
+                url: "https://twitter.com/LuckyDay/status/78945612",
+                year: 2009,
+                type: "twitter"
+            },
+            {
+                text: `My neighbor's dog keeps barking at 3am. Driving me crazy.`,
+                platform: "Local Forum",
+                author: "TiredNeighbor",
+                date: "July 18, 2004",
+                url: "https://localforum.com/threads/dog-barking.65432/",
+                year: 2004,
+                type: "forum"
+            },
+            {
+                text: `Going to bed early tonight. Long day at work.`,
+                platform: "Twitter",
+                author: "TiredGuy",
+                date: "October 30, 2008",
+                url: "https://twitter.com/TiredGuy/status/32165498",
+                year: 2008,
+                type: "twitter"
+            },
+            {
+                text: `My computer just crashed. Had to restart it. Hope I didn't lose anything.`,
+                platform: "Forum Post",
+                author: "TechNoob",
+                date: "May 11, 2003",
+                url: "https://forum.techhelp.com/threads/computer-crashed.45678/",
+                year: 2003,
+                type: "forum"
             }
         ];
 
         // Museum-style interpretations with scholarly speculation
         const interpretations = [
+            // Interesting artifacts
             {
                 title: "The Prophet's Declaration",
-                description: "This remarkable fragment, written in the <em>Early Web Script</em>, appears to be a prophetic text from the <em>Geocities Civilization</em>. The author, possibly a priest or scholar of the emerging <em>Digital Faith</em>, predicts that the 'internet' (a term whose meaning remains debated) would 'change everything.' Scholars note the use of the phrase 'mark my words' - a ritualistic formulation common in religious texts. The Geocities reference suggests this was part of a temple archive, though the temple itself has since been lost to digital decay. The date corresponds to the early <em>Browser Wars Period</em>, a time of great religious ferment.",
+                description: "This remarkable fragment, written in the <em>Early Web Script</em>, appears to be a prophetic text from the <em>Geocities Civilization</em>. The author, possibly a priest or scholar of the emerging <em>Digital Faith</em>, predicts that the 'internet' (a term whose meaning remains debated) would 'change everything.' Scholars note the use of the phrase 'mark my words' - a ritualistic formulation common in religious texts. The Geocities reference suggests this was part of a temple archive, though the temple itself has since been lost to digital decay.",
                 script: "Early Web Script (Proto-HTML)",
                 culture: "Geocities Civilization (Early Netizen Culture)"
             },
             {
                 title: "Ritual Queue Documentation",
-                description: "A ceremonial text from the <em>Apple Cult</em>, written in <em>Microblog Glyphs</em>. This fragment documents what scholars believe was a religious pilgrimage to acquire a sacred device called an 'iPhone 3G.' The notation '#iPhone3G' appears to be a ritual marker or prayer. The author's claim of waiting 'since 2am' suggests this was a test of devotion, possibly lasting several days. The <em>Apple Cult</em> was known for such displays of faith, though the purpose of these devices remains mysterious - theories range from communication with spirits to portable idols of the Machine God.",
+                description: "A ceremonial text from the <em>Apple Cult</em>, written in <em>Microblog Glyphs</em>. This fragment documents what scholars believe was a religious pilgrimage to acquire a sacred device called an 'iPhone 3G.' The notation '#iPhone3G' appears to be a ritual marker or prayer. The author's claim of waiting 'since 2am' suggests this was a test of devotion. The <em>Apple Cult</em> was known for such displays of faith, though the purpose of these devices remains mysterious.",
                 script: "Microblog Glyphs (Twitter Form)",
                 culture: "Apple Cult (Post-Steveian Reformation)"
             },
             {
                 title: "Royal Correspondence Fragment",
-                description: "A fascinating diplomatic letter from the <em>Nigerian Prince Correspondence Archive</em>, written in <em>AOL Message Board Cuneiform</em>. This appears to be part of a royal proclamation from a prince of the <em>African Digital Kingdom</em> seeking to transfer vast wealth (10 million units of unspecified currency) through the Global Information Network. The author's note 'This seems like a legitimate opportunity' reveals the <em>Naive Trust Period</em> of early network users. Scholars debate whether this was genuine diplomacy or an early form of ritualistic gift-giving. The 'Nigeria' reference may indicate a geographical origin, though the kingdom's exact location remains unknown.",
+                description: "A fascinating diplomatic letter from the <em>Nigerian Prince Correspondence Archive</em>, written in <em>AOL Message Board Cuneiform</em>. This appears to be part of a royal proclamation from a prince of the <em>African Digital Kingdom</em> seeking to transfer vast wealth. The author's note 'This seems like a legitimate opportunity' reveals the <em>Naive Trust Period</em> of early network users. Scholars debate whether this was genuine diplomacy or an early form of ritualistic gift-giving.",
                 script: "AOL Message Board Cuneiform",
                 culture: "African Digital Kingdom (Early Scam Culture)"
             },
             {
                 title: "Temple Customization Decree",
-                description: "A sacred text from the <em>MySpace Theocracy</em>, inscribed in <em>Profile Customization Script</em>. The author, identified only by the royal title 'xX_EmO_Gurl_Xx' (possibly a priestess or noble), declares the superiority of MySpace over the heretical 'Facebook' sect. The mention of 'HTML' and 'music players' suggests this was a temple decoration ritual. The <em>MySpace Theocracy</em> was known for its elaborate visual displays, which scholars believe served both decorative and apotropaic purposes. The sudden rise of the Facebook sect remains one of the great unsolved mysteries of digital archaeology.",
+                description: "A sacred text from the <em>MySpace Theocracy</em>, inscribed in <em>Profile Customization Script</em>. The author, identified only by the royal title 'xX_EmO_Gurl_Xx' (possibly a priestess or noble), declares the superiority of MySpace over the heretical 'Facebook' sect. The <em>MySpace Theocracy</em> was known for its elaborate visual displays, which scholars believe served both decorative and apotropaic purposes.",
                 script: "Profile Customization Script (HTML Variant)",
                 culture: "MySpace Theocracy (Late Social Networking Period)"
             },
             {
                 title: "Apocalyptic Observation Log",
-                description: "A priestly observation from the <em>CNN Oracle Archives</em>, recorded in <em>Live Chat Transcription</em>. This text documents the <em>Y2K Apocalypse</em> - a predicted cataclysm that, according to this fragment, failed to materialize. The reference to 'Australia and New Zealand' (believed to be early warning outposts) and the note 'nothing has happened' suggests either the apocalypse was averted through ritual means, or the prediction was erroneous. The <em>Y2K Apocalypse</em> belief system remains poorly understood, though it appears to have been widespread in the late <em>Millennial Anxiety Period</em>.",
+                description: "A priestly observation from the <em>CNN Oracle Archives</em>, recorded in <em>Live Chat Transcription</em>. This text documents the <em>Y2K Apocalypse</em> - a predicted cataclysm that, according to this fragment, failed to materialize. The reference to 'Australia and New Zealand' (believed to be early warning outposts) and the note 'nothing has happened' suggests either the apocalypse was averted through ritual means, or the prediction was erroneous.",
                 script: "Live Chat Transcription (CNN Dialect)",
                 culture: "Global News Oracle Tradition (Pre-Social Media)"
             },
             {
                 title: "Mobile Device Eulogy",
-                description: "A devotional text from the <em>BlackBerry Sect</em>, written in <em>Forum Post Linear</em>. The author praises the 'BlackBerry 8700' as the 'pinnacle of mobile technology,' revealing the sect's belief in physical keyboards as sacred objects. The 'trackwheel' mentioned appears to have been a ritual navigation device. Ironically, the <em>BlackBerry Sect</em> would be nearly exterminated within a decade by the rise of the <em>Touchscreen Heresy</em>. This text offers valuable insight into the religious significance placed on physical input methods before the Great Touchscreen Revolution.",
+                description: "A devotional text from the <em>BlackBerry Sect</em>, written in <em>Forum Post Linear</em>. The author praises the 'BlackBerry 8700' as the 'pinnacle of mobile technology,' revealing the sect's belief in physical keyboards as sacred objects. Ironically, the <em>BlackBerry Sect</em> would be nearly exterminated within a decade by the rise of the <em>Touchscreen Heresy</em>.",
                 script: "Forum Post Linear (CrackBerry Dialect)",
                 culture: "BlackBerry Sect (Pre-Touchscreen Orthodox)"
             },
             {
                 title: "The Great Denial",
-                description: "Perhaps the most famous heretical text from the <em>USENET Heresy Archives</em>, written in <em>Newsgroup Hieroglyphs</em>. The author, identified as 'Clifford Stoll' (possibly a high priest or scholar), boldly declares that 'the internet is a fad' that 'won't last five years.' This text is particularly valuable as it was written in 1995 - the very year that <em>Amazon</em>, <em>eBay</em>, and the first digital banking systems were established. Scholars believe this represents either a deliberate act of heresy, a failed prophecy, or perhaps an elaborate joke that history has rendered tragically ironic.",
+                description: "Perhaps the most famous heretical text from the <em>USENET Heresy Archives</em>, written in <em>Newsgroup Hieroglyphs</em>. The author, identified as 'Clifford Stoll' (possibly a high priest or scholar), boldly declares that 'the internet is a fad' that 'won't last five years.' This text is particularly valuable as it was written in 1995 - the very year that <em>Amazon</em>, <em>eBay</em>, and the first digital banking systems were established.",
                 script: "Newsgroup Hieroglyphs (USENET Form)",
                 culture: "Skeptical Scholar Tradition (Anti-Digital Movement)"
             },
             {
-                title: "Photo Sharing Revelation",
-                description: "A revelation text from the <em>Flickr Cult</em>, inscribed in <em>Early Weblog Script</em>. The author describes a sacred site called 'Flickr' where 'you can share photos with friends and even tag them.' The concept of 'tagging' remains mysterious - possibly a form of blessing or categorization. The <em>Flickr Cult</em> appears to have been part of the early <em>Image Worship Movement</em>, which believed that sharing visual representations of reality had spiritual significance. This text is one of the few surviving examples of pre-social-media image sharing practices.",
-                script: "Early Weblog Script (Blog Form)",
-                culture: "Flickr Cult (Early Image Worship Movement)"
-            },
-            {
-                title: "Domestic Conflict Lament",
-                description: "A personal lament from the <em>Dial-Up Era</em>, written in <em>AIM Status Glyphs</em>. The author describes a common domestic conflict: the mother 'picked up the phone and disconnected me.' This reveals the <em>Shared Line Period</em>, when telephone and digital communication networks were the same physical infrastructure. The '5MB song' reference suggests this was a time of extremely limited bandwidth. Scholars estimate that downloading a single song could take as long as 20-30 minutes. The <em>Dial-Up Era</em> ended with the advent of 'broadband' technology, though the exact nature of this advancement remains unclear.",
-                script: "AIM Status Glyphs (Instant Messenger Form)",
-                culture: "Dial-Up Domestic Culture (Pre-Broadband Era)"
-            },
-            {
                 title: "Search Engine Epiphany",
-                description: "A moment of religious awakening from the <em>Slashdot Monastery</em>, recorded in <em>Commentary Script</em>. The author describes using a search engine called 'Google' to find 'websites with cat pictures' - an act that apparently amazed the author. The comparison to 'AltaVista' (a rival search deity) suggests this was a period of competition between search divinities. The <em>Slashdot Monastery</em> was known as a gathering place for technology scholars and enthusiasts. This text reveals the early <em>Information Retrieval Cult</em> practices, when the ability to find specific content online was still considered miraculous.",
+                description: "A moment of religious awakening from the <em>Slashdot Monastery</em>, recorded in <em>Commentary Script</em>. The author describes using a search engine called 'Google' to find 'websites with cat pictures' - an act that apparently amazed the author. The <em>Slashdot Monastery</em> was known as a gathering place for technology scholars and enthusiasts.",
                 script: "Commentary Script (Slashdot Dialect)",
                 culture: "Slashdot Monastery (Early Tech Enthusiast Brotherhood)"
+            },
+            // Mundane artifacts
+            {
+                title: "Domestic Supply Log",
+                description: "A mundane but valuable domestic record from the <em>Early Instant Messaging Period</em>, written in <em>Away Message Glyphs</em>. This fragment documents a routine supply expedition - the procurement of 'milk and bread.' Such records are rare and offer insight into the daily subsistence patterns of the <em>Digital Domestic Culture</em>. The brevity and directness suggest this was a functional communication rather than a social one.",
+                script: "Away Message Glyphs (AIM Form)",
+                culture: "Digital Domestic Culture (Early 21st Century)"
+            },
+            {
+                title: "Midday Meal Documentation",
+                description: "A dietary record from the <em>LiveJournal Chronicles</em>, written in <em>Blog Script</em>. The author documents the consumption of a 'ham and cheese sandwich' and rates it as 'pretty good.' This type of mundane record is particularly valuable to archaeologists, as it reveals the ordinary culinary practices of the <em>Early Blogging Culture</em>. The fact that such a trivial event was deemed worthy of documentation suggests the <em>Over-Sharing Hypothesis</em> of late 20th century digital behavior.",
+                script: "Blog Script (LiveJournal Form)",
+                culture: "Early Blogging Culture (Pre-Social Media)"
+            },
+            {
+                title: "Personal Reminder Tablet",
+                description: "A memory aid from the <em>Digital Note-Taking Tradition</em>, inscribed in <em>Plain Text</em>. The author reminds themselves to purchase 'toilet paper,' revealing both the mundane concerns of daily life and the reliance on digital devices for memory augmentation. Such artifacts support the theory that the <em>Late Electronic Age</em> represented a transition from organic to digital memory storage.",
+                script: "Plain Text (Digital Parchment)",
+                culture: "Digital Note-Taking Tradition (Memory Augmentation Culture)"
+            },
+            {
+                title: "Domestic Animal Observation",
+                description: "A zoological record from the <em>MySpace Menagerie Archives</em>, written in <em>Profile Customization Script</em>. The author documents the sleeping habits of a domestic feline named 'Mr. Whiskers.' This fragment is significant as it represents one of the earliest known examples of <em>Pet Content</em> - a genre that would later dominate digital communication. The emotional tone ('So cute') suggests the animal was held in affection.",
+                script: "Profile Customization Script (MySpace Form)",
+                culture: "MySpace Menagerie Culture (Early Pet Worship)"
+            },
+            {
+                title: "Transportation Complaint",
+                description: "A logistical grievance from the <em>Microblog Complaint Tradition</em>, written in <em>Twitter Glyphs</em>. The author documents a 45-minute delay on 'I-95,' believed to be a major transportation artery of the period. Such complaints are among the most common surviving fragments from the <em>Commuter Culture</em>, suggesting that transportation frustrations were a universal experience transcending time and technology.",
+                script: "Twitter Glyphs (Microblog Form)",
+                culture: "Commuter Culture (Early 21st Century)"
+            },
+            {
+                title: "Familial Obligation Reminder",
+                description: "A social maintenance record from the <em>Early Social Networking Period</em>, written in <em>Status Update Script</em>. The author notes the need to 'call mom,' revealing the persistence of familial bonds even as communication methods evolved. The phrase 'Haven't talked to her in a while' suggests a lapse in traditional communication patterns, possibly due to the distractions of digital life.",
+                script: "Status Update Script (Facebook Form)",
+                culture: "Early Social Networking Culture (Familial Maintenance Tradition)"
+            },
+            {
+                title: "Horticultural Maintenance Log",
+                description: "A botanical record from the <em>Early Blogging Horticulturalists</em>, written in <em>Weblog Script</em>. The author documents the need to water plants, a task that had been neglected for 'like a week.' This fragment supports the theory that the <em>Digital Age</em> did not eliminate traditional domestic responsibilities, though it may have provided new ways to procrastinate them.",
+                script: "Weblog Script (Blogspot Form)",
+                culture: "Early Blogging Horticulturalists (Domestic Botanical Tradition)"
+            },
+            {
+                title: "Meteorological Observation",
+                description: "A climatic record from the <em>Microblog Weather Watchers</em>, written in <em>Twitter Glyphs</em>. The author notes that 'the weather is nice today' and considers 'going for a walk.' Such mundane weather observations are surprisingly common in the surviving record, suggesting that humans have always used available communication technologies to comment on the weather, regardless of its significance.",
+                script: "Twitter Glyphs (Microblog Form)",
+                culture: "Microblog Weather Watchers (Climatic Observation Tradition)"
+            },
+            {
+                title: "Financial Transaction Record",
+                description: "An economic document from the <em>Early Forum Accounting Tradition</em>, written in <em>Forum Post Linear</em>. The author records a payment of '$45' for 'phone bill' services and expresses concern that it 'seems high.' This fragment is valuable as it provides concrete economic data from the period, though the lack of context makes it difficult to determine whether $45 was indeed excessive.",
+                script: "Forum Post Linear (Bulletin Board Form)",
+                culture: "Early Forum Accounting Tradition (Digital Economic Records)"
+            },
+            {
+                title: "Physical Discomfort Lament",
+                description: "A medical complaint from the <em>LiveJournal Health Chronicles</em>, written in <em>Blog Script</em>. The author documents 'back hurts from sitting at my desk all day' and resolves to 'stretch more.' This fragment supports the <em>Sedentary Lifestyle Theory</em> of the Late Electronic Age, which posits that the transition to digital work led to increased physical discomfort and a corresponding increase in complaints about said discomfort.",
+                script: "Blog Script (LiveJournal Form)",
+                culture: "LiveJournal Health Chronicles (Sedentary Culture)"
+            },
+            {
+                title: "Entertainment Consumption Log",
+                description: "A cultural record from the <em>MySpace Media Watchers</em>, written in <em>Profile Customization Script</em>. The author documents watching 'The Office on TV' and describes it as 'pretty funny.' This fragment is significant as it represents early evidence of the <em>Binge-Watching Precursor Culture</em>, though the term 'binge-watching' would not emerge for several more years.",
+                script: "Profile Customization Script (MySpace Form)",
+                culture: "MySpace Media Watchers (Early Television Documentation)"
+            },
+            {
+                title: "Morning Ritual Documentation",
+                description: "A daily routine record from the <em>Twitter Morning Ritualists</em>, written in <em>Microblog Glyphs</em>. The author documents the preparation of 'a pot of coffee' and declares readiness to 'start my day.' This fragment is part of a larger corpus of <em>Morning Routine Texts</em> that suggest the act of coffee preparation held significant ritual importance in the <em>Early 21st Century Culture</em>.",
+                script: "Microblog Glyphs (Twitter Form)",
+                culture: "Twitter Morning Ritualists (Caffeine Worship Tradition)"
+            },
+            {
+                title: "Domestic Labor Reminder",
+                description: "A household management record from the <em>Away Message Domestic Archives</em>, written in <em>Away Message Glyphs</em>. The author reminds themselves that 'laundry' is 'piling up again.' This mundane fragment is significant as it represents the intersection of digital communication technology and traditional domestic labor - a theme that recurs throughout the archaeological record.",
+                script: "Away Message Glyphs (AIM Form)",
+                culture: "Away Message Domestic Archives (Household Management Tradition)"
+            },
+            {
+                title: "Infrastructure Disruption Report",
+                description: "A public service announcement from the <em>Neighborhood Email Networks</em>, written in <em>Email Script</em>. The author reports that 'the power went out for about 10 minutes' and notes that 'Everything is back on now.' This fragment provides valuable insight into the infrastructure reliability of the period, as well as the community communication networks that existed before the rise of centralized social platforms.",
+                script: "Email Script (Yahoo Groups Form)",
+                culture: "Neighborhood Email Networks (Community Alert Tradition)"
+            },
+            {
+                title: "Fortuitous Discovery Log",
+                description: "A financial windfall record from the <em>Twitter Luck Traditions</em>, written in <em>Microblog Glyphs</em>. The author documents finding a '$5 bill in my coat pocket' and describes it as a 'Nice surprise!' Such fragments support the <em>Small Joys Hypothesis</em>, which suggests that even in an age of digital abundance, humans continued to find joy in small, unexpected physical discoveries.",
+                script: "Microblog Glyphs (Twitter Form)",
+                culture: "Twitter Luck Traditions (Fortuitous Discovery Culture)"
+            },
+            {
+                title: "Noise Pollution Complaint",
+                description: "An auditory disturbance record from the <em>Local Forum Grievance Archives</em>, written in <em>Forum Post Linear</em>. The author complains that 'My neighbor's dog keeps barking at 3am' and states it is 'Driving me crazy.' This fragment is part of a larger corpus of <em>Neighborhood Conflict Texts</em> that reveal the timeless nature of community disputes, even as the methods of complaining about them evolved.",
+                script: "Forum Post Linear (Local Bulletin Board Form)",
+                culture: "Local Forum Grievance Archives (Neighborhood Conflict Tradition)"
+            },
+            {
+                title: "Fatigue Documentation",
+                description: "A rest-related record from the <em>Twitter Exhaustion Chronicles</em>, written in <em>Microblog Glyphs</em>. The author declares intention to 'Go to bed early tonight' due to a 'Long day at work.' This fragment is part of the <em>Fatigue Text Corpus</em>, one of the most common categories of surviving digital artifacts, suggesting that exhaustion was a universal and frequently documented experience.",
+                script: "Microblog Glyphs (Twitter Form)",
+                culture: "Twitter Exhaustion Chronicles (Fatigue Documentation Tradition)"
+            },
+            {
+                title: "Technological Failure Lament",
+                description: "A system error record from the <em>Forum Technical Support Archives</em>, written in <em>Forum Post Linear</em>. The author documents that 'My computer just crashed' and expresses hope that they 'didn't lose anything.' This fragment is significant as it represents the <em>Digital Anxiety Genre</em> - texts documenting fear of data loss, a concern that appears to have been widespread in the <em>Early Personal Computing Culture</em>.",
+                script: "Forum Post Linear (Technical Support Form)",
+                culture: "Forum Technical Support Archives (Digital Anxiety Culture)"
             }
         ];
 
         let currentId = 0;
+
+        // Function to render artifact based on its type
+        function renderArtifact(source, interpretation) {
+            const type = source.type || 'plain';
+            
+            switch(type) {
+                case 'twitter':
+                    return renderTwitter(source);
+                case 'forum':
+                    return renderForum(source);
+                case 'blog':
+                    return renderBlog(source);
+                case 'email':
+                    return renderEmail(source);
+                case 'myspace':
+                    return renderMySpace(source);
+                case 'usenet':
+                    return renderUsenet(source);
+                case 'news':
+                    return renderNews(source);
+                default:
+                    return renderPlain(source);
+            }
+        }
+
+        function renderTwitter(source) {
+            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            return `
+                <div class="platform-twitter">
+                    <div class="tweet-header">
+                        <div class="tweet-avatar">${source.author.charAt(0).toUpperCase()}</div>
+                        <div>
+                            <span class="tweet-user">${source.author}</span>
+                            <span class="tweet-handle">@${source.author.toLowerCase().replace(/[^a-z0-9]/g, '')}</span>
+                        </div>
+                        <span class="tweet-date">${date}</span>
+                    </div>
+                    <div class="tweet-text">${source.text}</div>
+                    <div class="tweet-actions">
+                        <span class="tweet-action">❤️ 0</span>
+                        <span class="tweet-action">🔁 0</span>
+                        <span class="tweet-action">💬 0</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderForum(source) {
+            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            return `
+                <div class="platform-forum">
+                    <div class="forum-header">
+                        ${source.platform} - ${source.platform.includes('CrackBerry') ? 'Mobile Devices' : source.platform.includes('Slashdot') ? 'Technology' : 'General Discussion'}
+                    </div>
+                    <div class="forum-post">
+                        <div>
+                            <span class="forum-user">${source.author}</span>
+                            <span class="forum-date">Posted on ${date}</span>
+                        </div>
+                        <div class="forum-text">${source.text}</div>
+                    </div>
+                    <div class="forum-signature">
+                        ---<br>
+                        ${source.author}'s signature
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderBlog(source) {
+            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            return `
+                <div class="platform-blog">
+                    <div class="blog-title">${source.author}'s Weblog</div>
+                    <div class="blog-meta">Posted on ${date} | ${source.platform}</div>
+                    <div class="blog-text">${source.text}</div>
+                </div>
+            `;
+        }
+
+        function renderEmail(source) {
+            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            return `
+                <div class="platform-email">
+                    <div class="email-header">
+                        <span class="email-header-line"><span class="email-label">From:</span> ${source.author} &lt;${source.author.toLowerCase()}@example.com&gt;</span>
+                        <span class="email-header-line"><span class="email-label">To:</span> neighborhood-list@yahoogroups.com</span>
+                        <span class="email-header-line"><span class="email-label">Date:</span> ${date}</span>
+                        <span class="email-header-line"><span class="email-label">Subject:</span> ${source.text.split('.')[0]}...</span>
+                    </div>
+                    <div class="email-text">${source.text}</div>
+                </div>
+            `;
+        }
+
+        function renderMySpace(source) {
+            return `
+                <div class="platform-myspace">
+                    <div class="myspace-header">${source.author}'s Space</div>
+                    <div class="myspace-text">${source.text}</div>
+                    <div class="myspace-footer">
+                        Current Mood: ${['Happy', 'Sad', 'Bored', 'Excited', 'Tired'][Math.floor(Math.random() * 5)]}<br>
+                        Current Music: ${['N/A', 'Radio', 'My iPod', 'whatever'][Math.floor(Math.random() * 4)]}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderUsenet(source) {
+            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            return `
+                <div class="platform-usenet">
+                    <div class="usenet-header">
+                        <div class="usenet-header-line"><span class="usenet-header-label">From:</span> ${source.author} &lt;${source.author.toLowerCase()}@some.university.edu&gt;</div>
+                        <div class="usenet-header-line"><span class="usenet-header-label">Newsgroups:</span> alt.culture.usenet</div>
+                        <div class="usenet-header-line"><span class="usenet-header-label">Subject:</span> The internet is a fad</div>
+                        <div class="usenet-header-line"><span class="usenet-header-label">Date:</span> ${date}</div>
+                        <div class="usenet-header-line"><span class="usenet-header-label">Message-ID:</span> &lt;12345@server.edu&gt;</div>
+                    </div>
+                    <div class="usenet-text">${source.text}</div>
+                </div>
+            `;
+        }
+
+        function renderNews(source) {
+            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            return `
+                <div class="platform-news">
+                    <div class="news-header">CNN LIVE CHAT</div>
+                    <div class="news-timestamp">${date} - Transcript</div>
+                    <div class="news-text">${source.author}: ${source.text}</div>
+                </div>
+            `;
+        }
+
+        function renderPlain(source) {
+            return `
+                <div class="platform-plain">
+                    ${source.text}
+                    <div style="margin-top: 15px; font-size: 12px; color: #666;">
+                        — ${source.author}, ${source.date}
+                    </div>
+                </div>
+            `;
+        }
 
         // Get random source with ID
         function getRandomSource() {
@@ -619,12 +1287,8 @@
         function displayArtifact(data) {
             const contentDiv = document.getElementById('artifactContent');
 
-            // Update the artifact display
-            contentDiv.innerHTML = `
-                <div class="artifact-text-wrapper">
-                    <div class="artifact-text">${data.source.text}</div>
-                </div>
-            `;
+            // Render the artifact based on its platform type
+            contentDiv.innerHTML = renderArtifact(data.source, data.interpretation);
 
             // Update the museum label
             document.getElementById('artifactId').textContent = `Specimen #${String(data.id).padStart(3, '0')}`;
