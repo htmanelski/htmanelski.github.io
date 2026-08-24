@@ -73,48 +73,7 @@
             perspective: 1000px;
         }
 
-        /* Glass frame - the actual glass */
-        .glass-frame {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(135deg, 
-                    rgba(220,220,220,0.3) 0%,
-                    rgba(255,255,255,0.4) 30%,
-                    rgba(200,200,200,0.2) 70%,
-                    rgba(220,220,220,0.3) 100%
-                );
-            border: 25px solid;
-            border-image: linear-gradient(45deg, #6b5b47, #4a3d28, #6b5b47) 25;
-            border-radius: 20px;
-            box-shadow: 
-                0 0 50px rgba(201, 168, 108, 0.2),
-                inset 0 0 60px rgba(201, 168, 108, 0.05);
-            backdrop-filter: blur(8px);
-            z-index: 20;
-            opacity: 0.95;
-        }
-
-        .glass-frame::after {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            background: linear-gradient(135deg, 
-                rgba(255,255,255,0.5) 0%,
-                rgba(255,255,255,0.2) 50%,
-                rgba(255,255,255,0.3) 100%
-            );
-            border-radius: 12px;
-            opacity: 0.6;
-        }
-
-        /* Wooden/metal frame */
+        /* Wooden/metal frame - behind everything */
         .case-frame {
             position: absolute;
             top: -25px;
@@ -123,7 +82,7 @@
             bottom: -25px;
             background: linear-gradient(145deg, #5c4a38, #3a2e22);
             border-radius: 25px;
-            z-index: 15;
+            z-index: 10;
             box-shadow: 
                 0 0 0 2px #2a1e15,
                 0 0 0 4px #4a3a28;
@@ -140,7 +99,7 @@
             border-radius: 20px;
         }
 
-        /* The actual artifact behind glass */
+        /* The actual artifact - highest z-index so it's visible */
         .artifact-container {
             position: relative;
             width: 100%;
@@ -149,8 +108,8 @@
             background: linear-gradient(to bottom, #f8f4e8, #e8d8c0);
             border-radius: 12px;
             overflow-y: auto;
-            z-index: 10;
-            transform: translateZ(-5px);
+            z-index: 30;
+            transform: translateZ(5px);
         }
 
         .artifact-container::-webkit-scrollbar {
@@ -212,6 +171,31 @@
             float: left;
             margin-right: 4px;
             margin-top: 4px;
+        }
+
+        /* Glass frame - goes OVER the artifact to create the glass effect */
+        .glass-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(220,220,220,0.05) 0%,
+                    rgba(255,255,255,0.12) 30%,
+                    rgba(200,200,200,0.03) 70%,
+                    rgba(220,220,220,0.05) 100%
+                );
+            border: 25px solid;
+            border-image: linear-gradient(45deg, #6b5b47, #4a3d28, #6b5b47) 25;
+            border-radius: 20px;
+            box-shadow: 
+                0 0 50px rgba(201, 168, 108, 0.2),
+                inset 0 0 60px rgba(201, 168, 108, 0.03);
+            backdrop-filter: blur(8px);
+            z-index: 20;
+            pointer-events: none; /* Allow clicks to pass through */
         }
 
         /* Museum label below the case */
@@ -406,6 +390,7 @@
             font-size: 1.2rem;
             color: #8b7355;
             text-align: center;
+            z-index: 40;
         }
 
         .spinner {
@@ -633,8 +618,7 @@
         // Display artifact with museum-style formatting
         function displayArtifact(data) {
             const contentDiv = document.getElementById('artifactContent');
-            const label = document.getElementById('museumLabel');
-            
+
             // Update the artifact display
             contentDiv.innerHTML = `
                 <div class="artifact-text-wrapper">
