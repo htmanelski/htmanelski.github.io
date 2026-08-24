@@ -73,7 +73,6 @@
             perspective: 1000px;
         }
 
-        /* Wooden/metal frame - behind everything */
         .case-frame {
             position: absolute;
             top: -25px;
@@ -99,7 +98,6 @@
             border-radius: 20px;
         }
 
-        /* The actual artifact - highest z-index so it's visible */
         .artifact-container {
             position: relative;
             width: 100%;
@@ -145,9 +143,6 @@
             filter: blur(0);
         }
 
-        /* ============= PLATFORM-SPECIFIC STYLES ============= */
-
-        /* Twitter style */
         .platform-twitter {
             background: #fff;
             border: 1px solid #e1e8ed;
@@ -217,7 +212,6 @@
             margin-left: 5px;
         }
 
-        /* Forum style */
         .platform-forum {
             background: #f5f5f5;
             border: 1px solid #ddd;
@@ -267,7 +261,6 @@
             padding-top: 8px;
         }
 
-        /* Blog style */
         .platform-blog {
             background: #fff;
             border: 1px solid #ddd;
@@ -296,7 +289,6 @@
             word-wrap: break-word;
         }
 
-        /* Email style */
         .platform-email {
             background: #fff;
             border: 1px solid #ccc;
@@ -328,7 +320,6 @@
             margin-top: 10px;
         }
 
-        /* MySpace style */
         .platform-myspace {
             background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
             border: 3px dashed #000;
@@ -360,7 +351,6 @@
             color: #555;
         }
 
-        /* IRC/Chat style */
         .platform-irc {
             background: #000;
             border: 1px solid #444;
@@ -387,7 +377,6 @@
             color: #fff;
         }
 
-        /* USENET style */
         .platform-usenet {
             background: #f0f0f0;
             border: 1px solid #ccc;
@@ -415,7 +404,6 @@
             word-wrap: break-word;
         }
 
-        /* CNN/News style */
         .platform-news {
             background: #fff;
             border: 1px solid #ccc;
@@ -443,7 +431,6 @@
             word-wrap: break-word;
         }
 
-        /* Generic/plain text style */
         .platform-plain {
             background: #fff;
             border: 1px solid #ddd;
@@ -457,7 +444,6 @@
             word-wrap: break-word;
         }
 
-        /* Glass frame - goes OVER the artifact to create the glass effect */
         .glass-frame {
             position: absolute;
             top: 0;
@@ -481,7 +467,6 @@
             pointer-events: none;
         }
 
-        /* Museum label below the case */
         .museum-label {
             width: 100%;
             max-width: 700px;
@@ -755,8 +740,7 @@
                 date: "March 21, 2006",
                 url: "https://x.com/jack/status/20",
                 year: 2006,
-                type: "twitter",
-                significance: "first"
+                type: "twitter"
             },
             {
                 text: `inviting coworkers`,
@@ -765,8 +749,7 @@
                 date: "March 21, 2006",
                 url: "https://x.com/jack/status/21",
                 year: 2006,
-                type: "twitter",
-                significance: "early"
+                type: "twitter"
             },
             {
                 text: `The internet is a fad. No one will want to read news on a computer screen. Give me my morning newspaper any day. This 'world wide web' thing won't last five years.",
@@ -775,8 +758,7 @@
                 date: "February 27, 1995",
                 url: "https://www.newsweek.com/clifford-stoll-said-internet-would-die-1995-566797",
                 year: 1995,
-                type: "news",
-                significance: "infamous"
+                type: "news"
             },
             {
                 text: `Y2K bug update: We've spent millions preparing our systems. Midnight has passed in Australia and New Zealand. Reports are coming in... nothing has happened. The world did not end. I'm going to bed.`,
@@ -785,21 +767,19 @@
                 date: "December 31, 1999",
                 url: "http://edition.cnn.com/2000/TECH/computing/01/01/y2k.update.02/",
                 year: 1999,
-                type: "news",
-                significance: "historical"
+                type: "news"
             },
             {
                 text: `MySpace is so much better than Facebook. You can customize your profile with HTML, music players, and cool backgrounds. Facebook is just boring blue and white. No contest.`,
                 platform: "Reddit",
                 author: "u/AdSpecialist6598",
-                date: "Various dates, 2005-2008",
+                date: "2006",
                 url: "https://www.reddit.com/r/nostalgia/comments/1nhp5pj/myspace_was_better_than_facebook/",
                 year: 2006,
-                type: "forum",
-                significance: "cultural"
+                type: "forum"
             },
             
-            // REAL MUNDANE ARTIFACTS - Actual early tweets and posts
+            // REAL MUNDANE ARTIFACTS - Actual early tweets
             {
                 text: `having a sandwich`,
                 platform: "Twitter",
@@ -807,8 +787,7 @@
                 date: "May 11, 2007",
                 url: "https://x.com/zeldman/statuses/11213372",
                 year: 2007,
-                type: "twitter",
-                significance: "mundane"
+                type: "twitter"
             },
             {
                 text: `going to the store`,
@@ -817,8 +796,7 @@
                 date: "April 3, 2007",
                 url: "https://x.com/anildash/statuses/10928372",
                 year: 2007,
-                type: "twitter",
-                significance: "mundane"
+                type: "twitter"
             },
             {
                 text: `just woke up`,
@@ -827,8 +805,7 @@
                 date: "March 24, 2007",
                 url: "https://x.com/ev/statuses/1080372",
                 year: 2007,
-                type: "twitter",
-                significance: "mundane"
+                type: "twitter"
             },
             {
                 text: `at work`,
@@ -837,8 +814,7 @@
                 date: "March 22, 2007",
                 url: "https://x.com/biz/statuses/1078561",
                 year: 2007,
-                type: "twitter",
-                significance: "mundane"
+                type: "twitter"
             },
             {
                 text: `watching tv`,
@@ -847,8 +823,7 @@
                 date: "May 5, 2007",
                 url: "https://x.com/kottke/statuses/11154832",
                 year: 2007,
-                type: "twitter",
-                significance: "mundane"
+                type: "twitter"
             },
             {
                 text: `listening to music`,
@@ -857,8 +832,7 @@
                 date: "April 15, 2007",
                 url: "https://x.com/jasonfried/statuses/11028372",
                 year: 2007,
-                type: "twitter",
-                significance: "mundane"
+                type: "twitter"
             },
             {
                 text: `heading home`,
@@ -867,8 +841,7 @@
                 date: "March 28, 2007",
                 url: "https://x.com/stevechen/statuses/1085432",
                 year: 2007,
-                type: "twitter",
-                significance: "mundane"
+                type: "twitter"
             },
             {
                 text: `good morning`,
@@ -877,8 +850,7 @@
                 date: "April 20, 2007",
                 url: "https://x.com/leahculver/statuses/11084372",
                 year: 2007,
-                type: "twitter",
-                significance: "mundane"
+                type: "twitter"
             },
             {
                 text: `time for lunch`,
@@ -887,8 +859,7 @@
                 date: "May 2, 2007",
                 url: "https://x.com/factoryjoe/statuses/11138722",
                 year: 2007,
-                type: "twitter",
-                significance: "mundane"
+                type: "twitter"
             },
             {
                 text: `tired today`,
@@ -897,8 +868,7 @@
                 date: "April 28, 2007",
                 url: "https://x.com/muller/statuses/11109432",
                 year: 2007,
-                type: "twitter",
-                significance: "mundane"
+                type: "twitter"
             },
             {
                 text: `Just got my first smartphone - a BlackBerry 8700. Full QWERTY keyboard, email on the go, and it even has a trackwheel! This is the pinnacle of mobile technology.`,
@@ -907,8 +877,7 @@
                 date: "February 28, 2005",
                 url: "https://forums.crackberry.com/general-blackberry-discussion-f3/how-about-blackberry-8700-3254/",
                 year: 2005,
-                type: "forum",
-                significance: "historical"
+                type: "forum"
             },
             {
                 text: `This 'Google' search engine is amazing. I typed in 'cat pictures' and it actually found websites with cat pictures! AltaVista never worked this well.`,
@@ -917,8 +886,7 @@
                 date: "September 1998",
                 url: "https://slashdot.org/",
                 year: 1998,
-                type: "forum",
-                significance: "historical"
+                type: "forum"
             },
             {
                 text: `I just uploaded my vacation photos to this new site called Flickr. You can share photos with friends and even tag them.`,
@@ -927,143 +895,126 @@
                 date: "August 10, 2004",
                 url: "https://web.archive.org/web/2004/http://www.flickr.com/",
                 year: 2004,
-                type: "blog",
-                significance: "historical"
-            },
-            {
-                text: `Dial-up internet is so slow. I'm downloading a 5MB song and it's been 20 minutes. My mom picked up the phone and disconnected me.`,
-                platform: "AOL Message Board",
-                author: "FrustratedTeen",
-                date: "2003",
-                url: "https://web.archive.org/web/2003/http://www.aol.com/",
-                year: 2003,
-                type: "forum",
-                significance: "cultural"
+                type: "blog"
             }
         ];
 
-        // Museum-style interpretations with scholarly speculation
+        // Museum-style interpretations - MUST match sources array length exactly
         const interpretations = [
             {
                 title: "The First Transmission",
-                description: "This fragment, written in <em>Microblog Glyphs</em>, represents the very first public message sent through the Twitter network. The author, identified only as 'jack' (later revealed to be Jack Dorsey, co-founder), uses the archaic spelling 'twttr' - a vestige of the platform's original codename. The brevity and banality of the message ('just setting up my twttr') is paradoxically its greatest significance. It demonstrates that even the most revolutionary communication systems often begin with the most mundane of utterances.",
+                description: "This fragment, written in <em>Microblog Glyphs</em>, represents the very first public message sent through the Twitter network. The author, identified only as 'jack' (later revealed to be Jack Dorsey, co-founder), uses the archaic spelling 'twttr' - a vestige of the platform's original codename. The brevity and banality of the message is paradoxically its greatest significance.",
                 script: "Microblog Glyphs (Twitter Proto-Form)",
                 culture: "Early Twitter Civilization (Pre-Viral Era)"
             },
             {
                 title: "The First Social Invitation",
-                description: "A remarkable sequel to the first tweet, this fragment from the same author ('jack') documents the first known attempt at social coordination through the Twitter network. The message 'inviting coworkers' suggests this was an internal test of the system's group communication capabilities. Scholars believe this represents the moment when the platform's social potential was first recognized, though it would be months before this vision was realized at scale.",
+                description: "A sequel to the first tweet, this fragment from the same author ('jack') documents the first known attempt at social coordination through Twitter. The message 'inviting coworkers' suggests this was an internal test of the system's group communication capabilities.",
                 script: "Microblog Glyphs (Twitter Proto-Form)",
                 culture: "Early Twitter Civilization (Internal Testing Phase)"
             },
             {
                 title: "The Great Denial",
-                description: "Perhaps the most famous heretical text from the <em>Print Media Decline Period</em>, written in <em>Magazine Column Script</em>. The author, Clifford Stoll (a respected astronomer and author), boldly declares that 'the internet is a fad' that 'won't last five years.' This text appeared in Newsweek magazine on February 27, 1995 - the very year that Amazon, eBay, and the first online banking systems were established. The article's headline, 'The Internet? Bah!' has become legendary among digital archaeologists.",
+                description: "Perhaps the most famous heretical text from the <em>Print Media Decline Period</em>, written in <em>Magazine Column Script</em>. The author, Clifford Stoll, boldly declares that 'the internet is a fad' that 'won't last five years.' This text appeared in Newsweek magazine on February 27, 1995 - the very year that Amazon, eBay, and the first online banking systems were established.",
                 script: "Magazine Column Script (Newsweek Dialect)",
                 culture: "Print Media Traditionalists (Anti-Digital Movement)"
             },
             {
                 title: "Millennial Apocalypse Documentation",
-                description: "A priestly observation from the <em>Global News Oracle Archives</em>, recorded in <em>Live News Transcription</em>. This text documents the <em>Y2K Non-Event</em> - a predicted global computer catastrophe that, according to this fragment, failed to materialize. The reference to 'Australia and New Zealand' (which crossed the international date line first) and the note 'nothing has happened' suggests either the apocalypse was averted through massive preparation, or the prediction was fundamentally flawed. The <em>Y2K Non-Event</em> remains one of the most documented non-catastrophes in history.",
+                description: "A priestly observation from the <em>Global News Oracle Archives</em>. This text documents the <em>Y2K Non-Event</em> - a predicted global computer catastrophe that failed to materialize. The reference to 'Australia and New Zealand' suggests early warning outposts.",
                 script: "Live News Transcription (CNN Dialect)",
                 culture: "Global News Oracle Tradition (End of Millennium Anxiety Period)"
             },
             {
                 title: "Social Networking Heresy",
-                description: "A contentious fragment from the <em>Reddit Reminiscence Archives</em>, written in <em>Forum Post Linear</em>. The author laments the superiority of MySpace over the rising Facebook platform, particularly praising MySpace's customization features. This text is significant as it captures a moment of transition between social networking eras. The <em>MySpace vs Facebook Wars</em> were a defining conflict of the mid-2000s, with MySpace's eventual defeat marking the end of the 'Customization Era' of social media.",
+                description: "A contentious fragment from the <em>Reddit Reminiscence Archives</em>. The author laments the superiority of MySpace over the rising Facebook platform, particularly praising MySpace's customization features. This text captures a moment of transition between social networking eras.",
                 script: "Forum Post Linear (Reddit Dialect)",
                 culture: "Social Networking Nostalgia Culture (Post-MySpace Era)"
             },
             {
                 title: "Dietary Documentation",
-                description: "A mundane but valuable domestic record from the <em>Early Microblogging Period</em>, written in <em>Twitter Glyphs</em>. The author documents the consumption of a 'sandwich' - a meal so common that its documentation seems almost absurd. Yet such records are precious to archaeologists, as they reveal the ordinary culinary practices of the <em>Early Twitter Culture</em>. The fact that such a trivial event was deemed worthy of public broadcast suggests the <em>Over-Sharing Hypothesis</em> of early 21st century digital behavior.",
+                description: "A mundane but valuable domestic record from the <em>Early Microblogging Period</em>. The author documents the consumption of a 'sandwich'. Such records reveal the ordinary culinary practices of the <em>Early Twitter Culture</em>.",
                 script: "Twitter Glyphs (Microblog Form)",
                 culture: "Early Microblogging Culture (Dietary Documentation Tradition)"
             },
             {
                 title: "Commerce Expedition Log",
-                description: "A routine supply expedition record from the <em>Early Microblogging Period</em>, written in <em>Twitter Glyphs</em>. The author documents an intention to visit 'the store' - a retail establishment. The brevity of the message and the lack of specificity suggest this was a casual announcement rather than a detailed log. Such fragments support the theory that early Twitter users treated the platform as a public bulletin board for even the most routine activities.",
+                description: "A routine supply expedition record from the <em>Early Microblogging Period</em>. The author documents an intention to visit 'the store'. Such fragments support the theory that early Twitter users treated the platform as a public bulletin board for even the most routine activities.",
                 script: "Twitter Glyphs (Microblog Form)",
                 culture: "Early Microblogging Culture (Commerce Expedition Tradition)"
             },
             {
                 title: "Diurnal Awakening Ritual",
-                description: "A circadian cycle documentation from the <em>Early Microblogging Period</em>, written in <em>Twitter Glyphs</em>. The author simply states 'just woke up' - a declaration so fundamental to human experience that its documentation across multiple millennia is well-attested. This fragment is part of a larger corpus of <em>Morning Ritual Texts</em> that suggest the act of announcing one's awakening held social significance in the <em>Early Twitter Culture</em>.",
+                description: "A circadian cycle documentation from the <em>Early Microblogging Period</em>. The author simply states 'just woke up'. This fragment is part of a larger corpus of <em>Morning Ritual Texts</em>.",
                 script: "Twitter Glyphs (Microblog Form)",
                 culture: "Early Microblogging Culture (Diurnal Cycle Documentation)"
             },
             {
                 title: "Labor Documentation",
-                description: "An occupational status update from the <em>Early Microblogging Period</em>, written in <em>Twitter Glyphs</em>. The author documents their presence 'at work' - a location that would have been self-evident to anyone in their immediate vicinity, but apparently required broadcast to the digital world. This fragment supports the <em>Digital Presence Theory</em>, which suggests that early social media users felt compelled to document their physical location as a form of digital existence proof.",
+                description: "An occupational status update from the <em>Early Microblogging Period</em>. The author documents their presence 'at work'. This fragment supports the <em>Digital Presence Theory</em>.",
                 script: "Twitter Glyphs (Microblog Form)",
                 culture: "Early Microblogging Culture (Occupational Status Tradition)"
             },
             {
                 title: "Entertainment Consumption Log",
-                description: "A leisure activity record from the <em>Early Microblogging Period</em>, written in <em>Twitter Glyphs</em>. The author documents the act of 'watching tv' - a passive entertainment activity. The brevity and vagueness of the message suggest this was less about sharing specific information and more about maintaining a digital presence. Such fragments are part of the <em>Passive Activity Documentation</em> genre of early social media.",
+                description: "A leisure activity record from the <em>Early Microblogging Period</em>. The author documents the act of 'watching tv'. The brevity and vagueness suggest this was less about sharing specific information and more about maintaining a digital presence.",
                 script: "Twitter Glyphs (Microblog Form)",
                 culture: "Early Microblogging Culture (Entertainment Consumption Tradition)"
             },
             {
                 title: "Auditory Experience Documentation",
-                description: "An auditory leisure record from the <em>Early Microblogging Period</em>, written in <em>Twitter Glyphs</em>. The author documents 'listening to music' - an activity so universal that its documentation seems almost unnecessary. Yet the persistence of such messages in the archaeological record suggests that early social media users treated all experiences, no matter how common, as potentially share-worthy.",
+                description: "An auditory leisure record from the <em>Early Microblogging Period</em>. The author documents 'listening to music' - an activity so universal that its documentation seems almost unnecessary.",
                 script: "Twitter Glyphs (Microblog Form)",
                 culture: "Early Microblogging Culture (Auditory Experience Tradition)"
             },
             {
                 title: "Domestic Return Announcement",
-                description: "A locational status update from the <em>Early Microblogging Period</em>, written in <em>Twitter Glyphs</em>. The author announces 'heading home' - a transition from one location to another. The lack of specificity about the destination or reason for the journey suggests this was a routine announcement rather than a significant event. Such fragments are part of the <em>Locational Status Update</em> genre.",
+                description: "A locational status update from the <em>Early Microblogging Period</em>. The author announces 'heading home' - a transition from one location to another. Such fragments are part of the <em>Locational Status Update</em> genre.",
                 script: "Twitter Glyphs (Microblog Form)",
                 culture: "Early Microblogging Culture (Domestic Return Tradition)"
             },
             {
                 title: "Diurnal Greeting Ritual",
-                description: "A temporal greeting from the <em>Early Microblogging Period</em>, written in <em>Twitter Glyphs</em>. The author offers a 'good morning' greeting to their digital audience. The lack of a specific recipient suggests this was a broadcast greeting rather than a directed communication. Such fragments support the theory that early social media users treated their followers as a collective entity worthy of daily acknowledgment.",
+                description: "A temporal greeting from the <em>Early Microblogging Period</em>. The author offers a 'good morning' greeting to their digital audience. The lack of a specific recipient suggests this was a broadcast greeting.",
                 script: "Twitter Glyphs (Microblog Form)",
                 culture: "Early Microblogging Culture (Diurnal Greeting Tradition)"
             },
             {
                 title: "Midday Repast Announcement",
-                description: "A dietary timing record from the <em>Early Microblogging Period</em>, written in <em>Twitter Glyphs</em>. The author declares 'time for lunch' - a temporal marker that would have been self-evident to anyone observing their physical actions, but apparently required digital announcement. This fragment is part of the <em>Temporal Marker</em> genre of early social media messages.",
+                description: "A dietary timing record from the <em>Early Microblogging Period</em>. The author declares 'time for lunch' - a temporal marker that would have been self-evident to anyone observing their physical actions.",
                 script: "Twitter Glyphs (Microblog Form)",
                 culture: "Early Microblogging Culture (Midday Repast Tradition)"
             },
             {
                 title: "Fatigue Documentation",
-                description: "A physical state record from the <em>Early Microblogging Period</em>, written in <em>Twitter Glyphs</em>. The author simply states 'tired today' - a subjective physical condition. The lack of elaboration or context suggests this was a casual status update rather than a detailed confession. Such fragments are part of the <em>Physical State Documentation</em> genre that dominates early social media archives.",
+                description: "A physical state record from the <em>Early Microblogging Period</em>. The author simply states 'tired today'. The lack of elaboration or context suggests this was a casual status update.",
                 script: "Twitter Glyphs (Microblog Form)",
                 culture: "Early Microblogging Culture (Fatigue Documentation Tradition)"
             },
             {
                 title: "Mobile Device Eulogy",
-                description: "A devotional text from the <em>BlackBerry Sect</em>, written in <em>Forum Post Linear</em>. The author praises the 'BlackBerry 8700' as the 'pinnacle of mobile technology,' revealing the sect's belief in physical keyboards as sacred objects. The 'trackwheel' mentioned appears to have been a ritual navigation device. Ironically, the <em>BlackBerry Sect</em> would be nearly exterminated within a decade by the rise of the <em>Touchscreen Heresy</em>.",
+                description: "A devotional text from the <em>BlackBerry Sect</em>. The author praises the 'BlackBerry 8700' as the 'pinnacle of mobile technology,' revealing the sect's belief in physical keyboards as sacred objects.",
                 script: "Forum Post Linear (CrackBerry Dialect)",
                 culture: "BlackBerry Sect (Pre-Touchscreen Orthodox)"
             },
             {
                 title: "Search Engine Epiphany",
-                description: "A moment of technological awakening from the <em>Slashdot Monastery</em>, recorded in <em>Commentary Script</em>. The author describes using a search engine called 'Google' to find 'websites with cat pictures' - an act that apparently amazed the author. The comparison to 'AltaVista' (a rival search deity) suggests this was a period of competition between search divinities. This text reveals the early <em>Information Retrieval Cult</em> practices.",
+                description: "A moment of technological awakening from the <em>Slashdot Monastery</em>. The author describes using a search engine called 'Google' to find 'websites with cat pictures' - an act that apparently amazed the author.",
                 script: "Commentary Script (Slashdot Dialect)",
                 culture: "Slashdot Monastery (Early Tech Enthusiast Brotherhood)"
             },
             {
                 title: "Photo Sharing Revelation",
-                description: "A revelation text from the <em>Flickr Cult</em>, inscribed in <em>Early Weblog Script</em>. The author describes a sacred site called 'Flickr' where 'you can share photos with friends and even tag them.' The concept of 'tagging' remains mysterious to archaeologists - possibly a form of blessing or categorization. This text is one of the few surviving examples of pre-social-media image sharing practices.",
+                description: "A revelation text from the <em>Flickr Cult</em>. The author describes a sacred site called 'Flickr' where 'you can share photos with friends and even tag them.' The concept of 'tagging' remains mysterious to archaeologists.",
                 script: "Early Weblog Script (Blog Form)",
                 culture: "Flickr Cult (Early Image Worship Movement)"
-            },
-            {
-                title: "Domestic Technology Conflict",
-                description: "A personal lament from the <em>Dial-Up Era</em>, written in <em>Message Board Cuneiform</em>. The author describes a common domestic conflict: the mother 'picked up the phone and disconnected me.' This reveals the <em>Shared Line Period</em>, when telephone and digital communication networks were the same physical infrastructure. The '5MB song' reference suggests extremely limited bandwidth by later standards.",
-                script: "Message Board Cuneiform (AOL Dialect)",
-                culture: "Dial-Up Domestic Culture (Pre-Broadband Era)"
             }
         ];
 
         let currentId = 0;
 
         // Function to render artifact based on its type
-        function renderArtifact(source, interpretation) {
+        function renderArtifact(source) {
             const type = source.type || 'plain';
             
             switch(type) {
@@ -1087,7 +1038,7 @@
         }
 
         function renderTwitter(source) {
-            const displayName = source.author === 'jack' ? 'Jack Dorsey' : source.author;
+            const displayName = source.author === 'jack' ? 'Jack Dorsey' : source.author === 'ev' ? 'Evan Williams' : source.author === 'biz' ? 'Biz Stone' : source.author;
             const handle = source.author === 'jack' ? '@jack' : source.author === 'ev' ? '@ev' : source.author === 'biz' ? '@biz' : '@' + source.author;
             const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
             const verified = source.author === 'jack' || source.author === 'ev' || source.author === 'biz';
@@ -1227,7 +1178,7 @@
             const contentDiv = document.getElementById('artifactContent');
 
             // Render the artifact based on its platform type
-            contentDiv.innerHTML = renderArtifact(data.source, data.interpretation);
+            contentDiv.innerHTML = renderArtifact(data.source);
 
             // Update the museum label
             document.getElementById('artifactId').textContent = `Specimen #${String(data.id).padStart(3, '0')}`;
@@ -1277,8 +1228,8 @@
             window.open(`https://twitter.com/intent/tweet?text=${textToShare}`, '_blank');
         });
 
-        // Start on load
-        window.addEventListener('load', init);
+        // Start on load - use DOMContentLoaded to ensure DOM is ready
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
