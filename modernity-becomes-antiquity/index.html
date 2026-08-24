@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Archaeology Exhibit</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Times New Roman', serif;
             background: linear-gradient(to bottom, #0a0a0a 0%, #1a1a1a 100%);
@@ -22,550 +17,219 @@
             padding: 40px 20px;
             line-height: 1.6;
         }
-
-        .header {
-            text-align: center;
-            max-width: 800px;
-            margin-bottom: 60px;
-        }
-
+        .header { text-align: center; max-width: 800px; margin-bottom: 60px; }
         .header h1 {
-            font-size: 2.8rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            color: #c9a86c;
+            font-size: 2.8rem; font-weight: 400; letter-spacing: 2px;
+            margin-bottom: 25px; color: #c9a86c;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
             font-family: 'Georgia', serif;
         }
-
         .header h2 {
-            font-size: 1.4rem;
-            font-weight: 300;
-            color: #a68b5b;
-            margin-bottom: 20px;
+            font-size: 1.4rem; font-weight: 300;
+            color: #a68b5b; margin-bottom: 20px;
             font-style: italic;
         }
-
         .header p {
-            font-size: 1.05rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
+            font-size: 1.05rem; opacity: 0.9;
+            max-width: 700px; margin: 0 auto;
             line-height: 1.8;
         }
-
         .exhibit-area {
-            width: 100%;
-            max-width: 900px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 40px;
+            width: 100%; max-width: 900px;
+            display: flex; flex-direction: column;
+            align-items: center; margin-bottom: 40px;
         }
-
         .display-case {
-            width: 650px;
-            max-width: 95vw;
-            height: 480px;
-            position: relative;
-            margin-bottom: 30px;
+            width: 650px; max-width: 95vw; height: 480px;
+            position: relative; margin-bottom: 30px;
             perspective: 1000px;
         }
-
         .case-frame {
-            position: absolute;
-            top: -25px;
-            left: -25px;
-            right: -25px;
-            bottom: -25px;
+            position: absolute; top: -25px; left: -25px; right: -25px; bottom: -25px;
             background: linear-gradient(145deg, #5c4a38, #3a2e22);
-            border-radius: 25px;
-            z-index: 10;
-            box-shadow: 
-                0 0 0 2px #2a1e15,
-                0 0 0 4px #4a3a28;
+            border-radius: 25px; z-index: 10;
+            box-shadow: 0 0 0 2px #2a1e15, 0 0 0 4px #4a3a28;
         }
-
         .case-frame::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            right: 5px;
-            bottom: 5px;
+            content: ''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
             background: linear-gradient(145deg, #6d5945, #4d3f2c);
             border-radius: 20px;
         }
-
         .artifact-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            padding: 20px;
-            background: linear-gradient(to bottom, #f8f4e8, #e8d8c0);
-            border-radius: 12px;
-            overflow-y: auto;
-            z-index: 30;
-            transform: translateZ(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative; width: 100%; height: 100%;
+            padding: 20px; background: linear-gradient(to bottom, #f8f4e8, #e8d8c0);
+            border-radius: 12px; overflow-y: auto;
+            z-index: 30; transform: translateZ(5px);
+            display: flex; align-items: center; justify-content: center;
         }
-
-        .artifact-container::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .artifact-container::-webkit-scrollbar-track {
-            background: #5c4a38;
-            border-radius: 3px;
-        }
-
-        .artifact-container::-webkit-scrollbar-thumb {
-            background: #8b7355;
-            border-radius: 3px;
-        }
-
+        .artifact-container::-webkit-scrollbar { width: 6px; }
+        .artifact-container::-webkit-scrollbar-track { background: #5c4a38; border-radius: 3px; }
+        .artifact-container::-webkit-scrollbar-thumb { background: #8b7355; border-radius: 3px; }
         .artifact-content {
-            position: relative;
-            opacity: 0;
+            position: relative; opacity: 0;
             transform: scale(0.8) translateY(20px);
             transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            filter: blur(2px);
-            width: 100%;
-            max-width: 580px;
+            filter: blur(2px); width: 100%; max-width: 580px;
         }
-
         .artifact-content.revealed {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-            filter: blur(0);
+            opacity: 1; transform: scale(1) translateY(0); filter: blur(0);
         }
-
         .platform-twitter {
-            background: #fff;
-            border: 1px solid #e1e8ed;
-            border-radius: 12px;
-            padding: 15px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            font-size: 14px;
-            line-height: 1.5;
-            color: #14171a;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            max-width: 500px;
+            background: #fff; border: 1px solid #e1e8ed; border-radius: 12px;
+            padding: 15px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 14px; line-height: 1.5; color: #14171a;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); max-width: 500px;
         }
-        .platform-twitter .tweet-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+        .platform-twitter .tweet-header { display: flex; align-items: center; margin-bottom: 10px; }
         .platform-twitter .tweet-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #1da1f2;
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            flex-shrink: 0;
-            font-size: 16px;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: #1da1f2; margin-right: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: bold; flex-shrink: 0; font-size: 16px;
         }
-        .platform-twitter .tweet-user {
-            font-weight: bold;
-            color: #14171a;
-        }
-        .platform-twitter .tweet-handle {
-            color: #657786;
-            margin-left: 5px;
-        }
-        .platform-twitter .tweet-date {
-            color: #657786;
-            font-size: 13px;
-            margin-left: auto;
-        }
-        .platform-twitter .tweet-text {
-            margin-bottom: 10px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        .platform-twitter .tweet-actions {
-            display: flex;
-            justify-content: space-between;
-            color: #657786;
-            font-size: 13px;
-        }
-        .platform-twitter .tweet-action {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+        .platform-twitter .tweet-user { font-weight: bold; color: #14171a; }
+        .platform-twitter .tweet-handle { color: #657786; margin-left: 5px; }
+        .platform-twitter .tweet-date { color: #657786; font-size: 13px; margin-left: auto; }
+        .platform-twitter .tweet-text { margin-bottom: 10px; white-space: pre-wrap; word-wrap: break-word; }
+        .platform-twitter .tweet-actions { display: flex; justify-content: space-between; color: #657786; font-size: 13px; }
+        .platform-twitter .tweet-action { display: flex; align-items: center; gap: 5px; }
         .platform-twitter .verified-badge {
-            background: #1da1f2;
-            color: white;
-            font-size: 11px;
-            padding: 1px 4px;
-            border-radius: 3px;
-            margin-left: 5px;
+            background: #1da1f2; color: white; font-size: 11px;
+            padding: 1px 4px; border-radius: 3px; margin-left: 5px;
         }
-
         .platform-forum {
-            background: #f5f5f5;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 15px;
-            font-family: Arial, sans-serif;
-            font-size: 13px;
-            line-height: 1.5;
-            color: #333;
+            background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px;
+            padding: 15px; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; color: #333;
         }
         .platform-forum .forum-header {
-            background: #e8e8e8;
-            padding: 8px 12px;
-            border-bottom: 1px solid #ddd;
-            margin: -15px -15px 15px -15px;
-            font-weight: bold;
+            background: #e8e8e8; padding: 8px 12px; border-bottom: 1px solid #ddd;
+            margin: -15px -15px 15px -15px; font-weight: bold;
         }
-        .platform-forum .forum-post {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        .platform-forum .forum-post:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-        .platform-forum .forum-user {
-            color: #0066cc;
-            font-weight: bold;
-        }
-        .platform-forum .forum-date {
-            color: #666;
-            font-size: 11px;
-            margin-left: 10px;
-        }
-        .platform-forum .forum-text {
-            margin-top: 8px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
+        .platform-forum .forum-post { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .platform-forum .forum-post:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+        .platform-forum .forum-user { color: #0066cc; font-weight: bold; }
+        .platform-forum .forum-date { color: #666; font-size: 11px; margin-left: 10px; }
+        .platform-forum .forum-text { margin-top: 8px; white-space: pre-wrap; word-wrap: break-word; }
         .platform-forum .forum-signature {
-            margin-top: 10px;
-            font-size: 11px;
-            color: #666;
-            border-top: 1px solid #eee;
-            padding-top: 8px;
+            margin-top: 10px; font-size: 11px; color: #666;
+            border-top: 1px solid #eee; padding-top: 8px;
         }
-
         .platform-blog {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            font-family: Georgia, serif;
-            font-size: 15px;
-            line-height: 1.7;
-            color: #333;
+            background: #fff; border: 1px solid #ddd; border-radius: 8px;
+            padding: 20px; font-family: Georgia, serif; font-size: 15px; line-height: 1.7; color: #333;
         }
         .platform-blog .blog-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #222;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #1da1f2;
-            padding-bottom: 8px;
+            font-size: 18px; font-weight: bold; color: #222;
+            margin-bottom: 10px; border-bottom: 2px solid #1da1f2; padding-bottom: 8px;
         }
-        .platform-blog .blog-meta {
-            color: #666;
-            font-size: 12px;
-            margin-bottom: 15px;
-        }
-        .platform-blog .blog-text {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-
+        .platform-blog .blog-meta { color: #666; font-size: 12px; margin-bottom: 15px; }
+        .platform-blog .blog-text { white-space: pre-wrap; word-wrap: break-word; }
         .platform-news {
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 15px;
-            font-family: Arial, sans-serif;
-            font-size: 13px;
-            line-height: 1.6;
-            color: #000;
+            background: #fff; border: 1px solid #ccc; border-radius: 4px;
+            padding: 15px; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.6; color: #000;
         }
         .platform-news .news-header {
-            background: #cc0000;
-            color: #fff;
-            padding: 8px 12px;
-            margin: -15px -15px 15px -15px;
-            font-weight: bold;
+            background: #cc0000; color: #fff; padding: 8px 12px;
+            margin: -15px -15px 15px -15px; font-weight: bold;
         }
-        .platform-news .news-timestamp {
-            color: #666;
-            font-size: 11px;
-            margin-bottom: 10px;
-        }
-        .platform-news .news-text {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-
+        .platform-news .news-timestamp { color: #666; font-size: 11px; margin-bottom: 10px; }
+        .platform-news .news-text { white-space: pre-wrap; word-wrap: break-word; }
         .platform-plain {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 20px;
-            font-family: "Times New Roman", serif;
-            font-size: 14px;
-            line-height: 1.7;
-            color: #000;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+            background: #fff; border: 1px solid #ddd; border-radius: 4px;
+            padding: 20px; font-family: "Times New Roman", serif;
+            font-size: 14px; line-height: 1.7; color: #000;
+            white-space: pre-wrap; word-wrap: break-word;
         }
-
         .glass-frame {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at center, 
-                    rgba(255,255,255,0.15) 0%,
-                    rgba(255,255,255,0.05) 70%,
-                    transparent 100%
-                );
-            border: 25px solid;
-            border-image: linear-gradient(45deg, #6b5b47, #4a3d28, #6b5b47) 25;
-            border-radius: 20px;
-            box-shadow: 
-                0 0 50px rgba(201, 168, 108, 0.2),
-                inset 0 0 60px rgba(201, 168, 108, 0.03);
-            backdrop-filter: blur(8px);
-            z-index: 20;
-            pointer-events: none;
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 70%, transparent 100%);
+            border: 25px solid; border-image: linear-gradient(45deg, #6b5b47, #4a3d28, #6b5b47) 25;
+            border-radius: 20px; box-shadow: 0 0 50px rgba(201, 168, 108, 0.2), inset 0 0 60px rgba(201, 168, 108, 0.03);
+            backdrop-filter: blur(8px); z-index: 20; pointer-events: none;
         }
-
         .museum-label {
-            width: 100%;
-            max-width: 700px;
+            width: 100%; max-width: 700px;
             background: linear-gradient(135deg, #2a1e15, #1a1208);
-            color: #d4c4a8;
-            padding: 25px 35px;
-            border-radius: 10px;
+            color: #d4c4a8; padding: 25px 35px; border-radius: 10px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            border: 2px solid;
-            border-image: linear-gradient(45deg, #5c4a38, #3a2e22, #5c4a38) 2;
-            position: relative;
-            margin-bottom: 20px;
+            border: 2px solid; border-image: linear-gradient(45deg, #5c4a38, #3a2e22, #5c4a38) 2;
+            position: relative; margin-bottom: 20px;
         }
-
         .museum-label::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
             background: linear-gradient(90deg, #8b7355, #c9a86c, #8b7355);
         }
-
         .label-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 15px; padding-bottom: 10px;
             border-bottom: 1px solid rgba(212, 168, 108, 0.3);
         }
-
-        .artifact-id {
-            font-weight: bold;
-            color: #c9a86c;
-            font-size: 0.95rem;
-        }
-
-        .artifact-era {
-            font-style: italic;
-            color: #a68b5b;
-            font-size: 0.95rem;
-        }
-
+        .artifact-id { font-weight: bold; color: #c9a86c; font-size: 0.95rem; }
+        .artifact-era { font-style: italic; color: #a68b5b; font-size: 0.95rem; }
         .label-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #e8d8c0;
-            margin-bottom: 10px;
-            text-align: center;
-            letter-spacing: 1px;
+            font-size: 1.3rem; font-weight: bold; color: #e8d8c0;
+            margin-bottom: 10px; text-align: center; letter-spacing: 1px;
         }
-
         .label-description {
-            font-size: 1rem;
-            line-height: 1.8;
-            text-align: justify;
+            font-size: 1rem; line-height: 1.8; text-align: justify;
             font-style: italic;
         }
-
-        .label-description em {
-            font-style: normal;
-            color: #c9a86c;
-            font-weight: 500;
-        }
-
+        .label-description em { font-style: normal; color: #c9a86c; font-weight: 500; }
         .label-meta {
-            margin-top: 15px;
-            padding-top: 15px;
+            margin-top: 15px; padding-top: 15px;
             border-top: 1px solid rgba(212, 168, 108, 0.2);
-            font-size: 0.85rem;
-            color: #a68b5b;
+            font-size: 0.85rem; color: #a68b5b;
         }
-
-        .label-meta span {
-            display: block;
-            margin: 3px 0;
-        }
-
-        .source-link {
-            color: #8b7355 !important;
-            text-decoration: none;
-            word-break: break-all;
-        }
-
-        .source-link:hover {
-            color: #c9a86c !important;
-            text-decoration: underline;
-        }
-
-        .controls {
-            margin-top: 30px;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
+        .label-meta span { display: block; margin: 3px 0; }
+        .source-link { color: #8b7355 !important; text-decoration: none; word-break: break-all; }
+        .source-link:hover { color: #c9a86c !important; text-decoration: underline; }
+        .controls { margin-top: 30px; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
         button {
-            padding: 12px 30px;
-            background: linear-gradient(to bottom, #5c4a38, #3a2e22);
-            color: #f5f0e6;
-            border: none;
-            border-radius: 5px;
-            font-family: 'Georgia', serif;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            padding: 12px 30px; background: linear-gradient(to bottom, #5c4a38, #3a2e22);
+            color: #f5f0e6; border: none; border-radius: 5px;
+            font-family: 'Georgia', serif; font-size: 1rem; cursor: pointer;
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             border: 1px solid #4a3a28;
         }
-
         button:hover {
             background: linear-gradient(to bottom, #6d5945, #4d3f2c);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.5);
             color: #fff;
         }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        button:first-child {
-            background: linear-gradient(to bottom, #6b5b47, #4a3d28);
-        }
-
-        button:first-child:hover {
-            background: linear-gradient(to bottom, #7b6b57, #5a4d38);
-        }
-
+        button:active { transform: translateY(0); }
+        button:first-child { background: linear-gradient(to bottom, #6b5b47, #4a3d28); }
+        button:first-child:hover { background: linear-gradient(to bottom, #7b6b57, #5a4d38); }
         .plaque {
-            position: absolute;
-            bottom: -70px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #4a3a28;
-            color: #f5f0e6;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-            z-index: 25;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            position: absolute; bottom: -70px; left: 50%; transform: translateX(-50%);
+            background: #4a3a28; color: #f5f0e6; padding: 15px 30px;
+            border-radius: 50px; font-size: 0.9rem; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            z-index: 25; opacity: 0; transition: opacity 0.5s ease;
             border: 2px solid #6b5b47;
         }
-
-        .display-case:hover .plaque {
-            opacity: 1;
-        }
-
+        .display-case:hover .plaque { opacity: 1; }
         .plaque::before {
-            content: '';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
+            content: ''; position: absolute; top: -12px; left: 50%;
+            transform: translateX(-50%); width: 0; height: 0;
+            border-left: 12px solid transparent; border-right: 12px solid transparent;
             border-bottom: 12px solid #4a3a28;
         }
-
         @media (max-width: 768px) {
-            .display-case {
-                width: 95vw;
-                height: 500px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .header h2 {
-                font-size: 1.1rem;
-            }
-            
-            .artifact-container {
-                padding: 15px;
-            }
-            
-            .museum-label {
-                padding: 20px;
-            }
+            .display-case { width: 95vw; height: 500px; }
+            .header h1 { font-size: 2rem; }
+            .header h2 { font-size: 1.1rem; }
+            .artifact-container { padding: 15px; }
+            .museum-label { padding: 20px; }
         }
-
         .loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.2rem;
-            color: #8b7355;
-            text-align: center;
-            z-index: 40;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 1.2rem; color: #8b7355; text-align: center; z-index: 40;
         }
-
         .spinner {
-            border: 3px solid #4a3a28;
-            border-top: 3px solid #c9a86c;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
+            border: 3px solid #4a3a28; border-top: 3px solid #c9a86c;
+            border-radius: 50%; width: 40px; height: 40px;
+            animation: spin 1s linear infinite; margin: 20px auto;
         }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -614,423 +278,131 @@
     </div>
 
     <script>
-        // Wait for DOM to be fully loaded
+        // DATA - defined at global scope
+        const sources = [
+            { text: `just setting up my twttr`, platform: "Twitter", author: "jack", date: "March 21, 2006", url: "https://x.com/jack/status/20", year: 2006, type: "twitter" },
+            { text: `inviting coworkers`, platform: "Twitter", author: "jack", date: "March 21, 2006", url: "https://x.com/jack/status/21", year: 2006, type: "twitter" },
+            { text: `The internet is a fad. No one will want to read news on a computer screen. Give me my morning newspaper any day. This 'world wide web' thing won't last five years.`, platform: "Newsweek", author: "Clifford Stoll", date: "February 27, 1995", url: "https://www.newsweek.com/clifford-stoll-said-internet-would-die-1995-566797", year: 1995, type: "news" },
+            { text: `Y2K bug update: We've spent millions preparing our systems. Midnight has passed in Australia and New Zealand. Reports are coming in... nothing has happened. The world did not end. I'm going to bed.`, platform: "CNN", author: "CNN Technology Correspondent", date: "December 31, 1999", url: "http://edition.cnn.com/2000/TECH/computing/01/01/y2k.update.02/", year: 1999, type: "news" },
+            { text: `MySpace is so much better than Facebook. You can customize your profile with HTML, music players, and cool backgrounds. Facebook is just boring blue and white. No contest.`, platform: "Reddit", author: "u/AdSpecialist6598", date: "2006", url: "https://www.reddit.com/r/nostalgia/comments/1nhp5pj/myspace_was_better_than_facebook/", year: 2006, type: "forum" },
+            { text: `having a sandwich`, platform: "Twitter", author: "zeldman", date: "May 11, 2007", url: "https://x.com/zeldman/statuses/11213372", year: 2007, type: "twitter" },
+            { text: `going to the store`, platform: "Twitter", author: "anildash", date: "April 3, 2007", url: "https://x.com/anildash/statuses/10928372", year: 2007, type: "twitter" },
+            { text: `just woke up`, platform: "Twitter", author: "ev", date: "March 24, 2007", url: "https://x.com/ev/statuses/1080372", year: 2007, type: "twitter" },
+            { text: `at work`, platform: "Twitter", author: "biz", date: "March 22, 2007", url: "https://x.com/biz/statuses/1078561", year: 2007, type: "twitter" },
+            { text: `watching tv`, platform: "Twitter", author: "kottke", date: "May 5, 2007", url: "https://x.com/kottke/statuses/11154832", year: 2007, type: "twitter" },
+            { text: `listening to music`, platform: "Twitter", author: "jasonfried", date: "April 15, 2007", url: "https://x.com/jasonfried/statuses/11028372", year: 2007, type: "twitter" },
+            { text: `heading home`, platform: "Twitter", author: "stevechen", date: "March 28, 2007", url: "https://x.com/stevechen/statuses/1085432", year: 2007, type: "twitter" },
+            { text: `good morning`, platform: "Twitter", author: "leahculver", date: "April 20, 2007", url: "https://x.com/leahculver/statuses/11084372", year: 2007, type: "twitter" },
+            { text: `time for lunch`, platform: "Twitter", author: "factoryjoe", date: "May 2, 2007", url: "https://x.com/factoryjoe/statuses/11138722", year: 2007, type: "twitter" },
+            { text: `tired today`, platform: "Twitter", author: "muller", date: "April 28, 2007", url: "https://x.com/muller/statuses/11109432", year: 2007, type: "twitter" },
+            { text: `Just got my first smartphone - a BlackBerry 8700. Full QWERTY keyboard, email on the go, and it even has a trackwheel! This is the pinnacle of mobile technology.`, platform: "CrackBerry Forums", author: "BerryAddict", date: "February 28, 2005", url: "https://forums.crackberry.com/general-blackberry-discussion-f3/how-about-blackberry-8700-3254/", year: 2005, type: "forum" }
+        ];
+
+        const interpretations = [
+            { title: "The First Transmission", description: "This fragment represents the very first public message sent through the Twitter network. The author 'jack' (Jack Dorsey) uses the archaic spelling 'twttr'. The brevity and banality is paradoxically its greatest significance.", script: "Microblog Glyphs", culture: "Early Twitter Civilization" },
+            { title: "The First Social Invitation", description: "A sequel to the first tweet, documenting the first known attempt at social coordination through Twitter. The message 'inviting coworkers' suggests an internal test.", script: "Microblog Glyphs", culture: "Early Twitter Civilization" },
+            { title: "The Great Denial", description: "A famous heretical text from 1995. Clifford Stoll boldly declares that 'the internet is a fad'. This appeared in Newsweek the same year Amazon and eBay were founded.", script: "Magazine Column Script", culture: "Print Media Traditionalists" },
+            { title: "Millennial Apocalypse Documentation", description: "A CNN transcript documenting the Y2K Non-Event - a predicted global catastrophe that failed to materialize.", script: "Live News Transcription", culture: "Global News Oracle Tradition" },
+            { title: "Social Networking Heresy", description: "A Reddit discussion lamenting MySpace's superiority over Facebook, particularly praising MySpace's customization features.", script: "Forum Post Linear", culture: "Social Networking Nostalgia Culture" },
+            { title: "Dietary Documentation", description: "A mundane domestic record. The author documents consuming a 'sandwich'. Such records reveal ordinary culinary practices.", script: "Twitter Glyphs", culture: "Early Microblogging Culture" },
+            { title: "Commerce Expedition Log", description: "A routine supply expedition record. The author documents intention to visit 'the store'.", script: "Twitter Glyphs", culture: "Early Microblogging Culture" },
+            { title: "Diurnal Awakening Ritual", description: "A circadian cycle documentation. The author states 'just woke up'. Part of a larger corpus of Morning Ritual Texts.", script: "Twitter Glyphs", culture: "Early Microblogging Culture" },
+            { title: "Labor Documentation", description: "An occupational status update. The author documents being 'at work'.", script: "Twitter Glyphs", culture: "Early Microblogging Culture" },
+            { title: "Entertainment Consumption Log", description: "A leisure activity record. The author documents 'watching tv'.", script: "Twitter Glyphs", culture: "Early Microblogging Culture" },
+            { title: "Auditory Experience Documentation", description: "An auditory leisure record. The author documents 'listening to music'.", script: "Twitter Glyphs", culture: "Early Microblogging Culture" },
+            { title: "Domestic Return Announcement", description: "A locational status update. The author announces 'heading home'.", script: "Twitter Glyphs", culture: "Early Microblogging Culture" },
+            { title: "Diurnal Greeting Ritual", description: "A temporal greeting. The author offers 'good morning' to their digital audience.", script: "Twitter Glyphs", culture: "Early Microblogging Culture" },
+            { title: "Midday Repast Announcement", description: "A dietary timing record. The author declares 'time for lunch'.", script: "Twitter Glyphs", culture: "Early Microblogging Culture" },
+            { title: "Fatigue Documentation", description: "A physical state record. The author states 'tired today'.", script: "Twitter Glyphs", culture: "Early Microblogging Culture" },
+            { title: "Mobile Device Eulogy", description: "A devotional text praising the BlackBerry 8700 as the 'pinnacle of mobile technology'.", script: "Forum Post Linear", culture: "BlackBerry Sect" }
+        ];
+
+        let currentId = 0;
+
+        function renderTwitter(source) {
+            const displayName = source.author === 'jack' ? 'Jack Dorsey' : source.author === 'ev' ? 'Evan Williams' : source.author === 'biz' ? 'Biz Stone' : source.author;
+            const handle = source.author === 'jack' ? '@jack' : source.author === 'ev' ? '@ev' : source.author === 'biz' ? '@biz' : '@' + source.author;
+            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            const verified = source.author === 'jack' || source.author === 'ev' || source.author === 'biz';
+            return `<div class="platform-twitter"><div class="tweet-header"><div class="tweet-avatar">${displayName.charAt(0).toUpperCase()}</div><div><span class="tweet-user">${displayName}</span>${verified ? '<span class="verified-badge">\u2713</span>' : ''}<span class="tweet-handle">${handle}</span></div><span class="tweet-date">${date}</span></div><div class="tweet-text">${source.text}</div><div class="tweet-actions"><span class="tweet-action">\u2764\ufe0f 0</span><span class="tweet-action">\ud83d\udc01 0</span><span class="tweet-action">\ud83d\udcac 0</span></div></div>`;
+        }
+
+        function renderForum(source) {
+            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            return `<div class="platform-forum"><div class="forum-header">${source.platform} - ${source.platform.includes('CrackBerry') ? 'Mobile Technology' : 'General Discussion'}</div><div class="forum-post"><div><span class="forum-user">${source.author}</span><span class="forum-date">Posted on ${date}</span></div><div class="forum-text">${source.text}</div></div><div class="forum-signature">---<br>${source.author}'s signature</div></div>`;
+        }
+
+        function renderBlog(source) {
+            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            return `<div class="platform-blog"><div class="blog-title">${source.author}'s Weblog</div><div class="blog-meta">Posted on ${date} | ${source.platform}</div><div class="blog-text">${source.text}</div></div>`;
+        }
+
+        function renderNews(source) {
+            const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            return `<div class="platform-news"><div class="news-header">${source.platform} LIVE</div><div class="news-timestamp">${date} - Transcript</div><div class="news-text"><strong>${source.author}:</strong> ${source.text}</div></div>`;
+        }
+
+        function renderPlain(source) {
+            return `<div class="platform-plain">${source.text}<div style="margin-top: 15px; font-size: 12px; color: #666;">\u2014 ${source.author}, ${source.date}</div></div>`;
+        }
+
+        function renderArtifact(source) {
+            const type = source.type || 'plain';
+            switch(type) {
+                case 'twitter': return renderTwitter(source);
+                case 'forum': return renderForum(source);
+                case 'blog': return renderBlog(source);
+                case 'news': return renderNews(source);
+                default: return renderPlain(source);
+            }
+        }
+
+        function getRandomSource() {
+            currentId = Math.floor(Math.random() * sources.length) + 1;
+            const index = currentId - 1;
+            return { id: currentId, source: sources[index], interpretation: interpretations[index] };
+        }
+
+        function displayArtifact(data) {
+            const contentDiv = document.getElementById('artifactContent');
+            contentDiv.innerHTML = renderArtifact(data.source);
+
+            document.getElementById('artifactId').textContent = `Specimen #${String(data.id).padStart(3, '0')}`;
+            document.getElementById('artifactTitle').textContent = data.interpretation.title;
+            document.getElementById('artifactDescription').innerHTML = data.interpretation.description;
+            document.getElementById('scriptName').textContent = data.interpretation.script;
+            document.getElementById('cultureName').textContent = data.interpretation.culture;
+            document.getElementById('estimatedDate').textContent = `${data.source.date} (${data.source.year} CE)`;
+
+            const sourceLink = document.getElementById('sourceLink');
+            sourceLink.href = data.source.url;
+            sourceLink.textContent = data.source.url.replace(/^https?:\/\//, '').replace(/^www\./, '').substring(0, 40) + '...';
+
+            setTimeout(() => { contentDiv.classList.add('revealed'); }, 100);
+        }
+
+        function init() {
+            const data = getRandomSource();
+            displayArtifact(data);
+        }
+
+        // Wait for DOM to be ready, then set up everything
         document.addEventListener('DOMContentLoaded', function() {
-            // Curated list of REAL internet sources
-            const sources = [
-                {
-                    text: `just setting up my twttr`,
-                    platform: "Twitter",
-                    author: "jack",
-                    date: "March 21, 2006",
-                    url: "https://x.com/jack/status/20",
-                    year: 2006,
-                    type: "twitter"
-                },
-                {
-                    text: `inviting coworkers`,
-                    platform: "Twitter",
-                    author: "jack",
-                    date: "March 21, 2006",
-                    url: "https://x.com/jack/status/21",
-                    year: 2006,
-                    type: "twitter"
-                },
-                {
-                    text: `The internet is a fad. No one will want to read news on a computer screen. Give me my morning newspaper any day. This 'world wide web' thing won't last five years.",
-                    platform: "Newsweek",
-                    author: "Clifford Stoll",
-                    date: "February 27, 1995",
-                    url: "https://www.newsweek.com/clifford-stoll-said-internet-would-die-1995-566797",
-                    year: 1995,
-                    type: "news"
-                },
-                {
-                    text: `Y2K bug update: We've spent millions preparing our systems. Midnight has passed in Australia and New Zealand. Reports are coming in... nothing has happened. The world did not end. I'm going to bed.`,
-                    platform: "CNN",
-                    author: "CNN Technology Correspondent",
-                    date: "December 31, 1999",
-                    url: "http://edition.cnn.com/2000/TECH/computing/01/01/y2k.update.02/",
-                    year: 1999,
-                    type: "news"
-                },
-                {
-                    text: `MySpace is so much better than Facebook. You can customize your profile with HTML, music players, and cool backgrounds. Facebook is just boring blue and white. No contest.`,
-                    platform: "Reddit",
-                    author: "u/AdSpecialist6598",
-                    date: "2006",
-                    url: "https://www.reddit.com/r/nostalgia/comments/1nhp5pj/myspace_was_better_than_facebook/",
-                    year: 2006,
-                    type: "forum"
-                },
-                {
-                    text: `having a sandwich`,
-                    platform: "Twitter",
-                    author: "zeldman",
-                    date: "May 11, 2007",
-                    url: "https://x.com/zeldman/statuses/11213372",
-                    year: 2007,
-                    type: "twitter"
-                },
-                {
-                    text: `going to the store`,
-                    platform: "Twitter",
-                    author: "anildash",
-                    date: "April 3, 2007",
-                    url: "https://x.com/anildash/statuses/10928372",
-                    year: 2007,
-                    type: "twitter"
-                },
-                {
-                    text: `just woke up`,
-                    platform: "Twitter",
-                    author: "ev",
-                    date: "March 24, 2007",
-                    url: "https://x.com/ev/statuses/1080372",
-                    year: 2007,
-                    type: "twitter"
-                },
-                {
-                    text: `at work`,
-                    platform: "Twitter",
-                    author: "biz",
-                    date: "March 22, 2007",
-                    url: "https://x.com/biz/statuses/1078561",
-                    year: 2007,
-                    type: "twitter"
-                },
-                {
-                    text: `watching tv`,
-                    platform: "Twitter",
-                    author: "kottke",
-                    date: "May 5, 2007",
-                    url: "https://x.com/kottke/statuses/11154832",
-                    year: 2007,
-                    type: "twitter"
-                },
-                {
-                    text: `listening to music`,
-                    platform: "Twitter",
-                    author: "jasonfried",
-                    date: "April 15, 2007",
-                    url: "https://x.com/jasonfried/statuses/11028372",
-                    year: 2007,
-                    type: "twitter"
-                },
-                {
-                    text: `heading home`,
-                    platform: "Twitter",
-                    author: "stevechen",
-                    date: "March 28, 2007",
-                    url: "https://x.com/stevechen/statuses/1085432",
-                    year: 2007,
-                    type: "twitter"
-                },
-                {
-                    text: `good morning`,
-                    platform: "Twitter",
-                    author: "leahculver",
-                    date: "April 20, 2007",
-                    url: "https://x.com/leahculver/statuses/11084372",
-                    year: 2007,
-                    type: "twitter"
-                },
-                {
-                    text: `time for lunch`,
-                    platform: "Twitter",
-                    author: "factoryjoe",
-                    date: "May 2, 2007",
-                    url: "https://x.com/factoryjoe/statuses/11138722",
-                    year: 2007,
-                    type: "twitter"
-                },
-                {
-                    text: `tired today`,
-                    platform: "Twitter",
-                    author: "muller",
-                    date: "April 28, 2007",
-                    url: "https://x.com/muller/statuses/11109432",
-                    year: 2007,
-                    type: "twitter"
-                },
-                {
-                    text: `Just got my first smartphone - a BlackBerry 8700. Full QWERTY keyboard, email on the go, and it even has a trackwheel! This is the pinnacle of mobile technology.`,
-                    platform: "CrackBerry Forums",
-                    author: "BerryAddict",
-                    date: "February 28, 2005",
-                    url: "https://forums.crackberry.com/general-blackberry-discussion-f3/how-about-blackberry-8700-3254/",
-                    year: 2005,
-                    type: "forum"
-                },
-                {
-                    text: `This 'Google' search engine is amazing. I typed in 'cat pictures' and it actually found websites with cat pictures! AltaVista never worked this well.`,
-                    platform: "Slashdot",
-                    author: "Anonymous Coward",
-                    date: "September 1998",
-                    url: "https://slashdot.org/",
-                    year: 1998,
-                    type: "forum"
-                }
-            ];
-
-            const interpretations = [
-                {
-                    title: "The First Transmission",
-                    description: "This fragment represents the very first public message sent through the Twitter network. The author 'jack' (Jack Dorsey) uses the archaic spelling 'twttr'. The brevity and banality is paradoxically its greatest significance.",
-                    script: "Microblog Glyphs (Twitter Proto-Form)",
-                    culture: "Early Twitter Civilization"
-                },
-                {
-                    title: "The First Social Invitation",
-                    description: "A sequel to the first tweet, documenting the first known attempt at social coordination through Twitter. The message 'inviting coworkers' suggests an internal test.",
-                    script: "Microblog Glyphs (Twitter Proto-Form)",
-                    culture: "Early Twitter Civilization"
-                },
-                {
-                    title: "The Great Denial",
-                    description: "A famous heretical text from 1995. Clifford Stoll boldly declares that 'the internet is a fad' that 'won't last five years.' This appeared in Newsweek the same year Amazon and eBay were founded.",
-                    script: "Magazine Column Script",
-                    culture: "Print Media Traditionalists"
-                },
-                {
-                    title: "Millennial Apocalypse Documentation",
-                    description: "A CNN transcript documenting the Y2K Non-Event - a predicted global catastrophe that failed to materialize. References to Australia and New Zealand as early warning outposts.",
-                    script: "Live News Transcription",
-                    culture: "Global News Oracle Tradition"
-                },
-                {
-                    title: "Social Networking Heresy",
-                    description: "A Reddit discussion lamenting MySpace's superiority over Facebook, particularly praising MySpace's customization features. Captures a moment of transition between social networking eras.",
-                    script: "Forum Post Linear",
-                    culture: "Social Networking Nostalgia Culture"
-                },
-                {
-                    title: "Dietary Documentation",
-                    description: "A mundane domestic record. The author documents consuming a 'sandwich'. Such records reveal ordinary culinary practices of the Early Twitter Culture.",
-                    script: "Twitter Glyphs",
-                    culture: "Early Microblogging Culture"
-                },
-                {
-                    title: "Commerce Expedition Log",
-                    description: "A routine supply expedition record. The author documents intention to visit 'the store'. Early Twitter users treated the platform as a public bulletin board for routine activities.",
-                    script: "Twitter Glyphs",
-                    culture: "Early Microblogging Culture"
-                },
-                {
-                    title: "Diurnal Awakening Ritual",
-                    description: "A circadian cycle documentation. The author states 'just woke up'. Part of a larger corpus of Morning Ritual Texts.",
-                    script: "Twitter Glyphs",
-                    culture: "Early Microblogging Culture"
-                },
-                {
-                    title: "Labor Documentation",
-                    description: "An occupational status update. The author documents being 'at work'. Supports the Digital Presence Theory of early social media.",
-                    script: "Twitter Glyphs",
-                    culture: "Early Microblogging Culture"
-                },
-                {
-                    title: "Entertainment Consumption Log",
-                    description: "A leisure activity record. The author documents 'watching tv'. The brevity suggests this was about maintaining digital presence.",
-                    script: "Twitter Glyphs",
-                    culture: "Early Microblogging Culture"
-                },
-                {
-                    title: "Auditory Experience Documentation",
-                    description: "An auditory leisure record. The author documents 'listening to music' - an activity so universal its documentation seems unnecessary.",
-                    script: "Twitter Glyphs",
-                    culture: "Early Microblogging Culture"
-                },
-                {
-                    title: "Domestic Return Announcement",
-                    description: "A locational status update. The author announces 'heading home'. Part of the Locational Status Update genre.",
-                    script: "Twitter Glyphs",
-                    culture: "Early Microblogging Culture"
-                },
-                {
-                    title: "Diurnal Greeting Ritual",
-                    description: "A temporal greeting. The author offers 'good morning' to their digital audience. Lack of recipient suggests broadcast greeting.",
-                    script: "Twitter Glyphs",
-                    culture: "Early Microblogging Culture"
-                },
-                {
-                    title: "Midday Repast Announcement",
-                    description: "A dietary timing record. The author declares 'time for lunch' - a temporal marker that would have been self-evident.",
-                    script: "Twitter Glyphs",
-                    culture: "Early Microblogging Culture"
-                },
-                {
-                    title: "Fatigue Documentation",
-                    description: "A physical state record. The author states 'tired today'. Lack of elaboration suggests casual status update.",
-                    script: "Twitter Glyphs",
-                    culture: "Early Microblogging Culture"
-                },
-                {
-                    title: "Mobile Device Eulogy",
-                    description: "A devotional text praising the BlackBerry 8700 as the 'pinnacle of mobile technology', revealing belief in physical keyboards as sacred objects.",
-                    script: "Forum Post Linear",
-                    culture: "BlackBerry Sect"
-                },
-                {
-                    title: "Search Engine Epiphany",
-                    description: "A moment of technological awakening. The author describes using Google to find 'websites with cat pictures' - an act that apparently amazed them.",
-                    script: "Commentary Script",
-                    culture: "Slashdot Monastery"
-                }
-            ];
-
-            let currentId = 0;
-
-            function renderTwitter(source) {
-                const displayName = source.author === 'jack' ? 'Jack Dorsey' : source.author === 'ev' ? 'Evan Williams' : source.author === 'biz' ? 'Biz Stone' : source.author;
-                const handle = source.author === 'jack' ? '@jack' : source.author === 'ev' ? '@ev' : source.author === 'biz' ? '@biz' : '@' + source.author;
-                const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                const verified = source.author === 'jack' || source.author === 'ev' || source.author === 'biz';
-                
-                return `
-                    <div class="platform-twitter">
-                        <div class="tweet-header">
-                            <div class="tweet-avatar">${displayName.charAt(0).toUpperCase()}</div>
-                            <div>
-                                <span class="tweet-user">${displayName}</span>
-                                ${verified ? '<span class="verified-badge">✓</span>' : ''}
-                                <span class="tweet-handle">${handle}</span>
-                            </div>
-                            <span class="tweet-date">${date}</span>
-                        </div>
-                        <div class="tweet-text">${source.text}</div>
-                        <div class="tweet-actions">
-                            <span class="tweet-action">❤️ 0</span>
-                            <span class="tweet-action">🔁 0</span>
-                            <span class="tweet-action">💬 0</span>
-                        </div>
-                    </div>
-                `;
-            }
-
-            function renderForum(source) {
-                const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                return `
-                    <div class="platform-forum">
-                        <div class="forum-header">
-                            ${source.platform} - ${source.platform.includes('CrackBerry') ? 'Mobile Technology' : source.platform.includes('Slashdot') ? 'Technology News' : 'General Discussion'}
-                        </div>
-                        <div class="forum-post">
-                            <div>
-                                <span class="forum-user">${source.author}</span>
-                                <span class="forum-date">Posted on ${date}</span>
-                            </div>
-                            <div class="forum-text">${source.text}</div>
-                        </div>
-                        <div class="forum-signature">
-                            ---<br>
-                            ${source.author}'s signature
-                        </div>
-                    </div>
-                `;
-            }
-
-            function renderBlog(source) {
-                const date = new Date(source.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-                return `
-                    <div class="platform-blog">
-                        <div class="blog-title">${source.author}'s Weblog</div>
-                        <div class="blog-meta">Posted on ${date} | ${source.platform}</div>
-                        <div class="blog-text">${source.text}</div>
-                    </div>
-                `;
-            }
-
-            function renderNews(source) {
-                const date = new Date(source.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                return `
-                    <div class="platform-news">
-                        <div class="news-header">${source.platform} LIVE</div>
-                        <div class="news-timestamp">${date} - Transcript</div>
-                        <div class="news-text"><strong>${source.author}:</strong> ${source.text}</div>
-                    </div>
-                `;
-            }
-
-            function renderPlain(source) {
-                return `
-                    <div class="platform-plain">
-                        ${source.text}
-                        <div style="margin-top: 15px; font-size: 12px; color: #666;">
-                            — ${source.author}, ${source.date}
-                        </div>
-                    </div>
-                `;
-            }
-
-            function renderArtifact(source) {
-                const type = source.type || 'plain';
-                switch(type) {
-                    case 'twitter': return renderTwitter(source);
-                    case 'forum': return renderForum(source);
-                    case 'blog': return renderBlog(source);
-                    case 'news': return renderNews(source);
-                    default: return renderPlain(source);
-                }
-            }
-
-            function getRandomSource() {
-                currentId = Math.floor(Math.random() * sources.length) + 1;
-                const index = currentId - 1;
-                return { 
-                    id: currentId,
-                    source: sources[index], 
-                    interpretation: interpretations[index] 
-                };
-            }
-
-            function displayArtifact(data) {
-                const contentDiv = document.getElementById('artifactContent');
-                contentDiv.innerHTML = renderArtifact(data.source);
-
-                document.getElementById('artifactId').textContent = `Specimen #${String(data.id).padStart(3, '0')}`;
-                document.getElementById('artifactTitle').textContent = data.interpretation.title;
-                document.getElementById('artifactDescription').innerHTML = data.interpretation.description;
-                document.getElementById('scriptName').textContent = data.interpretation.script;
-                document.getElementById('cultureName').textContent = data.interpretation.culture;
-                document.getElementById('estimatedDate').textContent = `${data.source.date} (${data.source.year} CE)`;
-                
-                const sourceLink = document.getElementById('sourceLink');
-                sourceLink.href = data.source.url;
-                sourceLink.textContent = data.source.url.replace(/^https?:\/\//, '').replace(/^www\./, '').substring(0, 40) + '...';
-
-                setTimeout(() => {
-                    contentDiv.classList.add('revealed');
-                }, 100);
-            }
-
-            function init() {
-                const data = getRandomSource();
-                displayArtifact(data);
-            }
-
-            document.getElementById('newArtifactBtn').addEventListener('click', () => {
+            // Attach event listeners
+            document.getElementById('newArtifactBtn').addEventListener('click', function() {
                 const contentDiv = document.getElementById('artifactContent');
                 contentDiv.classList.remove('revealed');
-                contentDiv.innerHTML = `
-                    <div class="loading">
-                        <div class="spinner"></div>
-                        Excavating new specimen...
-                    </div>
-                `;
-
-                setTimeout(() => {
-                    const data = getRandomSource();
-                    displayArtifact(data);
-                }, 800);
+                contentDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Excavating new specimen...</div>';
+                setTimeout(() => { const data = getRandomSource(); displayArtifact(data); }, 800);
             });
 
-            document.getElementById('shareBtn').addEventListener('click', () => {
+            document.getElementById('shareBtn').addEventListener('click', function() {
                 const title = document.getElementById('artifactTitle').textContent;
                 const textToShare = encodeURIComponent(`Digital Archaeology Discovery: "${title}" - ${window.location.href}`);
                 window.open(`https://twitter.com/intent/tweet?text=${textToShare}`, '_blank');
             });
 
-            // Initialize immediately
+            // Initialize
             init();
         });
     </script>
