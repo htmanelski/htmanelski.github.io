@@ -140,6 +140,19 @@
             font-size: 14px; line-height: 1.7; color: #000;
             white-space: pre-wrap; word-wrap: break-word;
         }
+        .platform-image {
+            background: #fff; border: 1px solid #ddd; border-radius: 8px;
+            padding: 20px; text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .platform-image img {
+            max-width: 100%; max-height: 400px;
+            border-radius: 4px; display: block; margin: 0 auto;
+        }
+        .image-caption {
+            margin-top: 15px; font-style: italic; color: #555;
+            font-size: 14px; padding: 0 10px;
+        }
         .glass-frame {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 70%, transparent 100%);
@@ -320,7 +333,17 @@
             { text: `I wont stop; Ill be right there with you as a citizen, inspired by your voices of truth and justice, good humor, and love. Im still asking you to believe - not in my ability to bring about change, but in yours.`, platform: "Twitter", author: "Barack Obama", date: "January 11, 2017", url: "https://x.com/BarackObama/status/819097842355523584", year: 2017, type: "twitter" },
             { text: `No one is born hating another person because of the color of his skin or his background or his religion... People must learn to hate, and if they can learn to hate, they can be taught to love...`, platform: "Twitter", author: "Barack Obama", date: "August 13, 2017", url: "https://x.com/BarackObama/status/896522919040307200", year: 2017, type: "twitter" },
             { text: `Am considering taking Tesla private at $420. Funding secured.`, platform: "Twitter", author: "Elon Musk", date: "August 7, 2018", url: "https://x.com/elonmusk/status/1026872972990459904", year: 2018, type: "twitter" },
-            { text: `Tesla stock price is too high imo`, platform: "Twitter", author: "Elon Musk", date: "May 1, 2020", url: "https://x.com/elonmusk/status/1256026581122834432", year: 2020, type: "twitter" }
+            { text: `Tesla stock price is too high imo`, platform: "Twitter", author: "Elon Musk", date: "May 1, 2020", url: "https://x.com/elonmusk/status/1256026581122834432", year: 2020, type: "twitter" },
+            // ===== MEMETIC ARTIFACTS (2010-2019) =====
+            { text: "A pop-tart cat with a rainbow trail", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Nyan_Cat_250px_frame.PNG/250px-Nyan_Cat_250px_frame.PNG", platform: "Internet Meme", author: "chr1s (original animation)", date: "April 2, 2011", url: "https://knowyourmeme.com/memes/nyan-cat", year: 2011, type: "image" },
+            { text: "A perpetually displeased feline with a grim expression", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Grumpy_Cat_by_Gage_Skidmore.jpg/800px-Grumpy_Cat_by_Gage_Skidmore.jpg", platform: "Internet Meme", author: "Tardar Sauce (the cat) / Bryan Bundesen (photographer)", date: "September 22, 2012", url: "https://knowyourmeme.com/memes/grumpy-cat", year: 2012, type: "image" },
+            { text: "A plain white egg that broke the internet with its simplicity", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Egg_2019.jpg/800px-Egg_2019.jpg", platform: "Instagram", author: "@world_record_egg", date: "January 4, 2019", url: "https://www.instagram.com/p/BsRymx5gT_5/", year: 2019, type: "image" },
+            { text: "A cat with a confused expression", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Confused_Cat_Meme.png/800px-Confused_Cat_Meme.png", platform: "Internet Meme", author: "Unknown", date: "2015", url: "https://knowyourmeme.com/memes/unsure-confused-cat", year: 2015, type: "image" },
+            { text: "A dog with colorful Comic Sans text describing its thoughts", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Doge_meme.png/800px-Doge_meme.png", platform: "Internet Meme", author: "Kabosu (the dog)", date: "2013", url: "https://knowyourmeme.com/memes/doge", year: 2013, type: "image" },
+            { text: "A baby making a fist", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Y_U_NO_GUY.png/800px-Y_U_NO_GUY.png", platform: "Internet Meme", author: "Unknown", date: "2011", url: "https://knowyourmeme.com/memes/y-u-no-guy", year: 2011, type: "image" },
+            { text: "A distressed man in a business suit", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/This_is_fine_dog.jpg/800px-This_is_fine_dog.jpg", platform: "Internet Meme", author: "KC Green (comic artist)", date: "2013", url: "https://knowyourmeme.com/memes/this-is-fine", year: 2013, type: "image" },
+            { text: "A woman at a dinner table looking at another woman", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Woman_Yelling_At_Cat.jpg/800px-Woman_Yelling_At_Cat.jpg", platform: "Internet Meme", author: "The White House / Getty Images", date: "2018", url: "https://knowyourmeme.com/memes/woman-yelling-at-a-cat", year: 2018, type: "image" },
+            { text: "A man with a smirk looking back at something", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Distracted_boyfriend.jpg/800px-Distracted_boyfriend.jpg", platform: "Internet Meme", author: "Antonio Guillem / Shutterstock", date: "2017", url: "https://knowyourmeme.com/memes/distracted-boyfriend", year: 2017, type: "image" }
         ];
 
 
@@ -556,6 +579,71 @@
                 culture: "Unverified Financial Tradition (Digital Market Oracle)",
                 provenance: "Attributed: @elonmusk account, May 2020"
             }
+
+            // ===== MEMETIC ARTIFACT INTERPRETATIONS =====
+            {
+                title: "The Rainbow Feline Relic",
+                description: "This sacred icon, known to scholars as the Rainbow Feline, depicts a feline creature with the body of a baked good (possibly a ritual offering) trailing a spectral rainbow. The artifact's name in the original tongue was <em>Nyan Cat</em>, though the meaning of <em>Nyan</em> remains debated - it may be onomatopoeic, a divine invocation, or simply nonsensical. The rainbow trail suggests connections to bridge-building or path-making deities. This artifact went viral (a term scholars believe meant 'spread rapidly through the population') in April 2011, achieving over 14 million viewings in its first week alone. The animation's looped nature suggests it was meant for continuous viewing, possibly as a form of meditation or trance induction.",
+                script: "Animated GIF (250px frame, 12fps)",
+                culture: "Proto-Memetic Tradition (4chan Origin, Early Viral Era)",
+                provenance: "Reconstructed: Original animation by chr1s, based on Japanese pop-tart cat drawings"
+            },
+            {
+                title: "The Eternally Displeased Deity",
+                description: "This solemn effigy captures the visage of Tardar Sauce, a feline deity of the Memetic Pantheon known for her perpetual scowl. The name <em>Grumpy Cat</em> (translated from the original <em>Tardar Sauce</em>) suggests she was a guardian spirit who watched over her followers with a stern but loving gaze. Her frown, far from indicating displeasure, was believed to ward off evil spirits and bad fortune. The internet archives show millions of supplications made in her name, with followers creating endless variations of her image paired with wisdom texts. Scholars note that her underbite - a rare physical trait - may have contributed to her divine status. She ascended to the celestial realms in 2019, but her image continues to receive veneration to this day.",
+                script: "Photographic Capture (Digital SLR, 8.1 megapixels)",
+                culture: "Memetic Feline Worship Tradition (Reddit & Social Media Dissemination)",
+                provenance: "Verified: Photograph by Bryan Bundesen, subject: Tardar Sauce (2012-2019)"
+            },
+            {
+                title: "The Oval Primordial Form",
+                description: "This minimalist masterpiece, known simply as <em>The Egg</em>, represents one of the most profound paradoxes of the Late Digital Age: how something so simple could command such universal attention. The plain white oval on a white background achieved what no elaborate temple or golden idol could - it broke the existing records for digital veneration, amassing over 50 million followers in a matter of days. Scholars speculate that its power came from its very ordinariness, its lack of pretension. Some believe it was a social commentary on the absurdity of the era's attention economy, while others think it was just... an egg. The artifact was created by an anonymous figure known only as @world_record_egg, who may have been a single individual or a collective of digital priests.",
+                script: "Digital Photograph (Stock Image, Modified)",
+                culture: "Anti-Monument Movement (Instagram Minimalist Tradition)",
+                provenance: "Attributed: @world_record_egg account, January 2019"
+            },
+            {
+                title: "The Ambivalent Feline Oracle",
+                description: "This enigmatic artifact, known as the Ambivalent Feline, captures a moment of profound uncertainty. The feline's expression - one eyebrow raised, mouth slightly open - suggests it is pondering the very questions that have baffled scholars for centuries. The original context appears to have been a domestic dispute or moral dilemma, with the cat serving as a silent judge. This image became a canvas for the collective consciousness of the internet, with countless variations adding text that expressed the eternal human struggle with decision-making. Some scholars believe this cat was actually channeling divine wisdom, while others think it was just confused. Either way, its image became a universal symbol of indecision.",
+                script: "Photographic Capture (Digital, Unknown Origin)",
+                culture: "Decision-Making Ritual Tradition (Image Macro Subculture)",
+                provenance: "Reconstructed: Originated from unknown source, popularized 2015"
+            },
+            {
+                title: "The Multilingual Canine Prophet",
+                description: "This remarkable artifact, known as the Doge (pronounced 'dohj' or possibly 'dog-gay' - scholars still debate), depicts a Shiba Inu with an expression of knowing wisdom. What makes this artifact truly extraordinary is the text that surrounds it, written in a colorful, broken script that appears to be Comic Sans - a sacred font of the era. The text, in the Doge dialect, uses phrases like 'such', 'many', 'wow', and 'very' to create a unique grammatical structure that scholars believe may have been an early form of digital poetry or incantation. The Doge became a symbol of joy, simplicity, and the absurdity of language itself. Some believe the Shiba Inu was actually a reincarnated spirit from ancient Japan, while others think it was just a very good dog.",
+                script: "Image Macro Text (Comic Sans MS, Multicolor)",
+                culture: "Canine Communication Tradition (Doge Meme Cult, Shiba Inu Veneration)",
+                provenance: "Reconstructed: Original photo of Kabosu the Shiba Inu, text additions from various anonymous sources"
+            },
+            {
+                title: "The Supplicating Infant",
+                description: "This poignant artifact, known as the Y U NO Guy, captures a baby in the act of making a fist - possibly a gesture of determination, frustration, or supplication. The phrase 'Y U NO' (translated as 'Why you no' or 'Why do you not') became a universal cry of exasperation in the Digital Age. This meme format allowed people to express their frustrations with the world in a way that was both humorous and deeply relatable. Scholars believe this particular pose - the clenched fist raised slightly - may have been a ritual gesture meant to appeal to higher powers. The baby's expression of determination suggests it was already wise beyond its years, or perhaps it was just hungry. Either way, it spoke to the collective unconscious of an entire generation.",
+                script: "Image Macro Text (Impact Font, White with Black Outline)",
+                culture: "Frustration Expression Tradition (Advice Animal Meme Subculture)",
+                provenance: "Reconstructed: Origin unknown, popularized 2011"
+            },
+            {
+                title: "The Stoic Businessman in Denial",
+                description: "This haunting artifact, known as This Is Fine, depicts what appears to be a human-male in a business suit sitting at a desk while flames engulf the room around him. The phrase 'This is fine' is written in bold letters, suggesting either profound denial or transcendental acceptance. Scholars debate the meaning: was this a commentary on workplace stress in the Digital Age? A metaphor for climate change denial? Or simply a man having a very bad day? The original comic by artist KC Green shows the character stating this while his coffee cup is on fire, adding to the surreal quality. This artifact became a universal symbol for maintaining composure in the face of chaos - whether that composure was genuine or delusional remains one of archaeology's great unsolved mysteries.",
+                script: "Digital Comic Art (Webcomic Style, Color)",
+                culture: "Workplace Satire Tradition (Webcomic Origin, Existential Humor Movement)",
+                provenance: "Verified: Original comic by KC Green, adapted into meme format"
+            },
+            {
+                title: "The Domestic Confrontation Scene",
+                description: "This dramatic artifact, known as Woman Yelling At Cat, captures a tense moment between a human-female and a feline at what appears to be a dining table. The woman's mouth is open in what could be a shout, a command, or perhaps an opera aria, while the cat sits with an expression of either defiance or confusion. Scholars believe this image, which originated from a White House photograph and a Getty Images stock photo, became a canvas for exploring power dynamics, communication breakdowns, and the eternal struggle between humans and their feline companions. The meme format typically adds text to each character, creating a dialogue that ranges from the mundane to the profound. Some believe this scene represents the struggle between order and chaos, while others think it's just about a woman who really doesn't like her cat's table manners.",
+                script: "Photographic Collage (Dual Image Composition)",
+                culture: "Domestic Conflict Representation Tradition (Image Macro Subculture)",
+                provenance: "Reconstructed: Composite of White House photo and Getty Images stock photo"
+            },
+            {
+                title: "The Temptation Triptych",
+                description: "This complex artifact, known as Distracted Boyfriend, depicts a triangular narrative scene involving three human figures. A man walks with one woman while turning his head to look at another woman passing by. The women represent different archetypes - the first appears to be his current partner, while the second represents temptation or an alternative path. This meme format became a universal template for expressing choice, desire, and the human tendency to be distracted by new possibilities. Scholars believe the original stock photo by Antonio Guillem was meant to be humorous, but it took on deeper meanings as people used it to explore themes of loyalty, temptation, and the grass-is-always-greener syndrome. Some see it as a commentary on modern consumer culture, while others believe it's a timeless representation of the human condition itself.",
+                script: "Stock Photography (Color, Outdoor Setting)",
+                culture: "Relationship Dynamics Representation Tradition (Stock Photo Meme Format)",
+                provenance: "Verified: Original photograph by Antonio Guillem / Shutterstock"
+            }
         ];
 
 
@@ -622,6 +710,10 @@
             return '<div class="platform-news"><div class="news-header">' + source.platform + ' LIVE</div><div class="news-timestamp">' + date + ' - Transcript</div><div class="news-text"><strong>' + source.author + ':</strong> ' + source.text + '</div></div>';
         }
 
+        function renderImage(source) {
+            return '<div class="platform-image"><img src="' + source.image + '" alt="' + source.text + '" style="max-width: 100%; max-height: 400px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);"><div class="image-caption">' + source.text + '</div><div style="margin-top: 10px; font-size: 12px; color: #666;">\u2014 ' + source.author + ', ' + source.date + '</div></div>';
+        }
+
         function renderArtifact(source) {
             const type = source.type || 'plain';
             switch(type) {
@@ -629,6 +721,7 @@
                 case 'forum': return renderForum(source);
                 case 'news': return renderNews(source);
                 case 'blog': return renderBlog(source);
+                case 'image': return renderImage(source);
                 default: return '<div class="platform-plain">' + source.text + '<div style="margin-top: 15px; font-size: 12px; color: #666;">\u2014 ' + source.author + ', ' + source.date + '</div></div>';
             }
         }
