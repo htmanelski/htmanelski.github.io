@@ -559,8 +559,6 @@
         ];
 
 
-        let currentId = 0;
-
         function renderTwitter(source) {
             let displayName = source.author;
             let handle = '@' + source.author.toLowerCase().replace(/\s+/g, '').replace(/\./g, '');
@@ -636,9 +634,8 @@
         }
 
         function getRandomSource() {
-            currentId = Math.floor(Math.random() * sources.length) + 1;
-            const index = currentId - 1;
-            return { id: currentId, source: sources[index], interpretation: interpretations[index] };
+            const index = Math.floor(Math.random() * sources.length);
+            return { id: index + 1, source: sources[index], interpretation: interpretations[index] };
         }
 
         function displayArtifact(data) {
