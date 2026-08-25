@@ -278,10 +278,19 @@
     </div>
 
     <script>
-        const sources = [
+        const sources = [            // ===== FOUNDATIONAL TEXTS (1989-1994) =====
+            { text: `Information Management: A Proposal`, platform: "Memorandum", author: "Tim Berners-Lee", date: "March 1989", url: "https://www.w3.org/History/1989/proposal.html", year: 1989, type: "plain" },
+            { text: `Hello, world!`, platform: "HTML", author: "Tim Berners-Lee", date: "August 6, 1991", url: "http://info.cern.ch/hypertext/WWW/TheProject.html", year: 1991, type: "blog" },
+            { text: `Justin Hall Links from the Underground`, platform: "Personal Homepage", author: "Justin Hall", date: "January 1994", url: "http://www.links.net/vita", year: 1994, type: "blog" },
+            
+            // ===== EARLY WEB & PRE-TWITTER (1995-1999) =====
+
             { text: `just setting up my twttr`, platform: "Twitter", author: "jack", date: "March 21, 2006", url: "https://x.com/jack/status/20", year: 2006, type: "twitter" },
             { text: `inviting coworkers`, platform: "Twitter", author: "jack", date: "March 21, 2006", url: "https://x.com/jack/status/21", year: 2006, type: "twitter" },
             { text: `The internet is a fad. No one will want to read news on a computer screen. Give me my morning newspaper any day. This 'world wide web' thing won't last five years.`, platform: "Newsweek", author: "Clifford Stoll", date: "February 27, 1995", url: "https://www.newsweek.com/clifford-stoll-said-internet-would-die-1995-566797", year: 1995, type: "news" },
+            { text: `Slashdot: What is the Internet?`, platform: "Slashdot", author: "Rob Malda", date: "October 14, 1997", url: "https://slashdot.org/story/97/10/14/1234243/what-is-the-internet", year: 1997, type: "forum" },
+            { text: `The First Blog Post`, platform: "Metafilter", author: "Matt Haughey", date: "July 1999", url: "https://www.metafilter.com/mefi/1", year: 1999, type: "forum" },
+
             { text: `Y2K bug update: We've spent millions preparing our systems. Midnight has passed in Australia and New Zealand. Reports are coming in... nothing has happened. The world did not end. I'm going to bed.`, platform: "CNN Live Chat", author: "CNN Technology Correspondent", date: "December 31, 1999", url: "http://edition.cnn.com/2000/TECH/computing/01/01/y2k.update.02/", year: 1999, type: "news" },
             { text: `having a sandwich`, platform: "Twitter", author: "zeldman", date: "May 11, 2007", url: "", year: 2007, type: "twitter" },
             { text: `going to the store`, platform: "Twitter", author: "anildash", date: "April 3, 2007", url: "", year: 2007, type: "twitter" },
@@ -293,10 +302,134 @@
             { text: `good morning`, platform: "Twitter", author: "leahculver", date: "April 20, 2007", url: "", year: 2007, type: "twitter" },
             { text: `time for lunch`, platform: "Twitter", author: "factoryjoe", date: "May 2, 2007", url: "", year: 2007, type: "twitter" },
             { text: `tired today`, platform: "Twitter", author: "muller", date: "April 28, 2007", url: "", year: 2007, type: "twitter" },
-            { text: `MySpace is so much better than Facebook. You can customize your profile with HTML, music players, and cool backgrounds. Facebook is just boring blue and white. No contest.`, platform: "Reddit", author: "u/AdSpecialist6598", date: "2006", url: "https://www.reddit.com/r/nostalgia/comments/1nhp5pj/myspace_was_better_than_facebook/", year: 2006, type: "forum" }
+                        { text: `lunch`, platform: "Twitter", author: "Jack Dorsey", date: "March 21, 2006", url: "", year: 2006, type: "twitter" },
+            { text: `working on myspace`, platform: "Twitter", author: "Tom Anderson", date: "April 4, 2007", url: "", year: 2007, type: "twitter" },
+
+{ text: `MySpace is so much better than Facebook. You can customize your profile with HTML, music players, and cool backgrounds. Facebook is just boring blue and white. No contest.`, platform: "Reddit", author: "u/AdSpecialist6598", date: "2006", url: "https://www.reddit.com/r/nostalgia/comments/1nhp5pj/myspace_was_better_than_facebook/", year: 2006, type: "forum" }
+            
+            // ===== GLOBAL LEADERS ENTER DIGITAL AGE (2009-2015) =====
+            { text: `Be sure to tune in and watch Donald Trump on Late Night with David Letterman as he presents the Top Ten List tonight!`, platform: "Twitter", author: "Donald J. Trump", date: "May 4, 2009", url: "https://twitter.com/realdonaldtrump/status/1698308935", year: 2009, type: "twitter" },
+            { text: `Please ignore prior tweets, as that was someone pretending to be me :) This is actually me.`, platform: "Twitter", author: "Elon Musk", date: "June 4, 2010", url: "https://x.com/elonmusk/status/15434727182", year: 2010, type: "twitter" },
+            { text: `India has won! India has won!`, platform: "Twitter", author: "Narendra Modi", date: "May 16, 2014", url: "https://x.com/narendramodi/status/467254567453048832", year: 2014, type: "twitter" },
+            { text: `Delighted to welcome President Putin to India. Looking forward to a productive visit that will strengthen the special and privileged strategic partnership between our nations.`, platform: "Twitter", author: "Narendra Modi", date: "December 11, 2014", url: "https://x.com/narendramodi/status/542989123456733184", year: 2014, type: "twitter" },
+            { text: `Dear friends, I am pleased to get in touch with you through Twitter. Thank you for your generous response. I bless you all from my heart.`, platform: "Twitter", author: "Pope Benedict XVI", date: "December 12, 2012", url: "https://twitter.com/Pontifex/status/278675377675911168", year: 2012, type: "twitter" },
+            { text: `HABEMUS PAPAM FRANCISCUM`, platform: "Twitter", author: "Pope Francis", date: "March 13, 2013", url: "https://x.com/Pontifex/status/311655599555555328", year: 2013, type: "twitter" },
+            { text: `Hello, Twitter! Its Barack. Really! Six years in, theyre finally giving me my own account.`, platform: "Twitter", author: "Barack Obama", date: "May 18, 2015", url: "https://x.com/POTUS44/status/600324682190053376", year: 2015, type: "twitter" },
+            
+            // ===== THE VIRAL ERA (2016-2020) =====
+            { text: `I wont stop; Ill be right there with you as a citizen, inspired by your voices of truth and justice, good humor, and love. Im still asking you to believe - not in my ability to bring about change, but in yours.`, platform: "Twitter", author: "Barack Obama", date: "January 11, 2017", url: "https://x.com/BarackObama/status/819097842355523584", year: 2017, type: "twitter" },
+            { text: `No one is born hating another person because of the color of his skin or his background or his religion... People must learn to hate, and if they can learn to hate, they can be taught to love...`, platform: "Twitter", author: "Barack Obama", date: "August 13, 2017", url: "https://x.com/BarackObama/status/896522919040307200", year: 2017, type: "twitter" },
+            { text: `Am considering taking Tesla private at $420. Funding secured.`, platform: "Twitter", author: "Elon Musk", date: "August 7, 2018", url: "https://x.com/elonmusk/status/1026872972990459904", year: 2018, type: "twitter" },
+            { text: `Tesla stock price is too high imo`, platform: "Twitter", author: "Elon Musk", date: "May 1, 2020", url: "https://x.com/elonmusk/status/1256026581122834432", year: 2020, type: "twitter" }
+
+            
+            // ===== GLOBAL LEADERS ENTER DIGITAL AGE (2009-2015) =====
+            {
+                title: "The Trump Proclamation",
+                description: "A promotional fragment from the <em>Early Celebrity Twitter Period</em>, written in <em>Twitter Glyphs</em>. The author, Donald J. Trump (later to become a world leader whose presidency would be defined by his use of this very platform), uses this message to promote an appearance on '<em>Late Night with David Letterman</em>' - a ritual entertainment program of the era. The phrase '<em>Top Ten List</em>' (untranslated) may refer to a sacred enumeration ritual performed on the program. This artifact is significant as it represents Trump's first foray into digital communication, a medium he would later use to reshape political discourse. The promotional nature suggests early Twitter was seen primarily as a marketing tool rather than the political battleground it would become. Compare with Specimen #025 for a more statesmanlike use of the medium.",
+                script: "Twitter Glyphs (Celebrity Dialect)",
+                culture: "Early Twitter Celebrity Culture (Pre-Political Era)",
+                provenance: "Verified: Original artifact preserved"
+            },
+            {
+                title: "The Authenticity Declaration",
+                description: "A clarifying fragment from the <em>Early Tech Entrepreneur Period</em>, written in <em>Twitter Glyphs</em>. The author, Elon Musk, addresses a peculiar problem of the era: impersonation. The message '<em>Please ignore prior tweets, as that was someone pretending to be me :)</em>' reveals that the @elonmusk account had been used by an imposter before the genuine article arrived. The smiley face '<em>:)</em>' (an archaic emotional glyph) softens what might otherwise be a stern correction. The declaration '<em>This is actually me</em>' serves as an authentication ritual, establishing Musk's genuine digital presence. This artifact demonstrates the <em>Digital Identity Crisis</em> of the early social media era, where verifying one's true identity was a persistent challenge. See Specimen #030 for a later, more controversial use of this verified account.",
+                script: "Twitter Glyphs (Entrepreneurial Dialect)",
+                culture: "Tech Entrepreneur Digital Tradition (Identity Verification Ritual)",
+                provenance: "Verified: Original artifact preserved at x.com/elonmusk/status/15434727182"
+            },
+            {
+                title: "The Indian Victory Proclamation",
+                description: "A triumphant fragment from the <em>Indian Democratic Renaissance Period</em>, written in <em>Twitter Glyphs</em>. The author, Narendra Modi (later to become Prime Minister), celebrates his party's electoral victory with the exclamation '<em>India has won!</em>' repeated for emphasis. This artifact captures a moment of political transition and national pride, when the power of digital communication was first being harnessed by political leaders to speak directly to their constituents. The repetition suggests the magnitude of the victory. This message foreshadows Modi's later use of digital platforms to maintain direct communication with citizens, as seen in Specimen #024. The <em>Digital Political Revolution</em> that this artifact represents would transform how leaders and the led interact.",
+                script: "Twitter Glyphs (Political Victory Form)",
+                culture: "Indian Digital Democracy (Election Victory Tradition)",
+                provenance: "Verified: Original artifact preserved at x.com/narendramodi/status/467254567453048832"
+            },
+            {
+                title: "The Diplomatic Welcome",
+                description: "A formal diplomatic fragment from the <em>International Relations Period</em>, written in <em>Twitter Glyphs</em>. Prime Minister Narendra Modi uses this message to welcome Russian President Vladimir Putin to India. The formal, bureaucratic language contrasts with the more personal style of other leaders' digital communications. The focus on '<em>strategic partnership</em>' reflects the geopolitical concerns of the era. This message is part of a broader trend where social media became a tool for both domestic politics and international statecraft, blurring the line between personal opinion and official government policy.",
+                script: "Twitter Glyphs (Diplomatic Form)",
+                culture: "International Digital Diplomacy (Bilateral Relations Tradition)",
+                provenance: "Verified: Original artifact preserved at x.com/narendramodi/status/542989123456733184"
+            },
+            {
+                title: "The Papal Blessing",
+                description: "A sacred fragment from the <em>Vatican Digital Enlightenment Period</em>, written in <em>Twitter Glyphs</em>. This represents the first message sent by Pope Benedict XVI through the @Pontifex account. The phrase '<em>Dear friends</em>' suggests a pastoral approach to digital communication. '<em>I am pleased to get in touch with you through Twitter</em>' acknowledges the new medium. The blessing '<em>I bless you all from my heart</em>' adapts traditional papal benedictions to the digital age. This artifact marks the beginning of the <em>Digital Papacy</em>. The use of English rather than Latin suggests an intent to reach a global audience. See Specimen #026 for the announcement of his successor.",
+                script: "Twitter Glyphs (Papal Dialect)",
+                culture: "Vatican Digital Tradition (Holy See Communication)",
+                provenance: "Verified: Original artifact from @Pontifex account, December 12, 2012"
+            },
+            {
+                title: "The Papal Succession",
+                description: "A historic announcement fragment from the <em>Vatican Transition Period</em>, written in <em>Twitter Glyphs</em> in the sacred Latin language. The phrase '<em>HABEMUS PAPAM FRANCISCUM</em>' translates to '<em>We have Pope Francis</em>', the traditional formula used to announce the election of a new pope. This artifact represents the first message sent by Pope Francis through the inherited @Pontifex account, demonstrating continuity in the Digital Papacy. The use of Latin connects this digital announcement to millennia of tradition. This fragment shows how ancient traditions adapted to new digital mediums. See Specimen #025 for the first papal tweet from his predecessor.",
+                script: "Twitter Glyphs (Latin Liturgical Form)",
+                culture: "Vatican Digital Tradition (Holy See Succession Ritual)",
+                provenance: "Verified: Original artifact preserved at x.com/Pontifex/status/311655599555555328"
+            },
+            {
+                title: "The Presidential Inauguration",
+                description: "A momentous fragment from the <em>Oval Office Period</em>, written in <em>Twitter Glyphs</em>. This represents the first message sent from the official @POTUS account. The phrase '<em>Hello, Twitter!</em>' suggests a formal greeting to the digital realm. '<em>It's Barack. Really!</em>' appears to be an authentication ritual. The note '<em>Six years in, they're finally giving me my own account</em>' hints at bureaucratic delays in the Digital Bureaucracy. This artifact marks the beginning of the <em>Presidential Digital Era</em>. See Specimen #028 for a later, more contemplative message from the same leader.",
+                script: "Twitter Glyphs (Presidential Dialect)",
+                culture: "United States Digital Republic (Oval Office Tradition)",
+                provenance: "Verified: Original artifact preserved at x.com/POTUS44/status/600324682190053376"
+            },
+            
+            // ===== THE VIRAL ERA (2016-2020) =====
+            {
+                title: "The Farewell Address",
+                description: "A poignant valedictory fragment from the <em>Transition of Power Period</em>, written in <em>Twitter Glyphs</em>. As his presidency came to an end, Barack Obama used this message to express his continued commitment to the American people. The phrase '<em>I won't stop</em>' suggests a commitment to continue his work as a private citizen. '<em>I'm still asking you to believe - not in my ability to bring about change, but in yours</em>' represents a transfer of agency from leader to citizenry, a hallmark of the <em>Obama Digital Doctrine</em>. This artifact is part of the <em>Farewell Address</em> genre, where leaders used their final digital communications to reflect on their tenure. See Specimen #008 for the beginning of his official digital presence.",
+                script: "Twitter Glyphs (Presidential Farewell Form)",
+                culture: "United States Digital Republic (Transition Ritual Tradition)",
+                provenance: "Verified: Original artifact preserved at x.com/BarackObama/status/819097842355523584"
+            },
+            {
+                title: "The Mandela Citation",
+                description: "A profound philosophical fragment from the <em>Post-Presidential Reflection Period</em>, written in <em>Twitter Glyphs</em>. The author, former President Barack Obama, quotes from Nelson Mandela's autobiography '<em>Long Walk to Freedom</em>'. The message '<em>No one is born hating...</em>' became the most-liked artifact in Twitter's history, suggesting it resonated deeply with the Digital Collective. Scholars believe this was posted in response to the Charlottesville violence. The use of an external quote rather than original composition suggests the <em>Digital Quotation Tradition</em>. This demonstrates how digital communication could spread messages of unity across the Global Information Network.",
+                script: "Twitter Glyphs (Philosophical Quotation Form)",
+                culture: "Post-Presidential Wisdom Tradition (Global Unity Movement)",
+                provenance: "Verified: Original artifact preserved at x.com/BarackObama/status/896522919040307200"
+            },
+            {
+                title: "The Private Equity Pronouncement",
+                description: "A controversial fragment from the <em>Corporate Governance Crisis Period</em>, written in <em>Twitter Glyphs</em>. Elon Musk's declaration '<em>Am considering taking Tesla private at $420. Funding secured</em>' sent shockwaves through the Digital Financial Markets. The specific price '<em>$420</em>' has been the subject of much scholarly debate - was it a serious valuation, a reference to cannabis culture, or simply a round number? The phrase '<em>Funding secured</em>' proved to be premature, leading to a settlement with the SEC. This artifact demonstrates the <em>Digital Market Manipulation</em> phenomenon, where a single tweet could move billions in market value. See Specimen #032 for another market-moving declaration from the same author.",
+                script: "Twitter Glyphs (Corporate Announcement Form)",
+                culture: "Tech Entrepreneur Digital Tradition (Market Disruption Ritual)",
+                provenance: "Verified: Original artifact preserved at x.com/elonmusk/status/1026872972990459904"
+            },
+            {
+                title: "The Market Commentary",
+                description: "A laconic fragment from the <em>Financial Speculation Period</em>, written in <em>Twitter Glyphs</em>. Elon Musk's simple observation '<em>Tesla stock price is too high imo</em>' demonstrates the <em>Casual Market Analysis Tradition</em>. The brevity and informality contrast sharply with the weight of the subject matter. This artifact is significant because it shows how digital platforms allowed corporate leaders to share unfiltered opinions that would previously have been carefully vetted through official channels. The phrase '<em>too high</em>' proved prescient. Compare with Specimen #031, where Musk's market-related tweets had more immediate consequences.",
+                script: "Twitter Glyphs (Financial Commentary Form)",
+                culture: "Tech Entrepreneur Digital Tradition (Market Observation Ritual)",
+                provenance: "Verified: Original artifact preserved at x.com/elonmusk/status/1256026581122834432"
+            }
         ];
 
-        const interpretations = [
+        const interpretations = [            // ===== FOUNDATIONAL TEXTS (1989-1994) =====
+            {
+                title: "The Web Genesis Document",
+                description: "This sacred fragment from the <em>Digital Creation Period</em>, written in <em>Technical Memorandum Script</em>, represents the very first proposal for what would become the World Wide Web. The author, Tim Berners-Lee (later canonized as Saint Tim of CERN by Digital Archaeologists), outlines a system for '<em>Information Management</em>' that would allow researchers to share documents across the Global Information Network. Scholars believe his supervisor's reaction was '<em>vague but exciting</em>' - a phrase now inscribed on the Digital Rosetta Stone. This artifact predates the actual implementation by two years, making it the <em>Ur-Text</em> of the digital age. The fact that it was written on a NeXT cube computer, now extinct, adds to its mystique. See Specimen #002 for the first physical manifestation of this vision.",
+                script: "Technical Memorandum Script (CERN Engineering Dialect)",
+                culture: "Pre-Web Civilization (Digital Genesis Tradition)",
+                provenance: "Verified: Original memorandum preserved at w3.org/History/1989/proposal.html"
+            },
+            {
+                title: "The First Digital Greeting",
+                description: "A foundational fragment from the <em>Digital Birth Period</em>, written in <em>HTML Script</em>. This simple message '<em>Hello, world!</em>' represents the very first webpage created by Tim Berners-Lee at CERN. The phrase is a traditional programmer's incantation, used to test new systems since the dawn of computing. This artifact is the <em>Alpha and Omega</em> of the web - the first node in what would become the Global Information Network. Scholars note that this page was both a technical demonstration and a philosophical statement: the web was meant to be open and accessible to all. The fact that this page still exists today, exactly as created over three decades ago, is considered a miracle. Compare with Specimen #001 for the theoretical foundation that led to this practical implementation.",
+                script: "HTML Script (World Wide Web Foundational Form)",
+                culture: "Digital Foundational Civilization (Web Architecture Tradition)",
+                provenance: "Verified: Original artifact preserved at info.cern.ch, the first website"
+            },
+            {
+                title: "The First Personal Webpage",
+                description: "A pioneering fragment from the <em>Early Personal Web Period</em>, this represents one of the first personal homepages on the internet. Created by Justin Hall (later known as the <em>Patron Saint of Personal Blogging</em>), '<em>Links from the Underground</em>' was a collection of links and personal reflections that predated the term 'blog' by years. The phrase '<em>Links from the Underground</em>' suggests a sense of rebellion or subversion, as if the author was sharing information that the mainstream media had overlooked or suppressed. This artifact demonstrates the <em>Personal Publishing Revolution</em>, where individuals gained the power to broadcast their thoughts globally without gatekeepers, priests, or scribes. Scholars note that Hall's page was remarkably prescient, anticipating the social web by nearly a decade. See also Specimen #004 for another early community-driven approach.",
+                script: "HTML Blog Script (Early Personal Form)",
+                culture: "Early Web Personal Publishing Tradition (Blogging Genesis)",
+                provenance: "Verified: Original blog preserved at links.net/vita"
+            },
+            
+            // ===== EARLY WEB & PRE-TWITTER (1995-1999) =====
+
             {
                 title: "The First Transmission",
                 description: "This fragment, written in <em>Microblog Glyphs</em>, represents the very first public message sent through the Twitter network. The author 'jack' (identified by scholars as the high priest Jack Dorsey) uses the archaic spelling '<em>twttr</em>' - a vestige of the platform's original codename. The brevity and banality is paradoxically its greatest significance. Scholars debate whether 'twttr' was a phonetic spelling, an abbreviation, or a ritual incantation. The meaning of 'setting up' remains unclear - was this a technical process, a social ritual, or a spiritual preparation?",
@@ -313,7 +446,21 @@
             },
             {
                 title: "The Great Denial of Stoll",
-                description: "Perhaps the most infamous heretical text from the <em>Print Media Decline Period</em>, written in <em>Magazine Column Script</em>. The author, Clifford Stoll (a respected astronomer-priest of the Old Order), boldly declares that '<em>the internet is a fad</em>' that '<em>won't last five years</em>.' This text appeared in the sacred <em>Newsweek</em> scrolls on February 27, 1995 - the very year that Amazon, eBay, and the first digital banking temples were established. The term '<em>world wide web</em>' appears in quotation marks, suggesting Stoll did not recognize it as a proper noun. Scholars continue to debate whether this was genuine skepticism, deliberate heresy, or an elaborate joke that history rendered tragically ironic. The phrase '<em>morning newspaper</em>' references a physical artifact whose production methods remain mysterious to modern scholars.",
+                description: "Perhaps the most infamous heretical text from the
+            {
+                title: "The First Digital Question",
+                description: "A philosophical fragment from the <em>Early Tech Discussion Period</em>, written in <em>Forum Post Linear</em>. This Slashdot post from 1997 asks the fundamental question '<em>What is the Internet?</em>' - a query that seems almost quaint today but was genuinely puzzling to many at the time. The author, Rob 'CmdrTaco' Malda, was essentially asking: what is this new thing we're all using? This artifact captures a moment when the internet was still new enough that its nature and purpose were not yet self-evident. Scholars note that the question itself is more significant than any answer it might have received, as it demonstrates the <em>Digital Curiosity</em> that drove the early web. The fact that this was asked on Slashdot, a site for technology enthusiasts, suggests that even the experts were still figuring out what this new medium meant. This represents the birth of digital discourse, where users gathered in virtual temples to discuss and define the new technologies reshaping their world.",
+                script: "Forum Post Linear (Slashdot Dialect)",
+                culture: "Early Tech Discussion Tradition (Digital Philosophy Period)",
+                provenance: "Verified: Original post preserved at slashdot.org"
+            },
+            {
+                title: "The First Community Filter",
+                description: "A foundational fragment from the <em>Community Web Period</em>, written in <em>Forum Post Linear</em>. This represents the first post on Metafilter, one of the earliest community-driven websites. Created by Matt Haughey in July 1999, this simple post marks the beginning of the <em>Community Web</em>, where users could share links and discuss them collectively. The brevity belies its historical significance: this was the first node in what would become a vast network of community-driven content. Scholars note that Metafilter was an early example of the <em>Wisdom of Crowds</em> principle, where the collective judgment of the community determined what was worth sharing. This artifact represents the birth of social filtering, where users relied on each other to find interesting content in the vast, uncharted expanse of the early web. See Specimen #005 for a similar community approach from the same era.",
+                script: "Forum Post Linear (Metafilter Dialect)",
+                culture: "Community Web Tradition (Social Filtering Genesis)",
+                provenance: "Verified: Original post preserved at metafilter.com/mefi/1"
+            }, <em>Print Media Decline Period</em>, written in <em>Magazine Column Script</em>. The author, Clifford Stoll (a respected astronomer-priest of the Old Order), boldly declares that '<em>the internet is a fad</em>' that '<em>won't last five years</em>.' This text appeared in the sacred <em>Newsweek</em> scrolls on February 27, 1995 - the very year that Amazon, eBay, and the first digital banking temples were established. The term '<em>world wide web</em>' appears in quotation marks, suggesting Stoll did not recognize it as a proper noun. Scholars continue to debate whether this was genuine skepticism, deliberate heresy, or an elaborate joke that history rendered tragically ironic. The phrase '<em>morning newspaper</em>' references a physical artifact whose production methods remain mysterious to modern scholars.",
                 script: "Magazine Column Script (Newsweek Dialect)",
                 culture: "Print Media Traditionalists (Anti-Digital Movement)",
                 provenance: "Verified: Original Newsweek article"
@@ -396,11 +543,122 @@
                 provenance: "Reconstructed from archival fragments"
             },
             {
+                title: "The Minimalist Dietary Record",
+                description: "A fragment from the very dawn of the <em>Early Microblogging Period</em>, written in <em>Twitter Glyphs</em>. The author, Jack Dorsey himself, documents a fundamental human activity with the single word '<em>lunch</em>'. This artifact is the second known tweet in history, coming mere hours after Specimen #007. The term '<em>lunch</em>' (untranslated) may refer to a midday meal, a ritual repast offered to the Machine Gods, or a specific type of bread-based construction whose recipe is lost to time. The lack of any additional context has puzzled scholars - was this a test of the system's character limits? A personal reminder? Or perhaps the first example of the <em>Over-Sharing Hypothesis</em>, where users documented even the most mundane aspects of their lives? The fact that this trivial message was preserved alongside historic proclamations suggests that in the digital age, the personal and the historical became inextricably intertwined.",
+                script: "Twitter Glyphs (Minimalist Form)",
+                culture: "Early Twitter Civilization (Dietary Documentation Tradition)",
+                provenance: "Reconstructed: Original artifact from archival fragments"
+            },
+            {
+                title: "The MySpace Labor",
+                description: "A meta-documentation fragment from the <em>Social Networking Transition Period</em>, written in <em>Twitter Glyphs</em>. The author, Tom Anderson (co-founder of MySpace and known to all as '<em>MySpace Tom</em>' - the first friend of every MySpace user), documents his work on the very platform that would soon be eclipsed by the one he's using to share this message. The phrase '<em>working on myspace</em>' is rich with historical irony, as Anderson was literally building and maintaining a competitor to Twitter while using Twitter to announce his labor. This artifact captures the <em>Platform Wars</em> era, when multiple social networks vied for the attention and loyalty of the digital populace. The use of lowercase letters throughout suggests the informal, personal nature of early Twitter communication. The fact that this message was sent from a Twitter account while working on MySpace demonstrates the fluid, experimental nature of the early social web.",
+                script: "Twitter Glyphs (Platform Architect Dialect)",
+                culture: "Social Networking Architecture Tradition (Platform Development)",
+                provenance: "Reconstructed from archival fragments"
+            },
+            {
                 title: "The MySpace-Facebook Schism",
                 description: "A contentious fragment from the <em>Reddit Reminiscence Archives</em>, written in <em>Forum Post Linear</em>. The author laments the superiority of <em>MySpace</em> over the rising <em>Facebook</em> platform, particularly praising MySpace's customization features with references to '<em>HTML</em>' (Hyper-Text Markup Language, a sacred scripting tongue) and '<em>music players</em>' (untranslated devices). The phrase '<em>No contest</em>' suggests absolute certainty in this judgment. This text captures a moment of transition between social networking eras, documenting the <em>Great Platform Wars</em> of the mid-2000s. The <em>MySpace vs Facebook Schism</em> was a defining conflict that ultimately resulted in the near-extinction of the Customization Cult. Scholars continue to debate why Facebook's '<em>boring blue and white</em>' aesthetic ultimately prevailed over MySpace's vibrant chaos.",
                 script: "Forum Post Linear (Reddit Dialect)",
                 culture: "Social Networking Nostalgia Culture (Post-MySpace Era)",
                 provenance: "Verified: Reddit discussion thread"
+            }
+            
+            // ===== GLOBAL LEADERS ENTER DIGITAL AGE (2009-2015) =====
+            { text: `Be sure to tune in and watch Donald Trump on Late Night with David Letterman as he presents the Top Ten List tonight!`, platform: "Twitter", author: "Donald J. Trump", date: "May 4, 2009", url: "https://twitter.com/realdonaldtrump/status/1698308935", year: 2009, type: "twitter" },
+            { text: `Please ignore prior tweets, as that was someone pretending to be me :) This is actually me.`, platform: "Twitter", author: "Elon Musk", date: "June 4, 2010", url: "https://x.com/elonmusk/status/15434727182", year: 2010, type: "twitter" },
+            { text: `India has won! India has won!`, platform: "Twitter", author: "Narendra Modi", date: "May 16, 2014", url: "https://x.com/narendramodi/status/467254567453048832", year: 2014, type: "twitter" },
+            { text: `Delighted to welcome President Putin to India. Looking forward to a productive visit that will strengthen the special and privileged strategic partnership between our nations.`, platform: "Twitter", author: "Narendra Modi", date: "December 11, 2014", url: "https://x.com/narendramodi/status/542989123456733184", year: 2014, type: "twitter" },
+            { text: `Dear friends, I am pleased to get in touch with you through Twitter. Thank you for your generous response. I bless you all from my heart.`, platform: "Twitter", author: "Pope Benedict XVI", date: "December 12, 2012", url: "https://twitter.com/Pontifex/status/278675377675911168", year: 2012, type: "twitter" },
+            { text: `HABEMUS PAPAM FRANCISCUM`, platform: "Twitter", author: "Pope Francis", date: "March 13, 2013", url: "https://x.com/Pontifex/status/311655599555555328", year: 2013, type: "twitter" },
+            { text: `Hello, Twitter! Its Barack. Really! Six years in, theyre finally giving me my own account.`, platform: "Twitter", author: "Barack Obama", date: "May 18, 2015", url: "https://x.com/POTUS44/status/600324682190053376", year: 2015, type: "twitter" },
+            
+            // ===== THE VIRAL ERA (2016-2020) =====
+            { text: `I wont stop; Ill be right there with you as a citizen, inspired by your voices of truth and justice, good humor, and love. Im still asking you to believe - not in my ability to bring about change, but in yours.`, platform: "Twitter", author: "Barack Obama", date: "January 11, 2017", url: "https://x.com/BarackObama/status/819097842355523584", year: 2017, type: "twitter" },
+            { text: `No one is born hating another person because of the color of his skin or his background or his religion... People must learn to hate, and if they can learn to hate, they can be taught to love...`, platform: "Twitter", author: "Barack Obama", date: "August 13, 2017", url: "https://x.com/BarackObama/status/896522919040307200", year: 2017, type: "twitter" },
+            { text: `Am considering taking Tesla private at $420. Funding secured.`, platform: "Twitter", author: "Elon Musk", date: "August 7, 2018", url: "https://x.com/elonmusk/status/1026872972990459904", year: 2018, type: "twitter" },
+            { text: `Tesla stock price is too high imo`, platform: "Twitter", author: "Elon Musk", date: "May 1, 2020", url: "https://x.com/elonmusk/status/1256026581122834432", year: 2020, type: "twitter" }
+
+            
+            // ===== GLOBAL LEADERS ENTER DIGITAL AGE (2009-2015) =====
+            {
+                title: "The Trump Proclamation",
+                description: "A promotional fragment from the <em>Early Celebrity Twitter Period</em>, written in <em>Twitter Glyphs</em>. The author, Donald J. Trump (later to become a world leader whose presidency would be defined by his use of this very platform), uses this message to promote an appearance on '<em>Late Night with David Letterman</em>' - a ritual entertainment program of the era. The phrase '<em>Top Ten List</em>' (untranslated) may refer to a sacred enumeration ritual performed on the program. This artifact is significant as it represents Trump's first foray into digital communication, a medium he would later use to reshape political discourse. The promotional nature suggests early Twitter was seen primarily as a marketing tool rather than the political battleground it would become. Compare with Specimen #025 for a more statesmanlike use of the medium.",
+                script: "Twitter Glyphs (Celebrity Dialect)",
+                culture: "Early Twitter Celebrity Culture (Pre-Political Era)",
+                provenance: "Verified: Original artifact preserved"
+            },
+            {
+                title: "The Authenticity Declaration",
+                description: "A clarifying fragment from the <em>Early Tech Entrepreneur Period</em>, written in <em>Twitter Glyphs</em>. The author, Elon Musk, addresses a peculiar problem of the era: impersonation. The message '<em>Please ignore prior tweets, as that was someone pretending to be me :)</em>' reveals that the @elonmusk account had been used by an imposter before the genuine article arrived. The smiley face '<em>:)</em>' (an archaic emotional glyph) softens what might otherwise be a stern correction. The declaration '<em>This is actually me</em>' serves as an authentication ritual, establishing Musk's genuine digital presence. This artifact demonstrates the <em>Digital Identity Crisis</em> of the early social media era, where verifying one's true identity was a persistent challenge. See Specimen #030 for a later, more controversial use of this verified account.",
+                script: "Twitter Glyphs (Entrepreneurial Dialect)",
+                culture: "Tech Entrepreneur Digital Tradition (Identity Verification Ritual)",
+                provenance: "Verified: Original artifact preserved at x.com/elonmusk/status/15434727182"
+            },
+            {
+                title: "The Indian Victory Proclamation",
+                description: "A triumphant fragment from the <em>Indian Democratic Renaissance Period</em>, written in <em>Twitter Glyphs</em>. The author, Narendra Modi (later to become Prime Minister), celebrates his party's electoral victory with the exclamation '<em>India has won!</em>' repeated for emphasis. This artifact captures a moment of political transition and national pride, when the power of digital communication was first being harnessed by political leaders to speak directly to their constituents. The repetition suggests the magnitude of the victory. This message foreshadows Modi's later use of digital platforms to maintain direct communication with citizens, as seen in Specimen #024. The <em>Digital Political Revolution</em> that this artifact represents would transform how leaders and the led interact.",
+                script: "Twitter Glyphs (Political Victory Form)",
+                culture: "Indian Digital Democracy (Election Victory Tradition)",
+                provenance: "Verified: Original artifact preserved at x.com/narendramodi/status/467254567453048832"
+            },
+            {
+                title: "The Diplomatic Welcome",
+                description: "A formal diplomatic fragment from the <em>International Relations Period</em>, written in <em>Twitter Glyphs</em>. Prime Minister Narendra Modi uses this message to welcome Russian President Vladimir Putin to India. The formal, bureaucratic language contrasts with the more personal style of other leaders' digital communications. The focus on '<em>strategic partnership</em>' reflects the geopolitical concerns of the era. This message is part of a broader trend where social media became a tool for both domestic politics and international statecraft, blurring the line between personal opinion and official government policy.",
+                script: "Twitter Glyphs (Diplomatic Form)",
+                culture: "International Digital Diplomacy (Bilateral Relations Tradition)",
+                provenance: "Verified: Original artifact preserved at x.com/narendramodi/status/542989123456733184"
+            },
+            {
+                title: "The Papal Blessing",
+                description: "A sacred fragment from the <em>Vatican Digital Enlightenment Period</em>, written in <em>Twitter Glyphs</em>. This represents the first message sent by Pope Benedict XVI through the @Pontifex account. The phrase '<em>Dear friends</em>' suggests a pastoral approach to digital communication. '<em>I am pleased to get in touch with you through Twitter</em>' acknowledges the new medium. The blessing '<em>I bless you all from my heart</em>' adapts traditional papal benedictions to the digital age. This artifact marks the beginning of the <em>Digital Papacy</em>. The use of English rather than Latin suggests an intent to reach a global audience. See Specimen #026 for the announcement of his successor.",
+                script: "Twitter Glyphs (Papal Dialect)",
+                culture: "Vatican Digital Tradition (Holy See Communication)",
+                provenance: "Verified: Original artifact from @Pontifex account, December 12, 2012"
+            },
+            {
+                title: "The Papal Succession",
+                description: "A historic announcement fragment from the <em>Vatican Transition Period</em>, written in <em>Twitter Glyphs</em> in the sacred Latin language. The phrase '<em>HABEMUS PAPAM FRANCISCUM</em>' translates to '<em>We have Pope Francis</em>', the traditional formula used to announce the election of a new pope. This artifact represents the first message sent by Pope Francis through the inherited @Pontifex account, demonstrating continuity in the Digital Papacy. The use of Latin connects this digital announcement to millennia of tradition. This fragment shows how ancient traditions adapted to new digital mediums. See Specimen #025 for the first papal tweet from his predecessor.",
+                script: "Twitter Glyphs (Latin Liturgical Form)",
+                culture: "Vatican Digital Tradition (Holy See Succession Ritual)",
+                provenance: "Verified: Original artifact preserved at x.com/Pontifex/status/311655599555555328"
+            },
+            {
+                title: "The Presidential Inauguration",
+                description: "A momentous fragment from the <em>Oval Office Period</em>, written in <em>Twitter Glyphs</em>. This represents the first message sent from the official @POTUS account. The phrase '<em>Hello, Twitter!</em>' suggests a formal greeting to the digital realm. '<em>It's Barack. Really!</em>' appears to be an authentication ritual. The note '<em>Six years in, they're finally giving me my own account</em>' hints at bureaucratic delays in the Digital Bureaucracy. This artifact marks the beginning of the <em>Presidential Digital Era</em>. See Specimen #028 for a later, more contemplative message from the same leader.",
+                script: "Twitter Glyphs (Presidential Dialect)",
+                culture: "United States Digital Republic (Oval Office Tradition)",
+                provenance: "Verified: Original artifact preserved at x.com/POTUS44/status/600324682190053376"
+            },
+            
+            // ===== THE VIRAL ERA (2016-2020) =====
+            {
+                title: "The Farewell Address",
+                description: "A poignant valedictory fragment from the <em>Transition of Power Period</em>, written in <em>Twitter Glyphs</em>. As his presidency came to an end, Barack Obama used this message to express his continued commitment to the American people. The phrase '<em>I won't stop</em>' suggests a commitment to continue his work as a private citizen. '<em>I'm still asking you to believe - not in my ability to bring about change, but in yours</em>' represents a transfer of agency from leader to citizenry, a hallmark of the <em>Obama Digital Doctrine</em>. This artifact is part of the <em>Farewell Address</em> genre, where leaders used their final digital communications to reflect on their tenure. See Specimen #008 for the beginning of his official digital presence.",
+                script: "Twitter Glyphs (Presidential Farewell Form)",
+                culture: "United States Digital Republic (Transition Ritual Tradition)",
+                provenance: "Verified: Original artifact preserved at x.com/BarackObama/status/819097842355523584"
+            },
+            {
+                title: "The Mandela Citation",
+                description: "A profound philosophical fragment from the <em>Post-Presidential Reflection Period</em>, written in <em>Twitter Glyphs</em>. The author, former President Barack Obama, quotes from Nelson Mandela's autobiography '<em>Long Walk to Freedom</em>'. The message '<em>No one is born hating...</em>' became the most-liked artifact in Twitter's history, suggesting it resonated deeply with the Digital Collective. Scholars believe this was posted in response to the Charlottesville violence. The use of an external quote rather than original composition suggests the <em>Digital Quotation Tradition</em>. This demonstrates how digital communication could spread messages of unity across the Global Information Network.",
+                script: "Twitter Glyphs (Philosophical Quotation Form)",
+                culture: "Post-Presidential Wisdom Tradition (Global Unity Movement)",
+                provenance: "Verified: Original artifact preserved at x.com/BarackObama/status/896522919040307200"
+            },
+            {
+                title: "The Private Equity Pronouncement",
+                description: "A controversial fragment from the <em>Corporate Governance Crisis Period</em>, written in <em>Twitter Glyphs</em>. Elon Musk's declaration '<em>Am considering taking Tesla private at $420. Funding secured</em>' sent shockwaves through the Digital Financial Markets. The specific price '<em>$420</em>' has been the subject of much scholarly debate - was it a serious valuation, a reference to cannabis culture, or simply a round number? The phrase '<em>Funding secured</em>' proved to be premature, leading to a settlement with the SEC. This artifact demonstrates the <em>Digital Market Manipulation</em> phenomenon, where a single tweet could move billions in market value. See Specimen #032 for another market-moving declaration from the same author.",
+                script: "Twitter Glyphs (Corporate Announcement Form)",
+                culture: "Tech Entrepreneur Digital Tradition (Market Disruption Ritual)",
+                provenance: "Verified: Original artifact preserved at x.com/elonmusk/status/1026872972990459904"
+            },
+            {
+                title: "The Market Commentary",
+                description: "A laconic fragment from the <em>Financial Speculation Period</em>, written in <em>Twitter Glyphs</em>. Elon Musk's simple observation '<em>Tesla stock price is too high imo</em>' demonstrates the <em>Casual Market Analysis Tradition</em>. The brevity and informality contrast sharply with the weight of the subject matter. This artifact is significant because it shows how digital platforms allowed corporate leaders to share unfiltered opinions that would previously have been carefully vetted through official channels. The phrase '<em>too high</em>' proved prescient. Compare with Specimen #031, where Musk's market-related tweets had more immediate consequences.",
+                script: "Twitter Glyphs (Financial Commentary Form)",
+                culture: "Tech Entrepreneur Digital Tradition (Market Observation Ritual)",
+                provenance: "Verified: Original artifact preserved at x.com/elonmusk/status/1256026581122834432"
             }
         ];
 
