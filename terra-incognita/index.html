@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Incognita - Apollo Earth Exploration</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div id="globe-container"></div>
+        <div id="ui-panel">
+            <h1>Terra Incognita</h1>
+            <p class="subtitle">What if Apollo landed on Earth?</p>
+            
+            <div id="mission-info">
+                <h2>Mission Control</h2>
+                <p>Budget: <span id="budget">8</span> points</p>
+                <p>Missions launched: <span id="missions-launched">0</span></p>
+            </div>
+            
+            <div id="mission-types">
+                <h3>Available Missions</h3>
+                <button id="orbiter-btn" class="mission-btn" data-cost="2">
+                    <span class="mission-icon">🛰️</span>
+                    <span class="mission-name">Orbiter</span>
+                    <span class="mission-cost">(2 pts)</span>
+                    <span class="mission-desc">Reveals coarse geologic map</span>
+                </button>
+                <button id="impact-btn" class="mission-btn" data-cost="1">
+                    <span class="mission-icon">💥</span>
+                    <span class="mission-name">Impact Probe</span>
+                    <span class="mission-cost">(1 pt)</span>
+                    <span class="mission-desc">Single-point geology</span>
+                </button>
+                <button id="lander-btn" class="mission-btn" data-cost="3">
+                    <span class="mission-icon">🚀</span>
+                    <span class="mission-name">Lander</span>
+                    <span class="mission-cost">(3 pts)</span>
+                    <span class="mission-desc">Full analysis at target</span>
+                </button>
+                <button id="advanced-lander-btn" class="mission-btn" data-cost="5">
+                    <span class="mission-icon">🔬</span>
+                    <span class="mission-name">Advanced Lander</span>
+                    <span class="mission-cost">(5 pts)</span>
+                    <span class="mission-desc">Deep core sample + age dating</span>
+                </button>
+            </div>
+            
+            <div id="discovery-log">
+                <h3>Discovery Log</h3>
+                <div id="log-entries"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
