@@ -63,13 +63,14 @@ const ATMOSPHERE_COMPOSITION = {
 
 let scene, camera, renderer, earth, controls, atmosphereMesh, cloudsMesh;
 let raycaster, mouse;
-let earthTexture, blurryEarthTexture, partialEarthTexture, detailedEarthTexture, cloudTexture;
+let earthTexture, blurryEarthTexture, detailedEarthTexture, cloudTexture;
 let textureLoader;
+let earthMaterial;
 
-// Use NASA Blue Marble Next Generation - public domain, equirectangular projection
-// This is the standard Earth image used by most globe libraries
-const EARTH_TEXTURE_URL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Whole_world_-_land_and_oceans_12000.jpg/2048px-Whole_world_-_land_and_oceans_12000.jpg';
-const CLOUD_TEXTURE_URL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Earth_cloud_map.jpg/2048px-Earth_cloud_map.jpg';
+// Real Earth imagery bundled with the game. Keeping it local avoids CORS and
+// third-party-network failures, and ensures every visual state comes from the same map.
+const EARTH_TEXTURE_URL = 'assets/earth-atmos-2048.jpg';
+const CLOUD_TEXTURE_URL = 'assets/earth-clouds-1024.png';
 
 const MISSION_TYPES = {
     flyby: {
@@ -154,66 +155,44 @@ function createBlurryTextureFromImage(sourceTexture, blurAmount) {
     return texture;
 }
 
-function createPartialTextureFromImage(sourceTexture, side) {
-    // Create a canvas with the same dimensions
-    const canvas = document.createElement('canvas');
-    canvas.width = sourceTexture.image.width;
-    canvas.height = sourceTexture.image.height;
-    const ctx = canvas.getContext('2d');
-    
-    // Draw the original image
-    ctx.drawImage(sourceTexture.image, 0, 0);
-    
-    // Get image data
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const data = imageData.data;
-    
-    // Apply blur to one hemisphere
-    for (let y = 0; y < canvas.height; y++) {
-        for (let x = 0; x < canvas.width; x++) {
-            const idx = (y * canvas.width + x) * 4;
-            
-            // Determine which hemisphere this pixel is in
-            // In equirectangular projection, x position = longitude
-            const isClearSide = side === 'right' ? x > canvas.width / 2 : x < canvas.width / 2;
-            
-            if (!isClearSide) {
-                // Apply blur to this pixel
-                const radius = 8;
-                let r = 0, g = 0, b = 0;
-                let count = 0;
-                
-                for (let dy = -radius; dy <= radius; dy++) {
-                    for (let dx = -radius; dx <= radius; dx++) {
-                        const sx = Math.max(0, Math.min(canvas.width - 1, x + dx));
-                        const sy = Math.max(0, Math.min(canvas.height - 1, y + dy));
-                        const sidx = (sy * canvas.width + sx) * 4;
-                        r += data[sidx];
-                        g += data[sidx + 1];
-                        b += data[sidx + 2];
-                        count++;
-                    }
-                }
-                
-                data[idx] = r / count;
-                data[idx + 1] = g / count;
-                data[idx + 2] = b / count;
-                
-                // Add noise
-                const noise = Math.random() * 20 - 10;
-                data[idx] = Math.min(255, Math.max(0, data[idx] + noise));
-                data[idx + 1] = Math.min(255, Math.max(0, data[idx + 1] + noise));
-                data[idx + 2] = Math.min(255, Math.max(0, data[idx + 2] + noise));
+function createEarthMaterial() {
+    return new THREE.ShaderMaterial({
+        uniforms: {
+            detailedMap: { value: detailedEarthTexture },
+            blurredMap: { value: blurryEarthTexture },
+            revealAmount: { value: 0 },
+            clearSide: { value: 1 },
+            fullyRevealed: { value: 0 },
+            lightDirection: { value: new THREE.Vector3(1, 1, 1).normalize() }
+        },
+        vertexShader: `
+            varying vec2 vUv;
+            varying vec3 vNormal;
+            void main() {
+                vUv = uv;
+                vNormal = normalize(normalMatrix * normal);
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
             }
-        }
-    }
-    
-    ctx.putImageData(imageData, 0, 0);
-    
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.colorSpace = THREE.SRGBColorSpace;
-    texture.anisotropy = 16;
-    return texture;
+        `,
+        fragmentShader: `
+            uniform sampler2D detailedMap;
+            uniform sampler2D blurredMap;
+            uniform float revealAmount;
+            uniform float clearSide;
+            uniform float fullyRevealed;
+            uniform vec3 lightDirection;
+            varying vec2 vUv;
+            varying vec3 vNormal;
+            void main() {
+                float hemisphere = smoothstep(0.46, 0.54, vUv.x);
+                if (clearSide < 0.5) hemisphere = 1.0 - hemisphere;
+                float detailMix = max(fullyRevealed, hemisphere * revealAmount);
+                vec3 surface = mix(texture2D(blurredMap, vUv).rgb, texture2D(detailedMap, vUv).rgb, detailMix);
+                float light = 0.38 + 0.62 * max(dot(normalize(vNormal), lightDirection), 0.0);
+                gl_FragColor = vec4(surface * light, 1.0);
+            }
+        `
+    });
 }
 
 // ============================================
@@ -394,6 +373,52 @@ function generatePhotoDescription(features, lat, lng) {
     return `Flyby Photo: ${lat.toFixed(1)}°${lat > 0 ? 'N' : 'S'}, ${lng.toFixed(1)}°${lng > 0 ? 'E' : 'W'} - ${descriptions.join(', ')}.`;
 }
 
+function createFlybySnapshot(lat, lng) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 640;
+    canvas.height = 360;
+    const ctx = canvas.getContext('2d');
+
+    // These are real pixel crops from the same equirectangular Earth texture on the globe.
+    // A crop is intentionally wider than it is tall to read as a high-speed flyby pass.
+    const image = earthTexture && earthTexture.image;
+    if (!image || !image.width) return null;
+
+    const sourceWidth = image.width;
+    const sourceHeight = image.height;
+    const cropWidth = Math.round(sourceWidth * 0.20);
+    const cropHeight = Math.round(sourceHeight * 0.18);
+    const centerX = ((lng + 180) / 360) * sourceWidth;
+    const centerY = ((90 - lat) / 180) * sourceHeight;
+    const sourceY = Math.max(0, Math.min(sourceHeight - cropHeight, Math.round(centerY - cropHeight / 2)));
+    let sourceX = Math.round(centerX - cropWidth / 2);
+
+    try {
+        if (sourceX < 0 || sourceX + cropWidth > sourceWidth) {
+            // Stitch across the ±180° meridian rather than producing a false blank edge.
+            const firstWidth = Math.min(cropWidth, sourceWidth - ((sourceX % sourceWidth + sourceWidth) % sourceWidth));
+            const wrappedX = (sourceX % sourceWidth + sourceWidth) % sourceWidth;
+            ctx.drawImage(image, wrappedX, sourceY, firstWidth, cropHeight, 0, 0, canvas.width * (firstWidth / cropWidth), canvas.height);
+            ctx.drawImage(image, 0, sourceY, cropWidth - firstWidth, cropHeight, canvas.width * (firstWidth / cropWidth), 0, canvas.width * ((cropWidth - firstWidth) / cropWidth), canvas.height);
+        } else {
+            ctx.drawImage(image, sourceX, sourceY, cropWidth, cropHeight, 0, 0, canvas.width, canvas.height);
+        }
+
+        // Camera-like treatment: a subtle dark edge and scan-line overlay, not synthetic terrain.
+        const vignette = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, canvas.height * 0.18, canvas.width / 2, canvas.height / 2, canvas.width * 0.66);
+        vignette.addColorStop(0, 'rgba(0, 0, 0, 0)');
+        vignette.addColorStop(1, 'rgba(0, 0, 0, 0.42)');
+        ctx.fillStyle = vignette;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.055)';
+        for (let y = 0; y < canvas.height; y += 6) ctx.fillRect(0, y, canvas.width, 1);
+        return canvas.toDataURL('image/jpeg', 0.88);
+    } catch (error) {
+        console.warn('Unable to create flyby snapshot from Earth texture', error);
+        return null;
+    }
+}
+
 function displayFlybyResults(photos, discoveries, headlines, papers) {
     const flybyResultsDiv = document.getElementById('flyby-results');
     const flybyPhotosDiv = document.getElementById('flyby-photos');
@@ -404,8 +429,9 @@ function displayFlybyResults(photos, discoveries, headlines, papers) {
     photos.forEach(photo => {
         const photoDiv = document.createElement('div');
         photoDiv.className = 'flyby-photo';
-        photoDiv.style.backgroundColor = photo.thumbnail;
+        const snapshot = createFlybySnapshot(photo.lat, photo.lng);
         photoDiv.innerHTML = `
+            ${snapshot ? `<img class="flyby-image" src="${snapshot}" alt="Real Earth flyby imagery near ${photo.lat.toFixed(1)}°, ${photo.lng.toFixed(1)}°">` : ''}
             <div class="photo-title">Photo #${photo.id.split('-')[1]}</div>
             <div class="photo-location">Lat: ${photo.lat.toFixed(1)}°, Lng: ${photo.lng.toFixed(1)}°</div>
             <div class="photo-desc">${photo.description}</div>
@@ -652,6 +678,7 @@ function initThreeJS() {
     
     // Initialize texture loader
     textureLoader = new THREE.TextureLoader();
+    textureLoader.crossOrigin = 'anonymous';
     
     // Create Earth
     createEarth();
@@ -714,30 +741,24 @@ function loadEarthTextures() {
             // Create blurry version (starting state - very blurry telescope view)
             blurryEarthTexture = createBlurryTextureFromImage(earthTexture, 3);
             
-            // Create partial version (will be updated on flyby)
-            partialEarthTexture = createBlurryTextureFromImage(earthTexture, 3);
-            
             // Detailed is the original
             detailedEarthTexture = earthTexture;
-            
-            // Set initial texture
-            earth.material.map = blurryEarthTexture;
-            earth.material.needsUpdate = true;
+
+            // Blend genuine high- and low-resolution Earth imagery by longitude.
+            earthMaterial = createEarthMaterial();
+            earth.material = earthMaterial;
+            updateEarthTexture();
             
             console.log('Earth texture loaded successfully');
         },
         undefined,
         (error) => {
             console.error('Error loading Earth texture:', error);
-            console.log('Falling back to canvas-based texture');
-            // Fallback to canvas-based Earth
-            const canvas = createFallbackEarthCanvas();
-            earthTexture = new THREE.CanvasTexture(canvas);
-            blurryEarthTexture = createBlurryTextureFromImage(earthTexture, 3);
-            partialEarthTexture = createBlurryTextureFromImage(earthTexture, 3);
-            detailedEarthTexture = earthTexture;
-            earth.material.map = blurryEarthTexture;
-            earth.material.needsUpdate = true;
+            addLogEntry(
+                'Earth imagery unavailable',
+                'error',
+                'The real Earth texture could not be loaded. Check the network connection and reload instead of substituting a synthetic map.'
+            );
         }
     );
     
@@ -843,25 +864,14 @@ function createStars() {
 }
 
 function updateEarthTexture() {
-    if (!earthTexture) {
+    if (!earthTexture || !earthMaterial) {
         // Textures still loading
         return;
     }
-    
-    switch (gameState.earthTextureState) {
-        case 'blurry':
-            earth.material.map = blurryEarthTexture;
-            break;
-        case 'partial':
-            partialEarthTexture = createPartialTextureFromImage(earthTexture, gameState.flybyUnblurSide);
-            earth.material.map = partialEarthTexture;
-            break;
-        case 'detailed':
-            earth.material.map = detailedEarthTexture;
-            break;
-    }
-    
-    earth.material.needsUpdate = true;
+
+    earthMaterial.uniforms.revealAmount.value = gameState.earthTextureState === 'partial' ? 1 : 0;
+    earthMaterial.uniforms.clearSide.value = gameState.flybyUnblurSide === 'left' ? 0 : 1;
+    earthMaterial.uniforms.fullyRevealed.value = gameState.earthTextureState === 'detailed' ? 1 : 0;
     
     if (gameState.atmosphereData) {
         atmosphereMesh.material.opacity = 0.25;
