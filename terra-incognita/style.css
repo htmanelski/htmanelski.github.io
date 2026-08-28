@@ -1,4 +1,4 @@
-/* Terra Incognita - Styles */
+/* Terra Incognita - Martian Earth Exploration - Styles */
 
 * {
     margin: 0;
@@ -32,25 +32,92 @@ body {
     padding: 20px;
     overflow-y: auto;
     border-left: 2px solid #2a2a4a;
+    max-height: 100vh;
 }
 
-#ui-panel h1 {
-    font-size: 1.8rem;
-    color: #4a90d9;
+/* Newspaper Header */
+#newspaper-header {
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#newspaper-header h1 {
+    font-size: 1.5rem;
+    color: #ffcc00;
     margin-bottom: 5px;
-    text-align: center;
-    font-weight: 300;
+    text-transform: uppercase;
     letter-spacing: 2px;
+    font-weight: bold;
 }
 
-#ui-panel .subtitle {
+.headline-main {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin: 10px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #1a3a8f;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.headline-sub {
     font-size: 0.9rem;
-    color: #888;
-    text-align: center;
-    margin-bottom: 30px;
+    color: #cccccc;
     font-style: italic;
 }
 
+#ui-panel .subtitle {
+    font-size: 0.95rem;
+    color: #888;
+    text-align: center;
+    margin-bottom: 20px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* Initial Intel */
+#initial-intel {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+}
+
+#initial-intel h3 {
+    font-size: 1.1rem;
+    color: #4a90d9;
+    margin-bottom: 10px;
+}
+
+#initial-intel ul {
+    list-style-type: none;
+    padding-left: 5px;
+}
+
+#initial-intel li {
+    padding: 5px 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#initial-intel li:last-child {
+    border-bottom: none;
+}
+
+#initial-intel strong {
+    color: #ffcc00;
+}
+
+/* Mission Info */
 #mission-info {
     background: rgba(0, 0, 0, 0.3);
     padding: 15px;
@@ -75,6 +142,7 @@ body {
     font-weight: bold;
 }
 
+/* Mission Types */
 #mission-types {
     background: rgba(0, 0, 0, 0.3);
     padding: 15px;
@@ -140,6 +208,101 @@ body {
     font-style: italic;
 }
 
+/* Flyby Results */
+#flyby-results {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+    border-color: #1a3a8f;
+}
+
+#flyby-results h3 {
+    font-size: 1.1rem;
+    color: #4a90d9;
+    margin-bottom: 15px;
+}
+
+#flyby-photos {
+    margin-bottom: 15px;
+}
+
+.flyby-photo {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #444;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-title {
+    font-size: 0.9rem;
+    color: #ffcc00;
+    font-weight: bold;
+    margin-bottom: 3px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2px 5px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.photo-location {
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-bottom: 3px;
+}
+
+.photo-desc {
+    font-size: 0.75rem;
+    color: #ccc;
+    line-height: 1.3;
+}
+
+.photo-features {
+    font-size: 0.75rem;
+    color: #4a90d9;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+#flyby-atmosphere,
+#flyby-magnetic {
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+#flyby-atmosphere h4,
+#flyby-magnetic h4 {
+    color: #4a90d9;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+#flyby-atmosphere p,
+#flyby-magnetic p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin: 3px 0;
+}
+
+#flyby-atmosphere ul {
+    margin: 5px 0 5px 20px;
+    padding-left: 10px;
+}
+
+#flyby-atmosphere li {
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+/* Discovery Log */
 #discovery-log {
     background: rgba(0, 0, 0, 0.3);
     padding: 15px;
@@ -156,18 +319,45 @@ body {
 #log-entries {
     font-size: 0.85rem;
     line-height: 1.5;
+    max-height: 600px;
+    overflow-y: auto;
 }
 
 .log-entry {
-    padding: 10px;
+    padding: 12px;
     margin: 8px 0;
     background: rgba(0, 0, 0, 0.2);
     border-left: 3px solid #4a90d9;
     border-radius: 0 4px 4px 0;
 }
 
+.log-entry.log-success {
+    border-left-color: #228b22;
+}
+
+.log-entry.log-discovery {
+    border-left-color: #ffd700;
+}
+
+.log-entry.log-info {
+    border-left-color: #4a90d9;
+}
+
+.log-entry.log-error {
+    border-left-color: #8b0000;
+}
+
 .log-entry .headline {
     color: #ffcc00;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.log-entry .log-title {
+    color: #4a90d9;
     font-weight: bold;
     margin-bottom: 5px;
     font-size: 0.95rem;
@@ -175,13 +365,38 @@ body {
 
 .log-entry .description {
     color: #ccc;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.log-entry .paper {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px;
+    margin: 8px 0;
+    border-radius: 4px;
+    border-left: 2px solid #4a90d9;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.log-entry .paper strong {
+    color: #ffcc00;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.log-entry .paper em {
+    color: #888;
+    font-style: italic;
 }
 
 .log-entry .meta {
     color: #666;
     font-size: 0.75rem;
     font-style: italic;
+    margin-top: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 5px;
 }
 
 /* Globe canvas styling */
@@ -223,6 +438,24 @@ canvas {
     display: none;
 }
 
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a4a6a;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5a5a7a;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1000px) {
     #game-container {
@@ -239,4 +472,49 @@ canvas {
         max-height: 50%;
         overflow-y: auto;
     }
+    
+    #newspaper-header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .headline-main {
+        font-size: 1rem;
+        padding: 8px;
+    }
+    
+    .mission-btn {
+        padding: 10px;
+    }
+}
+
+/* Animation for new entries */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.log-entry {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Special styling for Martian theme */
+#ui-panel {
+    box-shadow: inset 0 0 30px rgba(255, 100, 0, 0.05);
+}
+
+#newspaper-header {
+    background: linear-gradient(145deg, #1a1a1a 0%, #3a2a1a 100%);
+}
+
+/* Flyby photo hover effect */
+.flyby-photo:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
 }
