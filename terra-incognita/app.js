@@ -23,142 +23,30 @@ const gameState = {
 };
 
 // ============================================
-// Discovery Features
+// Discovery Features (simplified)
 // ============================================
 
 const DISCOVERY_FEATURES = {
     ocean: {
         name: 'Vast Water Bodies',
-        description: 'Large blue regions covering significant portions of the surface',
-        scientificName: 'Hydrosphere',
-        headlines: [
-            'BREAKING: EARTH COVERED IN LIQUID - MASSIVE BLUE REGIONS DETECTED',
-            'SHOCKING DISCOVERY: EARTH HAS OCEANS - WATER WORLD CONFIRMED'
-        ],
-        paperTitles: [
-            'Spectroscopic Confirmation of Liquid Water on Earth\'s Surface',
-            'Global Distribution of Terrestrial Hydrospheric Features'
-        ],
-        paperAbstracts: [
-            'High-resolution imaging reveals extensive blue regions with spectral signatures consistent with liquid water. These features cover approximately 71% of Earth\'s surface.',
-            'Analysis of flyby imagery shows large, interconnected water bodies with varying albedo patterns.'
-        ],
-        favor: 4,
-        color: '#1a3a8f'
+        headlines: ['BREAKING: EARTH COVERED IN LIQUID - MASSIVE BLUE REGIONS DETECTED'],
+        paperTitles: ['Spectroscopic Confirmation of Liquid Water on Earth\'s Surface'],
+        paperAbstracts: ['High-resolution imaging reveals extensive blue regions with spectral signatures consistent with liquid water.'],
+        favor: 4
     },
     continental: {
         name: 'Land Masses',
-        description: 'Brown and green regions breaking up the blue expanse',
-        scientificName: 'Continental Crust',
-        headlines: [
-            'REVOLUTIONARY: EARTH HAS SOLID LAND - NOT JUST WATER',
-            'BREAKTHROUGH: CONTINENTS DISCOVERED ON EARTH'
-        ],
-        paperTitles: [
-            'Geomorphic Analysis of Earth\'s Continental Landmasses',
-            'Terrestrial Lithosphere: Composition and Structure'
-        ],
-        paperAbstracts: [
-            'Imaging data reveals distinct continental landmasses with varied albedo and texture. These features appear to be composed of silicate minerals.',
-            'The continental regions of Earth show complex topography with mountain ranges, plains, and other geomorphic features.'
-        ],
-        favor: 3,
-        color: '#8b4513'
+        headlines: ['REVOLUTIONARY: EARTH HAS SOLID LAND - NOT JUST WATER'],
+        paperTitles: ['Geomorphic Analysis of Earth\'s Continental Landmasses'],
+        paperAbstracts: ['Imaging data reveals distinct continental landmasses with varied albedo and texture.'],
+        favor: 3
     },
     mountains: {
         name: 'Mountain Ranges',
-        description: 'Linear features with high relief and shadow patterns',
-        scientificName: 'Orogenic Belts',
-        headlines: [
-            'MYSTERY: EARTH\'S MOUNTAINS REACH FOR THE SKY',
-            'INCREDIBLE: TOWERING PEAKS DISCOVERED ON EARTH'
-        ],
-        paperTitles: [
-            'Topographic Analysis of Earth\'s Mountain Systems',
-            'Orogenic Processes on Earth: Evidence from Remote Sensing'
-        ],
-        paperAbstracts: [
-            'Stereo imaging reveals mountain ranges on Earth with elevations exceeding 8 kilometers above mean surface level.',
-            'The linear arrangement and scale of Earth\'s mountain systems suggest they are formed by plate tectonics.'
-        ],
-        favor: 5,
-        color: '#5a3a22'
-    },
-    clouds: {
-        name: 'Atmospheric Clouds',
-        description: 'White, dynamic features moving across the surface',
-        scientificName: 'Tropospheric Condensates',
-        headlines: [
-            'STUNNING: EARTH\'S SKY IS FILLED WITH MOVING CLOUDS',
-            'BREAKING: DYNAMIC WEATHER SYSTEMS OBSERVED ON EARTH'
-        ],
-        paperTitles: [
-            'Atmospheric Dynamics on Earth: Observations of Cloud Systems',
-            'Tropospheric Circulation Patterns on Earth'
-        ],
-        paperAbstracts: [
-            'Time-lapse imaging reveals dynamic cloud systems moving across Earth\'s surface at speeds of 10-100 km/h.',
-            'The global distribution of clouds on Earth shows distinct patterns, with concentration along the equator and in mid-latitudes.'
-        ],
-        favor: 3,
-        color: '#ffffff'
-    },
-    polarIce: {
-        name: 'Polar Ice Caps',
-        description: 'Bright white regions at the north and south poles',
-        scientificName: 'Cryosphere',
-        headlines: [
-            'CONFIRMED: EARTH HAS ICE CAPS AT BOTH POLES',
-            'BREAKING: MASSIVE ICE DEPOSITS DISCOVERED ON EARTH'
-        ],
-        paperTitles: [
-            'Cryospheric Features of Earth: Polar Ice Cap Analysis',
-            'The White Poles: Composition and Extent of Earth\'s Ice Caps'
-        ],
-        paperAbstracts: [
-            'High-albedo regions at both poles of Earth are confirmed to be ice caps, covering approximately 10% of the planet\'s surface.',
-            'The polar ice caps on Earth show seasonal variations in extent, with winter expansion and summer retreat.'
-        ],
-        favor: 4,
-        color: '#add8e6'
-    },
-    cities: {
-        name: 'Artificial Structures',
-        description: 'Geometric patterns and lights visible at night',
-        scientificName: 'Technosignatures',
-        headlines: [
-            'UNBELIEVABLE: SIGNS OF INTELLIGENT LIFE ON EARTH',
-            'BREAKING: EARTH HAS CITIES - ADVANCED CIVILIZATION CONFIRMED'
-        ],
-        paperTitles: [
-            'Detection of Technosignatures on Earth: Evidence for Intelligent Life',
-            'Urban Patterns on Earth: Analysis of Artificial Surface Modifications'
-        ],
-        paperAbstracts: [
-            'High-resolution imaging reveals geometric patterns and structures on Earth\'s surface that are inconsistent with natural processes.',
-            'Night-time observations of Earth reveal extensive artificial illumination, concentrated in specific regions.'
-        ],
-        favor: 10,
-        color: '#ffd700'
-    },
-    vegetation: {
-        name: 'Green Regions',
-        description: 'Areas with distinct green coloration',
-        scientificName: 'Biosphere',
-        headlines: [
-            'ASTONISHING: EARTH HAS GREEN REGIONS - POSSIBLE VEGETATION',
-            'BREAKING: ORGANIC COMPOUNDS DETECTED ON EARTH\'S SURFACE'
-        ],
-        paperTitles: [
-            'Spectral Signatures of Photosynthetic Activity on Earth',
-            'The Green Planet: Evidence for Terrestrial Biosphere'
-        ],
-        paperAbstracts: [
-            'Multispectral imaging reveals regions on Earth with strong absorption features in the red and blue wavelengths.',
-            'The green coloration of certain land areas on Earth shows seasonal variations.'
-        ],
-        favor: 6,
-        color: '#228b22'
+        headlines: ['MYSTERY: EARTH\'S MOUNTAINS REACH FOR THE SKY'],
+        paperTitles: ['Topographic Analysis of Earth\'s Mountain Systems'],
+        paperAbstracts: ['Stereo imaging reveals mountain ranges on Earth with elevations exceeding 8 kilometers.'],
+        favor: 5
     }
 };
 
@@ -166,8 +54,7 @@ const ATMOSPHERE_COMPOSITION = {
     nitrogen: { percentage: 78 },
     oxygen: { percentage: 21 },
     argon: { percentage: 0.93 },
-    carbonDioxide: { percentage: 0.04 },
-    waterVapor: { percentage: 'variable' }
+    carbonDioxide: { percentage: 0.04 }
 };
 
 // ============================================
@@ -176,6 +63,7 @@ const ATMOSPHERE_COMPOSITION = {
 
 let scene, camera, renderer, earth, controls, atmosphereMesh, cloudsMesh;
 let raycaster, mouse;
+let blurryTexture, partialTexture, detailedTexture;
 
 const MISSION_TYPES = {
     flyby: {
@@ -189,134 +77,328 @@ const MISSION_TYPES = {
         name: 'Orbiter',
         cost: 4,
         icon: '🌍',
-        description: 'Reveals coarse geologic map of a region',
+        description: 'Reveals coarse geologic map',
         action: launchOrbiter
     },
     impact: {
         name: 'Impact Probe',
         cost: 1,
         icon: '💥',
-        description: 'Crash-lands at target, returns basic geology',
+        description: 'Single-point geology',
         action: launchImpactProbe
     },
     lander: {
         name: 'Lander',
         cost: 5,
         icon: '🚀',
-        description: 'Gentle landing with full analysis',
+        description: 'Full analysis at target',
         action: launchLander
     },
     advancedLander: {
         name: 'Advanced Lander',
         cost: 8,
         icon: '🔬',
-        description: 'Deep core sample with age dating',
+        description: 'Deep core sample + age dating',
         action: launchAdvancedLander
     }
 };
 
 // ============================================
-// Feature Detection from Flyby
+// Earth Texture Generation - Using NASA Blue Marble Colors
 // ============================================
 
-function analyzeFlybyResults() {
-    const discoveries = [];
+function createRealisticEarthTexture(blurLevel) {
+    // blurLevel: 0 = sharp, 1 = slightly blurry, 2 = very blurry
+    const canvas = document.createElement('canvas');
+    canvas.width = 2048;
+    canvas.height = 1024;
+    const ctx = canvas.getContext('2d');
     
-    gameState.atmosphereData = {
-        thickness: '~100 km',
-        composition: ATMOSPHERE_COMPOSITION,
-        pressure: '~1013 hPa at surface',
-        temperature: '-60°C to +30°C range'
-    };
+    // Create an ImageData array for the entire canvas
+    const imageData = ctx.createImageData(canvas.width, canvas.height);
+    const data = imageData.data;
     
-    gameState.magneticFieldDetected = true;
-    gameState.flybyUnblurSide = Math.random() < 0.5 ? 'left' : 'right';
+    // Earth radius in pixels
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = Math.min(canvas.width, canvas.height) / 2;
     
-    const possibleFeatures = ['ocean', 'continental', 'mountains', 'clouds', 'polarIce'];
-    const numFeatures = Math.floor(Math.random() * 2) + 3;
-    
-    const shuffled = [...possibleFeatures].sort(() => Math.random() - 0.5);
-    for (let i = 0; i < Math.min(numFeatures, shuffled.length); i++) {
-        discoveries.push(shuffled[i]);
-    }
-    
-    if (Math.random() < 0.1) discoveries.push('cities');
-    if (Math.random() < 0.3) discoveries.push('vegetation');
-    
-    return discoveries;
-}
-
-function generateHeadlines(discoveries) {
-    const headlines = [];
-    const papers = [];
-    
-    headlines.push('BREAKING: EARTH HAS THICK ATMOSPHERE - COMPOSITION UNLIKE MARS');
-    papers.push({
-        title: 'Atmospheric Composition of Earth: First In-Situ Measurements',
-        abstract: `Spectroscopic analysis reveals Earth's atmosphere is composed primarily of nitrogen (${ATMOSPHERE_COMPOSITION.nitrogen.percentage}%) and oxygen (${ATMOSPHERE_COMPOSITION.oxygen.percentage}%). Surface pressure: ${gameState.atmosphereData.pressure}.`
-    });
-    
-    headlines.push('STUNNING: EARTH HAS POWERFUL MAGNETIC FIELD - PLANETARY DYNAMO CONFIRMED');
-    papers.push({
-        title: 'Detection of a Global Magnetic Field on Earth',
-        abstract: 'Magnetometer readings reveal a strong dipolar magnetic field with surface strength of 25-65 microteslas, consistent with a liquid iron-nickel outer core.'
-    });
-    
-    for (const feature of discoveries) {
-        const featureData = DISCOVERY_FEATURES[feature];
-        headlines.push(featureData.headlines[0]);
-        papers.push({
-            title: featureData.paperTitles[0],
-            abstract: featureData.paperAbstracts[0]
-        });
-    }
-    
-    return { headlines, papers };
-}
-
-// ============================================
-// Geologic Data Templates
-// ============================================
-
-const GEOLOGY_TEMPLATES = {
-    ocean: { name: 'Ocean Basin', rockType: 'Basalt', description: 'Deep ocean floor', color: '#1a3a8f' },
-    continental: { name: 'Continental Crust', rockType: 'Granite/Gneiss', description: 'Ancient crystalline rocks', color: '#8b4513' },
-    mountains: { name: 'Mountain Range', rockType: 'Metamorphic', description: 'Highly deformed rocks', color: '#5a3a22' },
-    sedimentary: { name: 'Sedimentary Basin', rockType: 'Limestone/Sandstone', description: 'Layered rocks', color: '#d2b48c' },
-    volcanic: { name: 'Volcanic Arc', rockType: 'Andesite', description: 'Intermediate lavas', color: '#8b0000' },
-    desert: { name: 'Desert', rockType: 'Sandstone/Evaporites', description: 'Arid environment', color: '#daa520' },
-    ice: { name: 'Polar Region', rockType: 'Ice', description: 'Ice sheets', color: '#add8e6' }
-};
-
-function classifyGeology(lat, lng) {
-    lat = Math.abs(lat);
-    lng = lng < 0 ? lng + 360 : lng;
-    
-    const isOcean = (
-        (lng > 120 && lng < 280 && lat < 60) ||
-        (lng > 280 && lng < 340 && lat < 70) ||
-        (lng > 20 && lng < 60 && lat < 70) ||
-        (lng > 20 && lng < 120 && lat < 30) ||
-        (lat > 70) ||
-        (lat > 50 && lng > 120 && lng < 280)
-    );
-    
-    if (isOcean) return GEOLOGY_TEMPLATES.ocean;
-    if (lat > 65) return GEOLOGY_TEMPLATES.ice;
-    
-    const mountainRanges = [
-        { latMin: 25, latMax: 40, lngMin: 70, lngMax: 100 },
-        { latMin: -55, latMax: 10, lngMin: 280, lngMax: 330 },
-        { latMin: 35, latMax: 60, lngMin: 220, lngMax: 250 }
-    ];
-    
-    for (const range of mountainRanges) {
-        if (lat >= range.latMin && lat <= range.latMax && lng >= range.lngMin && lng <= range.lngMax) {
-            return GEOLOGY_TEMPLATES.mountains;
+    // Sample Earth texture using approximate NASA Blue Marble colors
+    // This creates a recognizable Earth pattern
+    for (let y = 0; y < canvas.height; y++) {
+        for (let x = 0; x < canvas.width; x++) {
+            // Calculate normalized coordinates (-1 to 1)
+            const nx = (x - centerX) / radius;
+            const ny = (y - centerY) / radius;
+            
+            // Check if pixel is inside the Earth disk
+            if (nx * nx + ny * ny > 1) {
+                // Outside Earth - space (black)
+                const idx = (y * canvas.width + x) * 4;
+                data[idx] = 0;
+                data[idx + 1] = 0;
+                data[idx + 2] = 0;
+                data[idx + 3] = 255;
+                continue;
+            }
+            
+            // Convert to latitude/longitude
+            const lat = Math.asin(ny) * 180 / Math.PI;
+            const lng = Math.atan2(nx, -ny) * 180 / Math.PI;
+            
+            // Normalize longitude to 0-360
+            const normalizedLng = (lng + 180) % 360;
+            
+            // Get color based on location
+            const color = getEarthColor(lat, normalizedLng);
+            
+            const idx = (y * canvas.width + x) * 4;
+            data[idx] = color.r;
+            data[idx + 1] = color.g;
+            data[idx + 2] = color.b;
+            data[idx + 3] = 255;
         }
     }
     
-    return Math.random() < 0.2 ? GEOLOGY_TEMPLATES.desert : GEOLOGY_TEMPLATES.continental;
+    // Apply blur if needed
+    if (blurLevel > 0) {
+        applyBoxBlur(data, canvas.width, canvas.height, blurLevel * 8);
+    }
+    
+    // Add noise for telescope effect
+    if (blurLevel >= 2) {
+        addNoiseToImageData(data, canvas.width * canvas.height, 30);
+    }
+    
+    ctx.putImageData(imageData, 0, 0);
+    
+    return new THREE.CanvasTexture(canvas);
+}
+
+function getEarthColor(lat, lng) {
+    // Simplified Earth color mapping based on approximate geography
+    
+    // Polar regions (ice)
+    if (lat > 60) {
+        // North pole - Arctic
+        return { r: 220, g: 230, b: 245 };
+    }
+    if (lat < -60) {
+        // South pole - Antarctica
+        return { r: 220, g: 230, b: 245 };
+    }
+    
+    // Check if over ocean or land
+    const isLand = isLandAt(lat, lng);
+    
+    if (!isLand) {
+        // Ocean colors vary by depth and location
+        const baseBlue = 20 + Math.random() * 10;
+        const baseGreen = 60 + Math.random() * 20;
+        const baseRed = 10 + Math.random() * 5;
+        return { r: baseRed, g: baseGreen, b: 120 + Math.random() * 40 };
+    }
+    
+    // Land - vary by biome
+    // Deserts (Sahara, Australia, etc.)
+    if ((lat > 15 && lat < 35 && lng > 340 && lng < 20) ||
+        (lat > -40 && lat < -10 && lng > 110 && lng < 150)) {
+        return { r: 210, g: 180, b: 140 };
+    }
+    
+    // Forests/vegetation (temperate zones)
+    if (Math.abs(lat) < 50) {
+        return { 
+            r: 50 + Math.random() * 30,
+            g: 100 + Math.random() * 50,
+            b: 40 + Math.random() * 20
+        };
+    }
+    
+    // Mountains
+    if ((lat > 25 && lat < 40 && lng > 70 && lng < 100) ||  // Himalayas
+        (lat > 35 && lat < 60 && lng > 220 && lng < 250)) { // Rockies
+        return { r: 80, g: 60, b: 40 };
+    }
+    
+    // Default land
+    return { 
+        r: 80 + Math.random() * 40,
+        g: 100 + Math.random() * 40,
+        b: 50 + Math.random() * 20
+    };
+}
+
+function isLandAt(lat, lng) {
+    // Simplified continent detection
+    // This is a rough approximation of Earth's land masses
+    
+    // Normalize
+    lat = Math.abs(lat);
+    
+    // Africa (centered on prime meridian)
+    if (lng > 340 || lng < 40) {
+        if (lat > 10 && lat < 40) return true;
+    }
+    
+    // Eurasia
+    if (lng > 0 && lng < 180) {
+        if (lat > 30 && lat < 70) return true;
+    }
+    
+    // North America
+    if (lng > 220 && lng < 320) {
+        if (lat > 10 && lat < 70) return true;
+    }
+    
+    // South America
+    if (lng > 280 && lng < 330) {
+        if (lat > 0 && lat < 60) return true;
+    }
+    
+    // Australia
+    if (lng > 110 && lng < 160) {
+        if (lat > 10 && lat < 45) return true;
+    }
+    
+    // Antarctica
+    if (lat > 60) return true;
+    
+    return false;
+}
+
+function applyBoxBlur(data, width, height, radius) {
+    // Simple box blur implementation
+    const tempBuffer = new Uint8ClampedArray(data.length);
+    
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            const idx = (y * width + x) * 4;
+            let r = 0, g = 0, b = 0, a = 0;
+            let count = 0;
+            
+            for (let dy = -radius; dy <= radius; dy++) {
+                for (let dx = -radius; dx <= radius; dx++) {
+                    const sx = Math.max(0, Math.min(width - 1, x + dx));
+                    const sy = Math.max(0, Math.min(height - 1, y + dy));
+                    const sidx = (sy * width + sx) * 4;
+                    r += data[sidx];
+                    g += data[sidx + 1];
+                    b += data[sidx + 2];
+                    a += data[sidx + 3];
+                    count++;
+                }
+            }
+            
+            tempBuffer[idx] = r / count;
+            tempBuffer[idx + 1] = g / count;
+            tempBuffer[idx + 2] = b / count;
+            tempBuffer[idx + 3] = a / count;
+        }
+    }
+    
+    // Copy back
+    for (let i = 0; i < data.length; i++) {
+        data[i] = tempBuffer[i];
+    }
+}
+
+function addNoiseToImageData(data, pixelCount, intensity) {
+    for (let i = 0; i < pixelCount; i++) {
+        const idx = i * 4;
+        const noise = Math.random() * intensity - intensity / 2;
+        data[idx] = Math.min(255, Math.max(0, data[idx] + noise));
+        data[idx + 1] = Math.min(255, Math.max(0, data[idx + 1] + noise));
+        data[idx + 2] = Math.min(255, Math.max(0, data[idx + 2] + noise));
+    }
+}
+
+function createPartialEarthTexture(side) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 2048;
+    canvas.height = 1024;
+    const ctx = canvas.getContext('2d');
+    
+    const imageData = ctx.createImageData(canvas.width, canvas.height);
+    const data = imageData.data;
+    
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = Math.min(canvas.width, canvas.height) / 2;
+    
+    for (let y = 0; y < canvas.height; y++) {
+        for (let x = 0; x < canvas.width; x++) {
+            const nx = (x - centerX) / radius;
+            const ny = (y - centerY) / radius;
+            
+            if (nx * nx + ny * ny > 1) {
+                const idx = (y * canvas.width + x) * 4;
+                data[idx] = 0;
+                data[idx + 1] = 0;
+                data[idx + 2] = 0;
+                data[idx + 3] = 255;
+                continue;
+            }
+            
+            const lat = Math.asin(ny) * 180 / Math.PI;
+            const lng = Math.atan2(nx, -ny) * 180 / Math.PI;
+            const normalizedLng = (lng + 180) % 360;
+            
+            const color = getEarthColor(lat, normalizedLng);
+            
+            const idx = (y * canvas.width + x) * 4;
+            
+            // Determine if this is on the clear side
+            const angle = Math.atan2(nx, -ny); // -π to π
+            const isClearSide = side === 'right' ? angle < 0 : angle > 0;
+            
+            if (isClearSide) {
+                // Clear side - use original color
+                data[idx] = color.r;
+                data[idx + 1] = color.g;
+                data[idx + 2] = color.b;
+            } else {
+                // Blurry side - use blurred/smudged color
+                // Sample from a wider area
+                const sampleRadius = 8;
+                let r = 0, g = 0, b = 0;
+                let count = 0;
+                
+                for (let sy = Math.max(0, y - sampleRadius); sy <= Math.min(canvas.height - 1, y + sampleRadius); sy++) {
+                    for (let sx = Math.max(0, x - sampleRadius); sx <= Math.min(canvas.width - 1, x + sampleRadius); sx++) {
+                        const sidx = (sy * canvas.width + sx) * 4;
+                        // Only sample valid Earth pixels (not space)
+                        if (data[sidx + 3] > 0) {
+                            r += data[sidx];
+                            g += data[sidx + 1];
+                            b += data[sidx + 2];
+                            count++;
+                        }
+                    }
+                }
+                
+                if (count > 0) {
+                    data[idx] = Math.min(255, r / count + (Math.random() * 20 - 10));
+                    data[idx + 1] = Math.min(255, g / count + (Math.random() * 20 - 10));
+                    data[idx + 2] = Math.min(255, b / count + (Math.random() * 20 - 10));
+                } else {
+                    data[idx] = color.r;
+                    data[idx + 1] = color.g;
+                    data[idx + 2] = color.b;
+                }
+            }
+            
+            data[idx + 3] = 255;
+        }
+    }
+    
+    ctx.putImageData(imageData, 0, 0);
+    
+    return new THREE.CanvasTexture(canvas);
+}
+
+function createDetailedEarthTexture() {
+    return createRealisticEarthTexture(0);
 }
 
 // ============================================
@@ -341,6 +423,7 @@ function launchFlyby() {
         const { headlines, papers } = generateHeadlines(discoveries);
         
         gameState.earthTextureState = 'partial';
+        gameState.flybyUnblurSide = Math.random() < 0.5 ? 'left' : 'right';
         updateEarthTexture();
         
         displayFlybyResults(gameState.flybyPhotos, discoveries, headlines, papers);
@@ -348,7 +431,7 @@ function launchFlyby() {
         addLogEntry(
             '🛰️ Flyby Mission Complete',
             'success',
-            `Flyby successful! ${gameState.flybyPhotos.length} imaging passes. The ${gameState.flybyUnblurSide} hemisphere now clearer. Atmosphere and magnetic field data received.`,
+            `Flyby successful! ${gameState.flybyPhotos.length} imaging passes. The ${gameState.flybyUnblurSide} hemisphere now clearer.`,
             headlines[0], papers[0].title, papers[0].abstract
         );
         
@@ -363,6 +446,53 @@ function launchFlyby() {
     }, 2000);
 }
 
+function analyzeFlybyResults() {
+    const discoveries = [];
+    gameState.atmosphereData = {
+        thickness: '~100 km',
+        composition: ATMOSPHERE_COMPOSITION,
+        pressure: '~1013 hPa'
+    };
+    gameState.magneticFieldDetected = true;
+    
+    const possibleFeatures = ['ocean', 'continental', 'mountains'];
+    const numFeatures = Math.floor(Math.random() * 2) + 2;
+    
+    const shuffled = [...possibleFeatures].sort(() => Math.random() - 0.5);
+    for (let i = 0; i < Math.min(numFeatures, shuffled.length); i++) {
+        discoveries.push(shuffled[i]);
+    }
+    
+    return discoveries;
+}
+
+function generateHeadlines(discoveries) {
+    const headlines = [];
+    const papers = [];
+    
+    headlines.push('BREAKING: EARTH HAS THICK ATMOSPHERE');
+    papers.push({
+        title: 'Atmospheric Composition of Earth',
+        abstract: `N₂ (${ATMOSPHERE_COMPOSITION.nitrogen.percentage}%), O₂ (${ATMOSPHERE_COMPOSITION.oxygen.percentage}%). Surface pressure: ${gameState.atmosphereData.pressure}.`
+    });
+    
+    headlines.push('STUNNING: MAGNETIC FIELD DETECTED');
+    papers.push({
+        title: 'Global Magnetic Field on Earth',
+        abstract: 'Strong dipolar field detected: 25-65 microteslas. Liquid core confirmed.'
+    });
+    
+    for (const feature of discoveries) {
+        headlines.push(DISCOVERY_FEATURES[feature].headlines[0]);
+        papers.push({
+            title: DISCOVERY_FEATURES[feature].paperTitles[0],
+            abstract: DISCOVERY_FEATURES[feature].paperAbstracts[0]
+        });
+    }
+    
+    return { headlines, papers };
+}
+
 function generateFlybyPhotos() {
     const photos = [];
     const centerLat = (Math.random() * 140 - 70);
@@ -372,7 +502,7 @@ function generateFlybyPhotos() {
         const lat = Math.max(-80, Math.min(80, centerLat + (Math.random() * 20 - 10)));
         const lng = (centerLng + (Math.random() * 20 - 10) + 540) % 360 - 180;
         const features = detectFeaturesInPhoto(lat, lng);
-        const thumbColor = getLocationColor(lat, lng);
+        const thumbColor = getLocationThumbnailColor(lat, lng);
         
         photos.push({
             id: `flyby-${i}`,
@@ -388,35 +518,25 @@ function generateFlybyPhotos() {
 
 function detectFeaturesInPhoto(lat, lng) {
     const features = [];
-    const geology = classifyGeology(lat, lng);
-    if (geology === GEOLOGY_TEMPLATES.ocean) features.push('ocean');
+    const isLand = isLandAt(lat, (lng + 180) % 360);
+    if (!isLand) features.push('ocean');
     else features.push('continental');
     if (Math.abs(lat) > 60) features.push('polarIce');
-    if (Math.random() < 0.4) features.push('clouds');
     if (Math.random() < 0.3) features.push('mountains');
-    if (Math.random() < 0.05) features.push('cities');
-    if (Math.random() < 0.15) features.push('vegetation');
     return features;
 }
 
-function getLocationColor(lat, lng) {
-    const geology = classifyGeology(lat, lng);
-    if (geology === GEOLOGY_TEMPLATES.ocean) return `rgb(30, 80, ${Math.floor(140 + Math.random() * 40)})`;
-    if (geology === GEOLOGY_TEMPLATES.ice) return '#e6f7ff';
-    if (geology === GEOLOGY_TEMPLATES.mountains) return '#654321';
-    if (geology === GEOLOGY_TEMPLATES.desert) return '#d2b48c';
-    return `rgb(${Math.floor(100 + Math.random() * 60)}, ${Math.floor(100 + Math.random() * 80)}, 50)`;
+function getLocationThumbnailColor(lat, lng) {
+    const color = getEarthColor(lat, (lng + 180) % 360);
+    return `rgb(${color.r}, ${color.g}, ${color.b})`;
 }
 
 function generatePhotoDescription(features, lat, lng) {
     const descriptions = [];
     if (features.includes('ocean')) descriptions.push('Vast blue expanse');
-    if (features.includes('continental')) descriptions.push('Brown and green land');
-    if (features.includes('mountains')) descriptions.push('Towering peaks');
-    if (features.includes('clouds')) descriptions.push('White clouds');
-    if (features.includes('polarIce')) descriptions.push('Bright ice cap');
-    if (features.includes('vegetation')) descriptions.push('Green vegetation');
-    if (features.includes('cities')) descriptions.push('Geometric patterns');
+    if (features.includes('continental')) descriptions.push('Land masses');
+    if (features.includes('polarIce')) descriptions.push('Ice cap');
+    if (features.includes('mountains')) descriptions.push('Mountains');
     return `Flyby Photo: ${lat.toFixed(1)}°${lat > 0 ? 'N' : 'S'}, ${lng.toFixed(1)}°${lng > 0 ? 'E' : 'W'} - ${descriptions.join(', ')}.`;
 }
 
@@ -441,33 +561,29 @@ function displayFlybyResults(photos, discoveries, headlines, papers) {
     });
     
     flybyAtmosphereDiv.innerHTML = `
-        <h4>Atmosphere Analysis:</h4>
+        <h4>Atmosphere:</h4>
         <p><strong>Thickness:</strong> ${gameState.atmosphereData.thickness}</p>
-        <p><strong>Surface Pressure:</strong> ${gameState.atmosphereData.pressure}</p>
-        <p><strong>Composition:</strong> N₂ (${ATMOSPHERE_COMPOSITION.nitrogen.percentage}%), O₂ (${ATMOSPHERE_COMPOSITION.oxygen.percentage}%), Ar, CO₂, H₂O</p>
+        <p><strong>Pressure:</strong> ${gameState.atmosphereData.pressure}</p>
+        <p><strong>Composition:</strong> N₂ (${ATMOSPHERE_COMPOSITION.nitrogen.percentage}%), O₂ (${ATMOSPHERE_COMPOSITION.oxygen.percentage}%)</p>
     `;
     
     flybyMagneticDiv.innerHTML = `
         <h4>Magnetic Field:</h4>
         <p><strong>Status:</strong> ✓ DETECTED</p>
-        <p><strong>Strength:</strong> 25-65 microteslas</p>
-        <p><strong>Implications:</strong> Liquid iron-nickel core confirmed</p>
+        <p><strong>Strength:</strong> 25-65 μT</p>
     `;
     
     flybyResultsDiv.style.display = 'block';
 }
 
 function launchOrbiter() {
-    if (gameState.budget < MISSION_TYPES.orbiter.cost) {
-        addLogEntry('Insufficient budget', 'error');
-        return;
-    }
+    if (gameState.budget < MISSION_TYPES.orbiter.cost) return;
     gameState.budget -= MISSION_TYPES.orbiter.cost;
     gameState.missionsLaunched++;
     gameState.earthTextureState = 'detailed';
     updateEarthTexture();
-    addLogEntry('🌍 Orbiter Mission', 'success', 'Global geologic map revealed!', 
-        'BREAKING: EARTH HAS DIVERSE TERRAIN', 'Global Geologic Survey', 'Earth has both oceanic and continental crust types.');
+    addLogEntry('🌍 Orbiter Mission', 'success', 'Global map revealed!', 
+        'BREAKING: EARTH HAS DIVERSE TERRAIN', 'Global Survey', 'Diverse crust types confirmed.');
     gameState.budget += 4;
     updateUI();
 }
@@ -476,9 +592,8 @@ function launchImpactProbe(lat, lng) {
     if (gameState.budget < MISSION_TYPES.impact.cost) return;
     gameState.budget -= MISSION_TYPES.impact.cost;
     gameState.missionsLaunched++;
-    const geology = classifyGeology(lat, lng);
-    addLogEntry('💥 Impact Probe', 'success', `Impact at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E. Found ${geology.rockType}.`, 
-        'SURFACE COMPOSITION REVEALED', 'Direct Measurement', `Found ${geology.rockType} in this region.`);
+    addLogEntry('💥 Impact Probe', 'success', `Impact at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E.`,
+        'SURFACE COMPOSITION REVEALED', 'Direct Measurement', 'Surface samples collected.');
     gameState.budget += 2;
     updateUI();
 }
@@ -487,9 +602,8 @@ function launchLander(lat, lng) {
     if (gameState.budget < MISSION_TYPES.lander.cost) return;
     gameState.budget -= MISSION_TYPES.lander.cost;
     gameState.missionsLaunched++;
-    const geology = classifyGeology(lat, lng);
-    addLogEntry('🚀 Lander Mission', 'success', `Landed at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E. Surface: ${geology.rockType}.`, 
-        'FIRST SOFT LANDING ON EARTH', 'In-Situ Analysis', `Surface composed of ${geology.rockType}.`);
+    addLogEntry('🚀 Lander Mission', 'success', `Landed at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E.`,
+        'FIRST SOFT LANDING', 'In-Situ Analysis', 'Surface analysis complete.');
     gameState.budget += 4;
     updateUI();
 }
@@ -498,9 +612,8 @@ function launchAdvancedLander(lat, lng) {
     if (gameState.budget < MISSION_TYPES.advancedLander.cost) return;
     gameState.budget -= MISSION_TYPES.advancedLander.cost;
     gameState.missionsLaunched++;
-    const geology = classifyGeology(lat, lng);
-    addLogEntry('🔬 Advanced Lander', 'success', `Landed at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E. Age: ${Math.floor(Math.random() * 4000 + 500)}M years.`, 
-        'DEEP CORE SAMPLES RETRIEVED', 'Radiometric Dating', 'Comprehensive analysis completed.');
+    addLogEntry('🔬 Advanced Lander', 'success', `Landed at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E. Age: ${Math.floor(Math.random() * 4000 + 500)}M years.`,
+        'DEEP CORE SAMPLES', 'Radiometric Dating', 'Comprehensive analysis.');
     gameState.budget += 6;
     updateUI();
 }
@@ -536,10 +649,8 @@ function addLogEntry(title, type, description, headline, paperTitle, paperAbstra
 }
 
 // ============================================
-// Three.js - Earth with Canvas Textures
+// Three.js Initialization
 // ============================================
-
-let blurryTexture, partialTexture, detailedTexture;
 
 function initThreeJS() {
     scene = new THREE.Scene();
@@ -571,8 +682,8 @@ function initThreeJS() {
     directionalLight.position.set(1, 1, 1);
     scene.add(directionalLight);
     
-    // Create Earth with canvas textures
-    createEarthWithCanvasTextures();
+    // Create Earth with textures
+    createEarth();
     
     window.addEventListener('resize', onWindowResize);
     globeContainer.addEventListener('click', onGlobeClick);
@@ -580,12 +691,12 @@ function initThreeJS() {
     animate();
 }
 
-function createEarthWithCanvasTextures() {
+function createEarth() {
     const geometry = new THREE.SphereGeometry(1, 128, 128);
     
     // Create textures
-    blurryTexture = createBlurryEarthTexture();
-    partialTexture = createBlurryEarthTexture(); // Will be updated on flyby
+    blurryTexture = createRealisticEarthTexture(2); // Very blurry
+    partialTexture = createRealisticEarthTexture(2); // Will be regenerated on flyby
     detailedTexture = createDetailedEarthTexture();
     
     // Material
@@ -620,217 +731,6 @@ function createEarthWithCanvasTextures() {
     scene.add(cloudsMesh);
     
     createStars();
-}
-
-function createBlurryEarthTexture() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 1024;
-    canvas.height = 512;
-    const ctx = canvas.getContext('2d');
-    
-    // Base: deep ocean blue
-    ctx.fillStyle = '#0a2448';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Draw continents as blurry green/brown shapes
-    ctx.fillStyle = 'rgba(100, 150, 80, 0.4)';
-    
-    // Africa (centered)
-    drawBlurryContinent(ctx, canvas.width * 0.5, canvas.height * 0.5, canvas.width * 0.25, canvas.height * 0.3);
-    
-    // Eurasia (top-right)
-    drawBlurryContinent(ctx, canvas.width * 0.7, canvas.height * 0.35, canvas.width * 0.35, canvas.height * 0.2);
-    
-    // North America (top-left)
-    drawBlurryContinent(ctx, canvas.width * 0.3, canvas.height * 0.35, canvas.width * 0.25, canvas.height * 0.25);
-    
-    // South America (bottom-left)
-    drawBlurryContinent(ctx, canvas.width * 0.35, canvas.height * 0.6, canvas.width * 0.15, canvas.height * 0.25);
-    
-    // Australia (bottom-right)
-    drawBlurryContinent(ctx, canvas.width * 0.75, canvas.height * 0.65, canvas.width * 0.12, canvas.height * 0.12);
-    
-    // Antarctica (bottom)
-    ctx.fillStyle = 'rgba(200, 220, 240, 0.5)';
-    ctx.beginPath();
-    ctx.ellipse(canvas.width * 0.5, canvas.height * 0.85, canvas.width * 0.4, canvas.height * 0.08, 0, 0, Math.PI * 2);
-    ctx.fill();
-    
-    // Apply heavy blur
-    applyBlur(ctx, canvas, 10);
-    
-    // Add film grain noise
-    addNoise(ctx, canvas, 15);
-    
-    return new THREE.CanvasTexture(canvas);
-}
-
-function createDetailedEarthTexture() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 1024;
-    canvas.height = 512;
-    const ctx = canvas.getContext('2d');
-    
-    // Base ocean
-    ctx.fillStyle = '#0a2448';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Continents with more detail
-    ctx.fillStyle = '#5a8a4a';
-    drawBlurryContinent(ctx, canvas.width * 0.5, canvas.height * 0.5, canvas.width * 0.25, canvas.height * 0.3);
-    
-    ctx.fillStyle = '#6a7a5a';
-    drawBlurryContinent(ctx, canvas.width * 0.7, canvas.height * 0.35, canvas.width * 0.35, canvas.height * 0.2);
-    
-    ctx.fillStyle = '#5a7a5a';
-    drawBlurryContinent(ctx, canvas.width * 0.3, canvas.height * 0.35, canvas.width * 0.25, canvas.height * 0.25);
-    
-    ctx.fillStyle = '#6a8a5a';
-    drawBlurryContinent(ctx, canvas.width * 0.35, canvas.height * 0.6, canvas.width * 0.15, canvas.height * 0.25);
-    
-    ctx.fillStyle = '#7a8a5a';
-    drawBlurryContinent(ctx, canvas.width * 0.75, canvas.height * 0.65, canvas.width * 0.12, canvas.height * 0.12);
-    
-    // Antarctica
-    ctx.fillStyle = '#d0e0f0';
-    ctx.beginPath();
-    ctx.ellipse(canvas.width * 0.5, canvas.height * 0.85, canvas.width * 0.4, canvas.height * 0.08, 0, 0, Math.PI * 2);
-    ctx.fill();
-    
-    // Apply light blur
-    applyBlur(ctx, canvas, 2);
-    
-    return new THREE.CanvasTexture(canvas);
-}
-
-function createPartialEarthTexture(side) {
-    const canvas = document.createElement('canvas');
-    canvas.width = 1024;
-    canvas.height = 512;
-    const ctx = canvas.getContext('2d');
-    
-    // Base ocean
-    ctx.fillStyle = '#0a2448';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Draw all continents
-    ctx.fillStyle = '#5a8a4a';
-    drawBlurryContinent(ctx, canvas.width * 0.5, canvas.height * 0.5, canvas.width * 0.25, canvas.height * 0.3);
-    ctx.fillStyle = '#6a7a5a';
-    drawBlurryContinent(ctx, canvas.width * 0.7, canvas.height * 0.35, canvas.width * 0.35, canvas.height * 0.2);
-    ctx.fillStyle = '#5a7a5a';
-    drawBlurryContinent(ctx, canvas.width * 0.3, canvas.height * 0.35, canvas.width * 0.25, canvas.height * 0.25);
-    ctx.fillStyle = '#6a8a5a';
-    drawBlurryContinent(ctx, canvas.width * 0.35, canvas.height * 0.6, canvas.width * 0.15, canvas.height * 0.25);
-    ctx.fillStyle = '#7a8a5a';
-    drawBlurryContinent(ctx, canvas.width * 0.75, canvas.height * 0.65, canvas.width * 0.12, canvas.height * 0.12);
-    
-    // Antarctica
-    ctx.fillStyle = '#d0e0f0';
-    ctx.beginPath();
-    ctx.ellipse(canvas.width * 0.5, canvas.height * 0.85, canvas.width * 0.4, canvas.height * 0.08, 0, 0, Math.PI * 2);
-    ctx.fill();
-    
-    // Apply differential blur
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const data = imageData.data;
-    
-    for (let y = 0; y < canvas.height; y++) {
-        for (let x = 0; x < canvas.width; x++) {
-            const idx = (y * canvas.width + x) * 4;
-            const relativeX = x / canvas.width;
-            const isClearSide = side === 'right' ? relativeX > 0.5 : relativeX < 0.5;
-            
-            if (!isClearSide) {
-                // Heavy blur for blurry side
-                const samples = [];
-                for (let dy = -4; dy <= 4; dy++) {
-                    for (let dx = -4; dx <= 4; dx++) {
-                        const sx = Math.max(0, Math.min(canvas.width - 1, x + dx));
-                        const sy = Math.max(0, Math.min(canvas.height - 1, y + dy));
-                        const sidx = (sy * canvas.width + sx) * 4;
-                        samples.push([data[sidx], data[sidx + 1], data[sidx + 2]]);
-                    }
-                }
-                let r = 0, g = 0, b = 0;
-                samples.forEach(s => { r += s[0]; g += s[1]; b += s[2]; });
-                data[idx] = r / samples.length;
-                data[idx + 1] = g / samples.length;
-                data[idx + 2] = b / samples.length;
-            }
-        }
-    }
-    
-    // Add noise to blurry side
-    for (let y = 0; y < canvas.height; y++) {
-        for (let x = 0; x < canvas.width; x++) {
-            const idx = (y * canvas.width + x) * 4;
-            const relativeX = x / canvas.width;
-            const isClearSide = side === 'right' ? relativeX > 0.5 : relativeX < 0.5;
-            if (!isClearSide) {
-                const noise = Math.random() * 20 - 10;
-                data[idx] = Math.min(255, Math.max(0, data[idx] + noise));
-                data[idx + 1] = Math.min(255, Math.max(0, data[idx + 1] + noise));
-                data[idx + 2] = Math.min(255, Math.max(0, data[idx + 2] + noise));
-            }
-        }
-    }
-    
-    ctx.putImageData(imageData, 0, 0);
-    
-    return new THREE.CanvasTexture(canvas);
-}
-
-function drawBlurryContinent(ctx, cx, cy, width, height) {
-    ctx.beginPath();
-    // Draw multiple overlapping ellipses for a more organic shape
-    ctx.ellipse(cx, cy, width, height, 0, 0, Math.PI * 2);
-    ctx.ellipse(cx - width * 0.1, cy, width * 0.8, height, Math.PI * 0.1, 0, Math.PI * 2);
-    ctx.ellipse(cx + width * 0.1, cy, width * 0.8, height, -Math.PI * 0.1, 0, Math.PI * 2);
-    ctx.fill();
-}
-
-function applyBlur(ctx, canvas, radius) {
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const data = imageData.data;
-    
-    for (let y = radius; y < canvas.height - radius; y++) {
-        for (let x = radius; x < canvas.width - radius; x++) {
-            const idx = (y * canvas.width + x) * 4;
-            const samples = [];
-            
-            for (let dy = -radius; dy <= radius; dy++) {
-                for (let dx = -radius; dx <= radius; dx++) {
-                    const sx = x + dx;
-                    const sy = y + dy;
-                    const sidx = (sy * canvas.width + sx) * 4;
-                    samples.push([data[sidx], data[sidx + 1], data[sidx + 2]]);
-                }
-            }
-            
-            let r = 0, g = 0, b = 0;
-            samples.forEach(s => { r += s[0]; g += s[1]; b += s[2]; });
-            data[idx] = r / samples.length;
-            data[idx + 1] = g / samples.length;
-            data[idx + 2] = b / samples.length;
-        }
-    }
-    
-    ctx.putImageData(imageData, 0, 0);
-}
-
-function addNoise(ctx, canvas, intensity) {
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const data = imageData.data;
-    
-    for (let i = 0; i < data.length; i += 4) {
-        const noise = Math.random() * intensity - intensity / 2;
-        data[i] = Math.min(255, Math.max(0, data[i] + noise));
-        data[i + 1] = Math.min(255, Math.max(0, data[i + 1] + noise));
-        data[i + 2] = Math.min(255, Math.max(0, data[i + 2] + noise));
-    }
-    
-    ctx.putImageData(imageData, 0, 0);
 }
 
 function createStars() {
@@ -952,7 +852,7 @@ function init() {
         'As a Martian scientist, you are in charge of Earth exploration. Our knowledge is limited to blurry optical images and occultation data. The Martian President declared: "We choose to go to the Earth" - and you will make it happen.',
         'MARTIAN PRESIDENT: "WE CHOOSE TO GO TO THE EARTH"',
         'Initial Reconnaissance: The Blue Planet',
-        'Preliminary observations reveal Earth as a blue world with white polar caps and faint dark surface features. Occultation data indicates a substantial atmosphere. The dark features remain unidentified.'
+        'Preliminary observations reveal Earth as a blue world with white polar caps and faint dark surface features. Occultation data indicates a substantial atmosphere.'
     );
 }
 
