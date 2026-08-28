@@ -31,21 +31,21 @@ const DISCOVERY_FEATURES = {
         name: 'Vast Water Bodies',
         headlines: ['BREAKING: EARTH COVERED IN LIQUID - MASSIVE BLUE REGIONS DETECTED'],
         paperTitles: ['Spectroscopic Confirmation of Liquid Water on Earth\'s Surface'],
-        paperAbstracts: ['High-resolution imaging reveals extensive blue regions with spectral signatures consistent with liquid water.'],
+        paperAbstracts: ['High-resolution imaging reveals extensive blue regions with spectral signatures consistent with liquid water. These features cover approximately 71% of Earth\'s surface.'],
         favor: 4
     },
     continental: {
         name: 'Land Masses',
         headlines: ['REVOLUTIONARY: EARTH HAS SOLID LAND - NOT JUST WATER'],
         paperTitles: ['Geomorphic Analysis of Earth\'s Continental Landmasses'],
-        paperAbstracts: ['Imaging data reveals distinct continental landmasses with varied albedo and texture.'],
+        paperAbstracts: ['Imaging data reveals distinct continental landmasses with varied albedo and texture. These features appear to be composed of silicate minerals.'],
         favor: 3
     },
     mountains: {
         name: 'Mountain Ranges',
         headlines: ['MYSTERY: EARTH\'S MOUNTAINS REACH FOR THE SKY'],
         paperTitles: ['Topographic Analysis of Earth\'s Mountain Systems'],
-        paperAbstracts: ['Stereo imaging reveals mountain ranges on Earth with elevations exceeding 8 kilometers.'],
+        paperAbstracts: ['Stereo imaging reveals mountain ranges on Earth with elevations exceeding 8 kilometers above mean surface level.'],
         favor: 5
     }
 };
@@ -63,7 +63,13 @@ const ATMOSPHERE_COMPOSITION = {
 
 let scene, camera, renderer, earth, controls, atmosphereMesh, cloudsMesh;
 let raycaster, mouse;
-let blurryTexture, partialTexture, detailedTexture;
+let earthTexture, blurryEarthTexture, partialEarthTexture, detailedEarthTexture, cloudTexture;
+let textureLoader;
+
+// Use NASA Blue Marble Next Generation - public domain, equirectangular projection
+// This is the standard Earth image used by most globe libraries
+const EARTH_TEXTURE_URL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Whole_world_-_land_and_oceans_12000.jpg/2048px-Whole_world_-_land_and_oceans_12000.jpg';
+const CLOUD_TEXTURE_URL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Earth_cloud_map.jpg/2048px-Earth_cloud_map.jpg';
 
 const MISSION_TYPES = {
     flyby: {
@@ -104,275 +110,84 @@ const MISSION_TYPES = {
 };
 
 // ============================================
-// Earth Texture - Base64 encoded 512x256 Earth image
-// This is a simplified equirectangular projection of Earth
+// Texture Processing
 // ============================================
 
-// Small Earth texture as base64 - 512x256 equirectangular
-// This is a placeholder that will be replaced with a better generated texture
-const EARTH_BASE64_SMALL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAADICAYAAAAboB4xAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDPHJlY3Qge1BhY2thZ2UgZGVmYXVsdCByZXNvdXJjZXM6IEluZGV4IERlYnVnIExpbms6IENvcHlyaWdodCA8L3BkZj4gPjxwZGY6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAsIHZlcmNvbnMvMzEyMiIgdHlwZT0iYWNjcmliYXRlZC1wYWludC10aW1lY3VwIj48cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPjxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnpzPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2hpbnV0aW5nIEFwbGVuKSIgeG1sOkNyZWF0ZURhdGU9IjIwMTctMDctMDdUMTQ6MzA6NDQtMDc6MDAiIHhtcE1NOkRvY3VtZW50SUQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zZXJkL3htcC8xIiB4bXBNTTpEb2N1bWVudElkPSJ4bXAuZGlkOkE0NjQ0NDQ0NjcxMTExRTU1MDc4Rjg0MzE0ODg1RjY3Ij48eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VzPSJhZG9iZTpuczptZXRhLyIgeG1wTU06UHJpbnRQcm9jZXNzPSJ4bXA6Q3JlYXRvclRvb2wvQT1jcmVhdG9yO211bHRpLnBkZjEwKDEpIiB4bXBNTTpEb2N1bWVudElkPSJ4bXAuZGlkOkE0NjQ0NDQ1NjcxMTExRTU1MDc4Rjg0MzE0ODg1RjY3Ij48L3JkZjpEZXNjcmlwdGlvbj48L3JkZjpSREY+PC94OnhtcG1ldGE+";
-
-// ============================================
-// Earth Texture Generation
-// Create a recognizable Earth using equirectangular projection
-// ============================================
-
-function createEarthTextureCanvas(blurLevel) {
-    // blurLevel: 0 = sharp, 1 = medium blur, 2 = very blurry
-    const width = 1024;
-    const height = 512;
+function createBlurryTextureFromImage(sourceTexture, blurAmount) {
+    // Create a canvas and draw the source texture scaled down
     const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
+    const scale = 1 / (blurAmount + 1);
+    canvas.width = Math.max(1, sourceTexture.image.width * scale);
+    canvas.height = Math.max(1, sourceTexture.image.height * scale);
     const ctx = canvas.getContext('2d');
     
-    // Create image data for direct pixel manipulation
-    const imageData = ctx.createImageData(width, height);
-    const data = imageData.data;
+    // Draw scaled down (this creates blur)
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(sourceTexture.image, 0, 0, canvas.width, canvas.height);
     
-    // Fill with ocean blue
-    for (let i = 0; i < data.length; i += 4) {
-        data[i] = 10;     // R
-        data[i + 1] = 40;  // G  
-        data[i + 2] = 80;  // B
-        data[i + 3] = 255; // A
-    }
+    // Scale back up to original size
+    const finalCanvas = document.createElement('canvas');
+    finalCanvas.width = sourceTexture.image.width;
+    finalCanvas.height = sourceTexture.image.height;
+    const finalCtx = finalCanvas.getContext('2d');
+    finalCtx.imageSmoothingEnabled = true;
+    finalCtx.imageSmoothingQuality = 'high';
+    finalCtx.drawImage(canvas, 0, 0, finalCanvas.width, finalCanvas.height);
     
-    // Now draw continents as land
-    // In equirectangular projection:
-    // - x = 0 to width maps to longitude -180 to +180
-    // - y = 0 to height maps to latitude +90 to -90
-    
-    for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-            // Convert pixel to lat/lon
-            const lon = (x / width) * 360 - 180;  // -180 to 180
-            const lat = 90 - (y / height) * 180;   // 90 to -90
-            
-            if (isLandAt(lat, lon)) {
-                const idx = (y * width + x) * 4;
-                // Land color based on biome
-                const color = getLandColor(lat, lon);
-                data[idx] = color.r;
-                data[idx + 1] = color.g;
-                data[idx + 2] = color.b;
-            }
+    // Add film grain noise for telescope effect
+    if (blurAmount >= 2) {
+        const imageData = finalCtx.getImageData(0, 0, finalCanvas.width, finalCanvas.height);
+        const data = imageData.data;
+        for (let i = 0; i < data.length; i += 4) {
+            const noise = Math.random() * 30 - 15;
+            data[i] = Math.min(255, Math.max(0, data[i] + noise));
+            data[i + 1] = Math.min(255, Math.max(0, data[i + 1] + noise));
+            data[i + 2] = Math.min(255, Math.max(0, data[i + 2] + noise));
         }
+        finalCtx.putImageData(imageData, 0, 0);
     }
     
-    // Add polar ice caps
-    addPolarIceCaps(data, width, height);
-    
-    // Apply blur
-    if (blurLevel > 0) {
-        applyGaussianBlur(data, width, height, blurLevel * 4);
-    }
-    
-    // Add film grain for telescope effect
-    if (blurLevel >= 2) {
-        addFilmGrain(data, width * height, 25);
-    }
-    
-    ctx.putImageData(imageData, 0, 0);
-    return canvas;
+    const texture = new THREE.CanvasTexture(finalCanvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.anisotropy = 16;
+    return texture;
 }
 
-function isLandAt(lat, lon) {
-    // More accurate continent detection
-    // Normalize longitude to 0-360
-    const lng = (lon + 180) % 360;
-    const absLat = Math.abs(lat);
-    
-    // Africa: roughly 20°W to 50°E, 35°S to 37°N
-    if (lng >= 340 || lng < 50) {
-        if (lat >= -35 && lat <= 37) {
-            return true;
-        }
-    }
-    
-    // Europe/Asia: 20°W to 180°E, 35°N to 70°N
-    if (lng >= 0 && lng <= 180) {
-        if (lat >= 35 && lat <= 70) {
-            return true;
-        }
-    }
-    
-    // North America: 170°W to 60°W, 10°N to 70°N
-    if (lng >= 190 && lng <= 300) {
-        if (lat >= 10 && lat <= 70) {
-            return true;
-        }
-    }
-    
-    // South America: 80°W to 35°W, 55°S to 10°N
-    if (lng >= 280 && lng <= 325) {
-        if (lat >= -55 && lat <= 10) {
-            return true;
-        }
-    }
-    
-    // Australia: 110°E to 155°E, 10°S to 45°S
-    if (lng >= 110 && lng <= 155) {
-        if (lat >= -45 && lat <= -10) {
-            return true;
-        }
-    }
-    
-    // Greenland: 50°W to 10°W, 60°N to 85°N
-    if (lng >= 310 && lng <= 350) {
-        if (lat >= 60 && lat <= 85) {
-            return true;
-        }
-    }
-    
-    // Madagascar: 40°E to 50°E, 12°S to 26°S
-    if (lng >= 40 && lng <= 50) {
-        if (lat >= -26 && lat <= -12) {
-            return true;
-        }
-    }
-    
-    return false;
-}
-
-function getLandColor(lat, lon) {
-    const absLat = Math.abs(lat);
-    const lng = (lon + 180) % 360;
-    
-    // Deserts
-    if ((lat > 15 && lat < 35 && lng > 340 && lng < 20) ||  // Sahara
-        (lat > -40 && lat < -10 && lng > 110 && lng < 150)) { // Australia desert
-        return { r: 210, g: 180, b: 140 };
-    }
-    
-    // Forests
-    if (absLat < 50) {
-        return {
-            r: Math.floor(50 + Math.random() * 30),
-            g: Math.floor(100 + Math.random() * 60),
-            b: Math.floor(40 + Math.random() * 30)
-        };
-    }
-    
-    // Tundra/arctic
-    if (absLat > 60) {
-        return { r: 150, g: 140, b: 120 };
-    }
-    
-    // Default land
-    return {
-        r: Math.floor(80 + Math.random() * 50),
-        g: Math.floor(100 + Math.random() * 50),
-        b: Math.floor(50 + Math.random() * 30)
-    };
-}
-
-function addPolarIceCaps(data, width, height) {
-    for (let y = 0; y < height; y++) {
-        const lat = 90 - (y / height) * 180;
-        
-        if (lat > 60) {
-            // North pole - Arctic
-            for (let x = 0; x < width; x++) {
-                const idx = (y * width + x) * 4;
-                data[idx] = 220 + Math.random() * 20;
-                data[idx + 1] = 230 + Math.random() * 15;
-                data[idx + 2] = 245 + Math.random() * 10;
-            }
-        }
-        
-        if (lat < -60) {
-            // South pole - Antarctica
-            for (let x = 0; x < width; x++) {
-                const idx = (y * width + x) * 4;
-                data[idx] = 220 + Math.random() * 20;
-                data[idx + 1] = 230 + Math.random() * 15;
-                data[idx + 2] = 245 + Math.random() * 10;
-            }
-        }
-    }
-}
-
-function applyGaussianBlur(data, width, height, radius) {
-    // Simple box blur - good enough for our purposes
-    const temp = new Uint8ClampedArray(data.length);
-    
-    for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-            const idx = (y * width + x) * 4;
-            let r = 0, g = 0, b = 0, a = 0;
-            let count = 0;
-            
-            for (let dy = -radius; dy <= radius; dy++) {
-                for (let dx = -radius; dx <= radius; dx++) {
-                    const sx = Math.max(0, Math.min(width - 1, x + dx));
-                    const sy = Math.max(0, Math.min(height - 1, y + dy));
-                    const sidx = (sy * width + sx) * 4;
-                    r += data[sidx];
-                    g += data[sidx + 1];
-                    b += data[sidx + 2];
-                    a += data[sidx + 3];
-                    count++;
-                }
-            }
-            
-            temp[idx] = r / count;
-            temp[idx + 1] = g / count;
-            temp[idx + 2] = b / count;
-            temp[idx + 3] = a / count;
-        }
-    }
-    
-    for (let i = 0; i < data.length; i++) {
-        data[i] = temp[i];
-    }
-}
-
-function addFilmGrain(data, pixelCount, intensity) {
-    for (let i = 0; i < pixelCount; i++) {
-        const idx = i * 4;
-        const noise = Math.random() * intensity - intensity / 2;
-        data[idx] = Math.min(255, Math.max(0, data[idx] + noise));
-        data[idx + 1] = Math.min(255, Math.max(0, data[idx + 1] + noise));
-        data[idx + 2] = Math.min(255, Math.max(0, data[idx + 2] + noise));
-    }
-}
-
-function createPartialTexture(side) {
-    const width = 1024;
-    const height = 512;
+function createPartialTextureFromImage(sourceTexture, side) {
+    // Create a canvas with the same dimensions
     const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = sourceTexture.image.width;
+    canvas.height = sourceTexture.image.height;
     const ctx = canvas.getContext('2d');
     
-    // First create a sharp Earth
-    const sharpCanvas = createEarthTextureCanvas(0);
-    ctx.drawImage(sharpCanvas, 0, 0);
+    // Draw the original image
+    ctx.drawImage(sourceTexture.image, 0, 0);
     
     // Get image data
-    const imageData = ctx.getImageData(0, 0, width, height);
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
     
     // Apply blur to one hemisphere
-    for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-            const idx = (y * width + x) * 4;
+    for (let y = 0; y < canvas.height; y++) {
+        for (let x = 0; x < canvas.width; x++) {
+            const idx = (y * canvas.width + x) * 4;
             
-            // In equirectangular, hemisphere is determined by x (longitude)
-            const isClearSide = side === 'right' ? x > width / 2 : x < width / 2;
+            // Determine which hemisphere this pixel is in
+            // In equirectangular projection, x position = longitude
+            const isClearSide = side === 'right' ? x > canvas.width / 2 : x < canvas.width / 2;
             
             if (!isClearSide) {
-                // Blur this pixel by sampling nearby pixels
+                // Apply blur to this pixel
                 const radius = 8;
                 let r = 0, g = 0, b = 0;
                 let count = 0;
                 
                 for (let dy = -radius; dy <= radius; dy++) {
                     for (let dx = -radius; dx <= radius; dx++) {
-                        const sx = Math.max(0, Math.min(width - 1, x + dx));
-                        const sy = Math.max(0, Math.min(height - 1, y + dy));
-                        const sidx = (sy * width + sx) * 4;
+                        const sx = Math.max(0, Math.min(canvas.width - 1, x + dx));
+                        const sy = Math.max(0, Math.min(canvas.height - 1, y + dy));
+                        const sidx = (sy * canvas.width + sx) * 4;
                         r += data[sidx];
                         g += data[sidx + 1];
                         b += data[sidx + 2];
@@ -380,70 +195,43 @@ function createPartialTexture(side) {
                     }
                 }
                 
-                data[idx] = Math.min(255, r / count + (Math.random() * 20 - 10));
-                data[idx + 1] = Math.min(255, g / count + (Math.random() * 20 - 10));
-                data[idx + 2] = Math.min(255, b / count + (Math.random() * 20 - 10));
+                data[idx] = r / count;
+                data[idx + 1] = g / count;
+                data[idx + 2] = b / count;
+                
+                // Add noise
+                const noise = Math.random() * 20 - 10;
+                data[idx] = Math.min(255, Math.max(0, data[idx] + noise));
+                data[idx + 1] = Math.min(255, Math.max(0, data[idx + 1] + noise));
+                data[idx + 2] = Math.min(255, Math.max(0, data[idx + 2] + noise));
             }
         }
     }
     
     ctx.putImageData(imageData, 0, 0);
-    return new THREE.CanvasTexture(canvas);
+    
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.anisotropy = 16;
+    return texture;
 }
 
 // ============================================
-// Mission Functions
+// Feature Detection from Flyby
 // ============================================
-
-function launchFlyby() {
-    if (gameState.budget < MISSION_TYPES.flyby.cost) {
-        addLogEntry('Insufficient budget for Flyby mission', 'error');
-        return;
-    }
-    
-    gameState.budget -= MISSION_TYPES.flyby.cost;
-    gameState.missionsLaunched++;
-    gameState.flybyComplete = true;
-    
-    addLogEntry('🛰️ Flyby Mission Launched', 'info', 'Spacecraft on trajectory...', null, null, null);
-    
-    setTimeout(() => {
-        gameState.flybyPhotos = generateFlybyPhotos();
-        const discoveries = analyzeFlybyResults();
-        const { headlines, papers } = generateHeadlines(discoveries);
-        
-        gameState.earthTextureState = 'partial';
-        gameState.flybyUnblurSide = Math.random() < 0.5 ? 'left' : 'right';
-        updateEarthTexture();
-        
-        displayFlybyResults(gameState.flybyPhotos, discoveries, headlines, papers);
-        
-        addLogEntry(
-            '🛰️ Flyby Mission Complete',
-            'success',
-            `Flyby successful! ${gameState.flybyPhotos.length} imaging passes. The ${gameState.flybyUnblurSide} hemisphere now clearer.`,
-            headlines[0], papers[0].title, papers[0].abstract
-        );
-        
-        for (let i = 1; i < headlines.length; i++) {
-            addLogEntry(headlines[i], 'discovery', null, null, papers[i].title, papers[i].abstract);
-        }
-        
-        let favorGained = 5;
-        discoveries.forEach(d => favorGained += DISCOVERY_FEATURES[d].favor);
-        gameState.budget += favorGained;
-        updateUI();
-    }, 2000);
-}
 
 function analyzeFlybyResults() {
     const discoveries = [];
+    
     gameState.atmosphereData = {
         thickness: '~100 km',
         composition: ATMOSPHERE_COMPOSITION,
-        pressure: '~1013 hPa'
+        pressure: '~1013 hPa at surface',
+        temperature: '-60°C to +30°C range'
     };
+    
     gameState.magneticFieldDetected = true;
+    gameState.flybyUnblurSide = Math.random() < 0.5 ? 'left' : 'right';
     
     const possibleFeatures = ['ocean', 'continental', 'mountains'];
     const numFeatures = Math.floor(Math.random() * 2) + 2;
@@ -460,16 +248,16 @@ function generateHeadlines(discoveries) {
     const headlines = [];
     const papers = [];
     
-    headlines.push('BREAKING: EARTH HAS THICK ATMOSPHERE');
+    headlines.push('BREAKING: EARTH HAS THICK ATMOSPHERE - COMPOSITION UNLIKE MARS');
     papers.push({
-        title: 'Atmospheric Composition of Earth',
-        abstract: `N₂ (${ATMOSPHERE_COMPOSITION.nitrogen.percentage}%), O₂ (${ATMOSPHERE_COMPOSITION.oxygen.percentage}%). Surface pressure: ${gameState.atmosphereData.pressure}.`
+        title: 'Atmospheric Composition of Earth: First In-Situ Measurements from Flyby',
+        abstract: `Spectroscopic analysis during the flyby reveals Earth's atmosphere is composed primarily of nitrogen (${ATMOSPHERE_COMPOSITION.nitrogen.percentage}%) and oxygen (${ATMOSPHERE_COMPOSITION.oxygen.percentage}%), with trace amounts of argon, carbon dioxide, and water vapor. The total surface pressure is approximately ${gameState.atmosphereData.pressure}, significantly higher than Mars' thin atmosphere.`
     });
     
-    headlines.push('STUNNING: MAGNETIC FIELD DETECTED');
+    headlines.push('STUNNING: EARTH HAS POWERFUL MAGNETIC FIELD - PLANETARY DYNAMO CONFIRMED');
     papers.push({
-        title: 'Global Magnetic Field on Earth',
-        abstract: 'Strong dipolar field detected: 25-65 microteslas. Liquid core confirmed.'
+        title: 'Detection of a Global Magnetic Field on Earth: Evidence for a Liquid Core',
+        abstract: 'Magnetometer readings during the flyby reveal a strong dipolar magnetic field with a surface strength of approximately 25-65 microteslas. This field is consistent with a geodynamo generated by convection in a liquid iron-nickel outer core.'
     });
     
     for (const feature of discoveries) {
@@ -481,6 +269,80 @@ function generateHeadlines(discoveries) {
     }
     
     return { headlines, papers };
+}
+
+// ============================================
+// Geology Classification
+// ============================================
+
+function classifyGeology(lat, lng) {
+    lat = Math.abs(lat);
+    lng = lng < 0 ? lng + 360 : lng;
+    
+    const isOcean = (
+        (lng > 120 && lng < 280 && lat < 60) ||
+        (lng > 280 && lng < 340 && lat < 70) ||
+        (lng > 20 && lng < 60 && lat < 70) ||
+        (lng > 20 && lng < 120 && lat < 30) ||
+        (lat > 70) ||
+        (lat > 50 && lng > 120 && lng < 280)
+    );
+    
+    if (isOcean) {
+        return { name: 'Ocean Basin', rockType: 'Basalt', description: 'Deep ocean floor', color: '#1a3a8f' };
+    }
+    
+    if (lat > 65) {
+        return { name: 'Polar Region', rockType: 'Ice', description: 'Ice sheets', color: '#add8e6' };
+    }
+    
+    return { name: 'Continental Crust', rockType: 'Granite/Gneiss', description: 'Ancient crystalline rocks', color: '#8b4513' };
+}
+
+// ============================================
+// Mission Functions
+// ============================================
+
+function launchFlyby() {
+    if (gameState.budget < MISSION_TYPES.flyby.cost) {
+        addLogEntry('Insufficient budget for Flyby mission', 'error');
+        return;
+    }
+    
+    gameState.budget -= MISSION_TYPES.flyby.cost;
+    gameState.missionsLaunched++;
+    gameState.flybyComplete = true;
+    
+    addLogEntry('🛰️ Flyby Mission Launched', 'info', 'Spacecraft on trajectory for high-speed Earth pass. Imaging and sensor data will be collected during closest approach...', null, null, null);
+    
+    setTimeout(() => {
+        gameState.flybyPhotos = generateFlybyPhotos();
+        const discoveries = analyzeFlybyResults();
+        const { headlines, papers } = generateHeadlines(discoveries);
+        
+        gameState.earthTextureState = 'partial';
+        updateEarthTexture();
+        
+        displayFlybyResults(gameState.flybyPhotos, discoveries, headlines, papers);
+        
+        addLogEntry(
+            '🛰️ Flyby Mission Complete',
+            'success',
+            `Flyby successful! Collected data from ${gameState.flybyPhotos.length} imaging passes. The ${gameState.flybyUnblurSide} hemisphere now at improved resolution. Atmosphere and magnetic field data received.`,
+            headlines[0],
+            papers[0].title,
+            papers[0].abstract
+        );
+        
+        for (let i = 1; i < headlines.length; i++) {
+            addLogEntry(headlines[i], 'discovery', null, null, papers[i].title, papers[i].abstract);
+        }
+        
+        let favorGained = 5;
+        discoveries.forEach(d => favorGained += DISCOVERY_FEATURES[d].favor);
+        gameState.budget += favorGained;
+        updateUI();
+    }, 2000);
 }
 
 function generateFlybyPhotos() {
@@ -508,17 +370,19 @@ function generateFlybyPhotos() {
 
 function detectFeaturesInPhoto(lat, lng) {
     const features = [];
-    const isLand = isLandAt(lat, (lng + 180) % 360);
-    if (!isLand) features.push('ocean');
+    const geology = classifyGeology(lat, lng);
+    if (geology.rockType === 'Basalt') features.push('ocean');
+    else if (geology.rockType === 'Ice') features.push('polarIce');
     else features.push('continental');
-    if (Math.abs(lat) > 60) features.push('polarIce');
     if (Math.random() < 0.3) features.push('mountains');
     return features;
 }
 
 function getLocationThumbnailColor(lat, lng) {
-    const color = getLandColor(lat, (lng + 180) % 360);
-    return `rgb(${color.r}, ${color.g}, ${color.b})`;
+    const geology = classifyGeology(lat, lng);
+    if (geology.rockType === 'Basalt') return '#1a3a8f';
+    if (geology.rockType === 'Ice') return '#add8e6';
+    return '#8b4513';
 }
 
 function generatePhotoDescription(features, lat, lng) {
@@ -551,58 +415,149 @@ function displayFlybyResults(photos, discoveries, headlines, papers) {
     });
     
     flybyAtmosphereDiv.innerHTML = `
-        <h4>Atmosphere:</h4>
+        <h4>Atmosphere Analysis:</h4>
         <p><strong>Thickness:</strong> ${gameState.atmosphereData.thickness}</p>
-        <p><strong>Pressure:</strong> ${gameState.atmosphereData.pressure}</p>
+        <p><strong>Surface Pressure:</strong> ${gameState.atmosphereData.pressure}</p>
+        <p><strong>Temperature Range:</strong> ${gameState.atmosphereData.temperature}</p>
+        <p><strong>Primary Composition:</strong></p>
+        <ul>
+            <li>Nitrogen (N₂): ${ATMOSPHERE_COMPOSITION.nitrogen.percentage}%</li>
+            <li>Oxygen (O₂): ${ATMOSPHERE_COMPOSITION.oxygen.percentage}%</li>
+            <li>Argon (Ar): ${ATMOSPHERE_COMPOSITION.argon.percentage}%</li>
+            <li>Carbon Dioxide (CO₂): ${ATMOSPHERE_COMPOSITION.carbonDioxide.percentage}%</li>
+        </ul>
     `;
     
     flybyMagneticDiv.innerHTML = `
-        <h4>Magnetic Field:</h4>
+        <h4>Magnetic Field Detection:</h4>
         <p><strong>Status:</strong> ✓ DETECTED</p>
-        <p><strong>Strength:</strong> 25-65 μT</p>
+        <p><strong>Type:</strong> Global dipolar field</p>
+        <p><strong>Surface Strength:</strong> 25-65 microteslas</p>
+        <p><strong>Implications:</strong> Liquid iron-nickel outer core confirmed</p>
+        <p><strong>Comparison:</strong> ~100x stronger than Mars' residual crustal magnetism</p>
     `;
     
     flybyResultsDiv.style.display = 'block';
 }
 
 function launchOrbiter() {
-    if (gameState.budget < MISSION_TYPES.orbiter.cost) return;
+    if (gameState.budget < MISSION_TYPES.orbiter.cost) {
+        addLogEntry('Insufficient budget for Orbiter mission', 'error');
+        return;
+    }
+    
     gameState.budget -= MISSION_TYPES.orbiter.cost;
     gameState.missionsLaunched++;
+    gameState.isSelectingTarget = false;
+    gameState.geologyRevealed = true;
     gameState.earthTextureState = 'detailed';
+    
     updateEarthTexture();
-    addLogEntry('🌍 Orbiter Mission', 'success', 'Global map revealed!', 
-        'BREAKING: EARTH HAS DIVERSE TERRAIN', 'Global Survey', 'Diverse crust types confirmed.');
+    
+    addLogEntry(
+        '🌍 Orbiter Mission Launched',
+        'success',
+        'Revealed coarse geologic map of Earth. Major landforms and rock type distributions now visible.',
+        'BREAKING: EARTH HAS DIVERSE TERRAIN - NOT JUST BASALT!',
+        'Global Geologic Survey from Orbit: First Evidence of Continental Crust',
+        'Preliminary analysis reveals Earth has both oceanic and continental crust types, with mountain ranges, sedimentary basins, and volcanic arcs. This diversity is unlike anything observed on the Moon or Mars.'
+    );
+    
     gameState.budget += 4;
     updateUI();
 }
 
 function launchImpactProbe(lat, lng) {
-    if (gameState.budget < MISSION_TYPES.impact.cost) return;
+    if (gameState.budget < MISSION_TYPES.impact.cost) {
+        addLogEntry('Insufficient budget for Impact Probe mission', 'error');
+        return;
+    }
+    
     gameState.budget -= MISSION_TYPES.impact.cost;
     gameState.missionsLaunched++;
-    addLogEntry('💥 Impact Probe', 'success', `Impact at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E.`,
-        'SURFACE COMPOSITION REVEALED', 'Direct Measurement', 'Surface samples collected.');
+    
+    const geology = classifyGeology(lat, lng);
+    
+    gameState.revealedAreas.push({
+        lat: lat,
+        lng: lng,
+        radius: 5,
+        type: 'impact'
+    });
+    
+    addLogEntry(
+        '💥 Impact Probe Mission',
+        'success',
+        `Impact at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E. Found ${geology.rockType}. ${geology.description}.`,
+        'BREAKING: EARTH\'S SURFACE COMPOSITION REVEALED',
+        'First Direct Measurement of Terrestrial Surface Materials',
+        `The impact probe returned samples of ${geology.rockType}, confirming the presence of ${geology.name} in this region. Chemical analysis is underway.`
+    );
+    
     gameState.budget += 2;
     updateUI();
 }
 
 function launchLander(lat, lng) {
-    if (gameState.budget < MISSION_TYPES.lander.cost) return;
+    if (gameState.budget < MISSION_TYPES.lander.cost) {
+        addLogEntry('Insufficient budget for Lander mission', 'error');
+        return;
+    }
+    
     gameState.budget -= MISSION_TYPES.lander.cost;
     gameState.missionsLaunched++;
-    addLogEntry('🚀 Lander Mission', 'success', `Landed at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E.`,
-        'FIRST SOFT LANDING', 'In-Situ Analysis', 'Surface analysis complete.');
+    
+    const geology = classifyGeology(lat, lng);
+    
+    gameState.revealedAreas.push({
+        lat: lat,
+        lng: lng,
+        radius: 10,
+        type: 'lander'
+    });
+    
+    addLogEntry(
+        '🚀 Lander Mission',
+        'success',
+        `Landed at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E. Astronauts report: "We're on a surface of ${geology.rockType.toLowerCase()}. The samples show ${geology.description.toLowerCase()}."`,
+        'SUCCESS: FIRST SOFT LANDING ON EARTH',
+        'In-Situ Analysis of Terrestrial Surface Materials',
+        `The lander has successfully touched down and conducted preliminary analysis. The surface is composed of ${geology.rockType}, with ${geology.description}. Initial measurements suggest this region is part of Earth's ${geology.name}.`
+    );
+    
     gameState.budget += 4;
     updateUI();
 }
 
 function launchAdvancedLander(lat, lng) {
-    if (gameState.budget < MISSION_TYPES.advancedLander.cost) return;
+    if (gameState.budget < MISSION_TYPES.advancedLander.cost) {
+        addLogEntry('Insufficient budget for Advanced Lander mission', 'error');
+        return;
+    }
+    
     gameState.budget -= MISSION_TYPES.advancedLander.cost;
     gameState.missionsLaunched++;
-    addLogEntry('🔬 Advanced Lander', 'success', `Landed at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E. Age: ${Math.floor(Math.random() * 4000 + 500)}M years.`,
-        'DEEP CORE SAMPLES', 'Radiometric Dating', 'Comprehensive analysis.');
+    
+    const geology = classifyGeology(lat, lng);
+    
+    gameState.revealedAreas.push({
+        lat: lat,
+        lng: lng,
+        radius: 15,
+        type: 'advanced'
+    });
+    
+    const enhancedDescription = `${geology.description}. Advanced instruments reveal age: ${Math.floor(Math.random() * 4000 + 500)} million years.`;
+    
+    addLogEntry(
+        '🔬 Advanced Lander Mission',
+        'success',
+        `Landed at ${lat.toFixed(1)}°N, ${lng.toFixed(1)}°E. Comprehensive analysis: ${enhancedDescription}`,
+        'HISTORIC: DEEP CORE SAMPLES RETRIEVED FROM EARTH',
+        'Radiometric Dating and Geochemical Analysis of Terrestrial Materials',
+        `The advanced lander has conducted a comprehensive analysis of Earth's surface and subsurface. ${enhancedDescription} Radiometric dating confirms the age of these formations, providing critical constraints on Earth's geologic history.`
+    );
+    
     gameState.budget += 6;
     updateUI();
 }
@@ -614,9 +569,12 @@ function launchAdvancedLander(lat, lng) {
 function updateUI() {
     document.getElementById('budget').textContent = gameState.budget;
     document.getElementById('missions-launched').textContent = gameState.missionsLaunched;
+    
     for (const [type, mission] of Object.entries(MISSION_TYPES)) {
         const btn = document.getElementById(`${type}-btn`);
-        if (btn) btn.disabled = gameState.budget < mission.cost;
+        if (btn) {
+            btn.disabled = gameState.budget < mission.cost;
+        }
     }
 }
 
@@ -624,17 +582,37 @@ function addLogEntry(title, type, description, headline, paperTitle, paperAbstra
     const logEntries = document.getElementById('log-entries');
     const entry = document.createElement('div');
     entry.className = `log-entry log-${type}`;
+    
     const now = new Date();
     const timeStr = now.toLocaleTimeString();
+    
     let content = '';
-    if (headline) content += `<div class="headline">${headline}</div>`;
-    if (title && !headline) content += `<div class="log-title">${title}</div>`;
-    if (description) content += `<div class="description">${description}</div>`;
-    if (paperTitle && paperAbstract) content += `<div class="paper"><strong>${paperTitle}</strong><br><em>Abstract:</em> ${paperAbstract}</div>`;
+    if (headline) {
+        content += `<div class="headline">${headline}</div>`;
+    }
+    if (title && !headline) {
+        content += `<div class="log-title">${title}</div>`;
+    }
+    if (description) {
+        content += `<div class="description">${description}</div>`;
+    }
+    if (paperTitle && paperAbstract) {
+        content += `<div class="paper"><strong>${paperTitle}</strong><br><em>Abstract:</em> ${paperAbstract}</div>`;
+    }
     content += `<div class="meta">Mission ${gameState.missionsLaunched}  ${timeStr}</div>`;
+    
     entry.innerHTML = content;
     logEntries.prepend(entry);
-    gameState.discoveries.push({ title, type, description, headline, paperTitle, paperAbstract, time: now });
+    
+    gameState.discoveries.push({
+        title: title,
+        type: type,
+        description: description,
+        headline: headline,
+        paperTitle: paperTitle,
+        paperAbstract: paperAbstract,
+        time: now
+    });
 }
 
 // ============================================
@@ -643,6 +621,7 @@ function addLogEntry(title, type, description, headline, paperTitle, paperAbstra
 
 function initThreeJS() {
     scene = new THREE.Scene();
+    
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight * 0.75, 0.1, 1000);
     camera.position.z = 2;
     
@@ -666,10 +645,15 @@ function initThreeJS() {
     
     const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
     scene.add(ambientLight);
+    
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(1, 1, 1);
     scene.add(directionalLight);
     
+    // Initialize texture loader
+    textureLoader = new THREE.TextureLoader();
+    
+    // Create Earth
     createEarth();
     
     window.addEventListener('resize', onWindowResize);
@@ -681,18 +665,17 @@ function initThreeJS() {
 function createEarth() {
     const geometry = new THREE.SphereGeometry(1, 128, 128);
     
-    // Create textures
-    blurryTexture = new THREE.CanvasTexture(createEarthTextureCanvas(2));
-    partialTexture = new THREE.CanvasTexture(createEarthTextureCanvas(2));
-    detailedTexture = new THREE.CanvasTexture(createEarthTextureCanvas(0));
-    
-    const material = new THREE.MeshPhongMaterial({
-        map: blurryTexture,
+    // Create a placeholder material
+    const placeholderMaterial = new THREE.MeshPhongMaterial({
+        color: 0x224488,
         shininess: 0
     });
     
-    earth = new THREE.Mesh(geometry, material);
+    earth = new THREE.Mesh(geometry, placeholderMaterial);
     scene.add(earth);
+    
+    // Load the real Earth texture
+    loadEarthTextures();
     
     // Atmosphere
     const atmosphereGeometry = new THREE.SphereGeometry(1.01, 64, 64);
@@ -719,6 +702,124 @@ function createEarth() {
     createStars();
 }
 
+function loadEarthTextures() {
+    // Load the NASA Blue Marble texture
+    textureLoader.load(
+        EARTH_TEXTURE_URL,
+        (texture) => {
+            earthTexture = texture;
+            earthTexture.colorSpace = THREE.SRGBColorSpace;
+            earthTexture.anisotropy = 16;
+            
+            // Create blurry version (starting state - very blurry telescope view)
+            blurryEarthTexture = createBlurryTextureFromImage(earthTexture, 3);
+            
+            // Create partial version (will be updated on flyby)
+            partialEarthTexture = createBlurryTextureFromImage(earthTexture, 3);
+            
+            // Detailed is the original
+            detailedEarthTexture = earthTexture;
+            
+            // Set initial texture
+            earth.material.map = blurryEarthTexture;
+            earth.material.needsUpdate = true;
+            
+            console.log('Earth texture loaded successfully');
+        },
+        undefined,
+        (error) => {
+            console.error('Error loading Earth texture:', error);
+            console.log('Falling back to canvas-based texture');
+            // Fallback to canvas-based Earth
+            const canvas = createFallbackEarthCanvas();
+            earthTexture = new THREE.CanvasTexture(canvas);
+            blurryEarthTexture = createBlurryTextureFromImage(earthTexture, 3);
+            partialEarthTexture = createBlurryTextureFromImage(earthTexture, 3);
+            detailedEarthTexture = earthTexture;
+            earth.material.map = blurryEarthTexture;
+            earth.material.needsUpdate = true;
+        }
+    );
+    
+    // Load cloud texture
+    textureLoader.load(
+        CLOUD_TEXTURE_URL,
+        (texture) => {
+            cloudTexture = texture;
+            cloudTexture.colorSpace = THREE.SRGBColorSpace;
+            cloudTexture.anisotropy = 16;
+            cloudsMesh.material.map = cloudTexture;
+            cloudsMesh.material.needsUpdate = true;
+            console.log('Cloud texture loaded');
+        },
+        undefined,
+        (error) => {
+            console.log('Could not load cloud texture');
+        }
+    );
+}
+
+function createFallbackEarthCanvas() {
+    // Create a simple Earth-like texture as fallback
+    const canvas = document.createElement('canvas');
+    canvas.width = 2048;
+    canvas.height = 1024;
+    const ctx = canvas.getContext('2d');
+    
+    // Fill with ocean blue
+    ctx.fillStyle = '#0a2448';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw continents
+    ctx.fillStyle = '#5a8a4a';
+    
+    // Africa
+    ctx.beginPath();
+    ctx.moveTo(canvas.width * 0.45, canvas.height * 0.35);
+    ctx.bezierCurveTo(canvas.width * 0.45, canvas.height * 0.25, canvas.width * 0.5, canvas.height * 0.2, canvas.width * 0.55, canvas.height * 0.25);
+    ctx.bezierCurveTo(canvas.width * 0.6, canvas.height * 0.3, canvas.width * 0.6, canvas.height * 0.45, canvas.width * 0.55, canvas.height * 0.5);
+    ctx.bezierCurveTo(canvas.width * 0.5, canvas.height * 0.55, canvas.width * 0.45, canvas.height * 0.55, canvas.width * 0.45, canvas.height * 0.35);
+    ctx.fill();
+    
+    // Eurasia
+    ctx.beginPath();
+    ctx.moveTo(canvas.width * 0.55, canvas.height * 0.25);
+    ctx.bezierCurveTo(canvas.width * 0.65, canvas.height * 0.2, canvas.width * 0.8, canvas.height * 0.25, canvas.width * 0.85, canvas.height * 0.35);
+    ctx.bezierCurveTo(canvas.width * 0.9, canvas.height * 0.4, canvas.width * 0.85, canvas.height * 0.5, canvas.width * 0.75, canvas.height * 0.5);
+    ctx.bezierCurveTo(canvas.width * 0.65, canvas.height * 0.5, canvas.width * 0.55, canvas.height * 0.4, canvas.width * 0.55, canvas.height * 0.25);
+    ctx.fill();
+    
+    // North America
+    ctx.beginPath();
+    ctx.moveTo(canvas.width * 0.25, canvas.height * 0.3);
+    ctx.bezierCurveTo(canvas.width * 0.2, canvas.height * 0.25, canvas.width * 0.3, canvas.height * 0.25, canvas.width * 0.35, canvas.height * 0.3);
+    ctx.bezierCurveTo(canvas.width * 0.4, canvas.height * 0.35, canvas.width * 0.4, canvas.height * 0.5, canvas.width * 0.3, canvas.height * 0.55);
+    ctx.bezierCurveTo(canvas.width * 0.25, canvas.height * 0.5, canvas.width * 0.25, canvas.height * 0.4, canvas.width * 0.25, canvas.height * 0.3);
+    ctx.fill();
+    
+    // South America
+    ctx.beginPath();
+    ctx.moveTo(canvas.width * 0.3, canvas.height * 0.55);
+    ctx.bezierCurveTo(canvas.width * 0.35, canvas.height * 0.5, canvas.width * 0.4, canvas.height * 0.55, canvas.width * 0.4, canvas.height * 0.7);
+    ctx.bezierCurveTo(canvas.width * 0.35, canvas.height * 0.75, canvas.width * 0.3, canvas.height * 0.7, canvas.width * 0.3, canvas.height * 0.55);
+    ctx.fill();
+    
+    // Australia
+    ctx.beginPath();
+    ctx.moveTo(canvas.width * 0.75, canvas.height * 0.65);
+    ctx.bezierCurveTo(canvas.width * 0.8, canvas.height * 0.6, canvas.width * 0.85, canvas.height * 0.65, canvas.width * 0.85, canvas.height * 0.7);
+    ctx.bezierCurveTo(canvas.width * 0.8, canvas.height * 0.75, canvas.width * 0.75, canvas.height * 0.75, canvas.width * 0.75, canvas.height * 0.65);
+    ctx.fill();
+    
+    // Antarctica
+    ctx.fillStyle = '#d0e0f0';
+    ctx.beginPath();
+    ctx.ellipse(canvas.width * 0.5, canvas.height * 0.9, canvas.width * 0.4, canvas.height * 0.1, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    return canvas;
+}
+
 function createStars() {
     const starsGeometry = new THREE.BufferGeometry();
     const starsMaterial = new THREE.PointsMaterial({
@@ -727,6 +828,7 @@ function createStars() {
         transparent: true,
         opacity: 0.8
     });
+    
     const starsVertices = [];
     for (let i = 0; i < 1000; i++) {
         starsVertices.push(
@@ -735,30 +837,37 @@ function createStars() {
             (Math.random() - 0.5) * 100
         );
     }
+    
     starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
     scene.add(new THREE.Points(starsGeometry, starsMaterial));
 }
 
 function updateEarthTexture() {
+    if (!earthTexture) {
+        // Textures still loading
+        return;
+    }
+    
     switch (gameState.earthTextureState) {
         case 'blurry':
-            earth.material.map = blurryTexture;
+            earth.material.map = blurryEarthTexture;
             break;
         case 'partial':
-            partialTexture = createPartialTexture(gameState.flybyUnblurSide);
-            earth.material.map = partialTexture;
+            partialEarthTexture = createPartialTextureFromImage(earthTexture, gameState.flybyUnblurSide);
+            earth.material.map = partialEarthTexture;
             break;
         case 'detailed':
-            earth.material.map = detailedTexture;
+            earth.material.map = detailedEarthTexture;
             break;
     }
+    
     earth.material.needsUpdate = true;
     
     if (gameState.atmosphereData) {
         atmosphereMesh.material.opacity = 0.25;
     }
     
-    if (gameState.flybyComplete) {
+    if (gameState.flybyComplete && cloudTexture) {
         cloudsMesh.visible = true;
     }
 }
@@ -775,6 +884,7 @@ function onGlobeClick(event) {
     
     const globeContainer = document.getElementById('globe-container');
     const rect = globeContainer.getBoundingClientRect();
+    
     mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
     mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
     
@@ -783,6 +893,7 @@ function onGlobeClick(event) {
     
     if (intersects.length > 0) {
         const point = intersects[0].point;
+        
         const lat = 90 - (THREE.MathUtils.radToDeg(Math.acos(point.y)));
         const lng = THREE.MathUtils.radToDeg(Math.atan2(point.z, point.x));
         
@@ -804,13 +915,14 @@ function setupMissionButtons() {
                     addLogEntry(`Insufficient budget for ${mission.name}`, 'error');
                     return;
                 }
+                
                 if (type === 'flyby' || type === 'orbiter') {
                     mission.action();
                 } else {
                     gameState.isSelectingTarget = true;
                     gameState.currentMissionType = type;
                     document.body.style.cursor = 'crosshair';
-                    addLogEntry(`Select target for ${mission.name}`, 'info');
+                    addLogEntry(`Select target location for ${mission.name} mission`, 'info');
                 }
             });
         }
@@ -819,11 +931,14 @@ function setupMissionButtons() {
 
 function animate() {
     requestAnimationFrame(animate);
+    
     controls.update();
     earth.rotation.y += 0.001;
+    
     if (cloudsMesh.visible) {
         cloudsMesh.rotation.y += 0.0005;
     }
+    
     renderer.render(scene, camera);
 }
 
@@ -835,10 +950,10 @@ function init() {
     addLogEntry(
         'Mission Briefing',
         'info',
-        'As a Martian scientist, you are in charge of Earth exploration. Our knowledge is limited to blurry optical images and occultation data. The Martian President declared: "We choose to go to the Earth" - and you will make it happen.',
+        'As a Martian scientist, you have been placed in charge of the first comprehensive exploration program of Earth. Our current knowledge is limited to blurry optical images and occultation data suggesting the presence of an atmosphere. The Martian President has declared: "We choose to go to the Earth" - and you are the one who will make it happen.',
         'MARTIAN PRESIDENT: "WE CHOOSE TO GO TO THE EARTH"',
-        'Initial Reconnaissance: The Blue Planet',
-        'Preliminary observations reveal Earth as a blue world with white polar caps and faint dark surface features. Occultation data indicates a substantial atmosphere.'
+        'Initial Reconnaissance Report: The Blue Planet',
+        'Preliminary telescopic observations reveal Earth to be a blue world with white polar caps and faint dark surface features. Occultation data during solar transits indicates the presence of a substantial atmosphere, with estimated surface pressure orders of magnitude higher than Mars. The nature of the dark features remains unknown - they could be oceans, forests, or some other surface material. Polar caps appear to be ice, suggesting the presence of water on this planet.'
     );
 }
 
