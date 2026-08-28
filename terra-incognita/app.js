@@ -738,8 +738,9 @@ function loadEarthTextures() {
             earthTexture.colorSpace = THREE.SRGBColorSpace;
             earthTexture.anisotropy = 16;
             
-            // Create blurry version (starting state - very blurry telescope view)
-            blurryEarthTexture = createBlurryTextureFromImage(earthTexture, 3);
+            // Start at a telescope-grade resolution: coastlines are only faint suggestions,
+            // while broad ocean/land contrast and the polar caps remain observable.
+            blurryEarthTexture = createBlurryTextureFromImage(earthTexture, 7);
             
             // Detailed is the original
             detailedEarthTexture = earthTexture;
@@ -946,7 +947,8 @@ function animate() {
     earth.rotation.y += 0.001;
     
     if (cloudsMesh.visible) {
-        cloudsMesh.rotation.y += 0.0005;
+        // Clouds are a layer of the same planet, not a separate object in space.
+        cloudsMesh.rotation.y = earth.rotation.y;
     }
     
     renderer.render(scene, camera);
