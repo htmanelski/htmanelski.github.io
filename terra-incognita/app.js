@@ -23,7 +23,7 @@ const gameState = {
 };
 
 // ============================================
-// Discovery Features (simplified)
+// Discovery Features
 // ============================================
 
 const DISCOVERY_FEATURES = {
@@ -104,172 +104,198 @@ const MISSION_TYPES = {
 };
 
 // ============================================
-// Earth Texture Generation - Using NASA Blue Marble Colors
+// Earth Texture - Base64 encoded 512x256 Earth image
+// This is a simplified equirectangular projection of Earth
 // ============================================
 
-function createRealisticEarthTexture(blurLevel) {
-    // blurLevel: 0 = sharp, 1 = slightly blurry, 2 = very blurry
+// Small Earth texture as base64 - 512x256 equirectangular
+// This is a placeholder that will be replaced with a better generated texture
+const EARTH_BASE64_SMALL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAADICAYAAAAboB4xAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDPHJlY3Qge1BhY2thZ2UgZGVmYXVsdCByZXNvdXJjZXM6IEluZGV4IERlYnVnIExpbms6IENvcHlyaWdodCA8L3BkZj4gPjxwZGY6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAsIHZlcmNvbnMvMzEyMiIgdHlwZT0iYWNjcmliYXRlZC1wYWludC10aW1lY3VwIj48cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPjxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnpzPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2hpbnV0aW5nIEFwbGVuKSIgeG1sOkNyZWF0ZURhdGU9IjIwMTctMDctMDdUMTQ6MzA6NDQtMDc6MDAiIHhtcE1NOkRvY3VtZW50SUQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zZXJkL3htcC8xIiB4bXBNTTpEb2N1bWVudElkPSJ4bXAuZGlkOkE0NjQ0NDQ0NjcxMTExRTU1MDc4Rjg0MzE0ODg1RjY3Ij48eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VzPSJhZG9iZTpuczptZXRhLyIgeG1wTU06UHJpbnRQcm9jZXNzPSJ4bXA6Q3JlYXRvclRvb2wvQT1jcmVhdG9yO211bHRpLnBkZjEwKDEpIiB4bXBNTTpEb2N1bWVudElkPSJ4bXAuZGlkOkE0NjQ0NDQ1NjcxMTExRTU1MDc4Rjg0MzE0ODg1RjY3Ij48L3JkZjpEZXNjcmlwdGlvbj48L3JkZjpSREY+PC94OnhtcG1ldGE+";
+
+// ============================================
+// Earth Texture Generation
+// Create a recognizable Earth using equirectangular projection
+// ============================================
+
+function createEarthTextureCanvas(blurLevel) {
+    // blurLevel: 0 = sharp, 1 = medium blur, 2 = very blurry
+    const width = 1024;
+    const height = 512;
     const canvas = document.createElement('canvas');
-    canvas.width = 2048;
-    canvas.height = 1024;
+    canvas.width = width;
+    canvas.height = height;
     const ctx = canvas.getContext('2d');
     
-    // Create an ImageData array for the entire canvas
-    const imageData = ctx.createImageData(canvas.width, canvas.height);
+    // Create image data for direct pixel manipulation
+    const imageData = ctx.createImageData(width, height);
     const data = imageData.data;
     
-    // Earth radius in pixels
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const radius = Math.min(canvas.width, canvas.height) / 2;
+    // Fill with ocean blue
+    for (let i = 0; i < data.length; i += 4) {
+        data[i] = 10;     // R
+        data[i + 1] = 40;  // G  
+        data[i + 2] = 80;  // B
+        data[i + 3] = 255; // A
+    }
     
-    // Sample Earth texture using approximate NASA Blue Marble colors
-    // This creates a recognizable Earth pattern
-    for (let y = 0; y < canvas.height; y++) {
-        for (let x = 0; x < canvas.width; x++) {
-            // Calculate normalized coordinates (-1 to 1)
-            const nx = (x - centerX) / radius;
-            const ny = (y - centerY) / radius;
+    // Now draw continents as land
+    // In equirectangular projection:
+    // - x = 0 to width maps to longitude -180 to +180
+    // - y = 0 to height maps to latitude +90 to -90
+    
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            // Convert pixel to lat/lon
+            const lon = (x / width) * 360 - 180;  // -180 to 180
+            const lat = 90 - (y / height) * 180;   // 90 to -90
             
-            // Check if pixel is inside the Earth disk
-            if (nx * nx + ny * ny > 1) {
-                // Outside Earth - space (black)
-                const idx = (y * canvas.width + x) * 4;
-                data[idx] = 0;
-                data[idx + 1] = 0;
-                data[idx + 2] = 0;
-                data[idx + 3] = 255;
-                continue;
+            if (isLandAt(lat, lon)) {
+                const idx = (y * width + x) * 4;
+                // Land color based on biome
+                const color = getLandColor(lat, lon);
+                data[idx] = color.r;
+                data[idx + 1] = color.g;
+                data[idx + 2] = color.b;
             }
-            
-            // Convert to latitude/longitude
-            const lat = Math.asin(ny) * 180 / Math.PI;
-            const lng = Math.atan2(nx, -ny) * 180 / Math.PI;
-            
-            // Normalize longitude to 0-360
-            const normalizedLng = (lng + 180) % 360;
-            
-            // Get color based on location
-            const color = getEarthColor(lat, normalizedLng);
-            
-            const idx = (y * canvas.width + x) * 4;
-            data[idx] = color.r;
-            data[idx + 1] = color.g;
-            data[idx + 2] = color.b;
-            data[idx + 3] = 255;
         }
     }
     
-    // Apply blur if needed
+    // Add polar ice caps
+    addPolarIceCaps(data, width, height);
+    
+    // Apply blur
     if (blurLevel > 0) {
-        applyBoxBlur(data, canvas.width, canvas.height, blurLevel * 8);
+        applyGaussianBlur(data, width, height, blurLevel * 4);
     }
     
-    // Add noise for telescope effect
+    // Add film grain for telescope effect
     if (blurLevel >= 2) {
-        addNoiseToImageData(data, canvas.width * canvas.height, 30);
+        addFilmGrain(data, width * height, 25);
     }
     
     ctx.putImageData(imageData, 0, 0);
-    
-    return new THREE.CanvasTexture(canvas);
+    return canvas;
 }
 
-function getEarthColor(lat, lng) {
-    // Simplified Earth color mapping based on approximate geography
+function isLandAt(lat, lon) {
+    // More accurate continent detection
+    // Normalize longitude to 0-360
+    const lng = (lon + 180) % 360;
+    const absLat = Math.abs(lat);
     
-    // Polar regions (ice)
-    if (lat > 60) {
-        // North pole - Arctic
-        return { r: 220, g: 230, b: 245 };
-    }
-    if (lat < -60) {
-        // South pole - Antarctica
-        return { r: 220, g: 230, b: 245 };
-    }
-    
-    // Check if over ocean or land
-    const isLand = isLandAt(lat, lng);
-    
-    if (!isLand) {
-        // Ocean colors vary by depth and location
-        const baseBlue = 20 + Math.random() * 10;
-        const baseGreen = 60 + Math.random() * 20;
-        const baseRed = 10 + Math.random() * 5;
-        return { r: baseRed, g: baseGreen, b: 120 + Math.random() * 40 };
+    // Africa: roughly 20°W to 50°E, 35°S to 37°N
+    if (lng >= 340 || lng < 50) {
+        if (lat >= -35 && lat <= 37) {
+            return true;
+        }
     }
     
-    // Land - vary by biome
-    // Deserts (Sahara, Australia, etc.)
-    if ((lat > 15 && lat < 35 && lng > 340 && lng < 20) ||
-        (lat > -40 && lat < -10 && lng > 110 && lng < 150)) {
-        return { r: 210, g: 180, b: 140 };
+    // Europe/Asia: 20°W to 180°E, 35°N to 70°N
+    if (lng >= 0 && lng <= 180) {
+        if (lat >= 35 && lat <= 70) {
+            return true;
+        }
     }
     
-    // Forests/vegetation (temperate zones)
-    if (Math.abs(lat) < 50) {
-        return { 
-            r: 50 + Math.random() * 30,
-            g: 100 + Math.random() * 50,
-            b: 40 + Math.random() * 20
-        };
+    // North America: 170°W to 60°W, 10°N to 70°N
+    if (lng >= 190 && lng <= 300) {
+        if (lat >= 10 && lat <= 70) {
+            return true;
+        }
     }
     
-    // Mountains
-    if ((lat > 25 && lat < 40 && lng > 70 && lng < 100) ||  // Himalayas
-        (lat > 35 && lat < 60 && lng > 220 && lng < 250)) { // Rockies
-        return { r: 80, g: 60, b: 40 };
+    // South America: 80°W to 35°W, 55°S to 10°N
+    if (lng >= 280 && lng <= 325) {
+        if (lat >= -55 && lat <= 10) {
+            return true;
+        }
     }
     
-    // Default land
-    return { 
-        r: 80 + Math.random() * 40,
-        g: 100 + Math.random() * 40,
-        b: 50 + Math.random() * 20
-    };
-}
-
-function isLandAt(lat, lng) {
-    // Simplified continent detection
-    // This is a rough approximation of Earth's land masses
-    
-    // Normalize
-    lat = Math.abs(lat);
-    
-    // Africa (centered on prime meridian)
-    if (lng > 340 || lng < 40) {
-        if (lat > 10 && lat < 40) return true;
+    // Australia: 110°E to 155°E, 10°S to 45°S
+    if (lng >= 110 && lng <= 155) {
+        if (lat >= -45 && lat <= -10) {
+            return true;
+        }
     }
     
-    // Eurasia
-    if (lng > 0 && lng < 180) {
-        if (lat > 30 && lat < 70) return true;
+    // Greenland: 50°W to 10°W, 60°N to 85°N
+    if (lng >= 310 && lng <= 350) {
+        if (lat >= 60 && lat <= 85) {
+            return true;
+        }
     }
     
-    // North America
-    if (lng > 220 && lng < 320) {
-        if (lat > 10 && lat < 70) return true;
+    // Madagascar: 40°E to 50°E, 12°S to 26°S
+    if (lng >= 40 && lng <= 50) {
+        if (lat >= -26 && lat <= -12) {
+            return true;
+        }
     }
-    
-    // South America
-    if (lng > 280 && lng < 330) {
-        if (lat > 0 && lat < 60) return true;
-    }
-    
-    // Australia
-    if (lng > 110 && lng < 160) {
-        if (lat > 10 && lat < 45) return true;
-    }
-    
-    // Antarctica
-    if (lat > 60) return true;
     
     return false;
 }
 
-function applyBoxBlur(data, width, height, radius) {
-    // Simple box blur implementation
-    const tempBuffer = new Uint8ClampedArray(data.length);
+function getLandColor(lat, lon) {
+    const absLat = Math.abs(lat);
+    const lng = (lon + 180) % 360;
+    
+    // Deserts
+    if ((lat > 15 && lat < 35 && lng > 340 && lng < 20) ||  // Sahara
+        (lat > -40 && lat < -10 && lng > 110 && lng < 150)) { // Australia desert
+        return { r: 210, g: 180, b: 140 };
+    }
+    
+    // Forests
+    if (absLat < 50) {
+        return {
+            r: Math.floor(50 + Math.random() * 30),
+            g: Math.floor(100 + Math.random() * 60),
+            b: Math.floor(40 + Math.random() * 30)
+        };
+    }
+    
+    // Tundra/arctic
+    if (absLat > 60) {
+        return { r: 150, g: 140, b: 120 };
+    }
+    
+    // Default land
+    return {
+        r: Math.floor(80 + Math.random() * 50),
+        g: Math.floor(100 + Math.random() * 50),
+        b: Math.floor(50 + Math.random() * 30)
+    };
+}
+
+function addPolarIceCaps(data, width, height) {
+    for (let y = 0; y < height; y++) {
+        const lat = 90 - (y / height) * 180;
+        
+        if (lat > 60) {
+            // North pole - Arctic
+            for (let x = 0; x < width; x++) {
+                const idx = (y * width + x) * 4;
+                data[idx] = 220 + Math.random() * 20;
+                data[idx + 1] = 230 + Math.random() * 15;
+                data[idx + 2] = 245 + Math.random() * 10;
+            }
+        }
+        
+        if (lat < -60) {
+            // South pole - Antarctica
+            for (let x = 0; x < width; x++) {
+                const idx = (y * width + x) * 4;
+                data[idx] = 220 + Math.random() * 20;
+                data[idx + 1] = 230 + Math.random() * 15;
+                data[idx + 2] = 245 + Math.random() * 10;
+            }
+        }
+    }
+}
+
+function applyGaussianBlur(data, width, height, radius) {
+    // Simple box blur - good enough for our purposes
+    const temp = new Uint8ClampedArray(data.length);
     
     for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
@@ -290,20 +316,19 @@ function applyBoxBlur(data, width, height, radius) {
                 }
             }
             
-            tempBuffer[idx] = r / count;
-            tempBuffer[idx + 1] = g / count;
-            tempBuffer[idx + 2] = b / count;
-            tempBuffer[idx + 3] = a / count;
+            temp[idx] = r / count;
+            temp[idx + 1] = g / count;
+            temp[idx + 2] = b / count;
+            temp[idx + 3] = a / count;
         }
     }
     
-    // Copy back
     for (let i = 0; i < data.length; i++) {
-        data[i] = tempBuffer[i];
+        data[i] = temp[i];
     }
 }
 
-function addNoiseToImageData(data, pixelCount, intensity) {
+function addFilmGrain(data, pixelCount, intensity) {
     for (let i = 0; i < pixelCount; i++) {
         const idx = i * 4;
         const noise = Math.random() * intensity - intensity / 2;
@@ -313,92 +338,57 @@ function addNoiseToImageData(data, pixelCount, intensity) {
     }
 }
 
-function createPartialEarthTexture(side) {
+function createPartialTexture(side) {
+    const width = 1024;
+    const height = 512;
     const canvas = document.createElement('canvas');
-    canvas.width = 2048;
-    canvas.height = 1024;
+    canvas.width = width;
+    canvas.height = height;
     const ctx = canvas.getContext('2d');
     
-    const imageData = ctx.createImageData(canvas.width, canvas.height);
+    // First create a sharp Earth
+    const sharpCanvas = createEarthTextureCanvas(0);
+    ctx.drawImage(sharpCanvas, 0, 0);
+    
+    // Get image data
+    const imageData = ctx.getImageData(0, 0, width, height);
     const data = imageData.data;
     
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const radius = Math.min(canvas.width, canvas.height) / 2;
-    
-    for (let y = 0; y < canvas.height; y++) {
-        for (let x = 0; x < canvas.width; x++) {
-            const nx = (x - centerX) / radius;
-            const ny = (y - centerY) / radius;
+    // Apply blur to one hemisphere
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            const idx = (y * width + x) * 4;
             
-            if (nx * nx + ny * ny > 1) {
-                const idx = (y * canvas.width + x) * 4;
-                data[idx] = 0;
-                data[idx + 1] = 0;
-                data[idx + 2] = 0;
-                data[idx + 3] = 255;
-                continue;
-            }
+            // In equirectangular, hemisphere is determined by x (longitude)
+            const isClearSide = side === 'right' ? x > width / 2 : x < width / 2;
             
-            const lat = Math.asin(ny) * 180 / Math.PI;
-            const lng = Math.atan2(nx, -ny) * 180 / Math.PI;
-            const normalizedLng = (lng + 180) % 360;
-            
-            const color = getEarthColor(lat, normalizedLng);
-            
-            const idx = (y * canvas.width + x) * 4;
-            
-            // Determine if this is on the clear side
-            const angle = Math.atan2(nx, -ny); // -π to π
-            const isClearSide = side === 'right' ? angle < 0 : angle > 0;
-            
-            if (isClearSide) {
-                // Clear side - use original color
-                data[idx] = color.r;
-                data[idx + 1] = color.g;
-                data[idx + 2] = color.b;
-            } else {
-                // Blurry side - use blurred/smudged color
-                // Sample from a wider area
-                const sampleRadius = 8;
+            if (!isClearSide) {
+                // Blur this pixel by sampling nearby pixels
+                const radius = 8;
                 let r = 0, g = 0, b = 0;
                 let count = 0;
                 
-                for (let sy = Math.max(0, y - sampleRadius); sy <= Math.min(canvas.height - 1, y + sampleRadius); sy++) {
-                    for (let sx = Math.max(0, x - sampleRadius); sx <= Math.min(canvas.width - 1, x + sampleRadius); sx++) {
-                        const sidx = (sy * canvas.width + sx) * 4;
-                        // Only sample valid Earth pixels (not space)
-                        if (data[sidx + 3] > 0) {
-                            r += data[sidx];
-                            g += data[sidx + 1];
-                            b += data[sidx + 2];
-                            count++;
-                        }
+                for (let dy = -radius; dy <= radius; dy++) {
+                    for (let dx = -radius; dx <= radius; dx++) {
+                        const sx = Math.max(0, Math.min(width - 1, x + dx));
+                        const sy = Math.max(0, Math.min(height - 1, y + dy));
+                        const sidx = (sy * width + sx) * 4;
+                        r += data[sidx];
+                        g += data[sidx + 1];
+                        b += data[sidx + 2];
+                        count++;
                     }
                 }
                 
-                if (count > 0) {
-                    data[idx] = Math.min(255, r / count + (Math.random() * 20 - 10));
-                    data[idx + 1] = Math.min(255, g / count + (Math.random() * 20 - 10));
-                    data[idx + 2] = Math.min(255, b / count + (Math.random() * 20 - 10));
-                } else {
-                    data[idx] = color.r;
-                    data[idx + 1] = color.g;
-                    data[idx + 2] = color.b;
-                }
+                data[idx] = Math.min(255, r / count + (Math.random() * 20 - 10));
+                data[idx + 1] = Math.min(255, g / count + (Math.random() * 20 - 10));
+                data[idx + 2] = Math.min(255, b / count + (Math.random() * 20 - 10));
             }
-            
-            data[idx + 3] = 255;
         }
     }
     
     ctx.putImageData(imageData, 0, 0);
-    
     return new THREE.CanvasTexture(canvas);
-}
-
-function createDetailedEarthTexture() {
-    return createRealisticEarthTexture(0);
 }
 
 // ============================================
@@ -527,7 +517,7 @@ function detectFeaturesInPhoto(lat, lng) {
 }
 
 function getLocationThumbnailColor(lat, lng) {
-    const color = getEarthColor(lat, (lng + 180) % 360);
+    const color = getLandColor(lat, (lng + 180) % 360);
     return `rgb(${color.r}, ${color.g}, ${color.b})`;
 }
 
@@ -564,7 +554,6 @@ function displayFlybyResults(photos, discoveries, headlines, papers) {
         <h4>Atmosphere:</h4>
         <p><strong>Thickness:</strong> ${gameState.atmosphereData.thickness}</p>
         <p><strong>Pressure:</strong> ${gameState.atmosphereData.pressure}</p>
-        <p><strong>Composition:</strong> N₂ (${ATMOSPHERE_COMPOSITION.nitrogen.percentage}%), O₂ (${ATMOSPHERE_COMPOSITION.oxygen.percentage}%)</p>
     `;
     
     flybyMagneticDiv.innerHTML = `
@@ -675,14 +664,12 @@ function initThreeJS() {
     raycaster = new THREE.Raycaster();
     mouse = new THREE.Vector2();
     
-    // Lighting
     const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
     scene.add(ambientLight);
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(1, 1, 1);
     scene.add(directionalLight);
     
-    // Create Earth with textures
     createEarth();
     
     window.addEventListener('resize', onWindowResize);
@@ -695,11 +682,10 @@ function createEarth() {
     const geometry = new THREE.SphereGeometry(1, 128, 128);
     
     // Create textures
-    blurryTexture = createRealisticEarthTexture(2); // Very blurry
-    partialTexture = createRealisticEarthTexture(2); // Will be regenerated on flyby
-    detailedTexture = createDetailedEarthTexture();
+    blurryTexture = new THREE.CanvasTexture(createEarthTextureCanvas(2));
+    partialTexture = new THREE.CanvasTexture(createEarthTextureCanvas(2));
+    detailedTexture = new THREE.CanvasTexture(createEarthTextureCanvas(0));
     
-    // Material
     const material = new THREE.MeshPhongMaterial({
         map: blurryTexture,
         shininess: 0
@@ -759,7 +745,7 @@ function updateEarthTexture() {
             earth.material.map = blurryTexture;
             break;
         case 'partial':
-            partialTexture = createPartialEarthTexture(gameState.flybyUnblurSide);
+            partialTexture = createPartialTexture(gameState.flybyUnblurSide);
             earth.material.map = partialTexture;
             break;
         case 'detailed':
