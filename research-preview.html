@@ -1,0 +1,347 @@
+---
+layout: null
+permalink: /research-preview/
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Research projects — Henry Manelski</title>
+  <style>
+    :root {
+      --ink: #172127;
+      --muted: #66747b;
+      --paper: #f7f4ee;
+      --card: #fffdf9;
+      --mars: #b85633;
+      --mars-dark: #75331f;
+      --mercury: #56666d;
+      --line: rgba(23, 33, 39, .13);
+      --shadow: 0 22px 60px rgba(42, 34, 27, .10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 3%, rgba(184, 86, 51, .12), transparent 28rem),
+        var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .preview-note {
+      margin: 20px auto 0;
+      padding: 10px 16px;
+      width: fit-content;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 253, 249, .74);
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .hero { padding: 88px 0 72px; }
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--mars);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 7vw, 6.6rem);
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: .95;
+    }
+    .hero-copy {
+      max-width: 760px;
+      margin: 30px 0 0;
+      color: #445159;
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+    }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 28px; }
+    .pill {
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.48);
+      color: #46545b;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+
+    .section { padding: 64px 0 88px; border-top: 1px solid var(--line); }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.3rem, 5vw, 4.2rem);
+      font-weight: 500;
+      letter-spacing: -.035em;
+      line-height: 1;
+    }
+    .section-intro { margin: 0; color: var(--muted); }
+
+    .projects { display: grid; gap: 28px; }
+    .project {
+      display: grid;
+      grid-template-columns: minmax(300px, 44%) 1fr;
+      min-height: 430px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .project:nth-child(even) { grid-template-columns: 1fr minmax(300px, 44%); }
+    .project:nth-child(even) .visual { order: 2; }
+
+    .visual {
+      position: relative;
+      min-height: 360px;
+      overflow: hidden;
+      background: #d7d0c4;
+    }
+    .visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .visual.contain img { object-fit: contain; background: #fff; }
+    .visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(12,18,21,.35), transparent 45%);
+      pointer-events: none;
+    }
+    .figure-note {
+      position: absolute;
+      z-index: 1;
+      left: 18px;
+      bottom: 14px;
+      margin: 0;
+      color: #fff;
+      font-size: .72rem;
+      letter-spacing: .04em;
+      text-shadow: 0 1px 8px rgba(0,0,0,.55);
+    }
+    .placeholder {
+      display: grid;
+      place-items: center;
+      padding: 38px;
+      color: #fff;
+      text-align: center;
+      isolation: isolate;
+    }
+    .placeholder::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      z-index: -1;
+      background:
+        repeating-radial-gradient(ellipse at 70% 45%, transparent 0 18px, rgba(255,255,255,.1) 19px 20px),
+        radial-gradient(circle at 60% 40%, #89969a 0 5%, #505f65 38%, #26343a 75%);
+      transform: rotate(-8deg);
+    }
+    .placeholder.moon::before {
+      background:
+        radial-gradient(circle at 68% 34%, rgba(25,28,31,.28) 0 2%, transparent 2.5%),
+        radial-gradient(circle at 42% 62%, rgba(25,28,31,.2) 0 5%, transparent 5.5%),
+        radial-gradient(circle at 62% 47%, #c8c5bd 0 7%, #918f89 32%, #4a4d4e 74%);
+    }
+    .placeholder strong { display: block; font-family: Georgia, serif; font-size: 1.65rem; font-weight: 500; }
+    .placeholder span { display: block; margin-top: 7px; font-size: .8rem; opacity: .85; }
+
+    .project-copy { display: flex; flex-direction: column; padding: clamp(28px, 5vw, 56px); }
+    .kicker { margin: 0 0 14px; color: var(--mars); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h3 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.8rem, 3vw, 2.7rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.08; }
+    .summary { margin: 20px 0 0; color: #4d5a60; }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 28px 0 0; }
+    .detail-label { display: block; margin-bottom: 4px; color: var(--muted); font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .detail-value { font-size: .88rem; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 28px; }
+    .button { display: inline-flex; align-items: center; gap: 7px; padding: 10px 15px; border-radius: 999px; background: var(--ink); color: #fff; font-size: .78rem; font-weight: 800; text-decoration: none; }
+    .button.secondary { border: 1px solid var(--line); background: transparent; color: var(--ink); }
+    .button:hover { transform: translateY(-1px); }
+
+    .archive { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .archive-card { padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,253,249,.7); }
+    .archive-card h3 { font-size: 1.28rem; }
+    .archive-card p { margin: 10px 0 0; color: var(--muted); font-size: .88rem; }
+    .archive-card a { display: inline-block; margin-top: 18px; color: var(--mars-dark); font-size: .78rem; font-weight: 800; }
+
+    footer { padding: 38px 0 60px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; text-align: center; }
+
+    @media (max-width: 800px) {
+      .hero { padding: 62px 0 52px; }
+      .section-head { grid-template-columns: 1fr; gap: 18px; }
+      .project, .project:nth-child(even) { grid-template-columns: 1fr; }
+      .project:nth-child(even) .visual { order: 0; }
+      .visual { min-height: 290px; }
+      .archive { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      .detail-grid { grid-template-columns: 1fr; }
+      .project { border-radius: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-note">Unlisted research-page concept</div>
+
+  <header class="hero shell">
+    <p class="eyebrow">Research · Henry Manelski</p>
+    <h1>Reading the chemistry of other worlds.</h1>
+    <p class="hero-copy">I combine planetary spectroscopy, laboratory experiments, and data science to understand how rocky surfaces form, change, and preserve their histories.</p>
+    <div class="hero-meta" aria-label="Research areas">
+      <span class="pill">Mars</span>
+      <span class="pill">Moon</span>
+      <span class="pill">Mercury</span>
+      <span class="pill">Spectroscopy</span>
+      <span class="pill">Machine learning</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">In progress</p>
+            <h2>Current projects</h2>
+          </div>
+          <p class="section-intro">The questions I am working on now, the missions and instruments behind them, and where I hope the work will lead.</p>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <div class="visual placeholder">
+              <div><strong>Your MERTIS figure</strong><span>Replace with a spectrum, Mercury map, or instrument image</span></div>
+              <p class="figure-note">Suggested: one visually legible result, not a full multi-panel figure</p>
+            </div>
+            <div class="project-copy">
+              <p class="kicker">Mercury · MERTIS · Current</p>
+              <h3>What can thermal infrared spectra reveal about Mercury’s surface?</h3>
+              <p class="summary">Use two or three sentences to introduce the scientific problem, why it matters, and what is distinctive about your approach. Write for a planetary scientist outside your immediate specialty.</p>
+              <div class="detail-grid">
+                <div><span class="detail-label">My contribution</span><span class="detail-value">Describe your specific role and expertise.</span></div>
+                <div><span class="detail-label">Methods</span><span class="detail-value">Thermal infrared spectroscopy · data analysis</span></div>
+              </div>
+              <div class="links"><a class="button secondary" href="#current-placeholder" aria-label="Placeholder project details link">Project details →</a></div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="visual placeholder moon">
+              <div><strong>Your lunar-lab figure</strong><span>Replace with the experiment, sample, or a before-and-after result</span></div>
+              <p class="figure-note">Suggested: an image that shows what the experiment physically does</p>
+            </div>
+            <div class="project-copy">
+              <p class="kicker">Moon · Laboratory spectroscopy · Current</p>
+              <h3>Recreating space weathering in volatile-rich lunar regolith.</h3>
+              <p class="summary">Explain the experiment as a story: what happens to lunar material in space, what you are simulating in the laboratory, and what new measurement or interpretation the work could enable.</p>
+              <div class="detail-grid">
+                <div><span class="detail-label">My contribution</span><span class="detail-value">Experimental design · laser systems · spectroscopy</span></div>
+                <div><span class="detail-label">Status</span><span class="detail-value">Experiment development · analysis forthcoming</span></div>
+              </div>
+              <div class="links"><a class="button secondary" href="#current-placeholder" aria-label="Placeholder project details link">Project details →</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Selected work</p>
+            <h2>Previous projects</h2>
+          </div>
+          <p class="section-intro">A curated selection of completed work. Each project leads with the scientific question and result; the formal citation remains one click away.</p>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <div class="visual">
+              <img src="{{ '/assets/images/paper1-figure.jpg' | relative_url }}" alt="SuperCam LIBS plasma analysis shown beside the Perseverance rover on Mars">
+              <p class="figure-note">Existing figure — replace or recrop if desired</p>
+            </div>
+            <div class="project-copy">
+              <p class="kicker">Mars · SuperCam · 2024</p>
+              <h3>Making elemental measurements on Mars more reliable.</h3>
+              <p class="summary">SuperCam uses laser-induced breakdown spectroscopy to measure Martian chemistry from a distance. This work tested how target properties and observation geometry affect the plasma—and therefore the elemental abundances we infer.</p>
+              <div class="detail-grid">
+                <div><span class="detail-label">My contribution</span><span class="detail-value">Lead author · plasma diagnostics · quantitative spectroscopy</span></div>
+                <div><span class="detail-label">Publication</span><span class="detail-value">Spectrochimica Acta Part B</span></div>
+              </div>
+              <div class="links">
+                <a class="button" href="https://www.sciencedirect.com/science/article/pii/S0584854724002064">Read the paper ↗</a>
+                <a class="button secondary" href="{{ '/assets/papers/paper1.pdf' | relative_url }}">PDF</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="visual contain">
+              <img src="{{ '/assets/images/paper2-figure.jpg' | relative_url }}" alt="Time series of spectral parameters measured by ChemCam across locations in Gale crater">
+              <p class="figure-note">Existing figure — consider a simplified crop for the final page</p>
+            </div>
+            <div class="project-copy">
+              <p class="kicker">Mars · ChemCam · 2023</p>
+              <h3>Following compositional change through Gale crater’s sedimentary record.</h3>
+              <p class="summary">ChemCam spectra capture systematic changes as Curiosity climbs through Mount Sharp. This project used active and passive observations to identify compositional variations among sedimentary units and connect them to environmental history.</p>
+              <div class="detail-grid">
+                <div><span class="detail-label">My contribution</span><span class="detail-value">Lead author · spectral analysis · stratigraphic interpretation</span></div>
+                <div><span class="detail-label">Publication</span><span class="detail-value">JGR: Planets</span></div>
+              </div>
+              <div class="links">
+                <a class="button" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2022JE007706">Read the paper ↗</a>
+                <a class="button secondary" href="{{ '/assets/papers/paper2.pdf' | relative_url }}">PDF</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Optional</p>
+            <h2>Other publications</h2>
+          </div>
+          <p class="section-intro">The complete record can remain available without competing with the featured projects. These compact entries could later be filtered by world, instrument, year, or authorship.</p>
+        </div>
+        <div class="archive">
+          <article class="archive-card"><p class="kicker">Mars · 2026</p><h3>Paper title appears here</h3><p>Journal · contribution role · one-line context</p><a href="#publication-placeholder">View publication →</a></article>
+          <article class="archive-card"><p class="kicker">Moon · 2026</p><h3>Paper title appears here</h3><p>Journal · contribution role · one-line context</p><a href="#publication-placeholder">View publication →</a></article>
+          <article class="archive-card"><p class="kicker">Mars · 2025</p><h3>Paper title appears here</h3><p>Journal · contribution role · one-line context</p><a href="#publication-placeholder">View publication →</a></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">Private concept page · content and labels are placeholders for review</footer>
+</body>
+</html>
