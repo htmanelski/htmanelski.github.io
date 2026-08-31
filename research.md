@@ -1,111 +1,14 @@
 ---
-layout: single
-title: "Research"
+layout: null
 permalink: /research/
 ---
-**Why are the processes that shape the surface geochemistry of rocky planets, and how have those processes changed over time?** That is the overarching question I work to address throughout my research. 
-
-I leverage my **data science/machine learning background** and experience with **spectroscopic data** sets to study the surface chemistry of rocky planets. To date, I have focused on in-situ LIBS and XRF deployed on **Martian/Lunar** landers and rovers, but I am excited to work with new remote sensing datasets in my postdoc, namely MERTIS **thermal infrared spectra** from **Mercury**. 
-
-Below is a list of all of my papers and abstracts. Feel free to check out my [Google Scholar](https://scholar.google.com/citations?user=ViJzfagAAAAJ&hl=en&oi=ao) if you want the most up to date list. If you cannot access any of these articles through your institution please send me an email (h.manelski@tum.de), I would be happy to share them with you!
-
-# Publications
-## Monograph
-
-
-1. **H. T. Manelski\***, C. Bedford, Dong Jae Lee, R. C. Wiens, J. Gillis, H. Vannier, A. Klidaras, B. L. Jolliff, A. Ollila, S. Clegg, F. Mourlin, W. Rapin, A. Fraeman (2026): [LIBS Elemental Mapping of a Feldspathic Lunar Meteorite: Insights for In Situ Exploration.](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2026JE009769) *Journal of Geophysical Research: Planets*, Volume 131, Issue 7.
-
-2. **H. T. Manelski\***, R. C. Wiens, A. Broz, J. A. Hurowitz, M. Tice, S. Clegg, E. Dehouck, S. A. Connell, O. Forni, S. J. VanBommel, S. Schröder, T. S.J. Gabriel, C. Bedford, R. K. Martinez, A. Cousin, M. L. Cable (2026): [Strong nickel enrichment co-located with redox-organic interactions in Neretva Vallis, Mars.](https://www.nature.com/articles/s41467-026-70081-3) *Nature Communications*, 17, 2705. 
-
-3. J.R. Johnson\*, B. Garczynski, A. Vaughan, C. Bedford, E. Dehouck, O. Beyssac, V. Payré, B. Horgan, M. Rice, C. Royer, L. Mandon, P. Beck, C. Quantin-Nataf, Z.U. Wolf, S.A. Connell, S. Schröder, **H.T. Manelski**, R. Barnes, A. Jones, A. Klidaras, K. Lapo, M. Gabbert, O. Forni, P. Pilleri, R.C. Wiens, A. Cousin, A. Hayes, J.F. Bell III, J.N. Maki, S. Maurice, G. Paar, T. Fouchet (2026): [Extensive Lithological Diversity of Float Rocks at the Mount Washburn Mound in Neretva Vallis, Jezero Crater, Mars.](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JE009439) *Journal of Geophysical Research: Planets*, Volume 131, Issue 2.
-
-4. Alexander J. Jones\*, Robert Barnes, Sanjeev Gupta, Gerhard Paar, Joel Hurowitz, Brittan V. Wogsland, Adrian Broz, Hemani Kalucha, Athanasios Klidaras, Kathryn M. Stack, Patrick Russell, Briony Horgan, Bradley Garczynski, Melissa Rice, James F. Bell III, Jusin N. Maki, Svein-Erik Hamran, Alicia Vaughan, Justin I. Simon, Oak Kanine, Stephanie A. Connell, **Henry Manelski**, Ashley Murphy, Nicolas Mangold, Olivier Beyssac, Olivier Gasnault, Christoph Traxler, Adrian Brown, David Flannery, Nicolas Randazzo, Jesús Martínez-Frías (2026): [A fluvio-lacustrine environment preserved in the Jezero crater inlet channel, Neretva Vallis, Mars.](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009420) *Journal of Geophysical Research: Planets*, Volume 131, Issue 1.
-
-5. A.P. Broz\*, B.H.N. Horgan, C. Bedford, C. Royer, **H. Manelski**, S. Connell, R.C. Wiens, E.C. Cardarelli, J.M. Madariaga, L. Mandon, A. Klidaras, M. Bramble, B. Kathir, O. Forni, John Carter, E. Dehouck, C. Quantin-Nataf, J.R. Johnson, J.I. Nuñez, L. Hausrath, U. Wolf, E.A. Cloutis, P. Beck, J.F. Bell, J.I. Simon, A. Cousin (2025): [Alteration history of aluminum-rich rocks at Jezero crater, Mars.](https://www.nature.com/articles/s43247-025-02856-3)*Nature Communications: Earth and Environment*, Volume 6. 
-
-6. Allyson R Trussell\*, James F Bell III, William H Farrand, Emmy B Hughes, Alivia Michelle Eng, Linda C Kah, Catherine D O'Connell-Cooper, Lucy M Thompson, Patrick J Gasda, **Henry Manelski**, Rachel Y Sheppard, Steven G Banham, Claire A Mondro, Benjamin Douglass, Jeffrey R Johnson, Gerhard Paar, Olivier Gasnault, Ashwin R Vasavada, Felipe Gómez, Stephane Le Mouelic, Olivier Forni, Pierre-Yves Meslin (2025): [Dark-Toned Halite-Enriched Veins Above the Marker Band Record a Drying Environment in Gale Crater.](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2025JE009244) *Journal of Geophysical Research: Planets*, Volume 130, Issue 10.
-
-7. **Henry T Manelski\***, Roger C Wiens, Bruno Bousquet, Peder Bagge Hansen, Susanne Schröder, Samuel Clegg, Noel D Martin, Anthony Edward Nelson, Ronald K Martinez, Ann Martha Ollila, Agnès Cousin (2024):
-   [LIBS plasma diagnostics with SuperCam on Mars: Implications for quantification of elemental abundances.](https://www.sciencedirect.com/science/article/pii/S0584854724002064)
-   *Spectrochimica Acta Part B: Atomic Spectroscopy*, Vol 111.
-
-8. Clément Royer\*, CC Bedford, JR Johnson, BHN Horgan, A Broz, O Forni, S Connell, RC Wiens, L Mandon, BS Kathir, EM Hausrath, A Udry, JM Madariaga, E Dehouck, RB Anderson, P Beck, O Beyssac, É Clavé, Samuel M Clegg, E Cloutis, T Fouchet, Travis SJ Gabriel, BJ Garczynski, A Klidaras, **HT Manelski**, L Mayhew, J Núñez, Ann Martha Ollila, S Schröder, JI Simon, U Wolf, KM Stack, A Cousin, S Maurice (2024):
-   [Intense alteration on early Mars revealed by high-aluminum rocks at Jezero crater.](https://www.nature.com/articles/s43247-024-01837-2)
-   *Nature Communications Earth & Environment*, Volume 5.
-
-9. **HT Manelski\***, Rachel Y Sheppard, Abigail A Fraeman, Roger C Wiens, Jeffrey R Johnson, Elizabeth B Rampe, Jens Frydenvang, Nina L Lanza, Olivier Gasnault (2023):
-   [Compositional variations in sedimentary deposits in Gale Crater as observed by ChemCam passive and active spectra.](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2022JE007706)
-   *Journal of Geophysical Research: Planets*, Volume 128.
-
----
-
-## Conference Abstracts
-
-1. **H. T. Manelski\***, C. Bedford, DJ Lee, R. C. Wiens, J. Gillis, H. Vannier, A. Klidaras, B. L. Jolliff, A. Ollila, S. Clegg, W. Rapin, A. A. Fraeman (2026):
-   Chemical Mapping of a Lunar Meteorite with LIBS: Outlook for In-Situ Science.
-   *57th Lunar and Planetary Science Conference, The Woodlands, Texas, 2026.*
-
-2. **M. C. Rudin\***, **H. T. Manelski**, J. R. Johnson, C. C. Bedford, V. Payré, S. Schröder, E Clavé, A. Vaughan, A. Udry, M. Deahn, O. Gasnault, A. Yingst, A. Cousin, 
-   R. C. Wiens (2026):
-   Potential First Iron Meteorite Detections at Jezero Crater, Mars. 
-   *57th Lunar and Planetary Science Conference, The Woodlands, Texas, 2026.*
-
-3. **D.J. Lee\***, **H. T. Manelski**, C. C. Bedford, R. C. Wiens, B. L. Jolliff, A. Ollila, S. Clegg, W. Rapin, A. Fraeman (2026):
-   Potential First Iron Meteorite Detections at Jezero Crater, Mars. 
-   *57th Lunar and Planetary Science Conference, The Woodlands, Texas, 2026.*
-
-
-4. **H. T. Manelski\***, R. C. Wiens, A. Broz, J. A. Hurowitz, M. Tice, S. Clegg, E. Dehouck, S. Connell, O. Forni, S. J. VanBommel, S. Schröder, T. S.J. Gabriel, C. Bedford, R. K. Martinez, A. Cousin (2025):
-   Ore-Grade Nickel Hosted in Fine-Grained Sedimentary Rocks, Jezero Crater, Mars.
-   *Europlanet Science Conference, Helsinki, Finland, 2025.* EPSC-DPS2025-431.
-
-5. **L Mandon\***, O Forni, N Mangold, RC Wiens, **HT Manelski**, ZU Wolf, E Dehouck, P Beck, O Beyssac, JR Johnson, E Clavé, CC Bedford, S Schröder, C Royer, S Connell, A Udry, JI Simon, A Cousin (2025):
-   Diagenetically altered fine sediments at Neretva Vallis, Mars.
-   *56th Lunar and Planetary Science Conference, The Woodlands, Texas, 2025.* LPI Contribution No. 3090.
-
-6. **E Dehouck\***, L Mandon, J Johnson, **H Manelski**, U Wolf, O Forni, P Beck, A Zastrow, S Connell, A Cousin, O Gasnault, RC Wiens (2025):
-   Iron-Rich, Akaganéite-and Jarosite-Bearing Rocks on the Flank of Neretva Vallis, Jezero Crater.
-   *56th Lunar and Planetary Science Conference, The Woodlands, Texas, 2025.* LPI Contribution No. 3090.
-
-7. **AP Broz\***, H Kalucha, KC Benison, BH Horgan, A Klidaras, **H Manelski**, L Mandon, S Connell, CC Bedford, M Rice, JR Johnson, A Jones, A Li, M Tice, J Hurowitz, A Allwood, D Flannery, A Murphy, K Uckert, A Vaughan, N Schmitz, F Poulet, K Lapo, M Gabbert, EC Cardarelli, B Garczynski, B Wogsland, D Buckner, E Dehouck, C Royer, K Williford, A Williams, L Kah, K Stack Morgan, K Farley, RC Wiens, A Cousin, K Hand, J Maki, JF Bell (2025):
-   Green Reduction Spots in Red Beds of the Bright Angel Formation, Jezero Crater, Mars and Implications for Biosignature Preservation Potential.
-   *56th Lunar and Planetary Science Conference, The Woodlands, Texas, 2025.* LPI Contribution No. 3090.
-
-8. **HT Manelski\***, RC Wiens, S Schröder, PB Hansen, B Bousquet, ND Martin, AE Nelson, S Clegg, RK Martinez, AM Ollila, A Cousin (2024):
-   SuperCam LIBS Plasma Dynamics: Implications for Quantification of Elemental Abundances.
-   *55th Lunar and Planetary Science Conference, The Woodlands, Texas, 2024.* LPI Contribution No. 3007.
-
-9. **Jeffrey Roy Johnson\***, Candice Bedford, Erwin Dehouck, Stephanie Connell, Susanne Schröder, **Henry Manelski**, Olivier Forni, Pierre Beck, Clément Royer, Lucia Mandon, Roger C Wiens, Olivier Beyssac, Cathy Quantin-Nataf (2024):
-   Mars2020 SuperCam Observations of the Mount Washburn Boulders in Neretva Vallis, Jezero Crater, Mars.
-   *American Geophysical Union Fall Meeting, Washington, D.C., 2024.* Issue 1486.
-
-10. **MC Deahn\***, B Horgan, F Calef III, J Schroeder, KM Stack, NR Williams, S Alwmark, CC Bedford, M Bramble, L Crumpler, D Flannery, B Garczynski, S Gwizd, L Ives, A Klidaras, C Lesh, **H Manelski**, C Miller, M Nachon, C Quantin-Nataf, N Randazzo, E Ravanis, P Russell, T Del Sesto, J Simon, JRC Voigt (2024):
-   An Orbital Photogeologic Map of the Jezero Crater Rim: Diverse Targets for Mars 2020 Future Exploration.
-   *55th Lunar and Planetary Science Conference, The Woodlands, Texas, 2024.* LPI Contribution No. 3007.
-
-11. **ND Martin\***, **HT Manelski**, RC Wiens, S Clegg, PB Hansen, Susanne Schröder, B Chide (2024):
-   LIBS peak broadening in soils on mars.
-   *55th Lunar and Planetary Science Conference, The Woodlands, Texas, 2024.* LPI Contribution No. 3007.
-
-12. **W Rapin\***, S Maurice, AM Ollila, RC Wiens, Bruno Dubois, Tony Nelson, L Bonhomme, Yann Parot, S Clegg, Ray Newell, L Ott, B Chide, V Payré, C Bedford, S Connell, **HT Manelski**, Susanne Schröder, Maximilian Buder, Charles Yana, P Bousquet (2024):
-   µLIBS: Developing a Lightweight Elemental Micro-Mapper for In Situ Exploration.
-   *55th Lunar and Planetary Science Conference, The Woodlands, Texas, 2024.* LPI Contribution No. 3007.
-
-13. **HT Manelski\***, RY Sheppard, AA Fraeman, RC Wiens, JR Johnson, EB Rampe, J Frydenvang, NL Lanza, Olivier Gasnault (2023):
-    Variability in Mt. Sharp Group Bedrock as Seen By ChemCam Passive and Active Spectra.
-    *54th Lunar and Planetary Science Conference, The Woodlands, Texas, 2023.* LPI Contribution No. 2806.
-
-14. **O Mikulskytė\***, J Kingsnorth, **H Manelski**, L Pikulić, J Rothenbuchner (2023):
-    Science Objectives of the Tumbleweed Mission—Swarm-Based, Wind-Driven Rover Mars Exploration.
-    *54th Lunar and Planetary Science Conference, The Woodlands, Texas, 2023.* LPI Contribution No. 2806.
-
-15. **MM Sori\***, KL Laferriere, KS Burkman, J Herring, A Klidaras, **HT Manelski**, RA McGlasson, SM Menten, IF Pamerleau, SL Pérez-Cortés (2023):
-    Hollows as a Source for Mercury's Polar Organics.
-    *54th Lunar and Planetary Science Conference, The Woodlands, Texas, 2023.* LPI Contribution No. 2806.
-
-16. **HT Manelski\***, RY Sheppard, AA Fraeman, JR Johnson, R Wiens, N Lanza, J Frydenvang, Olivier Gasnault (2022):
-    Classification of chemcam passive spectral targets in gale crater.
-    *53th Lunar and Planetary Science Conference, The Woodlands, Texas, 2022.* LPI Contribution No. 53.
-
----
-*(\* Corresponding author)*
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0; url=/#projects">
+  <link rel="canonical" href="/#projects">
+  <title>Research — Henry Manelski</title>
+</head>
+<body><p><a href="/#projects">Continue to Henry Manelski’s research</a></p></body>
+</html>

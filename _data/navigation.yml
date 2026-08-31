@@ -1,8 +1,6 @@
 main:
-  - title: "About"
-    url: /
   - title: "Research"
-    url: /research/
+    url: /
   - title: "Media"
     url: /media/
   - title: "Photos"
