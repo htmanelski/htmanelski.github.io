@@ -50,7 +50,13 @@ permalink: /research-preview/
       text-transform: uppercase;
     }
 
-    .hero { padding: 88px 0 72px; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+      gap: clamp(36px, 7vw, 88px);
+      align-items: center;
+      padding: 72px 0 76px;
+    }
     .eyebrow {
       margin: 0 0 16px;
       color: var(--mars);
@@ -75,6 +81,25 @@ permalink: /research-preview/
       font-size: clamp(1.08rem, 2vw, 1.35rem);
     }
     .hero-meta { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 28px; }
+    .hero-portrait {
+      position: relative;
+      width: min(100%, 300px);
+      aspect-ratio: 2 / 3;
+      margin: 0;
+      justify-self: end;
+      overflow: hidden;
+      border: 1px solid rgba(23, 33, 39, .16);
+      border-radius: 28px;
+      background: #cfdce2;
+      box-shadow: var(--shadow);
+    }
+    .hero-portrait img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
     .pill {
       padding: 7px 12px;
       border: 1px solid var(--line);
@@ -121,6 +146,8 @@ permalink: /research-preview/
     .project.featured .visual img { object-position: center; }
 
     .visual {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
       position: relative;
       min-height: 360px;
       overflow: hidden;
@@ -129,23 +156,14 @@ permalink: /research-preview/
     .visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .visual.contain img { object-fit: contain; background: #fff; }
     .visual.thermal img { object-fit: contain; background: #061d38; }
-    .visual::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(12,18,21,.35), transparent 45%);
-      pointer-events: none;
-    }
     .figure-note {
-      position: absolute;
-      z-index: 1;
-      left: 18px;
-      bottom: 14px;
       margin: 0;
-      color: #fff;
+      padding: 10px 15px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #f4f0e9;
       font-size: .72rem;
       letter-spacing: .04em;
-      text-shadow: 0 1px 8px rgba(0,0,0,.55);
     }
     .placeholder {
       display: grid;
@@ -224,7 +242,8 @@ permalink: /research-preview/
     footer { padding: 38px 0 60px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; text-align: center; }
 
     @media (max-width: 800px) {
-      .hero { padding: 62px 0 52px; }
+      .hero { grid-template-columns: 1fr; gap: 36px; padding: 58px 0 54px; }
+      .hero-portrait { width: min(72vw, 280px); justify-self: start; }
       .section-head { grid-template-columns: 1fr; gap: 18px; }
       .project, .project:nth-child(even) { grid-template-columns: 1fr; }
       .project:nth-child(even) .visual { order: 0; }
@@ -243,16 +262,21 @@ permalink: /research-preview/
   <div class="preview-note">Unlisted research-page concept</div>
 
   <header class="hero shell">
-    <p class="eyebrow">Research · Henry Manelski</p>
-    <h1>Reading the chemistry of other worlds.</h1>
-    <p class="hero-copy">I combine planetary spectroscopy, laboratory experiments, and data science to understand how rocky surfaces form, change, and preserve their histories.</p>
-    <div class="hero-meta" aria-label="Research areas">
-      <span class="pill">Mars</span>
-      <span class="pill">Moon</span>
-      <span class="pill">Mercury</span>
-      <span class="pill">Spectroscopy</span>
-      <span class="pill">Machine learning</span>
+    <div class="hero-text">
+      <p class="eyebrow">Research · Henry Manelski</p>
+      <h1>Reading the chemistry of other worlds.</h1>
+      <p class="hero-copy">I combine planetary spectroscopy, laboratory experiments, and data science to understand how rocky surfaces form, change, and preserve their histories.</p>
+      <div class="hero-meta" aria-label="Research areas">
+        <span class="pill">Mars</span>
+        <span class="pill">Moon</span>
+        <span class="pill">Mercury</span>
+        <span class="pill">Spectroscopy</span>
+        <span class="pill">Machine learning</span>
+      </div>
     </div>
+    <figure class="hero-portrait">
+      <img src="{{ '/assets/images/research/henry-manelski-portrait.jpg' | relative_url }}" alt="Portrait of Henry Manelski outdoors">
+    </figure>
   </header>
 
   <main>
