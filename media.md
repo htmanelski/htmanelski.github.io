@@ -1,29 +1,20 @@
 ---
-layout: default
+layout: null
 title: Media
 permalink: /media/
 ---
-
-<div style="padding: 0 15px;">
-  <h1>Media</h1>
-
-  <h2>Blog Posts</h2>
-  <ul>
-    <li><a href="https://science.nasa.gov/blog/searching-for-ancient-rocks-in-the-forlandet-flats/" target="_blank">Searching for Ancient Rocks in the ‘Forlandet’ Flats</a> (Perseverance Rover Mission Update, June 2025)</li>
-    <li><a href="https://science.nasa.gov/blog/smooshing-for-science-a-flat-out-success/" target="_blank">Smooshing for Science: A Flat-Out Success</a> (Perseverance Rover Mission Update, February 2025)</li>
-    <li><a href="https://science.nasa.gov/blog/persevering-through-the-storm/" target="_blank">Persevering Through the Storm</a> (Perseverance Rover Mission Update, September 2024)</li>
-    <li><a href="https://science.nasa.gov/blog/farewell-to-our-flying-friend-and-closing-in-on-the-crater-rim/" target="_blank">Farewell to Our Flying Friend and Closing in on the Crater Rim</a> (Perseverance Rover Mission Update, February 2024)</li>
-  </ul>
-
-  <h2>YouTube Interviews</h2>
-  <div style="margin: 2rem 0; text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/PQUEXBy2J2Q" allowfullscreen></iframe>
-    <p>Interview with 'Bad Boy of Science' (2025)</p>
-  </div>
-
-  <h2>Professional Links</h2>
-  <ul>
-    <li><a href="https://www.linkedin.com/in/henry-manelski-a1a8b7125/" target="_blank">LinkedIn Profile</a></li>
-  </ul>
-</div>
-
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Media, outreach, mission updates, and interviews featuring planetary scientist Henry Manelski."><title>Media — Henry Manelski</title><link rel="stylesheet" href="{{ '/assets/css/portfolio-pages.css' | relative_url }}"></head>
+<body>
+<nav class="topbar shell" aria-label="Page navigation"><a class="brand" href="/">Henry Manelski</a><div class="topbar-links"><a href="/">Research</a><a href="/media/" aria-current="page">Media</a><a href="/photos/">Photos</a><a href="#contact">Contact</a><span class="language-switch" aria-label="Language"><strong>EN</strong><a class="language-link" href="/de/" lang="de">DE</a></span></div></nav>
+<header class="hero shell"><p class="eyebrow">Media &amp; outreach</p><h1>Science beyond the paper.</h1><p class="hero-copy">Mission updates, interviews, and conversations about exploring the chemistry and history of other worlds.</p></header>
+<main>
+<section class="section"><div class="shell"><div class="section-head"><h2>From the field</h2></div><div class="stories">
+<a class="story" href="https://science.nasa.gov/blog/searching-for-ancient-rocks-in-the-forlandet-flats/" target="_blank" rel="noopener"><span class="story-meta">June 2025 · Mars 2020</span><h3>Searching for Ancient Rocks in the ‘Forlandet’ Flats</h3><span class="story-source">NASA mission update ↗</span></a>
+<a class="story" href="https://science.nasa.gov/blog/smooshing-for-science-a-flat-out-success/" target="_blank" rel="noopener"><span class="story-meta">February 2025 · Mars 2020</span><h3>Smooshing for Science: A Flat-Out Success</h3><span class="story-source">NASA mission update ↗</span></a>
+<a class="story" href="https://science.nasa.gov/blog/persevering-through-the-storm/" target="_blank" rel="noopener"><span class="story-meta">September 2024 · Mars 2020</span><h3>Persevering Through the Storm</h3><span class="story-source">NASA mission update ↗</span></a>
+<a class="story" href="https://science.nasa.gov/blog/farewell-to-our-flying-friend-and-closing-in-on-the-crater-rim/" target="_blank" rel="noopener"><span class="story-meta">February 2024 · Mars 2020</span><h3>Farewell to Our Flying Friend and Closing in on the Crater Rim</h3><span class="story-source">NASA mission update ↗</span></a>
+</div></div></section>
+<section class="section"><div class="shell"><div class="section-head"><h2>In conversation</h2></div><article class="feature"><div class="video"><iframe src="https://www.youtube.com/embed/PQUEXBy2J2Q" title="Interview with Bad Boy of Science" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="feature-copy"><p class="eyebrow">Interview · 2025</p><h3>Planetary science with Bad Boy of Science</h3><p>A conversation about planetary exploration, spectroscopy, and the path into mission science.</p><a class="button" href="https://www.youtube.com/watch?v=PQUEXBy2J2Q" target="_blank" rel="noopener">Watch on YouTube ↗</a></div></article></div></section>
+</main>
+<section class="contact" id="contact"><div class="shell"><h2>Interested in the chemistry of other worlds?</h2><p class="contact-copy">I am always happy to discuss planetary spectroscopy, mission science, laboratory collaborations, and new research opportunities.</p><div class="contact-links"><a href="mailto:h.manelski@tum.de">h.manelski@tum.de</a><a href="/assets/Henry_Manelski_Resume_EN.pdf">Résumé (PDF)</a><a href="https://scholar.google.com/citations?user=M-0PdwYAAAAJ&amp;hl=de&amp;oi=ao">Google Scholar</a><a href="https://www.linkedin.com/in/henry-manelski-a1a8b7125/" target="_blank" rel="noopener">LinkedIn</a></div></div></section><footer class="shell">© 2026 Henry Manelski</footer>
+</body></html>
