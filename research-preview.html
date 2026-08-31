@@ -116,6 +116,9 @@ permalink: /research-preview/
     }
     .project:nth-child(even) { grid-template-columns: 1fr minmax(300px, 44%); }
     .project:nth-child(even) .visual { order: 2; }
+    .project.featured { grid-template-columns: 1fr; }
+    .project.featured .visual { min-height: clamp(240px, 33vw, 390px); }
+    .project.featured .visual img { object-position: center; }
 
     .visual {
       position: relative;
@@ -174,6 +177,14 @@ permalink: /research-preview/
     .kicker { margin: 0 0 14px; color: var(--mars); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
     h3 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.8rem, 3vw, 2.7rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.08; }
     .summary { margin: 20px 0 0; color: #4d5a60; }
+    .acknowledgement {
+      margin: 24px 0 0;
+      padding: 16px 18px;
+      border-left: 3px solid var(--mars);
+      background: rgba(184, 86, 51, .07);
+      color: #59666c;
+      font-size: .86rem;
+    }
     .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 28px 0 0; }
     .detail-label { display: block; margin-bottom: 4px; color: var(--muted); font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
     .detail-value { font-size: .88rem; }
@@ -233,20 +244,21 @@ permalink: /research-preview/
         </div>
 
         <div class="projects">
-          <article class="project">
-            <div class="visual placeholder">
-              <div><strong>Your MERTIS figure</strong><span>Replace with a spectrum, Mercury map, or instrument image</span></div>
-              <p class="figure-note">Suggested: one visually legible result, not a full multi-panel figure</p>
+          <article class="project featured">
+            <div class="visual">
+              <img src="{{ '/assets/images/research/bepicolombo-sixth-mercury-flyby.jpg' | relative_url }}" alt="Three views of Mercury and parts of the BepiColombo spacecraft during its sixth Mercury flyby">
+              <p class="figure-note">Mercury seen during BepiColombo’s sixth flyby</p>
             </div>
             <div class="project-copy">
               <p class="kicker">Mercury · MERTIS · Current</p>
-              <h3>What can thermal infrared spectra reveal about Mercury’s surface?</h3>
-              <p class="summary">Use two or three sentences to introduce the scientific problem, why it matters, and what is distinctive about your approach. Write for a planetary scientist outside your immediate specialty.</p>
+              <h3>Probing silicate composition and crystallinity on Mercury with BepiColombo.</h3>
+              <p class="summary">Silicon is the second-most abundant element in the crusts of rocky planets, behind only oxygen. The mineral phases into which silicon partitions are key indicators of planetary evolution. Identifying these silicate minerals can reveal the nature of the material from which Mercury accreted, as well as the roles of impacts and volcanism in reshaping its surface.</p>
+              <p class="summary">Mercury—the planet closest to the Sun and something of an oddball in our solar system—has a complex history shaped by unusual geochemical processes. By using thermal infrared observations from MERTIS to identify the mineral hosts of silicon, I aim to better understand how Mercury formed and evolved.</p>
               <div class="detail-grid">
-                <div><span class="detail-label">My contribution</span><span class="detail-value">Describe your specific role and expertise.</span></div>
-                <div><span class="detail-label">Methods</span><span class="detail-value">Thermal infrared spectroscopy · data analysis</span></div>
+                <div><span class="detail-label">Role</span><span class="detail-value">Humboldt Research Fellow · MERTIS/BepiColombo science</span></div>
+                <div><span class="detail-label">Methods</span><span class="detail-value">Thermal infrared spectroscopy (MERTIS)</span></div>
               </div>
-              <div class="links"><a class="button secondary" href="#current-placeholder" aria-label="Placeholder project details link">Project details →</a></div>
+              <p class="acknowledgement">This work is supported by an Alexander von Humboldt Foundation Research Fellowship for postdoctoral researchers and hosted by the University of Münster. I am grateful to the MERTIS/BepiColombo team and excited to contribute to the scientific exchange as the mission approaches its Mercury science phase.</p>
             </div>
           </article>
 
