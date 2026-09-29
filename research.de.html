@@ -144,6 +144,8 @@ permalink: /de/
     .project.featured { grid-template-columns: 1fr; }
     .project.featured .visual { min-height: clamp(240px, 33vw, 390px); }
     .project.featured .visual img { object-position: center; }
+    .project.video-feature .visual { min-height: 0; }
+    .project.video-feature .visual video { height: auto; }
 
     .visual {
       display: grid;
@@ -325,7 +327,7 @@ permalink: /de/
             </div>
           </article>
 
-          <article class="project">
+          <article class="project featured video-feature">
             <div class="visual thermal">
               <video autoplay muted loop playsinline preload="metadata" aria-label="Synchronisiertes Video einer gepulsten Laserbestrahlung eines Mondregolith-Simulats im sichtbaren Licht und thermischen Infrarot">
                 <source src="{{ '/assets/videos/lunar-regolith-laser-irradiation.mp4' | relative_url }}" type="video/mp4">
