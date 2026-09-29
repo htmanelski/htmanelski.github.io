@@ -153,9 +153,9 @@ permalink: /de/
       overflow: hidden;
       background: #d7d0c4;
     }
-    .visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .visual img, .visual video { width: 100%; height: 100%; object-fit: cover; display: block; }
     .visual.contain img { object-fit: contain; background: #fff; }
-    .visual.thermal img { object-fit: contain; background: #061d38; }
+    .visual.thermal img, .visual.thermal video { object-fit: contain; background: #061d38; }
     .figure-note {
       margin: 0;
       padding: 10px 15px;
@@ -327,8 +327,10 @@ permalink: /de/
 
           <article class="project">
             <div class="visual thermal">
-              <img src="{{ '/assets/images/research/lunar-regolith-laser-irradiation.gif' | relative_url }}" alt="Thermische Infrarotanimation einer gepulsten Laserbestrahlung, die einen kreisförmigen Bereich eines Mondregolith-Simulats erwärmt">
-              <p class="figure-note">Eine Sekunde Laserbestrahlung in einem Mondregolith-Simulat, aufgenommen mit einer thermischen Infrarotkamera</p>
+              <video autoplay muted loop playsinline preload="metadata" aria-label="Synchronisiertes Video einer gepulsten Laserbestrahlung eines Mondregolith-Simulats im sichtbaren Licht und thermischen Infrarot">
+                <source src="{{ '/assets/videos/lunar-regolith-laser-irradiation.mp4' | relative_url }}" type="video/mp4">
+              </video>
+              <p class="figure-note">Synchronisierte Aufnahmen einer gepulsten Laserbestrahlung in einem Mondregolith-Simulat im sichtbaren Licht und thermischen Infrarot</p>
             </div>
             <div class="project-copy">
               <p class="kicker">Mond · Laserbestrahlung · Aktuell</p>
