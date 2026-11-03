@@ -23,7 +23,7 @@ default_lang: "en"
 exclude_from_localizations: ["assets", "css", "images"]
 
 title: Henry Manelski
-email: hmanelsk@purdue.edu
+email: henry.manelski@uni-muenster.de
 description: Henry Manelski's Personal and Professional Website. Planetary Science PhD student. 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.henrymanelski.com" # the base hostname & protocol for your site, e.g. http://example.com
